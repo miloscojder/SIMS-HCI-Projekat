@@ -15,8 +15,8 @@ bld/
 [Ll]ogs/
 
 .vs
-Project/.vs
-Project/bin
-Project/obj
-Project/.vs/Project/v16
+Projekat/.vs
+Projekat/bin
+Projekat/obj
+Projekat/.vs/Projekat/v16
 desktop.ini
