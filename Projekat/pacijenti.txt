@@ -1,2 +1,0 @@
-mile,123,Mile,Milic,#1
-moma,245,Momir,Momic,#2

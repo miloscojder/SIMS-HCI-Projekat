@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\cojder\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\cojder\\.nuget\\packages"
+    ]
+  }
+}
