@@ -19,9 +19,22 @@ namespace Model
       public String Explanation;
       
       public Doctor doctor;
-      
-      /// <pdGenerated>default parent getter</pdGenerated>
-      public Doctor GetDoctor()
+
+        public Request(int id, string description, DateTime dateOfVacation, DateTime dateOfCreateRequest, int durationOfVacation, StatusType status, string explanation, Doctor doctor)
+        {
+            Id = id;
+            Description = description;
+            DateOfVacation = dateOfVacation;
+            DateOfCreateRequest = dateOfCreateRequest;
+            DurationOfVacation = durationOfVacation;
+            Status = status;
+            Explanation = explanation;
+            this.doctor = doctor;
+        }
+
+
+        /// <pdGenerated>default parent getter</pdGenerated>
+        public Doctor GetDoctor()
       {
          return doctor;
       }
