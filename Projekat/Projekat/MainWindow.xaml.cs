@@ -39,6 +39,11 @@ namespace Projekat
             doctor.Show();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            SecretaryWindow sw = new SecretaryWindow();
+            sw.Show();
+        }
         private void Request_Click(object sender, RoutedEventArgs e)
         {
             RequestCRUD request = new RequestCRUD();

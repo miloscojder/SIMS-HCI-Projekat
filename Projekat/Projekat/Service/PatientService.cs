@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
 
@@ -12,6 +13,7 @@ namespace Service
 {
    public class PatientService
    {
+        public PatientRepository patient_repository = new PatientRepository();
       public Model.Patient GetById(String id)
       {
          // TODO: implement
@@ -25,18 +27,18 @@ namespace Service
       
       public void Delete(Model.Patient patient)
       {
-         // TODO: implement
+             
+            patient_repository.Delete(patient);
       }
       
       public void Save(Model.Patient newPatient)
       {
-         // TODO: implement
+            patient_repository.Save(newPatient);
       }
       
       public List<Patient> GetAll()
       {
-         // TODO: implement
-         return null;
+            return patient_repository.GetAll();
       }
    
       public System.Collections.ArrayList patientRepository;
