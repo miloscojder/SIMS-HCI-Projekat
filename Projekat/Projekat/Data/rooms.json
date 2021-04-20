@@ -1,17 +1,1 @@
-[
-    
-    {
-        "Id": 1,
-        "Name": "a",
-        "RoomType": "soba",
-        "Floor": 3,
-        "Detail": "blaaaa"
-    },
-    {
-        "Id": 2,
-        "Name": "b",
-        "RoomType": "operaciona sala",
-        "Floor": 5,
-        "Detail": "true"
-    }
-]
+[{"Id":2,"Name":"b","RoomType":"operaciona sala","Floor":5,"Detail":"true"}]

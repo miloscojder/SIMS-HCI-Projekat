@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -39,11 +39,8 @@ namespace Projekat
             doctor.Show();
         }
 
-      //  private void Button_Click(object sender, RoutedEventArgs e)
-        //{
-       //     SecretaryWindow sw = new SecretaryWindow();
-        //    sw.Show();
-       // }
+
+
         private void Request_Click(object sender, RoutedEventArgs e)
         {
             RequestCRUD request = new RequestCRUD();
