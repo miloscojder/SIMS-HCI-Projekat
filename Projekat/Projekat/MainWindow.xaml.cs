@@ -28,6 +28,7 @@ namespace Projekat
             InitializeComponent();
         }
         private void Director_Click(object sender, RoutedEventArgs e)
+<<<<<<< HEAD
         {
            // DirectorWindow director = new DirectorWindow();
             //director.Show();
@@ -43,6 +44,18 @@ namespace Projekat
         {
             RequestCRUD request = new RequestCRUD();
             request.Show();
+=======
+            {
+                DirectorWindow director = new DirectorWindow();
+                director.Show();
+            }
+
+        private void Doctor_Click(object sender, RoutedEventArgs e)
+        {
+            DoctorWindow doctor = new DoctorWindow();
+            doctor.Show();
+>>>>>>> bd3334dc1a17fd49b6ad94de7bd9174783e50a8c
         }
+
     }
 }

@@ -10,7 +10,17 @@ namespace Model
 {
    public class Patient : User
    {
-      public Appointment[] appointment;
-   
-   }
+        public String id { get; set; }
+        public String firstName { get; set; }
+        public String lastName { get; set; }
+        //public Appointment[] appointment;
+        public Patient(string id, string name, string surname)
+        {
+            this.id = id;
+            firstName = name;
+            lastName = surname;
+          
+        }
+
+    }
 }

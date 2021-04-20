@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
 
@@ -13,6 +14,7 @@ namespace Service
 {
    public class RoomService
    {
+        public RoomRepository roomRepository = new RoomRepository();
       public Boolean ClassicRenovation(Room room)
       {
          // TODO: implement
@@ -35,80 +37,41 @@ namespace Service
          // TODO: implement
       }
       
-      public void Save(Model.Room newRoom)
+      public void Save(Room newRoom)
       {
-         // TODO: implement
+            roomRepository.Save(newRoom);
       }
       
-      public Model.Room GetRoom(String id)
+      public Room GetRoom(int id)
       {
-         // TODO: implement
-         return null;
+            return roomRepository.GetRoom(id);
       }
       
       public List<Room> GetAllRooms()
       {
-         // TODO: implement
-         return null;
+           
+           return roomRepository.GetAllRooms();
       }
       
-      public Boolean UpdateRoom(Model.Room newRoom)
+      public Boolean UpdateRoom(Room newRoom)
       {
-         // TODO: implement
-         return false;
+         roomRepository.UpdateRoom(newRoom);
+         return true;
       }
       
-      public Boolean DeleteRoom(String id)
+      public Boolean DeleteRoom(int id)
       {
-         // TODO: implement
-         return false;
+         roomRepository.DeleteRoom(id);
+         return true;
       }
-   
-      public System.Collections.ArrayList roomRepository;
-      
-      /// <pdGenerated>default getter</pdGenerated>
-      public System.Collections.ArrayList GetRoomRepository()
-      {
-         if (roomRepository == null)
-            roomRepository = new System.Collections.ArrayList();
-         return roomRepository;
-      }
-      
-      /// <pdGenerated>default setter</pdGenerated>
-      public void SetRoomRepository(System.Collections.ArrayList newRoomRepository)
-      {
-         RemoveAllRoomRepository();
-         foreach (Repository.RoomRepository oRoomRepository in newRoomRepository)
-            AddRoomRepository(oRoomRepository);
-      }
-      
-      /// <pdGenerated>default Add</pdGenerated>
-      public void AddRoomRepository(Repository.RoomRepository newRoomRepository)
-      {
-         if (newRoomRepository == null)
-            return;
-         if (this.roomRepository == null)
-            this.roomRepository = new System.Collections.ArrayList();
-         if (!this.roomRepository.Contains(newRoomRepository))
-            this.roomRepository.Add(newRoomRepository);
-      }
-      
-      /// <pdGenerated>default Remove</pdGenerated>
-      public void RemoveRoomRepository(Repository.RoomRepository oldRoomRepository)
-      {
-         if (oldRoomRepository == null)
-            return;
-         if (this.roomRepository != null)
-            if (this.roomRepository.Contains(oldRoomRepository))
-               this.roomRepository.Remove(oldRoomRepository);
-      }
-      
-      /// <pdGenerated>default removeAll</pdGenerated>
-      public void RemoveAllRoomRepository()
-      {
-         if (roomRepository != null)
-            roomRepository.Clear();
-      }
-   
-   }
+
+        public int GenerateNewId()
+        {
+            return roomRepository.GenerateNewId();
+
+        }
+
+
+
+    }
 }
