@@ -1,0 +1,32 @@
+﻿<Window x:Class="Projekat.UpdateRoom"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat"
+        mc:Ignorable="d"
+        Title="UpdateRoom" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="dataGridUpdate" ItemsSource="{Binding Room}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="35,34,360,0" Height="221" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Room Id" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Floor" Binding="{Binding Floor}"/>
+                <DataGridTextColumn Header="Detail" Binding="{Binding Detail}"/>
+                <DataGridTextColumn Header="Room type" Binding="{Binding RoomType}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label FontSize="15" Content="Name:" HorizontalAlignment="Left" Margin="466,84,0,0" VerticalAlignment="Top" Width="67"/>
+        <Label FontSize="15" Content="Floor:" HorizontalAlignment="Left" Margin="466,130,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.974,-0.766" Width="67"/>
+        <Label FontSize="15" Content="Detail:" HorizontalAlignment="Left" Margin="466,177,0,0" VerticalAlignment="Top" Width="67"/>
+        <Label FontSize="15" Content="Room Type:" HorizontalAlignment="Left" Margin="466,225,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="name" HorizontalAlignment="Left" Height="35" Margin="561,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202"/>
+        <TextBox  x:Name="floor" HorizontalAlignment="Left" Height="35" Margin="561,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202"/>
+        <TextBox x:Name="detail" HorizontalAlignment="Left" Height="35" Margin="561,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202"/>
+        <TextBox x:Name="roomType" HorizontalAlignment="Left" Height="35" Margin="561,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202"/>
+        <Button Content="Update" Click="Update_Click" HorizontalAlignment="Left" Margin="466,370,0,0" VerticalAlignment="Top" Width="130" Height="30" RenderTransformOrigin="-0.669,0.63"/>
+        <Button Content="Cancel" Click="Cancel_Click" HorizontalAlignment="Left" Margin="633,370,0,0" VerticalAlignment="Top" Width="130" Height="30" />
+        <Button Content="Select" Click="Select_Click" HorizontalAlignment="Left" Margin="310,286,0,0" VerticalAlignment="Top"  Width="130" Height="30"/>
+    </Grid>
+</Window>
