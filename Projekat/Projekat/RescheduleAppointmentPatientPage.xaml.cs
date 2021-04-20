@@ -35,6 +35,8 @@ namespace Projekat
             InitializeComponent();
             this.DataContext = this;
 
+            
+
             string[] termini = File.ReadAllLines(@"C:\Users\Korisnik\Desktop\asdas\SIMS-HCI-Projekat-main\Projekat\Projekat\Data\terminiak.txt", Encoding.UTF8);
             Termini = new List<string>(termini);
 
