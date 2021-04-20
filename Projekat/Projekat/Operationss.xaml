@@ -1,0 +1,30 @@
+﻿<Window x:Class="Projekat.Operationss"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat"
+        mc:Ignorable="d"
+        Title="Operations" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="dataGrid" ItemsSource="{Binding Operations}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="106,46,106,128">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Width="40" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Date" Width="80" Binding="{Binding Date}"/>
+                <DataGridTextColumn Header="Time start" Width="70" Binding="{Binding TimeStart}"/>
+                <DataGridTextColumn Header="Duration" Width="70" Binding="{Binding Duration}"/>
+                <DataGridTextColumn Header="End time" Width="70" Binding="{Binding EndTime}"/>
+                <DataGridTextColumn Header="Room" Width="50" Binding="{Binding room.Name}"/>
+                <DataGridTextColumn Header="Patient name" Width="100" Binding="{Binding patient.firstName}"/>
+                <DataGridTextColumn Header="Patient surname" Width="100" Binding="{Binding patient.lastName}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Cancel" Click="Cancel"  HorizontalAlignment="Left" Margin="574,349,0,0" VerticalAlignment="Top" Height="39" Width="132" Background="#FFB5CDE2"/>
+        <Button Content="Reschedule" Click="Reschedule"  HorizontalAlignment="Center" Margin="0,349,0,0" VerticalAlignment="Top" Height="37" Width="132" Background="#FFB5CDE2"/>
+        <Button Content="Schedule" Click="Schedule"  HorizontalAlignment="Left" Margin="88,349,0,0" VerticalAlignment="Top" Height="37" Width="132" Background="#FFB5CDE2"/>
+
+
+
+    </Grid>
+</Window>
