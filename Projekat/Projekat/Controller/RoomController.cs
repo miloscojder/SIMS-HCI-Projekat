@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 using Model;
+using Service;
 using System;
 using System.Collections.Generic;
 
@@ -12,7 +13,8 @@ namespace Controller
 {
    public class RoomController
    {
-      public Boolean ClassicRenovation(Room room)
+        public RoomService roomService = new RoomService();
+        public Boolean ClassicRenovation(Room room)
       {
          // TODO: implement
          return false;
@@ -34,80 +36,45 @@ namespace Controller
          // TODO: implement
       }
       
-      public void Save(Model.Room newRoom)
+      public void Save(Room newRoom)
       {
-         // TODO: implement
+            // TODO: implement
+            roomService.Save(newRoom);
       }
       
-      public Model.Room GetRoom(String id)
+      public Room GetRoom(int id)
       {
          // TODO: implement
-         return null;
+         return roomService.GetRoom(id);
       }
       
       public List<Room> GetAllRooms()
       {
          // TODO: implement
-         return null;
+         return roomService.GetAllRooms();
       }
       
-      public Boolean UpdateRoom(Model.Room newRoom)
+      public Boolean UpdateRoom(Room newRoom)
       {
-         // TODO: implement
-         return false;
+            // TODO: implement
+         roomService.UpdateRoom(newRoom);
+         return true;
       }
       
-      public Boolean DeleteRoom(String id)
+      public Boolean DeleteRoom(int id)
       {
-         // TODO: implement
-         return false;
+            // TODO: implement
+            roomService.DeleteRoom(id);
+            return true;
+
       }
-   
-      public System.Collections.ArrayList roomService;
-      
-      /// <pdGenerated>default getter</pdGenerated>
-      public System.Collections.ArrayList GetRoomService()
-      {
-         if (roomService == null)
-            roomService = new System.Collections.ArrayList();
-         return roomService;
-      }
-      
-      /// <pdGenerated>default setter</pdGenerated>
-      public void SetRoomService(System.Collections.ArrayList newRoomService)
-      {
-         RemoveAllRoomService();
-         foreach (Service.RoomService oRoomService in newRoomService)
-            AddRoomService(oRoomService);
-      }
-      
-      /// <pdGenerated>default Add</pdGenerated>
-      public void AddRoomService(Service.RoomService newRoomService)
-      {
-         if (newRoomService == null)
-            return;
-         if (this.roomService == null)
-            this.roomService = new System.Collections.ArrayList();
-         if (!this.roomService.Contains(newRoomService))
-            this.roomService.Add(newRoomService);
-      }
-      
-      /// <pdGenerated>default Remove</pdGenerated>
-      public void RemoveRoomService(Service.RoomService oldRoomService)
-      {
-         if (oldRoomService == null)
-            return;
-         if (this.roomService != null)
-            if (this.roomService.Contains(oldRoomService))
-               this.roomService.Remove(oldRoomService);
-      }
-      
-      /// <pdGenerated>default removeAll</pdGenerated>
-      public void RemoveAllRoomService()
-      {
-         if (roomService != null)
-            roomService.Clear();
-      }
-   
-   }
+        public int GenerateNewId()
+        {
+            return roomService.GenerateNewId();
+
+        }
+
+
+
+    }
 }

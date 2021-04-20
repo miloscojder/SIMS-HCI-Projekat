@@ -1,0 +1,95 @@
+[
+    
+    {
+        "Id": "1",
+        "Date": "21.12.2021.",
+        "TimeStart": "12:00",
+        "Duration": "30",
+        "EndTime": "12:30",
+        "AppointmentType": 1,
+        "room": {
+            "Id": 1,
+            "Name": "a",
+            "RoomType": "soba",
+            "Floor": 3,
+            "Detail": "blaaaa"
+        },
+        "patient": {
+            "Id": null,
+            "Username": null,
+            "Password": null,
+            "FirstName": null,
+            "LastName": null,
+            "Jmbg": null,
+            "EMail": null,
+            "PhoneNumber": null,
+            "DateOfBirth": "0001-01-01T00:00:00",
+            "id": "P1",
+            "firstName": "Kristina",
+            "lastName": "Todic"
+        },
+        "anamnesis": null
+    },
+    {
+        "Id": "2",
+        "Date": "11.05.2021.",
+        "TimeStart": "08:30",
+        "Duration": "30",
+        "EndTime": "09:00",
+        "AppointmentType": 0,
+        "room": {
+
+            "Id": "2",
+            "Name": "b",
+            "RoomType": "operaciona sala",
+            "Floor": 5,
+            "Detail": "true"
+        },
+        "patient": {
+            "Id": "p33",
+            "Username": null,
+            "Password": null,
+            "FirstName": null,
+            "LastName": null,
+            "Jmbg": null,
+            "EMail": null,
+            "PhoneNumber": null,
+            "DateOfBirth": "0001-01-01T00:00:00",
+            "id": "P1",
+            "firstName": "Anamarija",
+            "lastName": "Popovic"
+        },
+            "anamnesis": null
+        },
+        {
+            "Id": "33",
+            "Date": "12.10.2021.",
+            "TimeStart": "12:40",
+            "Duration": "20",
+            "EndTime": "13:00",
+            "AppointmentType": 0,
+            "room": {
+                "Id": "2",
+                "Name": "b",
+                "RoomType": "operaciona sala",
+                "Floor": 5,
+                "Detail": "true"
+            },
+            "patient": {
+
+                "Id": "p1",
+                "Username": null,
+                "Password": null,
+                "FirstName": null,
+                "LastName": null,
+                "Jmbg": null,
+                "EMail": null,
+                "PhoneNumber": null,
+                "DateOfBirth": "0001-01-01T00:00:00",
+                "id": "P1",
+                "firstName": "Marko",
+                "lastName": "Markovic"
+            },
+            "anamnesis": null
+        }
+]

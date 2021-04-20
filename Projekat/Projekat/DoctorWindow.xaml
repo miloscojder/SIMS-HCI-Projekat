@@ -1,0 +1,19 @@
+﻿<Window x:Class="Projekat.DoctorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat"
+        mc:Ignorable="d"
+        Title="DoctorWindow" Height="450" Width="800">
+    <Grid>
+        <Label Content="Doctor" HorizontalAlignment="Center" Margin="0,46,0,0" VerticalAlignment="Top" FontSize="30" FontWeight="Bold"/>
+        <Button Content="Appointments" FontSize="20" Click="Appointments" HorizontalAlignment="Left" Margin="87,158,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
+        <Button Content="Operations" FontSize="20" Click="Operationss" HorizontalAlignment="Left" Margin="87,284,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
+        <Button Content="Schedule" FontSize="20" Click="ViewSchedule" HorizontalAlignment="Left" Margin="318,210,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
+        <Button Content="Anamnesis" FontSize="20" Click="Anamnesiss" HorizontalAlignment="Left" Margin="567,158,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
+        <Button Content="Perscriptions" FontSize="20" Click="Prescriptions" HorizontalAlignment="Left" Margin="567,284,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
+
+
+    </Grid>
+</Window>
