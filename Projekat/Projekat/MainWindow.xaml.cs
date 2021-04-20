@@ -28,10 +28,10 @@ namespace Projekat
             InitializeComponent();
         }
         private void Director_Click(object sender, RoutedEventArgs e)
-            {
-                DirectorWindow director = new DirectorWindow();
-                director.Show();
-            }
+        {
+            DirectorWindow director = new DirectorWindow();
+            director.Show();
+        }
 
         private void Doctor_Click(object sender, RoutedEventArgs e)
         {
@@ -39,6 +39,11 @@ namespace Projekat
             doctor.Show();
         }
 
+      //  private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+       //     SecretaryWindow sw = new SecretaryWindow();
+        //    sw.Show();
+       // }
         private void Request_Click(object sender, RoutedEventArgs e)
         {
             RequestCRUD request = new RequestCRUD();

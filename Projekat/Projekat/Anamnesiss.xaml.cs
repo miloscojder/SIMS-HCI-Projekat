@@ -11,12 +11,15 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Repository;
+using Controller;
 
 namespace Projekat
 {
 
     public partial class Anamnesiss : Window
     {
+        public AnamnesisController anamnesisController = new AnamnesisController();
         public List<Anamnesis> anamneses
         {
             get;
@@ -25,11 +28,9 @@ namespace Projekat
         public Anamnesiss()
         {
             InitializeComponent();
-            this.DataContext = this;
-
-            anamneses = new List<Anamnesis>();
-            //AnamnesisFileStorage fajl = new AnamnesisFileStorage(@"C:\Users\krist\Desktop\anamnesis.txt");
-           // anamneses = fajl.GetAll();
+            AnamnesisRepository anamnesisRepository = new AnamnesisRepository();
+            List<Anamnesis> anamneses = anamnesisRepository.GetAll();
+            dataGrid.ItemsSource = anamneses;
         }
 
        
@@ -37,7 +38,7 @@ namespace Projekat
         private void Update(object sender, RoutedEventArgs e)
         {
            
-            Anamnesis a = (Anamnesis)dataGridAnamnesis.SelectedItems[0];
+            Anamnesis a = (Anamnesis)dataGrid.SelectedItems[0];
             ShowUpdate sc = new ShowUpdate(a);
             sc.Show();
 
@@ -47,7 +48,7 @@ namespace Projekat
         private void Create(object sender, RoutedEventArgs e)
         {
 
-        
+
             CreateAnamnesis sa = new CreateAnamnesis();
             sa.Show();
 

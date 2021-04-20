@@ -14,6 +14,7 @@ namespace Model
         public String firstName { get; set; }
         public String lastName { get; set; }
         //public Appointment[] appointment;
+        public Patient() { }
         public Patient(string id, string name, string surname)
         {
             this.id = id;

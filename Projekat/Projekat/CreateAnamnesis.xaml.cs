@@ -1,23 +1,15 @@
 ﻿
 using Model;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Controller;
 
 namespace Projekat
 {
    
     public partial class CreateAnamnesis : Window
     {
+        public AnamnesisController anamnesisController = new AnamnesisController();
         public CreateAnamnesis()
         {
             InitializeComponent();
@@ -26,24 +18,19 @@ namespace Projekat
 
         private void Create(object sender, RoutedEventArgs e)
         {
-            //prikupljam polja iz forme
-           
             String ida = Id.Text;
-            String anam = (String)Anamnesis.Text;
-            
-            String Idnovi = Convert.ToString(ida)+1;
-            int sign = 0;
+            String anam = Anamnesis.Text;
+            //Patient p;
+           // p.Id = Pid.Text;
+     
+            Anamnesis a = new Anamnesis(ida, anam);
+            anamnesisController.CreateAnamnesis(a);
 
-           
-            String red =Idnovi.ToString()+ "," + ida + "," +  anam ;
-
-
-
-            //AnamnesisFileStorage fajl = new AnamnesisFileStorage(@"C:\Users\krist\Desktop\anamnesis.txt");
-            // fajl.Save(red,true);
-
-             MessageBox.Show("Anamnesis created!");
+            MessageBox.Show("Anamnesis created!");
             this.Close();
+            
+            Anamnesiss ap = new Anamnesiss();
+            ap.Show();
         }
     }
 }

@@ -31,14 +31,14 @@ namespace Projekat
 
             InitializeComponent();
             OperationRepository operationRepository = new OperationRepository();
-            List<Operations> operaions = operationRepository.GetAll();
-            dataGrid.ItemsSource = operaions;
+            List<Operations> operations = operationRepository.GetAll();
+            dataGrid.ItemsSource = operations;
         }
 
         private void Cancel(object sender, RoutedEventArgs e)
         {
             Operations a = (Operations)dataGrid.SelectedItems[0];
-          //  operationController.Cancel(a);
+            operationController.Cancel(a);
 
             Operationss ap = new Operationss();
             ap.Show();
@@ -47,9 +47,9 @@ namespace Projekat
         private void Reschedule(object sender, RoutedEventArgs e)
         {
 
-          //  Operations a = (Operations)dataGrid.SelectedItems[0];
-          //  ShowChangesO sc = new ShowChangesO(a);
-        //    sc.Show();
+            Operations a = (Operations)dataGrid.SelectedItems[0];
+            ShowChangesO sc = new ShowChangesO(a);
+            sc.Show();
 
 
         }
