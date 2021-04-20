@@ -19,6 +19,8 @@ namespace Model
         public TypeOfAppointment AppointmentType { get; set; }
         //public MedicalRecord MedicalRecord { get; set; }
 
+        public DateTime StartTime { get; set; }
+
         public Room room { get; set; }
         public Patient patient { get; set; }
       //  public Doctor doctor { get; set; }
@@ -48,6 +50,16 @@ namespace Model
         }
 
 
+        public Appointment(DateTime date, string DoctorsName, string room)
+        {
+            StartTime = date;
+            roomName = room;
+            doctorUsername = DoctorsName;
+        }
 
+        public Appointment(Room r, Doctor d) { }
+
+        public string roomName { get; set; }
+        public string doctorUsername { get; set; }
     }
 }

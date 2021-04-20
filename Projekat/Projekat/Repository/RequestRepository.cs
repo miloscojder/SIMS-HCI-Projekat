@@ -5,53 +5,118 @@
  ***********************************************************************/
 
 using Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace Repository
 {
-   public class RequestRepository
-   {
-      public void CreateRequest(String description, DateTime dateOfVacation, int durationOfVacation)
+    public class RequestRepository
+    {
+
+        public String FileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\Requests.json";
+        public List<Request> requestss = new List<Request>();
+
+        public RequestRepository()
+        {
+
+            if (!File.Exists(FileLocation))
+            {
+                File.Create(FileLocation).Close();
+            }
+            using StreamReader r = new StreamReader(FileLocation);
+            
+                string allData = r.ReadToEnd();
+                if (allData != "")
+                {
+                    requestss = JsonConvert.DeserializeObject<List<Request>>(allData);
+
+            }
+            
+        }
+
+        public void WriteToJson() {
+
+            string data = JsonConvert.SerializeObject(requestss);
+            File.WriteAllText(FileLocation, data);
+        
+        }
+
+
+        public int GenerateNextId()
+        {
+            try
+            {
+                int maxId = requestss.Max(obj => obj.Id);
+                return maxId + 1;
+            }
+            catch
+            {
+                return 1;
+            }
+        }
+
+      /*public void CreateRequest(String description, DateTime dateOfVacation, int durationOfVacation)
       {
+            Request request = new Request(GenerateNextId(), description, dateOfVacation, DateTime.Now, durationOfVacation, StatusType.Waiting, "", this.doctor);
+
          // TODO: implement
       }
-      
+      */
       public Model.Request ReadRequest(int id)
       {
-         // TODO: implement
-         return null;
+        Request request = new Request();
+        int index = requestss.FindIndex(obj => obj.Id == id);
+        request = requestss[index];
+        return request;
       }
       
       public void UpdateRequest(int id, String newDescription, DateTime newDateOfVacation, int newDurationOfVacation)
       {
-         // TODO: implement
+            int index = requestss.FindIndex(obj => obj.Id == id);
+            Request r = new Request();
+            requestss[index].Description = newDescription;
+            requestss[index].DateOfVacation = newDateOfVacation;
+            requestss[index].DurationOfVacation = newDurationOfVacation;
+            WriteToJson();
       }
       
       public Boolean DeleteRequest(int id)
       {
-         // TODO: implement
-         return false;
+            int index = requestss.FindIndex(obj => obj.Id == id);
+            if (index == -1) {
+                return false;
+            }
+            requestss.RemoveAt(index);
+            WriteToJson();
+            return true;
       }
       
       public void Save(Model.Request newRequest)
       {
-         // TODO: implement
+            requestss.Add(newRequest);
+            WriteToJson();
       }
       
       public List<Request> GetAll()
       {
-         // TODO: implement
-         return null;
+         return requestss;
       }
-      
-      public Boolean AcceptingRequest(int id, Model.StatusType newStatus, String explanation)
-      {
-         // TODO: implement
+
+        public Boolean AcceptingRequest(int id, Model.StatusType newStatus, String explanation)
+        {
+            int index = requestss.FindIndex(obj => obj.Id == id);
+            requestss[index].Status = newStatus;
+            requestss[index].Explanation = explanation;
+
+            if (requestss[index].Status == StatusType.Accepted)
+            {
+                return true;
+            }
+
          return false;
       }
-   
-      public String FileLocation;
-   
    }
 }

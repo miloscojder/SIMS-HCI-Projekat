@@ -1,0 +1,51 @@
+﻿<Window x:Class="Projekat.RequestCRUD"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat"
+        mc:Ignorable="d"
+        Title="RequestCRUD" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="requestsDataGrid"
+              AutoGenerateColumns="False"
+              IsReadOnly="True" Margin="23,23,23,305" RenderTransformOrigin="0.506,0.588">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id"
+                            Binding="{Binding requestId}" />
+                <DataGridTextColumn Header="Description"
+                            Binding="{Binding Description}" />
+                <DataGridTextColumn Header="Date of vacation"
+                            Binding="{Binding DateOfVacation}" />
+                <DataGridTextColumn Header="Date of create request"
+                            Binding="{Binding DateOfCreateRequest}" />
+                <DataGridTextColumn Header="Duration of vacation"
+                            Binding="{Binding DurationOfVacation}" />
+                <DataGridTextColumn Header="Status"
+                            Binding="{Binding Status}" />
+                <DataGridTextColumn Header="Explanation"
+                            Binding="{Binding Explanation}" />
+                <DataGridTextColumn Header="Doctor"
+                            Binding="{Binding Doctor}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="715,153,0,0" VerticalAlignment="Top" Click="Delete_Request_Click" Height="28" Width="62"/>
+        <Label Content="Description" HorizontalAlignment="Left" Margin="198,225,0,0" VerticalAlignment="Top" Width="116"/>
+        <TextBox x:Name="Description" HorizontalAlignment="Center" Margin="0,233,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <Button x:Name="createRequest" Content="Add request" HorizontalAlignment="Left" Margin="615,391,0,0" VerticalAlignment="Top" Click="New_Request_Click" Height="33" Width="131"/>
+
+        <DatePicker x:Name="dateOfVacation" HorizontalAlignment="Left" Margin="340,264,0,0" VerticalAlignment="Top"/>
+        <Label Content="Date of vacaton" HorizontalAlignment="Left" Margin="198,262,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.142,-0.368"/>
+        <Label x:Name="title" Content="Create new Request" HorizontalAlignment="Left" Margin="23,224,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="23,153,0,0" VerticalAlignment="Top" Click="updateRequestButton_Click" Height="28" Width="66"/>
+        <Button x:Name="updateRequestButton" Content="Update request" Visibility="Collapsed" HorizontalAlignment="Left"  Click="update_Request_Click" Margin="637,334,0,0" VerticalAlignment="Top"  Height="33" Width="131"/>
+        <Button x:Name="cancelupdateRequestButton" Content="Cancel" Visibility="Collapsed" HorizontalAlignment="Left" Click="cancelupdateRequestButton_Click" Margin="494,334,0,0" VerticalAlignment="Top"  Height="33" Width="122"/>
+        <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Center" Height="186" VerticalAlignment="Top" Width="780" Margin="0,10,0,0"/>
+        <Label Content="Duration" HorizontalAlignment="Left" Margin="198,301,0,0" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.529,-0.638"/>
+        <TextBox x:Name="duration" HorizontalAlignment="Center" Margin="0,309,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="DoctorID" HorizontalAlignment="Left" Margin="197,339,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.529,-0.638"/>
+        <TextBox x:Name="Doctor" HorizontalAlignment="Center" Margin="0,347,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+    </Grid>
+</Window>

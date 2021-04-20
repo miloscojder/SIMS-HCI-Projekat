@@ -44,5 +44,16 @@ namespace Projekat
             SecretaryWindow sw = new SecretaryWindow();
             sw.Show();
         }
+        private void Request_Click(object sender, RoutedEventArgs e)
+        {
+            RequestCRUD request = new RequestCRUD();
+            request.Show();
+        }
+
+        private void AddAppointmentButton_Click(object sender, RoutedEventArgs e)
+        {
+            AppointmentsPage app = new AppointmentsPage(null);
+            app.Show();
+        }
     }
 }

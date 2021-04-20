@@ -11,5 +11,6 @@
         <Button Content="Secretary" HorizontalAlignment="Left" Margin="59,109,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="Button_Click"/>
         <Button Content="Doctor" Click="Doctor_Click" HorizontalAlignment="Left" Margin="59,181,0,0" VerticalAlignment="Top" Width="150" Height="40"/>
         <Button Content="Pacient" HorizontalAlignment="Left" Margin="59,252,0,0" VerticalAlignment="Top" Width="150" Height="40"/>
+        <Button Content="Request" Click="Request_Click" HorizontalAlignment="Left" Margin="59,334,0,0" VerticalAlignment="Top" Width="150" Height="40"/>
     </Grid>
 </Window>

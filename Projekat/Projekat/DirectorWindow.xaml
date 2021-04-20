@@ -36,10 +36,7 @@
                         <ColumnDefinition Width="138*"/>
                         <ColumnDefinition Width="571*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Content="Create equipment" HorizontalAlignment="Left" Margin="31,28,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="CreateE_Click" Grid.ColumnSpan="2"/>
-                    <Button Content="Update equipment" HorizontalAlignment="Left" Margin="31,94,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="Button_Click" Grid.ColumnSpan="2"/>
-                    <Button Content="Delete equipment" HorizontalAlignment="Left" Margin="31,161,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="Button_Click" Grid.ColumnSpan="2"/>
-                    <Button Content="View equipment" HorizontalAlignment="Left" Margin="31,230,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="ViewE_Click" Grid.ColumnSpan="2"/>
+                    <Button Content="View equipment" HorizontalAlignment="Left" Margin="34,29,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="ViewE_Click" Grid.ColumnSpan="2"/>
 
                 </Grid>
             </TabItem>

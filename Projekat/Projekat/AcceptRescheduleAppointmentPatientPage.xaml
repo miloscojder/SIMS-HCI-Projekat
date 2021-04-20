@@ -1,0 +1,34 @@
+﻿<Window x:Class="Projekat.AcceptRescheduleAppointmentPatientPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat"
+        mc:Ignorable="d"
+        Title="AcceptRescheduleAppointmentPatientPage" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="27*"/>
+            <ColumnDefinition Width="13*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListView Margin="10,10,193.6,163" Name="lvAcceptRescheduleAppointment" Grid.ColumnSpan="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding Id}" />
+                    <GridViewColumn Header="Start Time" Width="100" DisplayMemberBinding="{Binding StartTime}" />
+                    <GridViewColumn Header="Room name" Width="100" DisplayMemberBinding="{Binding roomName}" />
+                    <GridViewColumn Header="Doctor name" Width="100" DisplayMemberBinding="{Binding doctorUsername}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Mail}" TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Accept" HorizontalAlignment="Left" Margin="472,367,0,0" VerticalAlignment="Top" Click="AcceptRescButton_Click"/>
+
+    </Grid>
+</Window>

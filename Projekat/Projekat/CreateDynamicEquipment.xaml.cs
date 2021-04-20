@@ -15,23 +15,23 @@ using Model;
 namespace Projekat
 {
     /// <summary>
-    /// Interaction logic for CreateEquipment.xaml
+    /// Interaction logic for CreateDynamicEquipment.xaml
     /// </summary>
-    public partial class CreateEquipment : Window
+    public partial class CreateDynamicEquipment : Window
     {
-        private StaticEquipmentController staticEquipmentController = new StaticEquipmentController();
-        public CreateEquipment()
+        private DynamicEquipmentController dynamicEquipmentController = new DynamicEquipmentController();
+        public CreateDynamicEquipment()
         {
             InitializeComponent();
         }
         private void Create_Click(object sender, RoutedEventArgs e)
         {
-            int ind = staticEquipmentController.GenerateNewId();
+            int ind = dynamicEquipmentController.GenerateNewId();
             string eqname = name.Text;
             int eqquantity = Int32.Parse(quantity.Text);
             Enum.TryParse(type.Text, out EquipmentType myStatus);
-            StaticEquipment sequipment = new StaticEquipment(ind, eqname, myStatus, eqquantity);
-            staticEquipmentController.Save(sequipment);
+            DynamicEquipment dequipment = new DynamicEquipment(ind, eqname, myStatus, eqquantity);
+            dynamicEquipmentController.Save(dequipment);
 
             ViewEquipment ve = new ViewEquipment();
             ve.Show();
