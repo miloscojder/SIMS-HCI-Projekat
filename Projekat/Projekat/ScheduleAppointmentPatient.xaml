@@ -1,0 +1,29 @@
+﻿<Window x:Class="Projekat.ScheduleAppointmentPatient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat"
+        mc:Ignorable="d"
+        Title="ScheduleAppointmentPatient" Height="450" Width="800">
+    <Grid Margin="0,0,3.6,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="137*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Choose time of appointment&#xD;&#xA;" HorizontalAlignment="Left" Margin="99,68.7,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <DatePicker Name="IzaberiDatum" HorizontalAlignment="Left" Margin="313,69.7,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <ComboBox Name="Combobox1" ItemsSource="{Binding Termini}" SelectedItem="{Binding SelektovanTermin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="472,69.7,199,311" Grid.Row="1">
+        </ComboBox>
+
+        <Label Content="Choose doctor&#xA;" HorizontalAlignment="Left" Margin="99,146.7,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <ComboBox Name="Combobox2" ItemsSource="{Binding Doktori}" SelectedItem="{Binding SelektovanDoktor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left" Margin="242,146.7,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <Label Content="Choose priorty  &#xA;" Margin="326,212.7,375,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <RadioButton Content="Date" HorizontalAlignment="Left" Margin="269,256.7,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked" Grid.Row="1"/>
+        <RadioButton Content="Doctor" HorizontalAlignment="Left" Margin="415,256.7,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked_1" Grid.Row="1"/>
+        <Button Content="Send request" Margin="326,321.7,353,53" Click="SendRequestClick" Grid.Row="1">
+
+        </Button>
+
+    </Grid>
+</Window>

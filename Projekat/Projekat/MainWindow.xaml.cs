@@ -39,5 +39,10 @@ namespace Projekat
             doctor.Show();
         }
 
+        private void AddAppointmentButton_Click(object sender, RoutedEventArgs e)
+        {
+            AppointmentsPage app = new AppointmentsPage(null);
+            app.Show();
+        }
     }
 }
