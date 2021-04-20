@@ -4,12 +4,12 @@ namespace Model
 {
    public class Notification
    {
-      public String Name;
-      public DateTime Date;
-      public String Id;
-      public String Description;
-      
-      public Patient patient;
+        public String Name { get; set; }
+        public DateTime Date { get; set; }
+        public String Id { get; set; }
+        public String Description { get; set; }
+
+        public Patient patient;
       public System.Collections.ArrayList doctor;
       
       /// <pdGenerated>default getter</pdGenerated>
