@@ -33,7 +33,11 @@ namespace Projekat
                 director.Show();
             }
 
+        private void Doctor_Click(object sender, RoutedEventArgs e)
+        {
+            DoctorWindow doctor = new DoctorWindow();
+            doctor.Show();
+        }
 
-         
     }
 }
