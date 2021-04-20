@@ -10,17 +10,17 @@ namespace Model
 {
    public class User
    {
-      public String Id;
-      public String Username;
-      public String Password;
-      public String FirstName;
-      public String LastName;
-      public String Jmbg;
-      public String EMail;
-      public String PhoneNumber;
-      public DateTime DateOfBirth;
-   
-      private String Adress;
-   
-   }
+      public String Id { get; set; }
+      public String Username { get; set; }
+        public String Password { get; set; }
+        public String FirstName { get; set; }
+        public String LastName { get; set; }
+        public String Jmbg { get; set; }
+        public String EMail { get; set; }
+        public String PhoneNumber { get; set; }
+        public DateTime DateOfBirth { get; set; }
+
+        private String Adress { get; set; }
+
+    }
 }

@@ -8,17 +8,17 @@ using System;
 
 namespace Model
 {
-   public class Request
-   {
-      public int Id;
-      public String Description;
-      public DateTime DateOfVacation;
-      public DateTime DateOfCreateRequest;
-      public int DurationOfVacation;
-      public StatusType Status;
-      public String Explanation;
-      
-      public Doctor doctor;
+    public class Request
+    {
+        public int Id { get; set; }
+        public String Description { get; set; }
+        public DateTime DateOfVacation { get; set; }
+        public DateTime DateOfCreateRequest { get; set; }
+        public int DurationOfVacation { get; set; }
+        public StatusType Status { get; set; }
+        public String Explanation { get; set; }
+
+        public Doctor doctor { get; set; }
 
         public Request(int id, string description, DateTime dateOfVacation, DateTime dateOfCreateRequest, int durationOfVacation, StatusType status, string explanation, Doctor doctor)
         {
@@ -32,6 +32,9 @@ namespace Model
             this.doctor = doctor;
         }
 
+        public Request()
+        {
+        }
 
         /// <pdGenerated>default parent getter</pdGenerated>
         public Doctor GetDoctor()
