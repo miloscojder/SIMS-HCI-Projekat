@@ -31,11 +31,11 @@ namespace Projekat
             InitializeComponent();
 
             AppointmentRepository appointmentRepository = new AppointmentRepository();
-            List<Appointment> appointments = appointmentRepository.GetAll();
+           List<Appointment> appointments = appointmentRepository.GetAll();
             dataGrid.ItemsSource = appointments;
             OperationRepository operationRepository = new OperationRepository();
             List<Operations> operations = operationRepository.GetAll();
-            dataGrid.ItemsSource = operations;
+            dataGrid1.ItemsSource = operations;
         }
 
         

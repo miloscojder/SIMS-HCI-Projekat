@@ -10,8 +10,10 @@
         <DataGrid x:Name="dataGrid" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
                   SelectionMode="Single" AutoGenerateColumns="False" Margin="50,30,46.6,283">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Width="80" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="Anamnesis" Width="80" Binding="{Binding TimeStart}"/>
+                <DataGridTextColumn Header="Id" Width="40" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Patient name" Width="100" Binding="{Binding Patient.firstName}"/>
+                <DataGridTextColumn Header="Patient surname" Width="100" Binding="{Binding patient.lastName}"/>
+                <DataGridTextColumn Header="Anamnesis" Width="380" Binding="{Binding Anamnesy}"/>
 
             </DataGrid.Columns>
         </DataGrid>

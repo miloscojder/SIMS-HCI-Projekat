@@ -1,0 +1,47 @@
+[
+
+    {
+        "Id": "o1",
+        "Date": "20.12.2021.",
+        "TimeStart": "12:00",
+        "Duration": "60",
+        "EndTime": "13:00",
+        "room": {
+            "Id": "D1",
+            "Name": "Room D1",
+            "Floor": 1,
+            "Status": 0,
+            "Detail": "Operation room",
+            "RoomType": "Operation"
+        },
+        "patient": {
+            "id": "P15",
+            "firstName": "Anamarija",
+            "lastName": "Dolovac"
+        },
+        "AppointmentType": "Operation",
+        "anamnesis": null
+    },
+    {
+        "Id": "o2",
+        "Date": "10.05.2021.",
+        "TimeStart": "08:30",
+        "Duration": "30",
+        "EndTime": "09:00",
+        "room": {
+            "Id": "D3",
+            "Name": "Room D3",
+            "Floor": 3,
+            "Status": 0,
+            "Detail": "Operaition room",
+            "RoomType": "Operation"
+        },
+        "patient": {
+            "id": "P3",
+            "firstName": "Mirko",
+            "lastName": "Mirkovic"
+        },
+        "AppointmentType": "Operation",
+        "anamnesis": null
+    }
+]

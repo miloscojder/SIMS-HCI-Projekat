@@ -10,6 +10,7 @@ namespace Model
 {
     public class Room
     {
+        public Room() { }
         public Room(int id, string name, String roomType, int floor, string detail)
         {
             Id = id;

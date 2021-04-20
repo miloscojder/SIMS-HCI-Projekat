@@ -26,7 +26,7 @@ namespace Projekat
             get;
             set;
         }
-        public ShowChangesO(Appointment appoin)
+        public ShowChangesO(Operations op)
         {
             InitializeComponent();
 
@@ -50,8 +50,8 @@ namespace Projekat
         String duration = Duration.Text;
 
 
-        //Operations a = new Operations(ida, date, start, duration, end);
-         //   operationController.RescheduleDoctor(a);
+        Operations a = new Operations(ida, date, start, duration, end);
+            operationController.RescheduleDoctor(a);
 
         Operationss ap = new Operationss();
         ap.Show();

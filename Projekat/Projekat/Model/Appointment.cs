@@ -12,14 +12,13 @@ namespace Model
     {
         public String Id { get; set; }
         public String Date { get; set; }
+        public DateTime StartTime { get; set; }
         public String TimeStart { get; set; }
         public string Duration { get; set; }
         //public Boolean Finished;
         public String EndTime { get; set; }
         public TypeOfAppointment AppointmentType { get; set; }
         //public MedicalRecord MedicalRecord { get; set; }
-
-        public DateTime StartTime { get; set; }
 
         public Room room { get; set; }
         public Patient patient { get; set; }
@@ -39,7 +38,7 @@ namespace Model
             AppointmentType = type;
         }
 
-        public Appointment(string id,  String date, string start, string duration, string end)
+        public Appointment(string id,  String date, string start, string duration, string end, Room r, Patient p)
         {
             Id = id;
             Date = date;
@@ -48,7 +47,6 @@ namespace Model
             EndTime = end;
 
         }
-
 
         public Appointment(DateTime date, string DoctorsName, string room)
         {
@@ -61,5 +59,7 @@ namespace Model
 
         public string roomName { get; set; }
         public string doctorUsername { get; set; }
+
+
     }
 }
