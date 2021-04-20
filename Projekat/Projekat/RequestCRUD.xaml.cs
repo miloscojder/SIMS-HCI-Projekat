@@ -99,7 +99,9 @@ namespace Projekat
             DateTime date = DateTime.Parse(dateOfVacation.Text);
             int durations = Int32.Parse(duration.Text);
             requestController.UpdateRequest(id, desc, date, durations);
-            
+           
+
+
         }
 
         private void cancelupdateRequestButton_Click(object sender, RoutedEventArgs e)
