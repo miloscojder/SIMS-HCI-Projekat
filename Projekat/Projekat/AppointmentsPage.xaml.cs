@@ -173,9 +173,24 @@ namespace Projekat
         {
 
             Appointment ach = (Appointment)lvAppointmentsPatient.SelectedItems[0];
-            RescheduleAppointmentPatientPage rapp = new RescheduleAppointmentPatientPage(ach);
-            rapp.Show();
 
+            TimeSpan timeSpan = new TimeSpan(1, 0, 0, 0, 0);
+
+            if (ach.StartTime.Date - DateTime.Now.Date <= timeSpan)
+            {
+                MessageBox.Show("Ne mozete promeniti ovaj termin.");
+
+
+                AppointmentsPage ap = new AppointmentsPage(null);
+                ap.Show();
+
+
+            }
+            else
+            {
+                RescheduleAppointmentPatientPage rapp = new RescheduleAppointmentPatientPage(ach);
+                rapp.Show();
+            }
         }
 
         private void NotificationsButton_Click(object sender, RoutedEventArgs e)
