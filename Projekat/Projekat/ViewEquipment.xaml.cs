@@ -9,6 +9,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Model;
+using Controller;
+using Repository;
 
 namespace Projekat
 {
@@ -17,20 +20,125 @@ namespace Projekat
     /// </summary>
     public partial class ViewEquipment : Window
     {
+        private StaticEquipmentController staticEquipmentController = new StaticEquipmentController();
+        private DynamicEquipmentController dynamicEquipmentController = new DynamicEquipmentController();
+        int id;
+        int id1;
+        EquipmentType eqType;
+        EquipmentType eqType1;
         public ViewEquipment()
         {
             InitializeComponent();
-        }
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            DirectorWindow director = new DirectorWindow();
-            director.Show();
+            StaticEquipmentRepository staticEquipmentRepository = new StaticEquipmentRepository();
+            List<StaticEquipment> staticEquipments = staticEquipmentRepository.GetAll();
+            dataGridStaticEquipment.ItemsSource = staticEquipments;
+
+            DynamicEquipmentRepository dynamicEquipmentRepository = new DynamicEquipmentRepository();
+            List<DynamicEquipment> dynamicEquipments = dynamicEquipmentRepository.GetAll();
+            dataGridDynamicEquipment.ItemsSource = dynamicEquipments;
+
         }
 
-        private void Move_Click(object sender, RoutedEventArgs e)
+        private void Select_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                StaticEquipment equipment = (StaticEquipment)dataGridStaticEquipment.SelectedItems[0];
+
+                id = equipment.Id;
+                name.Text = equipment.Name;
+                eqType = equipment.Type;
+                quantity.Text = equipment.Quantity.ToString();
+
+            }
+            catch
+            {
+                MessageBox.Show("You have to fill in all input boxes!");
+            }
+        }
+
+        private void SelectD_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DynamicEquipment equipment = (DynamicEquipment)dataGridDynamicEquipment.SelectedItems[0];
+
+                id1 = equipment.Id;
+                name1.Text = equipment.Name;
+                eqType1 = equipment.Type;
+                quantity1.Text = equipment.Quantity.ToString();
+
+            }
+            catch
+            {
+                MessageBox.Show("You have to fill in all input boxes!");
+            }
+        }
+        private void Update_Click(object sender, RoutedEventArgs e)
+        {
+
+            string equipmentname = name.Text;
+            int eqquantity = Int32.Parse(quantity.Text);
+            
+
+            StaticEquipment stequipment = new StaticEquipment(id, equipmentname, eqType,eqquantity);
+            staticEquipmentController.UpdateEquipment(stequipment);
+            id = -1;
+
             ViewEquipment ve = new ViewEquipment();
             ve.Show();
+        }
+        private void UpdateD_Click(object sender, RoutedEventArgs e)
+        {
+
+            string equipmentname = name1.Text;
+            int eqquantity = Int32.Parse(quantity1.Text);
+
+
+            DynamicEquipment dtequipment = new DynamicEquipment(id1, equipmentname, eqType1, eqquantity);
+            dynamicEquipmentController.UpdateEquipment(dtequipment);
+            id1 = -1;
+
+            ViewEquipment ve = new ViewEquipment();
+            ve.Show();
+        }
+
+        private void Create_Click(object sender, RoutedEventArgs e)
+        {
+            CreateEquipment ce = new CreateEquipment();
+            ce.Show();
+        }
+
+        private void CreateD_Click(object sender, RoutedEventArgs e)
+        {
+            CreateDynamicEquipment ce = new CreateDynamicEquipment();
+            ce.Show();
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                StaticEquipment staticEquipment = (StaticEquipment)dataGridStaticEquipment.SelectedItems[0];
+                staticEquipmentController.DeleteEquipment(staticEquipment.Id);
+            }
+            catch
+            {
+                MessageBox.Show("You have to select a room to delete!");
+            }
+        }
+
+        private void DeleteD_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+               DynamicEquipment dynamicEquipment = (DynamicEquipment)dataGridDynamicEquipment.SelectedItems[0];
+                dynamicEquipmentController.DeleteEquipment(dynamicEquipment.Id);
+            }
+            catch
+            {
+                MessageBox.Show("You have to select a room to delete!");
+            }
         }
     }
 }
