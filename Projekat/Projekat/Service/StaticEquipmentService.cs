@@ -8,33 +8,37 @@
 using Model;
 using System;
 using System.Collections.Generic;
+using Repository;
+using System.Linq;
 
 
 namespace Service
 {
    public class StaticEquipmentService
    {
-      public void Save(Model.StaticEquipment newEquipment)
+        public StaticEquipmentRepository staticEquipmentRepository = new StaticEquipmentRepository();
+        private List<StaticEquipment> staticEquipments = new List<StaticEquipment>();
+        public void Save(StaticEquipment newEquipment)
       {
-         // TODO: implement
+            staticEquipmentRepository.Save(newEquipment);
       }
       
       public List<StaticEquipment> GetAll()
       {
-         // TODO: implement
-         return null;
+            // TODO: implement
+            return staticEquipmentRepository.GetAll();
       }
       
-      public Boolean UpdateEquipment()
+      public Boolean UpdateEquipment(StaticEquipment newStaticEquipment)
       {
          // TODO: implement
-         return false;
+         return staticEquipmentRepository.UpdateEquipment(newStaticEquipment);
       }
       
-      public Boolean DeleteEquipment()
+      public Boolean DeleteEquipment(int id)
       {
          // TODO: implement
-         return false;
+         return staticEquipmentRepository.DeleteEquipment(id);
       }
       
       public StaticEquipment CreateEquipment2()
@@ -42,52 +46,19 @@ namespace Service
          // TODO: implement
          return null;
       }
-   
-      public System.Collections.ArrayList staticEquipmentRepository;
-      
-      /// <pdGenerated>default getter</pdGenerated>
-      public System.Collections.ArrayList GetStaticEquipmentRepository()
-      {
-         if (staticEquipmentRepository == null)
-            staticEquipmentRepository = new System.Collections.ArrayList();
-         return staticEquipmentRepository;
-      }
-      
-      /// <pdGenerated>default setter</pdGenerated>
-      public void SetStaticEquipmentRepository(System.Collections.ArrayList newStaticEquipmentRepository)
-      {
-         RemoveAllStaticEquipmentRepository();
-         foreach (Repository.StaticEquipmentRepository oStaticEquipmentRepository in newStaticEquipmentRepository)
-            AddStaticEquipmentRepository(oStaticEquipmentRepository);
-      }
-      
-      /// <pdGenerated>default Add</pdGenerated>
-      public void AddStaticEquipmentRepository(Repository.StaticEquipmentRepository newStaticEquipmentRepository)
-      {
-         if (newStaticEquipmentRepository == null)
-            return;
-         if (this.staticEquipmentRepository == null)
-            this.staticEquipmentRepository = new System.Collections.ArrayList();
-         if (!this.staticEquipmentRepository.Contains(newStaticEquipmentRepository))
-            this.staticEquipmentRepository.Add(newStaticEquipmentRepository);
-      }
-      
-      /// <pdGenerated>default Remove</pdGenerated>
-      public void RemoveStaticEquipmentRepository(Repository.StaticEquipmentRepository oldStaticEquipmentRepository)
-      {
-         if (oldStaticEquipmentRepository == null)
-            return;
-         if (this.staticEquipmentRepository != null)
-            if (this.staticEquipmentRepository.Contains(oldStaticEquipmentRepository))
-               this.staticEquipmentRepository.Remove(oldStaticEquipmentRepository);
-      }
-      
-      /// <pdGenerated>default removeAll</pdGenerated>
-      public void RemoveAllStaticEquipmentRepository()
-      {
-         if (staticEquipmentRepository != null)
-            staticEquipmentRepository.Clear();
-      }
-   
-   }
+        public int GenerateNewId()
+        {
+            try
+            {
+                int maxId = staticEquipments.Max(obj => obj.Id);
+                return maxId + 1;
+            }
+            catch
+            {
+                return 1;
+            }
+        }
+
+
+    }
 }

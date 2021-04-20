@@ -5,34 +5,41 @@
  ***********************************************************************/
 
 using Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using Service;
 
 namespace Controller
 {
    public class StaticEquipmentController
    {
-      public void Save(Model.StaticEquipment newEquipment)
+        public StaticEquipmentService staticEquipmentService = new StaticEquipmentService();
+        private List<StaticEquipment> staticEquipments = new List<StaticEquipment>();
+
+        public void Save(StaticEquipment newEquipment)
       {
-         // TODO: implement
+         staticEquipmentService.Save(newEquipment);
       }
       
       public List<StaticEquipment> GetAll()
       {
          // TODO: implement
-         return null;
+         return staticEquipmentService.GetAll();
       }
       
-      public Boolean UpdateEquipment()
+      public Boolean UpdateEquipment(StaticEquipment newStaticEquipment)
       {
          // TODO: implement
-         return false;
+         return staticEquipmentService.UpdateEquipment(newStaticEquipment);
       }
       
-      public Boolean DeleteEquipment()
+      public Boolean DeleteEquipment(int id)
       {
          // TODO: implement
-         return false;
+         return staticEquipmentService.DeleteEquipment(id);
       }
       
       public StaticEquipment CreateEquipment2()
@@ -40,52 +47,19 @@ namespace Controller
          // TODO: implement
          return null;
       }
-   
-      public System.Collections.ArrayList staticEquipmentService;
-      
-      /// <pdGenerated>default getter</pdGenerated>
-      public System.Collections.ArrayList GetStaticEquipmentService()
-      {
-         if (staticEquipmentService == null)
-            staticEquipmentService = new System.Collections.ArrayList();
-         return staticEquipmentService;
-      }
-      
-      /// <pdGenerated>default setter</pdGenerated>
-      public void SetStaticEquipmentService(System.Collections.ArrayList newStaticEquipmentService)
-      {
-         RemoveAllStaticEquipmentService();
-         foreach (Service.StaticEquipmentService oStaticEquipmentService in newStaticEquipmentService)
-            AddStaticEquipmentService(oStaticEquipmentService);
-      }
-      
-      /// <pdGenerated>default Add</pdGenerated>
-      public void AddStaticEquipmentService(Service.StaticEquipmentService newStaticEquipmentService)
-      {
-         if (newStaticEquipmentService == null)
-            return;
-         if (this.staticEquipmentService == null)
-            this.staticEquipmentService = new System.Collections.ArrayList();
-         if (!this.staticEquipmentService.Contains(newStaticEquipmentService))
-            this.staticEquipmentService.Add(newStaticEquipmentService);
-      }
-      
-      /// <pdGenerated>default Remove</pdGenerated>
-      public void RemoveStaticEquipmentService(Service.StaticEquipmentService oldStaticEquipmentService)
-      {
-         if (oldStaticEquipmentService == null)
-            return;
-         if (this.staticEquipmentService != null)
-            if (this.staticEquipmentService.Contains(oldStaticEquipmentService))
-               this.staticEquipmentService.Remove(oldStaticEquipmentService);
-      }
-      
-      /// <pdGenerated>default removeAll</pdGenerated>
-      public void RemoveAllStaticEquipmentService()
-      {
-         if (staticEquipmentService != null)
-            staticEquipmentService.Clear();
-      }
-   
-   }
+        public int GenerateNewId()
+        {
+            try
+            {
+                int maxId = staticEquipments.Max(obj => obj.Id);
+                return maxId + 1;
+            }
+            catch
+            {
+                return 1;
+            }
+        }
+
+
+        }
 }

@@ -7,51 +7,54 @@
         mc:Ignorable="d"
         Title="ViewEquipment" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="StaticEquipment" ItemsSource="{Binding Room}" IsReadOnly="True"
-            SelectionMode="Single" AutoGenerateColumns="False" Margin="91,57,456,0" Height="221" VerticalAlignment="Top">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Type" Binding="{Binding Floor}"/>
-                <DataGridTextColumn Header="Quantity" Binding="{Binding Detail}"/>
+        <TabControl>
+            <TabItem Header="Static">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="dataGridStaticEquipment" ItemsSource="{Binding StaticEquipment}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="45,33,440,0" Height="294" VerticalAlignment="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn  Header="Id" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
+                            <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
 
-            </DataGrid.Columns>
-        </DataGrid>
-        <DataGrid x:Name="DinamicEquipment" ItemsSource="{Binding Room}" IsReadOnly="True"
-            SelectionMode="Single" AutoGenerateColumns="False" Margin="445,57,102,0" Height="221" VerticalAlignment="Top">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Type" Binding="{Binding Floor}"/>
-                <DataGridTextColumn Header="Quantity" Binding="{Binding Detail}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="Create" Click="Create_Click" HorizontalAlignment="Left" Margin="403,344,0,0" VerticalAlignment="Top" Width="100" Height="30"/>
+                    <Button Content="Update" Click="Update_Click" HorizontalAlignment="Left" Margin="534,344,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="3.85,0.636"/>
+                    <Button Content="Select" Click="Select_Click" HorizontalAlignment="Left" Margin="45,327,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="-1.63,1.903"/>
+                    <Button Content="Delete" Click="Delete_Click"  HorizontalAlignment="Left" Margin="656,344,0,0" VerticalAlignment="Top" Width="100" Height="30"/>
+                    <Label FontSize="15" Content="Name:" HorizontalAlignment="Left" Margin="418,33,0,0" VerticalAlignment="Top"/>
+                    <Label FontSize="15" Content="Quantity:" HorizontalAlignment="Left" Margin="418,79,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="name"  HorizontalAlignment="Left" Margin="497,33,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23"/>
+                    <Separator HorizontalAlignment="Left" Margin="432,192,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="quantity" HorizontalAlignment="Left" Margin="497,82,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Dynamic">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="dataGridDynamicEquipment" ItemsSource="{Binding DynamicEquipment}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="45,33,440,0" Height="294" VerticalAlignment="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn  Header="Id" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
+                            <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
 
-            </DataGrid.Columns>
-        </DataGrid>
-        <Label Content="Static" FontSize="15" HorizontalAlignment="Left" Margin="187,22,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.832,0.5"/>
-        <Label Content="Dynamic" FontSize="15" HorizontalAlignment="Left" Margin="534,22,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.832,0.5"/>
-        <ComboBox HorizontalAlignment="Left" Margin="127,325,0,0" VerticalAlignment="Top" Width="120" Height="23">
-            <ComboBoxItem Content="Room"></ComboBoxItem>
-            <ComboBoxItem Content="Operating room"></ComboBoxItem>
-            <ComboBoxItem Content="Warehouse"></ComboBoxItem>
-            <ComboBoxItem Content="Waiting room"></ComboBoxItem>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="Create" Click="CreateD_Click" HorizontalAlignment="Left" Margin="403,344,0,0" VerticalAlignment="Top" Width="100" Height="30"/>
+                    <Button Content="Update" Click="UpdateD_Click" HorizontalAlignment="Left" Margin="534,344,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="3.85,0.636"/>
+                    <Button Content="Select" Click="SelectD_Click" HorizontalAlignment="Left" Margin="45,327,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="-1.63,1.903"/>
+                    <Button Content="Delete" Click="DeleteD_Click"  HorizontalAlignment="Left" Margin="656,344,0,0" VerticalAlignment="Top" Width="100" Height="30"/>
+                    <Label FontSize="15" Content="Name:" HorizontalAlignment="Left" Margin="418,33,0,0" VerticalAlignment="Top"/>
+                    <Label FontSize="15" Content="Quantity:" HorizontalAlignment="Left" Margin="418,79,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="name1"  HorizontalAlignment="Left" Margin="497,33,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23"/>
+                    <Separator HorizontalAlignment="Left" Margin="432,192,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="quantity1" HorizontalAlignment="Left" Margin="497,82,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
 
-        </ComboBox>
-        <Label Content="Move from:" HorizontalAlignment="Left" Margin="42,325,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.495,0.367"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="127,368,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68"/>
-        <Label Content="Id:" HorizontalAlignment="Left" Margin="87,365,0,0" VerticalAlignment="Top" Width="25"/>
-        <Label Content="Move to:" HorizontalAlignment="Left" Margin="398,325,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.26,0.477"/>
-        <ComboBox HorizontalAlignment="Left" Margin="461,325,0,0" VerticalAlignment="Top" Width="120" Height="23">
-            <ComboBoxItem Content="Room"/>
-            <ComboBoxItem Content="Operating room"/>
-            <ComboBoxItem Content="Warehouse"/>
-            <ComboBoxItem Content="Waiting room"/>
-
-        </ComboBox>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="461,368,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68"/>
-        <Label Content="Id:" HorizontalAlignment="Left" Margin="431,365,0,0" VerticalAlignment="Top" Width="25" RenderTransformOrigin="-0.264,0.477"/>
-        <Button Content="Move" Click="Move_Click" HorizontalAlignment="Left" Margin="577,389,0,0" VerticalAlignment="Top" Width="90"/>
-        <Button Content="Back" Click="Back_Click" HorizontalAlignment="Left" Margin="692,389,0,0" VerticalAlignment="Top" Width="90"/>
-        <Label Content="Quantity:" HorizontalAlignment="Left" Margin="278,350,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.163,0.445"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="341,353,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="23" RenderTransformOrigin="0.539,0.922"/>
     </Grid>
 </Window>
