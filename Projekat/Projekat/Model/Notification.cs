@@ -7,7 +7,7 @@ namespace Model
       public String Name;
       public DateTime Date;
       public String Id;
-      public int Description;
+      public String Description;
       
       public Patient patient;
       public System.Collections.ArrayList doctor;

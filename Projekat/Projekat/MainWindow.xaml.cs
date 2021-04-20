@@ -26,24 +26,23 @@ namespace Projekat
         public MainWindow()
         {
             InitializeComponent();
+        }
+        private void Director_Click(object sender, RoutedEventArgs e)
+        {
+           // DirectorWindow director = new DirectorWindow();
+            //director.Show();
+        }
 
-            Request request = new Request(1, "description1", new DateTime(), new DateTime(), 2, StatusType.Waiting, "", new Doctor());
-            //Primer serijalizacije
-            string outPut = JsonConvert.SerializeObject(request);
-            System.Console.WriteLine(outPut);
-            string location = "C:\\Users\\cojder\\Desktop\\SIMS_Projekat\\SIMS-HCI-Projekat\\Projekat\\Projekat\\Data\\Requests.json";
+        private void Doctor_Click(object sender, RoutedEventArgs e)
+        {
+            //DoctorWindow doctor = new DoctorWindow();
+            //doctor.Show();
+        }
 
-            File.WriteAllText(location, outPut);
-            //Primer deserijalizacije
-            using (StreamReader r = new StreamReader(location)) {
-                string allData = r.ReadToEnd();
-                if (allData != "") {
-                    Request loaded = JsonConvert.DeserializeObject<Request>(allData);
-                    System.Console.WriteLine(loaded);
-                }
-            }
-
-                
+        private void Request_Click(object sender, RoutedEventArgs e)
+        {
+            RequestCRUD request = new RequestCRUD();
+            request.Show();
         }
     }
 }

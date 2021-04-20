@@ -14,7 +14,9 @@ namespace Model
       public Boolean Free;
       
       public System.Collections.ArrayList requestForDinamicEquipment;
-      
+
+        public Doctor() { }
+
       /// <pdGenerated>default getter</pdGenerated>
       public System.Collections.ArrayList GetRequestForDinamicEquipment()
       {
