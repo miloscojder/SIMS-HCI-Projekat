@@ -39,6 +39,12 @@ namespace Projekat
             doctor.Show();
         }
 
+        private void Request_Click(object sender, RoutedEventArgs e)
+        {
+            RequestCRUD request = new RequestCRUD();
+            request.Show();
+        }
+
         private void AddAppointmentButton_Click(object sender, RoutedEventArgs e)
         {
             AppointmentsPage app = new AppointmentsPage(null);
