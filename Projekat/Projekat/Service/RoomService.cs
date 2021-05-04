@@ -15,7 +15,8 @@ namespace Service
    public class RoomService
    {
         public RoomRepository roomRepository = new RoomRepository();
-      public Boolean ClassicRenovation(Room room)
+        public StaticEquipmentRepository staticRepository = new Repository.StaticEquipmentRepository();
+        public Boolean ClassicRenovation(Room room)
       {
          // TODO: implement
          return false;
@@ -26,13 +27,24 @@ namespace Service
          // TODO: implement
          return false;
       }
-      
-      public void MoveStaticEquipment(DateTime date)
-      {
-         // TODO: implement
-      }
-      
-      public void MoveDynamicEquipment(Model.StaticEquipment quantity, Model.StaticEquipment name)
+
+        public void MoveStaticEquipment(int staticId, int toRoom, DateTime time)
+        {
+            if (time.Ticks < DateTime.Now.Ticks)
+            {
+                StaticEquipment staticEquipment = staticRepository.GetOne(staticId);
+                Room room = GetRoom(staticEquipment.RoomId);
+                room.StaticEquipments.Remove(staticEquipment);
+                Room room2 = GetRoom(toRoom);
+                staticEquipment.RoomId = room2.Id;
+                room2.StaticEquipments.Add(staticEquipment);
+                staticRepository.UpdateEquipment(staticEquipment);
+                UpdateRoom(room);
+                UpdateRoom(room2);
+            }
+        }
+
+            public void MoveDynamicEquipment(Model.StaticEquipment quantity, Model.StaticEquipment name)
       {
          // TODO: implement
       }

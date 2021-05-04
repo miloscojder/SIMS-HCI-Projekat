@@ -10,6 +10,7 @@ namespace Model
 {
     public class Room
     {
+        
         public Room() { }
         public Room(int id, string name, String roomType, int floor, string detail)
         {
@@ -59,5 +60,7 @@ namespace Model
             set
             ;
         }
+
+        public System.Collections.Generic.List<StaticEquipment> StaticEquipments { get; set; }
     }
 }

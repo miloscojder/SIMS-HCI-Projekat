@@ -30,7 +30,8 @@ namespace Projekat
             string eqname = name.Text;
             int eqquantity = Int32.Parse(quantity.Text);
             Enum.TryParse(type.Text, out EquipmentType myStatus);
-            StaticEquipment sequipment = new StaticEquipment(ind, eqname, myStatus, eqquantity);
+            int toRoomId = Int32.Parse(roomId.Text);
+            StaticEquipment sequipment = new StaticEquipment(ind, eqname,toRoomId,myStatus, eqquantity);
             staticEquipmentController.Save(sequipment);
 
             ViewEquipment ve = new ViewEquipment();

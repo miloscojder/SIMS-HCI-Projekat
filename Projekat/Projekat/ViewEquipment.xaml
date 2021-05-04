@@ -10,31 +10,45 @@
         <TabControl>
             <TabItem Header="Static">
                 <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="32*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="361*"/>
+                    </Grid.ColumnDefinitions>
                     <DataGrid x:Name="dataGridStaticEquipment" ItemsSource="{Binding StaticEquipment}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="45,33,440,0" Height="294" VerticalAlignment="Top">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="45,33,440,0" Height="294" VerticalAlignment="Top" Grid.ColumnSpan="3">
                         <DataGrid.Columns>
                             <DataGridTextColumn  Header="Id" Binding="{Binding Id}"/>
                             <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Room Id" Binding="{Binding RoomId}"/>
                             <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
                             <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
 
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Content="Create" Click="Create_Click" HorizontalAlignment="Left" Margin="403,344,0,0" VerticalAlignment="Top" Width="100" Height="30"/>
-                    <Button Content="Update" Click="Update_Click" HorizontalAlignment="Left" Margin="534,344,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="3.85,0.636"/>
-                    <Button Content="Select" Click="Select_Click" HorizontalAlignment="Left" Margin="45,327,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="-1.63,1.903"/>
-                    <Button Content="Delete" Click="Delete_Click"  HorizontalAlignment="Left" Margin="656,344,0,0" VerticalAlignment="Top" Width="100" Height="30"/>
-                    <Label FontSize="15" Content="Name:" HorizontalAlignment="Left" Margin="418,33,0,0" VerticalAlignment="Top"/>
-                    <Label FontSize="15" Content="Quantity:" HorizontalAlignment="Left" Margin="418,79,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="name"  HorizontalAlignment="Left" Margin="497,33,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23"/>
-                    <Separator HorizontalAlignment="Left" Margin="432,192,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="quantity" HorizontalAlignment="Left" Margin="497,82,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23"/>
+                    <Button Content="Create" Click="Create_Click" HorizontalAlignment="Left" Margin="331,344,0,0" VerticalAlignment="Top" Width="100" Height="30" Grid.Column="2"/>
+                    <Button Content="Update" Click="Update_Click" HorizontalAlignment="Left" Margin="462,344,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="3.85,0.636" Grid.Column="2"/>
+                    <Button Content="Select" Click="Select_Click" HorizontalAlignment="Left" Margin="45,327,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="-1.63,1.903" Grid.ColumnSpan="3"/>
+                    <Button Content="Delete" Click="Delete_Click"  HorizontalAlignment="Left" Margin="584,344,0,0" VerticalAlignment="Top" Width="100" Height="30" Grid.Column="2"/>
+                    <Label FontSize="15" Content="Name:" HorizontalAlignment="Left" Margin="350,33,0,0" VerticalAlignment="Top" Width="70" Grid.Column="2"/>
+                    <Label FontSize="15" Content="Quantity:" HorizontalAlignment="Left" Margin="346,79,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+                    <TextBox x:Name="name"  HorizontalAlignment="Left" Margin="425,33,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23" Grid.Column="2"/>
+                    <Separator HorizontalAlignment="Left" Margin="360,192,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+                    <TextBox x:Name="quantity" HorizontalAlignment="Left" Margin="425,82,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23" Grid.Column="2"/>
+                    <Label FontSize="15" Content="Room Id:" HorizontalAlignment="Left" Margin="351,125,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+                    <TextBox x:Name="roomId" HorizontalAlignment="Left" Margin="425,128,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23" Grid.Column="2"/>
+                    <Button Content="Transfer" Click="TransferStatic_Click" HorizontalAlignment="Left" Margin="210,344,0,0" VerticalAlignment="Top" Width="100" Height="30" Grid.Column="2"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Dynamic">
                 <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="17*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="767*"/>
+                    </Grid.ColumnDefinitions>
                     <DataGrid x:Name="dataGridDynamicEquipment" ItemsSource="{Binding DynamicEquipment}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="45,33,440,0" Height="294" VerticalAlignment="Top">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="18,33,440,0" Height="294" VerticalAlignment="Top" Grid.Column="2">
                         <DataGrid.Columns>
                             <DataGridTextColumn  Header="Id" Binding="{Binding Id}"/>
                             <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
@@ -43,16 +57,16 @@
 
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Content="Create" Click="CreateDynamic_Click" HorizontalAlignment="Left" Margin="403,344,0,0" VerticalAlignment="Top" Width="100" Height="30"/>
-                    <Button Content="Update" Click="UpdateDynamic_Click" HorizontalAlignment="Left" Margin="534,344,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="3.85,0.636"/>
-                    <Button Content="Select" Click="SelectDynamic_Click" HorizontalAlignment="Left" Margin="45,327,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="-1.63,1.903"/>
-                    <Button Content="Delete" Click="DeleteDynamic_Click"  HorizontalAlignment="Left" Margin="656,344,0,0" VerticalAlignment="Top" Width="100" Height="30"/>
-                    <Label FontSize="15" Content="Name:" HorizontalAlignment="Left" Margin="418,33,0,0" VerticalAlignment="Top"/>
-                    <Label FontSize="15" Content="Quantity:" HorizontalAlignment="Left" Margin="418,79,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="name1"  HorizontalAlignment="Left" Margin="497,33,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23"/>
-                    <Separator HorizontalAlignment="Left" Margin="432,192,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="quantity1" HorizontalAlignment="Left" Margin="497,82,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23"/>
-                    <Button Content="Transfer" Click="TransferDynamic_Click" HorizontalAlignment="Left" Margin="269,344,0,0" VerticalAlignment="Top" Width="100" Height="30"/>
+                    <Button Content="Create" Click="CreateDynamic_Click" HorizontalAlignment="Left" Margin="376,344,0,0" VerticalAlignment="Top" Width="100" Height="30" Grid.Column="2"/>
+                    <Button Content="Update" Click="UpdateDynamic_Click" HorizontalAlignment="Left" Margin="507,344,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="3.85,0.636" Grid.Column="2"/>
+                    <Button Content="Select" Click="SelectDynamic_Click" HorizontalAlignment="Left" Margin="18,327,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="-1.63,1.903" Grid.Column="2"/>
+                    <Button Content="Delete" Click="DeleteDynamic_Click"  HorizontalAlignment="Left" Margin="629,344,0,0" VerticalAlignment="Top" Width="100" Height="30" Grid.Column="2"/>
+                    <Label FontSize="15" Content="Name:" HorizontalAlignment="Left" Margin="391,33,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+                    <Label FontSize="15" Content="Quantity:" HorizontalAlignment="Left" Margin="391,79,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+                    <TextBox x:Name="name1"  HorizontalAlignment="Left" Margin="470,33,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23" Grid.Column="2"/>
+                    <Separator HorizontalAlignment="Left" Margin="405,192,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+                    <TextBox x:Name="quantity1" HorizontalAlignment="Left" Margin="470,82,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23" Grid.Column="2"/>
+                    <Button Content="Transfer" Click="TransferDynamic_Click" HorizontalAlignment="Left" Margin="256,344,0,0" VerticalAlignment="Top" Width="100" Height="30" Grid.Column="2"/>
                 </Grid>
             </TabItem>
         </TabControl>

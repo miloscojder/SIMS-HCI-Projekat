@@ -48,6 +48,7 @@ namespace Projekat
                 id = equipment.Id;
                 name.Text = equipment.Name;
                 eqType = equipment.Type;
+                roomId.Text = equipment.RoomId.ToString();
                 quantity.Text = equipment.Quantity.ToString();
 
             }
@@ -83,7 +84,7 @@ namespace Projekat
             int eqquantity = Int32.Parse(quantity.Text);
             
 
-            StaticEquipment stequipment = new StaticEquipment(id, equipmentname, eqType,eqquantity);
+            StaticEquipment stequipment = new StaticEquipment(id, equipmentname,Int32.Parse(roomId.Text), eqType,eqquantity);
             staticEquipmentController.UpdateEquipment(stequipment);
             id = -1;
 
@@ -111,6 +112,12 @@ namespace Projekat
         {
             TransferEquipment dynamicTransfer = new TransferEquipment();
             dynamicTransfer.Show();
+
+        }
+        private void TransferStatic_Click(object sender, RoutedEventArgs e)
+        {
+            TransferStaticEquipment staticTransfer = new TransferStaticEquipment();
+            staticTransfer.Show();
 
         }
 
