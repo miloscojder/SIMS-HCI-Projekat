@@ -23,10 +23,7 @@ namespace Projekat
       
         //ovo radi ali samo u jendom pokretanju
         public Doctor posrednik = new Doctor();
-        public static double counter = 0;                               // popravi ucitavanje countera iz fajla, kao i ostalih stvar
-        public static double sumOfAll = 0;
-        public static double doctorsFinalGrade = 0;
-        public List<Doctor> doctors = new List<Doctor>();
+         public List<Doctor> doctors = new List<Doctor>();
 
         public DoctorPagePatient(Doctor d)
         {
@@ -35,22 +32,14 @@ namespace Projekat
 
             posrednik = d;
 
-            DoctorsNameTextBox.Text = posrednik.Username;
-            DoctorsRatingTextBox.Text = Convert.ToString(posrednik.Grade);
-            DoctorsExpTextBox.Text = Convert.ToString(posrednik.WorkingExperince);
-            DoctorsEmailTextBox.Text = posrednik.EMail;
-            DoctorsBirthDayTextBox.Text = Convert.ToString(posrednik.DateOfBirth);
-            DoctrsSpecialtyTextBox.Text = posrednik.Specialty;
-            DoctosPhoneNumberTextBox.Text = posrednik.PhoneNumber;
-
-            doctors = JsonConvert.DeserializeObject<List<Doctor>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doctorsak.json"));
-            foreach(Doctor doc in doctors)
-            {
-                if (doc.Id == d.Id) ;
-                doctors.Remove(d);
-            }
-
-            File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doctorsak.json", JsonConvert.SerializeObject(doctors));
+            DoctorsNameTextBox.Text = d.Username;
+            DoctorsRatingTextBox.Text = Convert.ToString(d.Grade);
+            DoctorsExpTextBox.Text = Convert.ToString(d.WorkingExperince);
+            DoctorsEmailTextBox.Text = d.EMail;
+            DoctorsBirthDayTextBox.Text = Convert.ToString(d.DateOfBirth);
+            DoctrsSpecialtyTextBox.Text = d.Specialty;
+            DoctosPhoneNumberTextBox.Text = d.PhoneNumber;
+            DoctorsFeedback.Text = d.doctorFeedback;            
 
         }
 
@@ -60,13 +49,16 @@ namespace Projekat
             List<Appointment> appointments = new List<Appointment>();
             appointments = JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json"));
 
-            counter++;
-
             int brojac = 0;
+            doctors = JsonConvert.DeserializeObject<List<Doctor>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doctorsak.json"));
 
-            foreach (Appointment app in appointments)
+            posrednik.doctorCounter++;
+
+            
+            for (int i = 0; i < appointments.Count; i++)
             {
-                if(app.doctorUsername==posrednik.Username)
+                Appointment app = appointments[i];
+                if (app.doctorUsername==posrednik.Username)
                 {
                     brojac++;
                 }
@@ -75,25 +67,49 @@ namespace Projekat
             if(brojac<1)
             {
                 MessageBox.Show("Ne mozete zakazati pregled, nemate ni jedan zakazan termin kod ovog lekara");
-                this.Close();
-            }
-
-            if (counter == 1)
-            {
-                posrednik.Grade = Convert.ToDouble(RateDoctorTextBox.Text);
-                DoctorsRatingTextBox.Text = Convert.ToString(posrednik.Grade);
-                sumOfAll = Convert.ToDouble(RateDoctorTextBox.Text);
+                HospitalViewPatientPage hospViewPaitPage = new HospitalViewPatientPage(null);
+                hospViewPaitPage.Show();
             }
             else
             {
-                sumOfAll += Convert.ToDouble(RateDoctorTextBox.Text);
-                DoctorsRatingTextBox.Text = Convert.ToString(sumOfAll / counter);
-                posrednik.Grade = Convert.ToDouble(DoctorsRatingTextBox.Text);
-                //cuvam counter negde pa ga ucitavam stalno
-            }            
+                if (posrednik.doctorCounter == 1)
+                {
+                    DoctorsRatingTextBox.Text = RateDoctorTextBox.Text;
+                    posrednik.doctorGradeSum += Convert.ToDouble(RateDoctorTextBox.Text);
+                    posrednik.Grade = Convert.ToDouble(RateDoctorTextBox.Text);
+                    posrednik.doctorFeedback = FeedbackDoctorTextBox.Text;
+                }
+                else
+                {
+                    posrednik.doctorGradeSum += Convert.ToDouble(RateDoctorTextBox.Text);
+                    DoctorsRatingTextBox.Text = Convert.ToString(posrednik.doctorGradeSum / posrednik.doctorCounter);
+                    posrednik.Grade = posrednik.doctorGradeSum / posrednik.doctorCounter;
+                    posrednik.doctorFeedback = FeedbackDoctorTextBox.Text;
+                }
 
-            HospitalViewPatientPage hvpp = new HospitalViewPatientPage(posrednik);
-            hvpp.Show();
+                /*
+                doctors = JsonConvert.DeserializeObject<List<Doctor>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doctorsak.json"));
+    */
+
+                for (int i = 0; i < doctors.Count; i++)
+                {
+                    Doctor doc = doctors[i];
+                    if (doc.Id == posrednik.Id)
+                    {
+                        doctors.Remove(doc);
+                    }
+                }
+
+                //doctors.Add(posrednik);
+                File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doctorsak.json", JsonConvert.SerializeObject(doctors));
+
+
+                HospitalViewPatientPage hvpp = new HospitalViewPatientPage(posrednik);
+                hvpp.Show();
+
+            }
+
+           
         }
     }
 }

@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Model;
 using Newtonsoft.Json;
-
+using Projekat.Model;
 
 namespace Projekat
 {
@@ -21,21 +21,43 @@ namespace Projekat
     /// </summary>
     public partial class HospitalViewPatientPage : Window
     {
+        
+        public List<Doctor> doctors = new List<Doctor>();
+        public Doctor pomocni = new Doctor();
 
-        public static double counter = 0;
-        public static double storedValue = 0;
-        public static double averageRating = 0;
-
-        public HospitalViewPatientPage(Doctor d)
+        public HospitalViewPatientPage(Doctor doktor)
         {
             InitializeComponent();
             this.DataContext = this;
-            
+
+            StorageForSomeData sfsd = new StorageForSomeData();
+            sfsd = JsonConvert.DeserializeObject<StorageForSomeData>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json"));
+           
+            HospitalRating.Text = Convert.ToString(sfsd.hospitalFinalGrade);
+            OpisPrikazan.Text = sfsd.hospitalFeedback;
+
             List<Doctor> doktori = new List<Doctor>();
             doktori = JsonConvert.DeserializeObject<List<Doctor>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doctorsak.json"));
-            
-            if(d!=null) {
-                doktori.Add(d);
+
+            /*
+            if(doktor!=null)
+            {                
+                pomocni = doktor;
+            }           
+            */
+            /*
+            foreach (Doctor d in doktori)
+            {
+                if(d.Id == pomocni.Id)
+                {
+                    doktori.Remove(d);
+                }
+            }
+            */
+
+            if (doktor != null)
+            {
+                doktori.Add(doktor);
             }
 
             File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doctorsak.json", JsonConvert.SerializeObject(doktori));
@@ -44,7 +66,9 @@ namespace Projekat
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-          
+            StorageForSomeData sfsd = new StorageForSomeData();
+            sfsd = JsonConvert.DeserializeObject<StorageForSomeData>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json"));
+
             List<Appointment> appointments = new List<Appointment>();
             appointments = JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json"));
 
@@ -53,25 +77,32 @@ namespace Projekat
                 MessageBox.Show("Ne mozete da ocenite kliniku, nemate ni jedan zakazan pregled u njoj");
                 this.Close();
             }
-            counter++;
 
-            if(counter==1)
+            sfsd.hospitalCounter++;
+            if(sfsd.hospitalCounter==1)
             {
                 HospitalRating.Text = Ocena.Text;
-                storedValue += Convert.ToDouble(Ocena.Text);
-                averageRating = Convert.ToDouble(Ocena.Text);
-            }      
+                sfsd.hospitalGradeSum += Convert.ToDouble(Ocena.Text);
+                sfsd.hospitalFinalGrade = Convert.ToDouble(Ocena.Text);
+            }
             else
             {
-                storedValue += Convert.ToDouble(Ocena.Text);
-                HospitalRating.Text = Convert.ToString(storedValue / counter);
-                averageRating = storedValue / counter;                             
+                sfsd.hospitalGradeSum += Convert.ToDouble(Ocena.Text);
+                HospitalRating.Text = Convert.ToString(sfsd.hospitalGradeSum / sfsd.hospitalCounter);
+                sfsd.hospitalFinalGrade = sfsd.hospitalGradeSum / sfsd.hospitalCounter;
             }
+
+            File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json", JsonConvert.SerializeObject(sfsd));
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            OpisPrikazan.Text = UnesiteOpis.Text;
+            StorageForSomeData sfsd = new StorageForSomeData();
+            sfsd = JsonConvert.DeserializeObject<StorageForSomeData>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json"));
+
+            sfsd.hospitalFeedback = UnesiteOpis.Text;
+            OpisPrikazan.Text = sfsd.hospitalFeedback;
+            File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json", JsonConvert.SerializeObject(sfsd));
         }
 
         private void OceniteDoktoraButton_Click(object sender, RoutedEventArgs e)
@@ -79,6 +110,7 @@ namespace Projekat
             Doctor doctor = (Doctor)lvDoctorsPatient.SelectedItems[0];
 
             DoctorPagePatient dpp = new DoctorPagePatient(doctor);
+           
             dpp.Show();
         }
     }

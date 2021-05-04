@@ -25,12 +25,14 @@ namespace Model
         public String Password { get; set; }
 
 
+        public Patient() { }
+
         //public Appointment[] appointment;
 public Patient(string id, string name, string surname)
         {
-            this.id = id;
-            firstName = name;
-            lastName = surname;
+           Id = id;
+           FirstName = name;
+           LastName = surname;
           
         }
 
