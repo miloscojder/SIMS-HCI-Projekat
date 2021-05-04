@@ -110,13 +110,14 @@ namespace Repository
             int index = requestss.FindIndex(obj => obj.Id == id);
             requestss[index].Status = newStatus;
             requestss[index].Explanation = explanation;
-
+            WriteToJson();
             if (requestss[index].Status == StatusType.Accepted)
             {
                 return true;
             }
 
-         return false;
-      }
+            return false;
+        }
+
    }
 }
