@@ -20,8 +20,11 @@ namespace Projekat
     /// </summary>
     public partial class ViewEquipment : Window
     {
-        private StaticEquipmentController staticEquipmentController = new StaticEquipmentController();
-        private DynamicEquipmentController dynamicEquipmentController = new DynamicEquipmentController();
+        private readonly StaticEquipmentController staticEquipmentController = new StaticEquipmentController();
+        readonly List<StaticEquipment> staticEquipment = new List<StaticEquipment>();
+        private  readonly DynamicEquipmentController dynamicEquipmentController = new DynamicEquipmentController();
+        readonly List<DynamicEquipment> dynamicEquipment = new List<DynamicEquipment>();
+
         int id;
         int id1;
         EquipmentType eqType;
@@ -29,13 +32,10 @@ namespace Projekat
         public ViewEquipment()
         {
             InitializeComponent();
-            StaticEquipmentRepository staticEquipmentRepository = new StaticEquipmentRepository();
-            List<StaticEquipment> staticEquipments = staticEquipmentRepository.GetAll();
-            dataGridStaticEquipment.ItemsSource = staticEquipments;
-
-            DynamicEquipmentRepository dynamicEquipmentRepository = new DynamicEquipmentRepository();
-            List<DynamicEquipment> dynamicEquipments = dynamicEquipmentRepository.GetAll();
-            dataGridDynamicEquipment.ItemsSource = dynamicEquipments;
+            staticEquipment = staticEquipmentController.GetAll();
+            dataGridStaticEquipment.ItemsSource = staticEquipment;
+            dynamicEquipment = dynamicEquipmentController.GetAll();
+            dataGridDynamicEquipment.ItemsSource = dynamicEquipment;
 
         }
 
@@ -161,6 +161,19 @@ namespace Projekat
                 MessageBox.Show("You have to select a room to delete!");
             }
             
+        }
+        private void Search_Static_Click(object sender, RoutedEventArgs e)
+        {
+            dataGridStaticEquipment.ItemsSource = staticEquipment.FindAll(obj => obj.Name == searchStatic.Text);
+        }
+        private void Filter_Static_Click(object sender, RoutedEventArgs e)
+        {
+            dataGridStaticEquipment.ItemsSource = staticEquipment.FindAll(obj => obj.RoomId == Int32.Parse(filterStatic.Text));
+
+        }
+        private void Search_Dynamic_Click(object sender, RoutedEventArgs e)
+        {
+            dataGridStaticEquipment.ItemsSource = dynamicEquipment.FindAll(obj => obj.Name == searchDynamic.Text);
         }
     }
 }
