@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model;
 using Newtonsoft.Json;
+using Projekat.Model;
 
 namespace Projekat
 {
@@ -27,7 +28,7 @@ namespace Projekat
         {
             InitializeComponent();
 
-           
+          
         }
         private void Director_Click(object sender, RoutedEventArgs e)
         {
