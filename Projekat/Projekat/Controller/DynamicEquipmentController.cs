@@ -17,8 +17,12 @@ namespace Controller
         public DynamicEquipmentService dynamicEquipmentService = new DynamicEquipmentService();
         private List<DynamicEquipment> dynamicEquipments = new List<DynamicEquipment>();
 
-      
-      public void Save(DynamicEquipment newEquipment)
+        public void MoveDynamicEquipment(DynamicEquipment dynamicEquipment)
+        {
+            dynamicEquipmentService.MoveDynamicEquipment(dynamicEquipment);
+        }
+
+        public void Save(DynamicEquipment newEquipment)
       {
             // TODO: implement
             dynamicEquipmentService.Save(newEquipment);

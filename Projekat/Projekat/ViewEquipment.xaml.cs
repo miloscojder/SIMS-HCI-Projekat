@@ -107,6 +107,12 @@ namespace Projekat
             ve.Show();
             
         }
+        private void TransferDynamic_Click(object sender, RoutedEventArgs e)
+        {
+            TransferEquipment dynamicTransfer = new TransferEquipment();
+            dynamicTransfer.Show();
+
+        }
 
         private void Create_Click(object sender, RoutedEventArgs e)
         {

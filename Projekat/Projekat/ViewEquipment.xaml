@@ -52,6 +52,7 @@
                     <TextBox x:Name="name1"  HorizontalAlignment="Left" Margin="497,33,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23"/>
                     <Separator HorizontalAlignment="Left" Margin="432,192,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="quantity1" HorizontalAlignment="Left" Margin="497,82,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23"/>
+                    <Button Content="Transfer" Click="TransferDynamic_Click" HorizontalAlignment="Left" Margin="269,344,0,0" VerticalAlignment="Top" Width="100" Height="30"/>
                 </Grid>
             </TabItem>
         </TabControl>

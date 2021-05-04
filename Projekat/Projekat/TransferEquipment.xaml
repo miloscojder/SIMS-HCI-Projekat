@@ -1,0 +1,38 @@
+﻿<Window x:Class="Projekat.TransferEquipment"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat"
+        mc:Ignorable="d"
+        Title="TransferEquipment" Height="450" Width="800">
+    <Grid Background="#FFE5E5E5">
+        <DataGrid x:Name="dataGridDynamicEquipment" ItemsSource="{Binding DynamicEquipment}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="45,33,440,0" Height="294" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn  Header="Id" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
+                <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="moveDynamic" Content="Move" Click="MoveDynamic_Click" HorizontalAlignment="Left" Margin="45,327,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="-1.63,1.903"/>
+        <Label FontSize="15" Content="Name:" HorizontalAlignment="Left" Margin="418,33,0,0" VerticalAlignment="Top"/>
+        <Label FontSize="15" Content="Quantity:" HorizontalAlignment="Left" Margin="418,79,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="dynamicName"  HorizontalAlignment="Left" Margin="497,33,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23"/>
+        <Separator HorizontalAlignment="Left" Margin="432,192,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="dynamicQuantity" HorizontalAlignment="Left" Margin="497,82,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23"/>
+        <Button Content="Transfer" Click="Transfer_Click" HorizontalAlignment="Left" Margin="662,361,0,0" VerticalAlignment="Top" Width="100" Height="30"/>
+        <Button x:Name="cancelMoving" Content="Cancel" Click="CancelDynamic_Click" HorizontalAlignment="Left" Margin="517,361,0,0" VerticalAlignment="Top" Width="100" Height="30"/>
+
+        <ListView Margin="418,144,107,107">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="257" Header="List of transfers" />
+                </GridView>
+            </ListView.View>
+            <ListBox  x:Name="lb_transfers" Height="142" Width="241" SelectionChanged="ListBox_SelectionChanged"/>
+        </ListView>
+    </Grid>
+</Window>
