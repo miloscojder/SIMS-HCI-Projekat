@@ -25,13 +25,13 @@ namespace Controller
          // TODO: implement
          return false;
       }
-      
-      public void MoveStaticEquipment(DateTime date)
-      {
-         // TODO: implement
-      }
-      
-      public void MoveDynamicEquipment(Model.StaticEquipment quantity, Model.StaticEquipment name)
+
+        public void MoveStaticEquipment(int staticId, int toRoom, DateTime time)
+        {
+            roomService.MoveStaticEquipment(staticId, toRoom, time);
+        }
+
+        public void MoveDynamicEquipment(Model.StaticEquipment quantity, Model.StaticEquipment name)
       {
          // TODO: implement
       }
