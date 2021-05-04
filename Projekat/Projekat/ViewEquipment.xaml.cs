@@ -20,8 +20,11 @@ namespace Projekat
     /// </summary>
     public partial class ViewEquipment : Window
     {
-        private StaticEquipmentController staticEquipmentController = new StaticEquipmentController();
-        private DynamicEquipmentController dynamicEquipmentController = new DynamicEquipmentController();
+        private readonly StaticEquipmentController staticEquipmentController = new StaticEquipmentController();
+        readonly List<StaticEquipment> staticEquipment = new List<StaticEquipment>();
+        private  readonly DynamicEquipmentController dynamicEquipmentController = new DynamicEquipmentController();
+        readonly List<DynamicEquipment> dynamicEquipment = new List<DynamicEquipment>();
+
         int id;
         int id1;
         EquipmentType eqType;
@@ -29,13 +32,10 @@ namespace Projekat
         public ViewEquipment()
         {
             InitializeComponent();
-            StaticEquipmentRepository staticEquipmentRepository = new StaticEquipmentRepository();
-            List<StaticEquipment> staticEquipments = staticEquipmentRepository.GetAll();
-            dataGridStaticEquipment.ItemsSource = staticEquipments;
-
-            DynamicEquipmentRepository dynamicEquipmentRepository = new DynamicEquipmentRepository();
-            List<DynamicEquipment> dynamicEquipments = dynamicEquipmentRepository.GetAll();
-            dataGridDynamicEquipment.ItemsSource = dynamicEquipments;
+            staticEquipment = staticEquipmentController.GetAll();
+            dataGridStaticEquipment.ItemsSource = staticEquipment;
+            dynamicEquipment = dynamicEquipmentController.GetAll();
+            dataGridDynamicEquipment.ItemsSource = dynamicEquipment;
 
         }
 
@@ -48,6 +48,7 @@ namespace Projekat
                 id = equipment.Id;
                 name.Text = equipment.Name;
                 eqType = equipment.Type;
+                roomId.Text = equipment.RoomId.ToString();
                 quantity.Text = equipment.Quantity.ToString();
 
             }
@@ -55,9 +56,10 @@ namespace Projekat
             {
                 MessageBox.Show("You have to fill in all input boxes!");
             }
+            
         }
 
-        private void SelectD_Click(object sender, RoutedEventArgs e)
+        private void SelectDynamic_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -73,6 +75,7 @@ namespace Projekat
             {
                 MessageBox.Show("You have to fill in all input boxes!");
             }
+            
         }
         private void Update_Click(object sender, RoutedEventArgs e)
         {
@@ -81,14 +84,16 @@ namespace Projekat
             int eqquantity = Int32.Parse(quantity.Text);
             
 
-            StaticEquipment stequipment = new StaticEquipment(id, equipmentname, eqType,eqquantity);
+            StaticEquipment stequipment = new StaticEquipment(id, equipmentname,Int32.Parse(roomId.Text), eqType,eqquantity);
             staticEquipmentController.UpdateEquipment(stequipment);
             id = -1;
 
             ViewEquipment ve = new ViewEquipment();
             ve.Show();
+            
+            
         }
-        private void UpdateD_Click(object sender, RoutedEventArgs e)
+        private void UpdateDynamic_Click(object sender, RoutedEventArgs e)
         {
 
             string equipmentname = name1.Text;
@@ -101,18 +106,33 @@ namespace Projekat
 
             ViewEquipment ve = new ViewEquipment();
             ve.Show();
+            
+        }
+        private void TransferDynamic_Click(object sender, RoutedEventArgs e)
+        {
+            TransferEquipment dynamicTransfer = new TransferEquipment();
+            dynamicTransfer.Show();
+
+        }
+        private void TransferStatic_Click(object sender, RoutedEventArgs e)
+        {
+            TransferStaticEquipment staticTransfer = new TransferStaticEquipment();
+            staticTransfer.Show();
+
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)
         {
             CreateEquipment ce = new CreateEquipment();
             ce.Show();
+            Close();
         }
 
-        private void CreateD_Click(object sender, RoutedEventArgs e)
+        private void CreateDynamic_Click(object sender, RoutedEventArgs e)
         {
             CreateDynamicEquipment ce = new CreateDynamicEquipment();
             ce.Show();
+            Close();
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -121,14 +141,15 @@ namespace Projekat
             {
                 StaticEquipment staticEquipment = (StaticEquipment)dataGridStaticEquipment.SelectedItems[0];
                 staticEquipmentController.DeleteEquipment(staticEquipment.Id);
-            }
+                Close();            }
             catch
             {
                 MessageBox.Show("You have to select a room to delete!");
             }
+            
         }
 
-        private void DeleteD_Click(object sender, RoutedEventArgs e)
+        private void DeleteDynamic_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -139,6 +160,20 @@ namespace Projekat
             {
                 MessageBox.Show("You have to select a room to delete!");
             }
+            
+        }
+        private void Search_Static_Click(object sender, RoutedEventArgs e)
+        {
+            dataGridStaticEquipment.ItemsSource = staticEquipment.FindAll(obj => obj.Name == searchStatic.Text);
+        }
+        private void Filter_Static_Click(object sender, RoutedEventArgs e)
+        {
+            dataGridStaticEquipment.ItemsSource = staticEquipment.FindAll(obj => obj.RoomId == Int32.Parse(filterStatic.Text));
+
+        }
+        private void Search_Dynamic_Click(object sender, RoutedEventArgs e)
+        {
+            dataGridStaticEquipment.ItemsSource = dynamicEquipment.FindAll(obj => obj.Name == searchDynamic.Text);
         }
     }
 }

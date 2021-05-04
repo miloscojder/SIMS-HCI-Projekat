@@ -21,41 +21,70 @@ namespace Projekat
         {
             InitializeComponent();
         }
-        private void Create_Click(object sender, RoutedEventArgs e)
+        private void CreateRoom_Click(object sender, RoutedEventArgs e)
         {
             CreateRoom cr = new CreateRoom();
             cr.Show();
+            Close();
+            
         }
 
-        private void CreateE_Click(object sender, RoutedEventArgs e)
+        private void CreateEquipment_Click(object sender, RoutedEventArgs e)
         {
             CreateEquipment ce = new CreateEquipment();
             ce.Show();
+            
         }
-        private void Update_Click(object sender, RoutedEventArgs e)
+
+        private void AddNewMedicine_Click(object sender, RoutedEventArgs e)
+        {
+            CreateMedicine cm = new CreateMedicine();
+            cm.Show();
+            
+        }
+        private void ViewMedicines_Click(object sender, RoutedEventArgs e)
+        {
+            ViewMedicines vm = new ViewMedicines();
+            vm.Show();
+
+        }
+        private void UpdateMedicines_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateMedicine um = new UpdateMedicine();
+            um.Show();
+
+        }
+
+        private void DeleteMedicines_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+        }
+        private void UpdateRoom_Click(object sender, RoutedEventArgs e)
         {
             UpdateRoom ur = new UpdateRoom();
             ur.Show();
+            
         }
-        private void View_Click(object sender, RoutedEventArgs e)
+        private void ViewRoom_Click(object sender, RoutedEventArgs e)
         {
             ViewRooms vr = new ViewRooms();
             vr.Show();
+            
         }
-        private void ViewE_Click(object sender, RoutedEventArgs e)
+        private void ViewEquipment_Click(object sender, RoutedEventArgs e)
         {
             ViewEquipment ve = new ViewEquipment();
             ve.Show();
+            
         }
-        private void Delete_Click(object sender, RoutedEventArgs e)
+        private void DeleteRoom_Click(object sender, RoutedEventArgs e)
         {
             ViewRooms vr = new ViewRooms();
             vr.Show();
+            Close();
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

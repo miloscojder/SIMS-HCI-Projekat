@@ -34,29 +34,22 @@ namespace Service
          // TODO: implement
          return staticEquipmentRepository.UpdateEquipment(newStaticEquipment);
       }
-      
-      public Boolean DeleteEquipment(int id)
+
+        public StaticEquipment GetOne(int id)
+        {
+            return staticEquipmentRepository.GetOne(id);
+        }
+
+        public Boolean DeleteEquipment(int id)
       {
          // TODO: implement
          return staticEquipmentRepository.DeleteEquipment(id);
       }
       
-      public StaticEquipment CreateEquipment2()
-      {
-         // TODO: implement
-         return null;
-      }
+
         public int GenerateNewId()
         {
-            try
-            {
-                int maxId = staticEquipments.Max(obj => obj.Id);
-                return maxId + 1;
-            }
-            catch
-            {
-                return 1;
-            }
+            return staticEquipmentRepository.GenerateNewId();
         }
 
 

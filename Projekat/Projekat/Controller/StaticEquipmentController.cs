@@ -29,8 +29,13 @@ namespace Controller
          // TODO: implement
          return staticEquipmentService.GetAll();
       }
-      
-      public Boolean UpdateEquipment(StaticEquipment newStaticEquipment)
+
+        public StaticEquipment GetOne(int id)
+        {
+            return staticEquipmentService.GetOne(id);
+        }
+
+        public Boolean UpdateEquipment(StaticEquipment newStaticEquipment)
       {
          // TODO: implement
          return staticEquipmentService.UpdateEquipment(newStaticEquipment);
@@ -49,17 +54,9 @@ namespace Controller
       }
         public int GenerateNewId()
         {
-            try
-            {
-                int maxId = staticEquipments.Max(obj => obj.Id);
-                return maxId + 1;
-            }
-            catch
-            {
-                return 1;
-            }
+            return staticEquipmentService.GenerateNewId();
         }
 
 
-        }
+    }
 }

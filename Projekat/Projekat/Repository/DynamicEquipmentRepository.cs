@@ -16,10 +16,15 @@ namespace Repository
    public class DynamicEquipmentRepository
    {
         private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\dynamicEquipment.json";
+        private readonly string _spisak = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\dynamicTransfer.txt";
         private List<DynamicEquipment> dynamicEquipments = new List<DynamicEquipment>();
 
-
         public DynamicEquipmentRepository()
+        {
+            ReadJson();
+        }
+
+        public  void ReadJson()
         {
             if (!File.Exists(fileLocation))
             {
@@ -36,7 +41,7 @@ namespace Repository
 
         public void WriteToJson()
         {
-            string json = JsonConvert.SerializeObject(dynamicEquipments);
+            string json = JsonConvert.SerializeObject(dynamicEquipments, Formatting.Indented);
             File.WriteAllText(fileLocation, json);
         }
 
@@ -75,6 +80,17 @@ namespace Repository
             dynamicEquipments.RemoveAt(index);
             WriteToJson();
             return true;
+        }
+        public void MoveDynamicEquipment(DynamicEquipment dynamicEquipment)
+        {
+            int index = dynamicEquipments.FindIndex(obj => obj.Id == dynamicEquipment.Id);
+            DynamicEquipment dynamic = dynamicEquipments[index];
+            dynamic.Quantity -= dynamicEquipment.Quantity;
+            UpdateEquipment(dynamic);
+            WriteToJson();
+
+            string lines = "Extracted dynamic equipment: " + Convert.ToString(dynamicEquipment.Quantity) + " " + dynamicEquipment.Name + "\n";
+            File.AppendAllText(_spisak, lines);
         }
         public int GenerateNewId()
         {

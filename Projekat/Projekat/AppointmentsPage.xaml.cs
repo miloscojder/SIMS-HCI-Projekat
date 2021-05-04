@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Model;
 using Newtonsoft.Json;
+using Projekat.Model;
 
 namespace Projekat
 {
@@ -19,8 +20,11 @@ namespace Projekat
     /// Interaction logic for Appointments.xaml
     /// </summary>
     public partial class AppointmentsPage : Window
-
     {
+
+        public List<DateTime> activityTime = new List<DateTime>();
+        TimeSpan timeSpan = new TimeSpan(7, 0, 0, 0, 0);
+
         public AppointmentsPage(Appointment a)
         {
             InitializeComponent();
@@ -74,6 +78,62 @@ namespace Projekat
 
         private void CancButton_Click_1(object sender, RoutedEventArgs e)
         {
+
+            StorageForSomeData sfsd = new StorageForSomeData();
+            sfsd = JsonConvert.DeserializeObject<StorageForSomeData>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json"));
+
+
+            foreach (DateTime datum in activityTime)
+            {
+                if ((DateTime.Now.Date - datum.Date) > timeSpan)
+                {
+                    activityTime.Remove(datum);
+                    sfsd.activityCounter--;                                                       // ovo cu da ucitam iz fajla nekog posle
+                   // File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json", JsonConvert.SerializeObject(sfsd));
+                }
+            }
+
+            if(sfsd.activityCounter > 10)
+            {
+                MessageBox.Show("Blokirani ste zbog spamovanja, javite nam se za vise informacija");
+            }
+            else
+            {
+                sfsd.activityCounter++;
+
+                Appointment ac = (Appointment)lvAppointmentsPatient.SelectedItems[0];
+
+
+                List<Appointment> svi = new List<Appointment>();
+                List<Appointment> newSvi = new List<Appointment>();
+
+                svi = JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json"));
+
+
+                foreach (Appointment a in svi)
+                {
+                    if (a.Id != ac.Id)
+                    {
+                        newSvi.Add(a);
+                    }
+                }
+
+                File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json", JsonConvert.SerializeObject(newSvi));
+                File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json", JsonConvert.SerializeObject(sfsd));
+
+                MessageBox.Show("Vas pregled je otkazan.");
+                this.Close();
+
+            }
+
+
+
+
+
+
+
+
+            /*
             Appointment ac = (Appointment)lvAppointmentsPatient.SelectedItems[0];
 
 
@@ -92,10 +152,15 @@ namespace Projekat
             }
 
             File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json", JsonConvert.SerializeObject(newSvi));
+            */
 
-            MessageBox.Show("Vas pregled je otkazan.");
-            this.Close();
 
+
+            //          File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\counerOfActivites.txt", Convert.ToString(numberOfActivities));
+            /*
+                        MessageBox.Show("Vas pregled je otkazan.");
+                        this.Close();
+            */
         }
 
         private void RescButton_Click_2(object sender, RoutedEventArgs e)

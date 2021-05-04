@@ -25,16 +25,18 @@ namespace Model
         public String Password { get; set; }
 
 
+        public Patient() { }
+
         //public Appointment[] appointment;
 public Patient(string id, string name, string surname)
         {
-            this.Id = id;
+            Id = id;
             FirstName = name;
             LastName = surname;
           
         }
 
-        public Patient(string id, string name, string surname, string jmbg,
+       /* public Patient(string id, string name, string surname, string jmbg,
                        string phone_number, string username, string password)
         {
            // User user = new User();
@@ -46,10 +48,8 @@ public Patient(string id, string name, string surname)
             Username = username;
             Password = password;
            // this.user = user;
-        }
+        }*/
 
-        public Patient()
-        {
-        }
+       
     }
 }
