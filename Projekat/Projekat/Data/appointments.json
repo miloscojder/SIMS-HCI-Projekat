@@ -8,12 +8,7 @@
         "EndTime": "12:30",
         "AppointmentType": 1,
         "room": {
-            "Id": "A1",
-            "Name": "Room A1",
-            "Floor": 1,
-            "Status": 0,
-            "Detail": "Examination room",
-            "RoomType": "Examination"
+
         },
         "patient": {
             "Id": "P11",

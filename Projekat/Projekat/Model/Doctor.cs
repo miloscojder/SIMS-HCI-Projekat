@@ -10,10 +10,13 @@ namespace Model
 {
    public class Doctor : Employee
    {
-      public String Specialty;
-      public Boolean Free;
-      
-      public System.Collections.ArrayList requestForDinamicEquipment;
+      public String Specialty { get; set; }
+      public Boolean Free { get; set; }
+        public double Grade { get; set; }
+
+
+
+        public System.Collections.ArrayList requestForDinamicEquipment;
 
         public Doctor() { }
 
