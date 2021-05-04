@@ -6,12 +6,14 @@
 
 using Model;
 using System;
+using Service;
 using System.Collections.Generic;
 
 namespace Controller
 {
    public class PatientController
    {
+        public PatientService patient_service = new PatientService();       
       public Model.Patient GetById(String id)
       {
          // TODO: implement
@@ -25,18 +27,19 @@ namespace Controller
       
       public void Delete(Model.Patient patient)
       {
-         // TODO: implement
+            
+            patient_service.Delete(patient);
       }
       
       public void Save(Model.Patient newPatient)
       {
-         // TODO: implement
+            patient_service.Save(newPatient);
       }
       
       public List<Patient> GetAll()
       {
-         // TODO: implement
-         return null;
+            // TODO: implement
+            return patient_service.GetAll();
       }
    
       public System.Collections.ArrayList patientService;

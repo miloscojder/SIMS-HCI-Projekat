@@ -12,12 +12,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Controller;
 
 namespace Projekat
 {
    
     public partial class Prescribe : Window
     {
+        public PrescriptionController prescriptionController = new PrescriptionController();
         public Prescribe()
         {
             InitializeComponent();
@@ -26,25 +28,16 @@ namespace Projekat
 
         private void PrescribeMedicine(object sender, RoutedEventArgs e)
         {
-            //prikupljam polja iz forme
-           
             String ida = Id.Text;
-            String med = (String)Medicine.Text;
-            String q = (String)Quantity.Text;
-            String ins = (String)Instruction.Text;
+            String med = Medicine.Text;
+            String q = Quantity.Text;
+            String ins = Instruction.Text;
+            // Patient idpatient = Pid.Text;
 
-            String Idnovi = Convert.ToString(ida)+1;
-            
+            Prescription a = new Prescription(ida, med, q, ins);
+            prescriptionController.CreatePrescription(a);
 
-           
-            String red =Idnovi.ToString()+ "," + ida + "," +  med + "," + q + "," + ins ;
-
-
-
-            //PrescriptionFileStorage fajl = new PrescriptionFileStorage(@"C:\Users\krist\Desktop\prescriptions.txt");
-            // fajl.Save(red,true);
-
-             MessageBox.Show("Medicine prescribed!");
+            MessageBox.Show("Medicine prescribed!");
             this.Close();
         }
     }

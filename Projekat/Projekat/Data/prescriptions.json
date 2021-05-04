@@ -1,0 +1,25 @@
+[
+
+    {
+        "Id": "bf3",
+        "Medicine": "brufen 300mg",
+        "Quantity": " 1 kutija",
+        "Instruction": "1x1 jedna tableta na dan",
+        "Patient": {
+            "Id": "P15",
+            "firstName": "Anamarija",
+            "lastName": "Dolovac"
+        }
+    },
+    {
+        "Id": "p",
+        "Medicine": "Posakonazol 500mg",
+        "Quantity": " 2 kutija",
+        "Instruction": "1x3 tableta na svakih 8h",
+        "Patient": {
+            "Id": "P3",
+            "firstName": "Mirko",
+            "lastName": "Mirkovic"
+        }
+    }
+]

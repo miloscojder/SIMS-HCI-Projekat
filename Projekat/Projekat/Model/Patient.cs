@@ -10,17 +10,48 @@ namespace Model
 {
    public class Patient : User
    {
-        public String id { get; set; }
-        public String firstName { get; set; }
-        public String lastName { get; set; }
+        private User user;
+
+        public String Id { get; set; }
+        public String FirstName { get; set; }
+        public String LastName { get; set; }
+
+        public String Jmbg { get; set; }
+
+        public String PhoneNumber { get; set; }
+
+        public String Username { get; set; }
+
+        public String Password { get; set; }
+
+
+        public Patient() { }
+
         //public Appointment[] appointment;
-        public Patient(string id, string name, string surname)
+public Patient(string id, string name, string surname)
         {
-            this.id = id;
+ this.id = id;
             firstName = name;
             lastName = surname;
           
         }
 
+        public Patient(string id, string name, string surname, string jmbg,
+                       string phone_number, string username, string password)
+        {
+           // User user = new User();
+            Id = id;
+            FirstName = name;
+            LastName = surname;
+            Jmbg = jmbg;
+            PhoneNumber = phone_number;
+            Username = username;
+            Password = password;
+           // this.user = user;
+        }
+
+        public Patient()
+        {
+        }
     }
 }

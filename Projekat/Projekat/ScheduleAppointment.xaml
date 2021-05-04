@@ -28,6 +28,10 @@
         <TextBox x:Name="Hourss" HorizontalAlignment="Left" Margin="298,314,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Height="18"/>
         <Label Content="Minutes:" HorizontalAlignment="Center" Margin="0,310,0,0" VerticalAlignment="Top" Height="26" RenderTransformOrigin="-0.749,0.04"/>
         <TextBox x:Name="Minutess" HorizontalAlignment="Left" Margin="433,318,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Height="18"/>
+        <Label Content="Patient id:" HorizontalAlignment="Left" Margin="520,50,0,0" VerticalAlignment="Top" Height="28" RenderTransformOrigin="18.845,0.68" Width="62"/>
+        <TextBox x:Name="Idp" HorizontalAlignment="Left" Margin="582,58,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20"/>
+        <Label Content="Room id:" HorizontalAlignment="Left" Margin="520,131,0,0" VerticalAlignment="Top" Height="28" RenderTransformOrigin="18.845,0.68" Width="62"/>
+        <TextBox x:Name="Idr" HorizontalAlignment="Left" Margin="587,135,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20"/>
 
 
     </Grid>

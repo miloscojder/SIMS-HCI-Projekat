@@ -2,21 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Repository;
+using Controller;
 
 namespace Projekat
 {
 
     public partial class Prescriptions : Window
     {
+        public PrescriptionController prescriptionController = new PrescriptionController();
         public List<Prescription> prescriptions
         {
             get;
@@ -25,11 +20,9 @@ namespace Projekat
         public Prescriptions()
         {
             InitializeComponent();
-            this.DataContext = this;
-
-            prescriptions = new List<Prescription>();
-            //PrescriptionFileStorage fajl = new PrescriptionFileStorage(@"C:\Users\krist\Desktop\prescriptions.txt");
-            //prescriptions = fajl.GetAll();
+            PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
+            List<Prescription> prescriptions = prescriptionRepository.GetAll();
+            dataGrid.ItemsSource = prescriptions;
         }
 
       

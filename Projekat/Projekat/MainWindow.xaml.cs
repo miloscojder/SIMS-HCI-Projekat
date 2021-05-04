@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model;
 using Newtonsoft.Json;
+using Projekat.Model;
 
 namespace Projekat
 {
@@ -26,12 +27,14 @@ namespace Projekat
         public MainWindow()
         {
             InitializeComponent();
+
+          
         }
         private void Director_Click(object sender, RoutedEventArgs e)
-            {
-                DirectorWindow director = new DirectorWindow();
-                director.Show();
-            }
+        {
+            DirectorWindow director = new DirectorWindow();
+            director.Show();
+        }
 
         private void Doctor_Click(object sender, RoutedEventArgs e)
         {
@@ -39,16 +42,23 @@ namespace Projekat
             doctor.Show();
         }
 
+
+
         private void Request_Click(object sender, RoutedEventArgs e)
         {
             RequestCRUD request = new RequestCRUD();
             request.Show();
         }
 
-        private void AddAppointmentButton_Click(object sender, RoutedEventArgs e)
+        private void PatientButton_Click(object sender, RoutedEventArgs e)
         {
-            AppointmentsPage app = new AppointmentsPage(null);
-            app.Show();
+            PatientMainPage pmp = new PatientMainPage();
+            pmp.Show();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
