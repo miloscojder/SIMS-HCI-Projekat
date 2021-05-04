@@ -26,6 +26,9 @@ namespace Projekat
         public MainWindow()
         {
             InitializeComponent();
+
+          
+
         }
         private void Director_Click(object sender, RoutedEventArgs e)
             {
@@ -45,10 +48,15 @@ namespace Projekat
             request.Show();
         }
 
-        private void AddAppointmentButton_Click(object sender, RoutedEventArgs e)
+        private void PatientButton_Click(object sender, RoutedEventArgs e)
         {
-            AppointmentsPage app = new AppointmentsPage(null);
-            app.Show();
+            PatientMainPage pmp = new PatientMainPage();
+            pmp.Show();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

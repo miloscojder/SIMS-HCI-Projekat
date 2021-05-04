@@ -19,11 +19,11 @@ namespace Model
         public TypeOfAppointment AppointmentType { get; set; }
         //public MedicalRecord MedicalRecord { get; set; }
 
-        public DateTime StartTime { get; set; }
+        public DateTime StartTime { get; set; }               //patient
 
         public Room room { get; set; }
         public Patient patient { get; set; }
-      //  public Doctor doctor { get; set; }
+        public Doctor doctor { get; set; }
         public Anamnesis anamnesis { get; set; }
 
         public Appointment() { }
