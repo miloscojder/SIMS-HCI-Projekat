@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Model;
 using Newtonsoft.Json;
-
+using Projekat.Model;
 
 namespace Projekat
 {
@@ -65,24 +65,31 @@ namespace Projekat
         {
 
 
+            StorageForSomeData sfsd = new StorageForSomeData();
+            sfsd = JsonConvert.DeserializeObject<StorageForSomeData>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json"));
+
+
             //atni spam zastita? proveriti ovo malo
             foreach (DateTime datum in listaVremenaZakazivanja)
             {
                 if ((DateTime.Now.Date - datum.Date) > timeSpan)    
                 {
                     listaVremenaZakazivanja.Remove(datum);
-                    counter--;                                                              // ovo cu da ucitam iz fajla nekog posle
+                    sfsd.activityCounter--;                                                              // ovo cu da ucitam iz fajla nekog posle
                 }    
             }        
             
-            if(counter >= 10)                             
+            if(sfsd.activityCounter > 10)                             
             {
                 MessageBox.Show("Blokirani ste zbog spamovanja, javite nam se za vis enformacija");
                 //window close        
             } 
             else 
             {
-                counter++;
+                sfsd.activityCounter++;
+
+                File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json", JsonConvert.SerializeObject(sfsd));
+
                 listaVremenaZakazivanja.Add(DateTime.Now);
 
                 DateTime choosenDate = new DateTime();
