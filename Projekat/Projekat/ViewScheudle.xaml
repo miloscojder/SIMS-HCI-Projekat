@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
         Title="Schedule" Height="450" Width="800">
-    <Grid>
+    <Grid RenderTransformOrigin="0.496,0.547">
         <DataGrid x:Name="dataGrid" ItemsSource="{Binding Appointment}" IsReadOnly="True"
                   SelectionMode="Single" AutoGenerateColumns="False" Margin="32,96,32,96">
             <DataGrid.Columns>
@@ -15,13 +15,27 @@
                 <DataGridTextColumn Header="Time start" Width="70" Binding="{Binding TimeStart}"/>
                 <DataGridTextColumn Header="Duration" Width="70" Binding="{Binding Duration}"/>
                 <DataGridTextColumn Header="End time" Width="70" Binding="{Binding EndTime}"/>
-                <DataGridTextColumn Header="Room" Width="50" Binding="{Binding room.Name}"/>
+                <DataGridTextColumn Header="Room" Width="70" Binding="{Binding room.Name}"/>
                 <DataGridTextColumn Header="Patient name" Width="100" Binding="{Binding patient.firstName}"/>
                 <DataGridTextColumn Header="Patient surname" Width="100" Binding="{Binding patient.lastName}"/>
                 <DataGridTextColumn Header="Appointment Type" Binding="{Binding AppointmentType}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Schedule" HorizontalAlignment="Left" Margin="322,10,0,0" VerticalAlignment="Top" FontSize="30" FontWeight="Bold" Width="205"/>
+        <DataGrid x:Name="dataGrid1" ItemsSource="{Binding Appointment}" IsReadOnly="True"
+            SelectionMode="Single" AutoGenerateColumns="False" Margin="32,197,32,40">
+            <DataGrid.Columns>
+                <DataGridTextColumn  Width="40" Binding="{Binding Id}"/>
+                <DataGridTextColumn Width="80" Binding="{Binding Date}"/>
+                <DataGridTextColumn  Width="70" Binding="{Binding TimeStart}"/>
+                <DataGridTextColumn  Width="70" Binding="{Binding Duration}"/>
+                <DataGridTextColumn  Width="70" Binding="{Binding EndTime}"/>
+                <DataGridTextColumn  Width="70" Binding="{Binding room.Name}"/>
+                <DataGridTextColumn  Width="100" Binding="{Binding patient.firstName}"/>
+                <DataGridTextColumn  Width="100" Binding="{Binding patient.lastName}"/>
+                <DataGridTextColumn  Binding="{Binding AppointmentType}"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
 
     </Grid>

@@ -1,16 +1,7 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Controller;
 using Repository;
 namespace Projekat
@@ -49,8 +40,8 @@ namespace Projekat
             String duration = Duration.Text;
 
 
-            Appointment a = new Appointment(ida, date, start, duration, end);
-            appointmentController.RescheduleDoctor(a);
+           // Appointment a = new Appointment(ida, date, start, duration, end);
+           // appointmentController.RescheduleDoctor(a);
 
             Appointments ap = new Appointments();
             ap.Show();

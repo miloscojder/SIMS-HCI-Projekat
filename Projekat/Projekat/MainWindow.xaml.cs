@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -31,16 +31,18 @@ namespace Projekat
 
         }
         private void Director_Click(object sender, RoutedEventArgs e)
-            {
-                DirectorWindow director = new DirectorWindow();
-                director.Show();
-            }
+        {
+            DirectorWindow director = new DirectorWindow();
+            director.Show();
+        }
 
         private void Doctor_Click(object sender, RoutedEventArgs e)
         {
             DoctorWindow doctor = new DoctorWindow();
             doctor.Show();
         }
+
+
 
         private void Request_Click(object sender, RoutedEventArgs e)
         {

@@ -47,8 +47,8 @@ namespace Projekat
 
 
             //    TipPregleda t = new TipPregleda();
-          //  Operations a = new Operations(ida, date, start, duration, end);
-          //  operationController.ScheduleOperation(a);
+            Operations a = new Operations(ida, date, start, duration, end);
+            operationController.ScheduleOperation(a);
 
             Operationss ap = new Operationss();
             ap.Show();
