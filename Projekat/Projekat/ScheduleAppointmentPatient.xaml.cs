@@ -11,7 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Model;
-
+using Newtonsoft.Json;
 
 
 namespace Projekat
@@ -35,6 +35,7 @@ namespace Projekat
         public static int counter = 0;          //ovo treba da bude globalno, da li ovo valja?
         List<DateTime> listaVremenaZakazivanja = new List<DateTime>();
         TimeSpan timeSpan = new TimeSpan(7, 0, 0, 0, 0);
+        private static int kolikoSamDatumaNasao = 0;
 
         //globalni brojac
 
@@ -94,62 +95,34 @@ namespace Projekat
 
                 string izabraniDoktor = (string)Combobox2.SelectedItem;
 
-                AcceptNewAppointmentPatient anap = new AcceptNewAppointmentPatient(/*a,*/ priority, choosenDate, izabraniDoktor);
-                anap.Show();
-             }
-        } 
-            /*    else    // ovo mi iskreno mozda i ne treba keke             1.3 sve pod ovim elsom ce se verovatno brisati
+                List<DateTime> doktoroviTermini = JsonConvert.DeserializeObject<List<DateTime>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\zauzetiDoktor.json"));
+                    
+                foreach(DateTime dt in doktoroviTermini)
                 {
-                    if(counter >= 10 )
-                    {
-                        MessageBox.Show("Lik je spamer");
-                    } 
-                    else
-                    {
-                        counter++;
-                        listaVremenaZakazivanja.Add(DateTime.Now);
-
-                        DateTime choosenDate = new DateTime();
-
-                        String nesto = (string)Combobox1.SelectedItem;
-                        string[] preuzeto = nesto.Split(':');
-
-                        choosenDate = (DateTime)IzaberiDatum.SelectedDate;
-                        choosenDate = new DateTime(IzaberiDatum.SelectedDate.Value.Year, IzaberiDatum.SelectedDate.Value.Month, IzaberiDatum.SelectedDate.Value.Day, Convert.ToInt32(preuzeto[0]), Convert.ToInt32(preuzeto[1]), 0);
-
-                        string izabraniDoktor = (string)Combobox2.SelectedItem;
-
-                        AcceptNewAppointmentPatient anap = new AcceptNewAppointmentPatient(/*a,*/ /*priority, choosenDate, izabraniDoktor);
-                        anap.Show();
+                    if(dt.Date == choosenDate.Date && dt.Hour == choosenDate.Hour && dt.Minute == choosenDate.Minute) {
+                    kolikoSamDatumaNasao++;
                     }
                 }
+                
+                if(kolikoSamDatumaNasao>=1)
+                {
+                   AcceptNewAppointmentPatient anap = new AcceptNewAppointmentPatient(/*a,*/ priority, choosenDate, izabraniDoktor);
+                   anap.Show();
+                } 
+                else
+                {
+                    Appointment newAppointment = new Appointment();
+                    Random rid = new Random();
+                    newAppointment.Id = Convert.ToString(rid.Next(1, 1000));
+                    newAppointment.roomName = "R1";
+                    newAppointment.doctorUsername = izabraniDoktor;
+                    newAppointment.StartTime = choosenDate;
+
+                    AppointmentsPage ap = new AppointmentsPage(newAppointment);
+                    ap.Show();
+                }
+              
             }
-
-  */    
-
-
-
-
-
-            //OVO MORAS DA URADIS                  //dodaj fajlove sa doktorom i njihovim zauzetim terminima //malo cimanje za napravit al okej
-            /*
-              Appointment<List> doctorAppointments = ucitati iz fajla sve doktorove appoitnemtne
-              foreach (app in doctorAppointements) {
-                  if(app.timeStart!=choosenDate) {
-                      Appointment a = new Appointment(choosenDate,izabraniDoktor,freeSala)
-                      random id
-               
-            
-                        AppointmentsPage ap = new AppointemntsPage(a);
-                        ap.Show();
-                    }
-              }
-
-              else {
-                 AcceptNewAppointmentPatient anap = new AcceptNewAppointmentPatient(/*a,priority, choosenDate, izabraniDoktor);
-                 anap.Show();
-            */
-       
-    
+        }    
     }
 }
