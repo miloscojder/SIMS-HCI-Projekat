@@ -35,12 +35,14 @@ namespace Projekat
 
             ViewEquipment ve = new ViewEquipment();
             ve.Show();
+            Close();
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             DirectorWindow de = new DirectorWindow();
             de.Show();
+            Close();
         }
     }
 }

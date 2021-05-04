@@ -45,11 +45,13 @@ namespace Projekat
 
             ViewRooms vr = new ViewRooms();
             vr.Show();
+            Close();
         }
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             DirectorWindow dr = new DirectorWindow();
             dr.Show();
+            Close();
         }
         private void Select_Click(object sender, RoutedEventArgs e)
         {

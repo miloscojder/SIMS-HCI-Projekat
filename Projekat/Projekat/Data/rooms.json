@@ -1,1 +1,3 @@
-[{"Id":2,"Name":"b","RoomType":"operaciona sala","Floor":5,"Detail":"true"}]
+
+[{"Id":4,"Name":"B","RoomType":"Room","Floor":2,"Detail":"Room is ready for two patients."},{"Id":5,"Name":"A","RoomType":"Operation room","Floor":4,"Detail":"Room is ready for operation."},{"Id":6,"Name":"F","RoomType":"Bathroom","Floor":1,"Detail":"There are 3 bathrooms."},{"Id":7,"Name":"C","RoomType":"Operating room","Floor":4,"Detail":"Operation has started."},{"Id":8,"Name":"D","RoomType":"Room","Floor":2,"Detail":"Room is for 15 patients"}]
+

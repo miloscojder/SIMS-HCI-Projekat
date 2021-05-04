@@ -15,13 +15,15 @@ using System.Windows.Shapes;
 
 namespace Projekat
 {
-    /// <summary>
-    /// Interaction logic for ViewRooms.xaml
-    /// </summary>
+
     public partial class ViewRooms : Window
     {
         private RoomController roomController = new RoomController();
+        private StaticEquipmentController staticEquipmentController = new StaticEquipmentController();
+        private DynamicEquipmentController dynamicEquipmentController = new DynamicEquipmentController();
+
         public List<Room> room { get; set; }
+        public List<StaticEquipment> StaticEquipment { get; set; }
         public ViewRooms()
         {
             InitializeComponent();
@@ -35,6 +37,7 @@ namespace Projekat
         {
             DirectorWindow director = new DirectorWindow();
             director.Show();
+            Close();
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -48,6 +51,15 @@ namespace Projekat
             {
                 MessageBox.Show("You have to select a room to delete!");
             }
+        }
+        private void ViewRoomEquipment_Click(object sender, RoutedEventArgs e)
+        {
+           // StaticEquipment staticEquipment = (StaticEquipment)dataGridSobe.SelectedItems[0];
+           // staticEquipmentController.GetOne(staticEquipment.Id);
+
+            ViewEquipment equipment = new ViewEquipment();
+            equipment.Show();
+            Close();
         }
     }
 }
