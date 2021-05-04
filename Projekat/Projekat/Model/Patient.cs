@@ -30,9 +30,9 @@ namespace Model
         //public Appointment[] appointment;
 public Patient(string id, string name, string surname)
         {
-           Id = id;
-           FirstName = name;
-           LastName = surname;
+ this.id = id;
+            firstName = name;
+            lastName = surname;
           
         }
 
@@ -50,5 +50,8 @@ public Patient(string id, string name, string surname)
            // this.user = user;
         }
 
+        public Patient()
+        {
+        }
     }
 }

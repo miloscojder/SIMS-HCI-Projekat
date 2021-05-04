@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="RequestCRUD" Height="450" Width="800">
+        Title="RequestCRUD" Height="490" Width="839">
     <Grid>
         <DataGrid x:Name="requestsDataGrid"
               AutoGenerateColumns="False"
-              IsReadOnly="True" Margin="23,23,23,305" RenderTransformOrigin="0.506,0.588">
+              IsReadOnly="True" Margin="23,23,23,305" RenderTransformOrigin="0.506,0.588" SelectionChanged="requestsDataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id"
-                            Binding="{Binding requestId}" />
+                            Binding="{Binding Id}" />
                 <DataGridTextColumn Header="Description"
                             Binding="{Binding Description}" />
                 <DataGridTextColumn Header="Date of vacation"
@@ -35,17 +35,16 @@
 
         <Button x:Name="createRequest" Content="Add request" HorizontalAlignment="Left" Margin="615,391,0,0" VerticalAlignment="Top" Click="New_Request_Click" Height="33" Width="131"/>
 
-        <DatePicker x:Name="dateOfVacation" HorizontalAlignment="Left" Margin="340,264,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dateOfVacation" HorizontalAlignment="Center" Margin="0,264,0,0" VerticalAlignment="Top" Height="24" Width="120"/>
         <Label Content="Date of vacaton" HorizontalAlignment="Left" Margin="198,262,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.142,-0.368"/>
         <Label x:Name="title" Content="Create new Request" HorizontalAlignment="Left" Margin="23,224,0,0" VerticalAlignment="Top" Width="106"/>
         <Button Content="Update" HorizontalAlignment="Left" Margin="23,153,0,0" VerticalAlignment="Top" Click="updateRequestButton_Click" Height="28" Width="66"/>
         <Button x:Name="updateRequestButton" Content="Update request" Visibility="Collapsed" HorizontalAlignment="Left"  Click="update_Request_Click" Margin="637,334,0,0" VerticalAlignment="Top"  Height="33" Width="131"/>
         <Button x:Name="cancelupdateRequestButton" Content="Cancel" Visibility="Collapsed" HorizontalAlignment="Left" Click="cancelupdateRequestButton_Click" Margin="494,334,0,0" VerticalAlignment="Top"  Height="33" Width="122"/>
-        <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Center" Height="186" VerticalAlignment="Top" Width="780" Margin="0,10,0,0"/>
         <Label Content="Duration" HorizontalAlignment="Left" Margin="198,301,0,0" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.529,-0.638"/>
         <TextBox x:Name="duration" HorizontalAlignment="Center" Margin="0,309,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="DoctorID" HorizontalAlignment="Left" Margin="197,339,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.529,-0.638"/>
-        <TextBox x:Name="Doctor" HorizontalAlignment="Center" Margin="0,347,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Doctor" HorizontalAlignment="Left" Margin="197,339,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.529,-0.638"/>
+        <ComboBox HorizontalAlignment="Center" Margin="0,343,0,0" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

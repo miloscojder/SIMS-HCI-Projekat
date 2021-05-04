@@ -21,12 +21,14 @@ namespace Projekat
     {
         private RequestController requestController = new RequestController();
         List<Request> requestToShow = new List<Request>();
+        List<Doctor> doctorsToShow = new List<Doctor>();
         private int id;
   
         public RequestCRUD()
         {
             InitializeComponent();
             requestToShow = requestController.GetAll();
+
             requestsDataGrid.ItemsSource = requestToShow;
         }
 
@@ -117,6 +119,11 @@ namespace Projekat
             updateRequestButton.Visibility = Visibility.Collapsed;
             cancelupdateRequestButton.Visibility = Visibility.Collapsed;
             title.Content = "Create new request";
+        }
+
+        private void requestsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
