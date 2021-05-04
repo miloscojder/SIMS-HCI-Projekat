@@ -7,15 +7,15 @@
         mc:Ignorable="d"
         Title="CreateEquipment" Height="450" Width="800">
     <Grid>
-        <Label FontSize="22" Content="Type:" HorizontalAlignment="Left" Margin="29,47,0,0" VerticalAlignment="Top"/>
-        <Label  FontSize="22" Content="Name:" HorizontalAlignment="Left" Margin="29,98,0,0" VerticalAlignment="Top"/>
-        <Label FontSize="22" Content="Quantity:" HorizontalAlignment="Left" Margin="16,144,0,0" VerticalAlignment="Top"/>
+        <Label FontSize="15" Content="Type:" HorizontalAlignment="Left" Margin="24,46,0,0" VerticalAlignment="Top"/>
+        <Label  FontSize="15" Content="Name:" HorizontalAlignment="Left" Margin="24,98,0,0" VerticalAlignment="Top"/>
+        <Label FontSize="15" Content="Quantity:" HorizontalAlignment="Left" Margin="16,144,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="name" HorizontalAlignment="Left" Height="28" Margin="137,98,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="141"/>
         <TextBox x:Name="quantity" HorizontalAlignment="Left" Height="28" Margin="137,144,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="141"/>
         <Button Content="Cancel" Click="Cancel_Click" HorizontalAlignment="Left" Margin="46,252,0,0" VerticalAlignment="Top" Width="130" Height="30" RenderTransformOrigin="0.066,1.117"/>
         <Button Content="Create" Click="Create_Click" HorizontalAlignment="Left" Margin="215,252,0,0" VerticalAlignment="Top" Width="130" Height="30"/>
         <TextBox  x:Name="type" HorizontalAlignment="Left" Height="28" Margin="137,53,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="141"/>
-        <Label FontSize="22" Content="Room Id:" HorizontalAlignment="Left" Margin="16,188,0,0" VerticalAlignment="Top"/>
+        <Label FontSize="15" Content="Room Id:" HorizontalAlignment="Left" Margin="16,188,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="roomId" HorizontalAlignment="Left" Height="28" Margin="137,197,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="141"/>
 
     </Grid>
