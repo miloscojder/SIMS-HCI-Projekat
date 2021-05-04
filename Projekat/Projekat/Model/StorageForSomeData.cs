@@ -10,6 +10,7 @@ namespace Projekat.Model
         public double hospitalFinalGrade { get; set; }
         public double hospitalGradeSum { get; set; }
         public String hospitalFeedback { get; set; }
+        public double activityCounter { get; set; }
 
         public StorageForSomeData() { }
 
