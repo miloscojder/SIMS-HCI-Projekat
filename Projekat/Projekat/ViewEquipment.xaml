@@ -43,10 +43,10 @@
 
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Content="Create" Click="CreateD_Click" HorizontalAlignment="Left" Margin="403,344,0,0" VerticalAlignment="Top" Width="100" Height="30"/>
-                    <Button Content="Update" Click="UpdateD_Click" HorizontalAlignment="Left" Margin="534,344,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="3.85,0.636"/>
-                    <Button Content="Select" Click="SelectD_Click" HorizontalAlignment="Left" Margin="45,327,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="-1.63,1.903"/>
-                    <Button Content="Delete" Click="DeleteD_Click"  HorizontalAlignment="Left" Margin="656,344,0,0" VerticalAlignment="Top" Width="100" Height="30"/>
+                    <Button Content="Create" Click="CreateDynamic_Click" HorizontalAlignment="Left" Margin="403,344,0,0" VerticalAlignment="Top" Width="100" Height="30"/>
+                    <Button Content="Update" Click="UpdateDynamic_Click" HorizontalAlignment="Left" Margin="534,344,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="3.85,0.636"/>
+                    <Button Content="Select" Click="SelectDynamic_Click" HorizontalAlignment="Left" Margin="45,327,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="-1.63,1.903"/>
+                    <Button Content="Delete" Click="DeleteDynamic_Click"  HorizontalAlignment="Left" Margin="656,344,0,0" VerticalAlignment="Top" Width="100" Height="30"/>
                     <Label FontSize="15" Content="Name:" HorizontalAlignment="Left" Margin="418,33,0,0" VerticalAlignment="Top"/>
                     <Label FontSize="15" Content="Quantity:" HorizontalAlignment="Left" Margin="418,79,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="name1"  HorizontalAlignment="Left" Margin="497,33,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23"/>

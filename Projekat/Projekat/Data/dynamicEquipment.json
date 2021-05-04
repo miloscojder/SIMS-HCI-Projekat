@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "Id": 1,
+    "Name": "needle",
+    "Type": 1,
+    "Quantity": 20
+  },
+  {
+    "Id": 2,
+    "Name": "compress",
+    "Type": 1,
+    "Quantity": 7
+  },
+  {
+    "Id": 3,
+    "Name": "band-aid",
+    "Type": 1,
+    "Quantity": 50
+  },
+  {
+    "Id": 4,
+    "Name": "syringe",
+    "Type": 1,
+    "Quantity": 22
+  }
+]

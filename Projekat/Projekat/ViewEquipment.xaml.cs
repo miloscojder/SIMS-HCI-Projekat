@@ -55,9 +55,10 @@ namespace Projekat
             {
                 MessageBox.Show("You have to fill in all input boxes!");
             }
+            
         }
 
-        private void SelectD_Click(object sender, RoutedEventArgs e)
+        private void SelectDynamic_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -73,6 +74,7 @@ namespace Projekat
             {
                 MessageBox.Show("You have to fill in all input boxes!");
             }
+            
         }
         private void Update_Click(object sender, RoutedEventArgs e)
         {
@@ -87,8 +89,10 @@ namespace Projekat
 
             ViewEquipment ve = new ViewEquipment();
             ve.Show();
+            
+            
         }
-        private void UpdateD_Click(object sender, RoutedEventArgs e)
+        private void UpdateDynamic_Click(object sender, RoutedEventArgs e)
         {
 
             string equipmentname = name1.Text;
@@ -101,18 +105,21 @@ namespace Projekat
 
             ViewEquipment ve = new ViewEquipment();
             ve.Show();
+            
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)
         {
             CreateEquipment ce = new CreateEquipment();
             ce.Show();
+            Close();
         }
 
-        private void CreateD_Click(object sender, RoutedEventArgs e)
+        private void CreateDynamic_Click(object sender, RoutedEventArgs e)
         {
             CreateDynamicEquipment ce = new CreateDynamicEquipment();
             ce.Show();
+            Close();
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -121,14 +128,15 @@ namespace Projekat
             {
                 StaticEquipment staticEquipment = (StaticEquipment)dataGridStaticEquipment.SelectedItems[0];
                 staticEquipmentController.DeleteEquipment(staticEquipment.Id);
-            }
+                Close();            }
             catch
             {
                 MessageBox.Show("You have to select a room to delete!");
             }
+            
         }
 
-        private void DeleteD_Click(object sender, RoutedEventArgs e)
+        private void DeleteDynamic_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -139,6 +147,7 @@ namespace Projekat
             {
                 MessageBox.Show("You have to select a room to delete!");
             }
+            
         }
     }
 }
