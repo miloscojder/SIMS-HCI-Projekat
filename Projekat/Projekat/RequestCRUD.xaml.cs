@@ -39,7 +39,7 @@ namespace Projekat
             String descriptions = Description.Text;
             DateTime dt = dateOfVacation.DisplayDate;
             int durations = Int32.Parse(duration.Text);
-            int docId = Int32.Parse(Doctor.Text);
+            //int docId = Int32.Parse(Doctor.Text);
             Doctor doc = new Doctor();
             Request request = new Request(id, descriptions, dt, DateTime.Now, durations, StatusType.Waiting, "", doc);
             requestController.Save(request);

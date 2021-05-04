@@ -17,10 +17,13 @@ namespace Service
         public DynamicEquipmentRepository dynamicEquipmentRepository = new DynamicEquipmentRepository();
         private List<DynamicEquipment> dynamicEquipments = new List<DynamicEquipment>();
 
+        public void MoveDynamicEquipment(DynamicEquipment dynamicEquipment)
+        {
+            dynamicEquipmentRepository.MoveDynamicEquipment(dynamicEquipment);
+        }
 
 
-      
-      public void Save(DynamicEquipment newEquipment)
+        public void Save(DynamicEquipment newEquipment)
       {
             // TODO: implement
             dynamicEquipmentRepository.Save(newEquipment);
