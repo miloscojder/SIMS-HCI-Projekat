@@ -31,7 +31,18 @@ namespace Repository
 
             }
         }
-
+        public int GenerateNewId()
+        {
+            try
+            {
+                int maxId = appointments.Max(obj => obj.id);
+                return maxId + 1;
+            }
+            catch
+            {
+                return 1;
+            }
+        }
         public void WriteToJson()
         {
             string json = JsonConvert.SerializeObject(appointments);
@@ -45,14 +56,14 @@ namespace Repository
       
       public void RescheduleDoctor(Appointment appointment)
       {
-            int index = appointments.FindIndex(obj => obj.Id == appointment.Id);
+            int index = appointments.FindIndex(obj => obj.id == appointment.id);
             appointments[index] = appointment;
             WriteToJson();
       }
       
       public void Cancel(Appointment newAppointemnt)
       {
-            int index = appointments.FindIndex(obj => obj.Id == newAppointemnt.Id);
+            int index = appointments.FindIndex(obj => obj.id == newAppointemnt.id);
             appointments.RemoveAt(index);
             WriteToJson();
            // return false;
@@ -106,9 +117,9 @@ namespace Repository
          return null;
       }
       
-      public Appointment GetAppointment(string id)
+      public Appointment GetAppointment(int idd)
       {
-         return appointments.Find(obj => obj.Id == id);
+         return appointments.Find(obj => obj.id == idd);
       }
       
    

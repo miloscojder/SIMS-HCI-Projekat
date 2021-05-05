@@ -18,8 +18,14 @@ namespace Service
       {
             anamnesisRepository.CreateAnamnesis(newAnamnesis);
         }
-      
-      public void UpdateAnamnesis(Anamnesis anam)
+
+        public int GenerateNewId()
+        {
+            return anamnesisRepository.GenerateNewId();
+
+        }
+
+        public void UpdateAnamnesis(Anamnesis anam)
       {
             anamnesisRepository.UpdateAnamnesis(anam);
         }

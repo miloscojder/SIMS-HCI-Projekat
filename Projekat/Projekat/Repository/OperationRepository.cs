@@ -31,6 +31,19 @@ namespace Repository
             }
         }
 
+        public int GenerateNewId()
+        {
+            try
+            {
+                int maxId = operations.Max(obj => obj.id);
+                return maxId + 1;
+            }
+            catch
+            {
+                return 1;
+            }
+        }
+
         public void WriteToJson()
         {
             string json = JsonConvert.SerializeObject(operations);
@@ -44,14 +57,14 @@ namespace Repository
       
       public void RescheduleOperation(Operations op)
       {
-            int index = operations.FindIndex(obj => obj.Id == op.Id);
+            int index = operations.FindIndex(obj => obj.id == op.id);
             operations[index] = op;
             WriteToJson();
         }
       
       public void CancelOperation(Operations op)
       {
-            int index = operations.FindIndex(obj => obj.Id == op.Id);
+            int index = operations.FindIndex(obj => obj.id == op.id);
             operations.RemoveAt(index);
             WriteToJson();
         }
@@ -62,7 +75,7 @@ namespace Repository
       
       public Operations GetOperation(Operations newOperations)
       {
-         return operations.Find(obj => obj.Id == newOperations.Id);
+         return operations.Find(obj => obj.id == newOperations.id);
         }
       
       public List<Operations> GetAll()

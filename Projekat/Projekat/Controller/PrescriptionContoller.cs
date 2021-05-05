@@ -17,8 +17,14 @@ namespace Controller
       {
             prescriptionService.CreatePrescription(newPrescription);
         }
-      
-      public void UpdatePrescription(Prescription newPrescription)
+
+        public int GenerateNewId()
+        {
+            return prescriptionService.GenerateNewId();
+
+        }
+
+        public void UpdatePrescription(Prescription newPrescription)
       {
             prescriptionService.UpdatePrescription(newPrescription);
       }

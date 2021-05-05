@@ -4,23 +4,24 @@ namespace Model
 {
    public class Anamnesis
    {
-      public String Anamnesy { get; set; }
-        public string Id { get; set; }
+      public String anamnesy { get; set; }
+        public int id { get; set; }
         public Patient patient { get; set; }
 
         public Anamnesis() { }
-        public Anamnesis(string id, string anam)
+        public Anamnesis(int id, string anam)
         {
-            Id = id;
-            Anamnesy = anam;
+            this.id = id;
+            anamnesy = anam;
         }
 
-        public Anamnesis(string id, string anam, Patient pat)
+        public Anamnesis(int id, string anam, Patient pat)
         {
-            Id = id;
-            Anamnesy = anam;
+            this.id = id;
+            anamnesy = anam;
             patient = pat;
         }
-   
+
+       
    }
 }

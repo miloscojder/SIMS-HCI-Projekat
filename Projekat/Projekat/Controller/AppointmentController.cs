@@ -18,8 +18,13 @@ namespace Controller
       {
             appointmentService.ScheduleDoctor(newAppointment);
       }
-      
-      public void RescheduleDoctor(Appointment newAppointment)
+
+        public int GenerateNewId()
+        {
+            return appointmentService.GenerateNewId();
+
+        }
+        public void RescheduleDoctor(Appointment newAppointment)
       {
             appointmentService.RescheduleDoctor(newAppointment);
       }
@@ -73,7 +78,7 @@ namespace Controller
          return null;
       }
       
-      public Appointment GetAppointment(string id)
+      public Appointment GetAppointment(int id)
       {
            return appointmentService.GetAppointment(id);
       }

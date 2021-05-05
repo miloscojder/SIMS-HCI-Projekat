@@ -41,18 +41,11 @@ namespace Projekat
             Anamnesis a = (Anamnesis)dataGrid.SelectedItems[0];
             ShowUpdate sc = new ShowUpdate(a);
             sc.Show();
+            Close();
 
 
         }
 
-        private void Create(object sender, RoutedEventArgs e)
-        {
-
-
-            CreateAnamnesis sa = new CreateAnamnesis();
-            sa.Show();
-
-
-        }
+       
     }
 }

@@ -30,8 +30,8 @@ namespace Projekat
         private void Prescribe(object sender, RoutedEventArgs e)
         {
 
-        
-            Prescribe sa = new Prescribe();
+            
+            ViewPatients sa = new ViewPatients();
             sa.Show();
 
 

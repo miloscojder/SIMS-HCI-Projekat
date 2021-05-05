@@ -47,8 +47,8 @@ namespace Projekat
                 for (int i = 0; i < 3; i++)
                 {
                     a = new Appointment(date, doktori[i], sale[i]);   //foreach ( doktor in doktori ) if (doktor[i].isFree == true, //foreach ( sala in sale ) if (sale[i].isFree == true)
-                    a.Id = Convert.ToString(random.Next(1, 1000));  
-                    a.AppointmentType = TypeOfAppointment.Examination;
+                    a.id = random.Next(1, 1000);  
+                    a.appointmentType = TypeOfAppointment.Examination;
 
                     appointmentsDateChecked.Add(a);
                 }
@@ -79,8 +79,8 @@ namespace Projekat
                 for (int i = 0; i < 3; i++)
                 {
                     a = new Appointment(timeList[i], doctorsUsername, sale[i]);
-                    a.Id = Convert.ToString(random.Next(1, 1000));
-                    a.AppointmentType = TypeOfAppointment.Examination;
+                    a.id = random.Next(1, 1000);
+                    a.appointmentType = TypeOfAppointment.Examination;
 
                     appointmentDoctorChecked.Add(a);
                 }
@@ -91,10 +91,10 @@ namespace Projekat
 
 
             posrednik1.doctorUsername = posred.doctorUsername;
-            posrednik1.Id = posred.Id;
+            posrednik1.id = posred.id;
             posrednik1.roomName = posred.roomName;
             posrednik1.StartTime = posred.StartTime;
-            posrednik1.AppointmentType = posred.AppointmentType;
+            posrednik1.appointmentType = posred.appointmentType;
 
         }
 
@@ -132,7 +132,7 @@ namespace Projekat
 
                 foreach (Appointment appo in svi)
                 {
-                    if (appo.Id != posrednik1.Id)
+                    if (appo.id != posrednik1.id)
                     {
                         newSvi.Add(appo);
                     }

@@ -35,7 +35,7 @@ namespace Projekat
             doctorsToShow = doctorController.GetAllDoctors();
             requestForDinamicEquipment = requestForDinamicEquipmentController.GetAll();
             foreach(Doctor d in doctorsToShow){
-                doctorNames.Add(d.FirstName + " " + d.LastName);
+                doctorNames.Add(d.firstName + " " + d.lastName);
             }
             doctorsBox.ItemsSource = doctorNames;
             requestsDataGrid.ItemsSource = requestToShow;
@@ -66,7 +66,7 @@ namespace Projekat
             string lastName = doctorName.Split(" ")[1];
             Doctor doc = new Doctor();
             foreach (Doctor d in doctorsToShow){
-                if (String.Compare(d.FirstName, firstName) == 0 && String.Compare(d.LastName, lastName) == 0) {
+                if (String.Compare(d.firstName, firstName) == 0 && String.Compare(d.lastName, lastName) == 0) {
                     doc = d;
                     break;
                 }

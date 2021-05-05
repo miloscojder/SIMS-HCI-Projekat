@@ -14,13 +14,18 @@ namespace Service
    public class PatientService
    {
         public PatientRepository patient_repository = new PatientRepository();
-      public Model.Patient GetById(String id)
+      public Model.Patient GetById(int id)
       {
-         // TODO: implement
-         return null;
+         return patient_repository.GetById(id);
       }
-      
-      public void Update(Model.Patient patient)
+
+        public int GenerateNewId()
+        {
+            return patient_repository.GenerateNewId();
+
+        }
+
+        public void Update(Model.Patient patient)
       {
          // TODO: implement
       }
@@ -41,51 +46,7 @@ namespace Service
             return patient_repository.GetAll();
       }
    
-      public System.Collections.ArrayList patientRepository;
-      
-      /// <pdGenerated>default getter</pdGenerated>
-      public System.Collections.ArrayList GetPatientRepository()
-      {
-         if (patientRepository == null)
-            patientRepository = new System.Collections.ArrayList();
-         return patientRepository;
-      }
-      
-      /// <pdGenerated>default setter</pdGenerated>
-      public void SetPatientRepository(System.Collections.ArrayList newPatientRepository)
-      {
-         RemoveAllPatientRepository();
-         foreach (Repository.PatientRepository oPatientRepository in newPatientRepository)
-            AddPatientRepository(oPatientRepository);
-      }
-      
-      /// <pdGenerated>default Add</pdGenerated>
-      public void AddPatientRepository(Repository.PatientRepository newPatientRepository)
-      {
-         if (newPatientRepository == null)
-            return;
-         if (this.patientRepository == null)
-            this.patientRepository = new System.Collections.ArrayList();
-         if (!this.patientRepository.Contains(newPatientRepository))
-            this.patientRepository.Add(newPatientRepository);
-      }
-      
-      /// <pdGenerated>default Remove</pdGenerated>
-      public void RemovePatientRepository(Repository.PatientRepository oldPatientRepository)
-      {
-         if (oldPatientRepository == null)
-            return;
-         if (this.patientRepository != null)
-            if (this.patientRepository.Contains(oldPatientRepository))
-               this.patientRepository.Remove(oldPatientRepository);
-      }
-      
-      /// <pdGenerated>default removeAll</pdGenerated>
-      public void RemoveAllPatientRepository()
-      {
-         if (patientRepository != null)
-            patientRepository.Clear();
-      }
+    
    
    }
 }

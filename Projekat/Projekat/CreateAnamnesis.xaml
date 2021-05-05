@@ -8,12 +8,13 @@
         mc:Ignorable="d"
         Title="CreateAnamnesis" Height="450" Width="800">
     <Grid>
-        <Label Content="Id:" FontSize="16" HorizontalAlignment="Left" Margin="60,40,0,0" VerticalAlignment="Top" Height="28"/>
-        <TextBox x:Name="Id" FontSize="16" Background="LightCyan" HorizontalAlignment="Left" Margin="190,48,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20"/>
-        <Label Content="Anamnesis" FontSize="16" HorizontalAlignment="Left" Margin="60,94,0,0" VerticalAlignment="Top" Height="36"/>
+        <Label Content="Anamnesis" FontSize="16" HorizontalAlignment="Left" Margin="58,158,0,0" VerticalAlignment="Top" Height="36"/>
 
         <Button Content="Create" FontSize="20" Click="Create" HorizontalAlignment="Left" Margin="630,345,0,0" VerticalAlignment="Top" Height="42" Width="109" Background="#FFB5CDE2"/>
-        <TextBox x:Name="Anamnesis" Background="LightCyan" HorizontalAlignment="Left" Margin="190,112,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="487" Height="158"/>
+        <TextBox x:Name="Anamnesis" Background="LightCyan" HorizontalAlignment="Left" Margin="198,158,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="486" Height="158"/>
+        <Label Content="Patient:" FontSize="16" HorizontalAlignment="Left" Margin="58,39,0,0" VerticalAlignment="Top" Height="36"/>
+        <TextBox x:Name="FirstName" FontSize="16" Background="LightCyan" HorizontalAlignment="Left" Margin="198,38,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="176" Height="38" />
+        <TextBox x:Name="LastName" FontSize="16" Background="LightCyan" HorizontalAlignment="Left" Margin="400,39,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="176" Height="38"/>
 
 
 

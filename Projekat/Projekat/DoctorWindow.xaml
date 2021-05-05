@@ -6,13 +6,16 @@
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
         Title="DoctorWindow" Height="450" Width="800">
-    <Grid>
-        <Label Content="Doctor" HorizontalAlignment="Center" Margin="0,46,0,0" VerticalAlignment="Top" FontSize="30" FontWeight="Bold"/>
-        <Button Content="Appointments" FontSize="20" Click="Appointments" HorizontalAlignment="Left" Margin="87,158,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
-        <Button Content="Operations" FontSize="20" Click="Operationss" HorizontalAlignment="Left" Margin="87,284,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
-        <Button Content="Schedule" FontSize="20" Click="ViewSchedule" HorizontalAlignment="Left" Margin="318,210,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
-        <Button Content="Anamnesis" FontSize="20" Click="Anamnesiss" HorizontalAlignment="Left" Margin="567,158,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
-        <Button Content="Perscriptions" FontSize="20" Click="Prescriptions" HorizontalAlignment="Left" Margin="567,284,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
+    <Grid RenderTransformOrigin="0.379,1.055">
+        <Label Content="Doctor" HorizontalAlignment="Left" Margin="45,32,0,0" VerticalAlignment="Top" FontSize="30" FontWeight="Bold"/>
+        <Button Content="Appointments" FontSize="20" Click="Appointments" HorizontalAlignment="Left" Margin="45,163,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
+        <Button Content="Operations" FontSize="20" Click="Operationss" HorizontalAlignment="Left" Margin="45,303,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
+        <Button Content="Schedule" FontSize="20" Click="ViewSchedule" HorizontalAlignment="Left" Margin="598,30,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
+        <Button Content="Anamnesis" FontSize="20" Click="Anamnesiss" HorizontalAlignment="Center" Margin="0,163,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
+        <Button Content="Perscriptions" FontSize="20" Click="Prescriptions" HorizontalAlignment="Left" Margin="598,163,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
+        <Button Content="Patients" FontSize="20" Click="ViewPatients" HorizontalAlignment="Center" Margin="0,303,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
+        <Button Content="Referrals" FontSize="20" Click="ViewRef" HorizontalAlignment="Left" Margin="598,303,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
+        <Button Content="Medecines" FontSize="20" Click="Medecine" HorizontalAlignment="Center" Margin="0,32,0,0" VerticalAlignment="Top" Height="54" Width="168" Background="#FFB5CDE2"/>
 
 
     </Grid>

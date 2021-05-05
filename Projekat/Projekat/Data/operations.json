@@ -1,47 +1,84 @@
 [
-
+    
     {
-        "Id": "o1",
+        "id": 1,
         "Date": "20.12.2021.",
         "TimeStart": "12:00",
         "Duration": "60",
         "EndTime": "13:00",
+        "AppointmentType": 0,
         "room": {
-            "Id": "D1",
-            "Name": "Room D1",
+            "Id": 1,
+            "Name": "C",
+            "RoomType": "Operation",
             "Floor": 1,
-            "Status": 0,
-            "Detail": "Operation room",
-            "RoomType": "Operation"
+            "Detail": "Operation room"
         },
         "patient": {
-            "id": "P15",
+            "id": 3,
+            "Username": null,
+            "Password": null,
             "firstName": "Anamarija",
-            "lastName": "Dolovac"
+            "lastName": "Dolovac",
+            "Jmbg": null,
+            "EMail": null,
+            "PhoneNumber": null,
+            "DateOfBirth": "0001-01-01T00:00:00"
         },
-        "AppointmentType": "Operation",
         "anamnesis": null
     },
     {
-        "Id": "o2",
+        "id": 2,
         "Date": "10.05.2021.",
         "TimeStart": "08:30",
         "Duration": "30",
         "EndTime": "09:00",
+        "AppointmentType": 0,
         "room": {
-            "Id": "D3",
-            "Name": "Room D3",
+            "Id": 4,
+            "Name": "A",
+            "RoomType": "Operation",
             "Floor": 3,
-            "Status": 0,
-            "Detail": "Operaition room",
-            "RoomType": "Operation"
+            "Detail": "Operaition room"
         },
         "patient": {
-            "id": "P3",
+            "id": 4,
+            "Username": null,
+            "Password": null,
             "firstName": "Mirko",
-            "lastName": "Mirkovic"
+            "lastName": "Mirkovic",
+            "Jmbg": null,
+            "EMail": null,
+            "PhoneNumber": null,
+            "DateOfBirth": "0001-01-01T00:00:00"
         },
-        "AppointmentType": "Operation",
+        "anamnesis": null
+    },
+    {
+        "id": 4,
+        "Date": "21.06.2021",
+        "TimeStart": "18:00",
+        "Duration": "20",
+        "EndTime": "18:20",
+        "AppointmentType": 0,
+        "room": {
+            "Id": 0,
+            "Name": "C",
+            "RoomType": null,
+            "Floor": 0,
+            "Detail": null
+        },
+        "patient": {
+            "id": 0,
+            "Username": null,
+            "Password": null,
+            "firstName": "Pera",
+            "lastName": "Peric",
+            "Jmbg": null,
+            "EMail": null,
+            "PhoneNumber": null,
+            "DateOfBirth": "0001-01-01T00:00:00"
+        },
         "anamnesis": null
     }
 ]

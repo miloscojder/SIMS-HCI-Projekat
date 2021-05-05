@@ -31,6 +31,18 @@ namespace Repository
 
             }
         }
+        public int GenerateNewId()
+        {
+            try
+            {
+                int maxId = anamneses.Max(obj => obj.id);
+                return maxId + 1;
+            }
+            catch
+            {
+                return 1;
+            }
+        }
 
         public void WriteToJson()
         {
@@ -45,13 +57,13 @@ namespace Repository
       
       public void UpdateAnamnesis(Anamnesis ana)
       {
-            int index = anamneses.FindIndex(obj => obj.Id == ana.Id);
+            int index = anamneses.FindIndex(obj => obj.id == ana.id);
             anamneses[index] = ana;
             WriteToJson();
         }
         public Anamnesis GetAnamnesis(Anamnesis ana)
         {
-            return anamneses.Find(obj => obj.Id == ana.Id);
+            return anamneses.Find(obj => obj.id == ana.id);
         }
 
         public List<Anamnesis> GetAll()

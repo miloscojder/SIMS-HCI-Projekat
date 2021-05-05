@@ -120,7 +120,7 @@ namespace Projekat
                 {
                     Appointment newAppointment = new Appointment();
                     Random rid = new Random();
-                    newAppointment.Id = Convert.ToString(rid.Next(1, 1000));
+                    newAppointment.id = rid.Next(1, 1000);
                     newAppointment.roomName = "R1";
                     newAppointment.doctorUsername = izabraniDoktor;
                     newAppointment.StartTime = choosenDate;

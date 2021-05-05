@@ -10,7 +10,7 @@
         <DataGrid x:Name="dataGrid" ItemsSource="{Binding Operations}" IsReadOnly="True"
                   SelectionMode="Single" AutoGenerateColumns="False" Margin="106,46,106,128">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Width="40" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Id" Width="40" Binding="{Binding id}"/>
                 <DataGridTextColumn Header="Date" Width="80" Binding="{Binding Date}"/>
                 <DataGridTextColumn Header="Time start" Width="70" Binding="{Binding TimeStart}"/>
                 <DataGridTextColumn Header="Duration" Width="70" Binding="{Binding Duration}"/>
