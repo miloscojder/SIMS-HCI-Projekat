@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="ScheduleAppointmentPatient" Height="450" Width="800">
+        Title="ScheduleAppointmentPatient"  Background="#FFAEE0FF" Height="450" Width="800">
     <Grid Margin="0,0,3.6,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>

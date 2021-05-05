@@ -83,6 +83,8 @@ namespace Projekat
             {
                 MessageBox.Show("Blokirani ste zbog spamovanja, javite nam se za vis enformacija");
                 //window close        
+                MainWindow mw = new MainWindow();
+                mw.Show();
             } 
             else 
             {

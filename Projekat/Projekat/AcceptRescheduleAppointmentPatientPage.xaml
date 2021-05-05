@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="AcceptRescheduleAppointmentPatientPage" Height="450" Width="800">
+        Title="AcceptRescheduleAppointmentPatientPage"  Background="LightSkyBlue" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="27*"/>
             <ColumnDefinition Width="13*"/>
         </Grid.ColumnDefinitions>
 
-        <ListView Margin="10,10,193.6,163" Name="lvAcceptRescheduleAppointment" Grid.ColumnSpan="2">
+        <ListView Margin="10,10,193.6,163" Background="#FFA6F4A6" Name="lvAcceptRescheduleAppointment" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding Id}" />

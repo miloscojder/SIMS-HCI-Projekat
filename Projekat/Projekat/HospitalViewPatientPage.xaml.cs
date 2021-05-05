@@ -39,6 +39,8 @@ namespace Projekat
             List<Doctor> doktori = new List<Doctor>();
             doktori = JsonConvert.DeserializeObject<List<Doctor>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doctorsak.json"));
 
+           
+
             /*
             if(doktor!=null)
             {                
@@ -61,7 +63,7 @@ namespace Projekat
             }
 
             File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doctorsak.json", JsonConvert.SerializeObject(doktori));
-            lvDoctorsPatient.ItemsSource = doktori;
+            lvDoctorsPatient.ItemsSource = doktori;                      //dodati jos jednu kolonu u kojoj ce biti opis koji pacijent kaze za lekara
            }
 
         private void Button_Click(object sender, RoutedEventArgs e)

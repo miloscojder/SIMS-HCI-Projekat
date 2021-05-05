@@ -5,12 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="PatientMainPage" Height="450" Width="800">
-    <Grid Margin="0,0,0,-16">
-        <Button Content="MyAppoinemtnes" HorizontalAlignment="Left" VerticalAlignment="Top" Click="MyAppointmentsButton_Click" />
-        <Button Content="Button" HorizontalAlignment="Left" Margin="322,179,0,0" VerticalAlignment="Top"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="400,84,0,0" VerticalAlignment="Top"/>
-        <Button Content="Hospital" HorizontalAlignment="Left" Margin="162,164,0,0" VerticalAlignment="Top" Click="SeeHospitalButton_Click"  />
+        Title="PatientMainPage" Background="LightSkyBlue" Height="553" Width="800">
 
+
+
+    <Grid Margin="0,0,0,-16">
+        <Grid.Style>
+            <Style/>
+        </Grid.Style>
+
+        <!--     <Button Content="MyAppoinemtnes" HorizontalAlignment="Left" VerticalAlignment="Top" Click="MyAppointmentsButton_Click" Margin="175,282,0,0" Height="46" Width="166" />
+        <Button Content="Notifications" HorizontalAlignment="Left" Margin="482,382,0,0" VerticalAlignment="Top" Height="46" Width="166" Click="NotificationButton_Click_1"/>
+        <Button Content="My profile" HorizontalAlignment="Left" Margin="482,282,0,0" VerticalAlignment="Top" Height="46" Width="166" Click="PatientProfileButton_Click"/>
+   -->
+        <Button Content="Hospital" HorizontalAlignment="Left" Margin="151,387,0,0" VerticalAlignment="Top" Click="SeeHospitalButton_Click" Height="46" Width="166"  />
+
+        <Label Content="Welcome!" HorizontalAlignment="Center" Margin="0,89,0,0" VerticalAlignment="Top" FontSize="36" Height="61"/>
+
+        <StackPanel Orientation="Horizontal" Background="LightSteelBlue" Margin="0,0,0,486">
+
+            <Button Content="HOME PAGE" Click="HomePageButton_Click" Width="104" ></Button>
+            <Button Content="MY APPOINTMENTS" Click="MyAppointmentsButton_Click" Width="127" ></Button>
+            <Button Content="MY NOTIFICATIONS" Click="NotificationButton_Click_1" Width="125" />
+        </StackPanel>
+        <Label Content="OVO CE BITI NEKI STATICKI TEKST&#xD;&#xA;&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj" HorizontalAlignment="Left" Margin="465,165,0,0" VerticalAlignment="Top" Height="268" Width="325"/>
+        <Rectangle HorizontalAlignment="Left" Height="189" Margin="118,0,0,0" Stroke="Black" VerticalAlignment="Center" Width="232"/>
+
+
+        <StackPanel Orientation="Horizontal" Background="White" Margin="0,509,0,13" UseLayoutRounding="False">
+            
+            <TextBlock Width="445" FontSize="16"> Learn about our work and evaluate it:                    </TextBlock>
+            <Button Content="G" Width="104" HorizontalAlignment="Right" ></Button>
+            <Button Content="Feeback" HorizontalAlignment="Right" Width="127" ></Button>
+            <Button Content="Informations" HorizontalAlignment="Right"  Width="125" />
+        </StackPanel>
+        
     </Grid>
 </Window>
