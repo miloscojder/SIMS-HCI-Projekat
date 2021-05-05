@@ -5,20 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="AppointmentsPage" Height="450" Width="800">
+        Title="AppointmentsPage"  Background="LightSkyBlue" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="27*"/>
             <ColumnDefinition Width="13*"/>
         </Grid.ColumnDefinitions>
 
-        <ListView Margin="10,10,193.6,163" Name="lvAppointmentsPatient" Grid.ColumnSpan="2">
+        <ListView Margin="10,86,194,119" Background="#FFA6F4A6" Name="lvAppointmentsPatient" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding Id}" />
                     <GridViewColumn Header="Start Time" Width="100" DisplayMemberBinding="{Binding StartTime}" />
                     <GridViewColumn Header="Room name" Width="100" DisplayMemberBinding="{Binding roomName}" />
-                    <GridViewColumn Header="Doctor name" Width="100" DisplayMemberBinding="{Binding doctorUsername}">
+                    <GridViewColumn Header="Doctor name" Width="150" DisplayMemberBinding="{Binding doctorUsername}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Mail}" TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
@@ -29,13 +29,15 @@
             </ListView.View>
         </ListView>
 
-        <Button Content="Schedule" Margin="94,313,329,53" Click="AddButton_Click">
+        <Button Content="Schedule" Margin="49,339,374,27" Click="AddButton_Click">
         </Button>
-        <Button Content="Cancel" Margin="315,313,117,53" Click="CancButton_Click_1">
+        <Button Content="Cancel" Margin="279,339,153,27" Click="CancButton_Click_1">
         </Button>
-        <Button Content="Reschedule" Margin="207,313,221,53" Click="RescButton_Click_2">
+        <Button Content="Reschedule" Margin="167,339,261,27" Click="RescButton_Click_2">
         </Button>
-        <Button Content="Report&#xD;&#xA;" Grid.Column="1" HorizontalAlignment="Left" Margin="80,313,0,0" VerticalAlignment="Top" Width="75" Height="56"/>
-        <Button Content="Notifications" HorizontalAlignment="Left" Margin="492,321,0,0" VerticalAlignment="Top" Click="NotificationsButton_Click" Grid.ColumnSpan="2" Height="48"/>
+        <Button Content="Report&#xD;&#xA;" Grid.Column="1" HorizontalAlignment="Left" Margin="185,378,0,0" VerticalAlignment="Top" Width="75" Height="56"/>
+        <Label Content="My Appoinemtns: &#xD;&#xA;" HorizontalAlignment="Left" Margin="167,17,0,0" VerticalAlignment="Top" FontSize="22"/>
+        <Label Content="Patient name&#xD;&#xA;" HorizontalAlignment="Left" Margin="130,96,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="PatientsUsernameTextBox" Grid.Column="1" HorizontalAlignment="Left" Margin="110,143,0,0" Text="Patients Username" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="30" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold"/>
     </Grid>
 </Window>

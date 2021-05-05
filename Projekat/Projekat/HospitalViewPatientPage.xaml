@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="HospitalViewPatientPage" Height="450" Width="800">
+        Title="HospitalViewPatientPage"  Background="LightSkyBlue" Height="450" Width="800">
     <Grid RenderTransformOrigin="0.349,0.65">
         <Label Content="BOLNICA 1: " HorizontalAlignment="Left" Margin="63,30,0,0" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="581,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <ListView Margin="28,161,255,30"  Name="lvDoctorsPatient" Grid.ColumnSpan="2" >
+        <ListView Margin="28,161,255,30" Background="#FFA6F4A6"  Name="lvDoctorsPatient" Grid.ColumnSpan="2" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding Id}" />
@@ -25,16 +25,16 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox x:Name="HospitalRating" HorizontalAlignment="Left" Margin="248,37,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" Height="21"/>
+        <TextBox x:Name="HospitalRating" HorizontalAlignment="Left" Margin="248,37,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" Height="21" IsReadOnlyCaretVisible="True" IsEnabled="False" FontWeight="Bold"/>
         <TextBox x:Name="UnesiteOpis" HorizontalAlignment="Left" Margin="355,109,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="243" Height="19"/>
         <Label Content="Rejting:" HorizontalAlignment="Left" Margin="174,32,0,0" VerticalAlignment="Top"/>
         <Label Content="Dodajte vase misljenje" HorizontalAlignment="Left" Margin="222,106,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="Ocena" HorizontalAlignment="Left" Margin="118,103,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" Height="21" RenderTransformOrigin="-0.047,0.645"/>
         <Label Content="Ocenite" HorizontalAlignment="Left" Margin="37,102,0,0" VerticalAlignment="Top"/>
         <Button Content="Update ocene" HorizontalAlignment="Left" Margin="633,133,0,0" VerticalAlignment="Top" Click="Button_Click" />
-        <Button Content="Ocenite Doktora" HorizontalAlignment="Left" Margin="588,301,0,0" VerticalAlignment="Top" Click="OceniteDoktoraButton_Click"/>
-        <TextBox x:Name="OpisPrikazan" HorizontalAlignment="Left" Margin="372,24,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="359" Height="42"/>
-        <Button Content="Update Opisa" HorizontalAlignment="Left" Margin="635,95,0,0" VerticalAlignment="Top" Click="Button_Click_1" />
+        <Button Content="Ocenite Doktora" HorizontalAlignment="Left" Margin="620,301,0,0" VerticalAlignment="Top" Click="OceniteDoktoraButton_Click"/>
+        <TextBox x:Name="OpisPrikazan" HorizontalAlignment="Left" Margin="372,24,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="359" Height="42" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold"/>
+        <Button Content="Update Opisa" HorizontalAlignment="Left" Margin="633,95,0,0" VerticalAlignment="Top" Click="Button_Click_1" Width="78" />
 
     </Grid>
 </Window>

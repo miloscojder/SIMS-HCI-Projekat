@@ -1,0 +1,30 @@
+﻿<Window x:Class="Projekat.PatientProfilePage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat"
+        mc:Ignorable="d"
+        Title="PatientProfilePage"  Background="LightSkyBlue" Height="450" Width="800">
+    <Grid>
+        <Label Content="Username: " HorizontalAlignment="Left" Margin="257,36,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password: " HorizontalAlignment="Left" Margin="26,313,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="PatientPasswordTextBox" HorizontalAlignment="Left" Margin="141,321,0,0" Text="******" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" IsReadOnlyCaretVisible="True"/>
+        <TextBox x:Name="PatientUsernameTextBox"  HorizontalAlignment="Left" Margin="403,44,0,0" Text="AleksaKralj" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="PatientUsernameTextBox_TextChanged" IsEnabled="False" IsReadOnlyCaretVisible="True"/>
+        <Label Content="Frst Name: " HorizontalAlignment="Left" Margin="372,152,0,0" VerticalAlignment="Top"/>
+        <Label Content="Last Name: " HorizontalAlignment="Left" Margin="372,182,0,0" VerticalAlignment="Top"/>
+        <Label Content="BirthDay: " HorizontalAlignment="Left" Margin="372,217,0,0" VerticalAlignment="Top"/>
+        <Label Content="JMBG: " HorizontalAlignment="Left" Margin="372,282,0,0" VerticalAlignment="Top"/>
+        <Label Content="e-mail: " HorizontalAlignment="Left" Margin="372,248,0,0" VerticalAlignment="Top"/>
+        <Label Content="Phone number:" HorizontalAlignment="Left" Margin="372,313,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="PatientFirstNameTextBox" HorizontalAlignment="Left" Margin="518,160,0,0" Text="Aleksa" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" IsReadOnlyCaretVisible="True"/>
+        <TextBox x:Name="PatientLastNameTextBox" HorizontalAlignment="Left" Margin="518,186,0,0" Text="Kralj" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" IsReadOnlyCaretVisible="True"/>
+        <TextBox x:Name="PatientBDayTextBox" HorizontalAlignment="Left" Margin="518,221,0,0" Text="08:11:1999" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" IsReadOnlyCaretVisible="True"/>
+        <TextBox x:Name="PatientEMailTextBox" HorizontalAlignment="Left" Margin="518,252,0,0" Text="aleksa@gmail.com" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" IsReadOnlyCaretVisible="True"/>
+        <TextBox x:Name="PatientJMBGTextBox" HorizontalAlignment="Left" Margin="518,291,0,0" Text="123123123123" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" IsReadOnlyCaretVisible="True"/>
+        <TextBox x:Name="PatientPhoneNumberTextBox" HorizontalAlignment="Left" Margin="518,317,0,0" Text="0610123123123" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" IsReadOnlyCaretVisible="True"/>
+        <Rectangle x:Name="PatientProfilePicutre" HorizontalAlignment="Left" Height="164" Margin="59,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="188" Fill="#FFCECECE"/>
+        <Button Content="Change Data" HorizontalAlignment="Left" Margin="605,381,0,0" VerticalAlignment="Top" Width="98" Height="27"/>
+
+    </Grid>
+</Window>

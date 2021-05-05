@@ -88,14 +88,16 @@ namespace Projekat
                 if ((DateTime.Now.Date - datum.Date) > timeSpan)
                 {
                     activityTime.Remove(datum);
-                    sfsd.activityCounter--;                                                       // ovo cu da ucitam iz fajla nekog posle
-                   // File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json", JsonConvert.SerializeObject(sfsd));
+                    sfsd.activityCounter--;                                                     
+                    File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json", JsonConvert.SerializeObject(sfsd));
                 }
             }
 
             if(sfsd.activityCounter > 10)
             {
                 MessageBox.Show("Blokirani ste zbog spamovanja, javite nam se za vise informacija");
+                MainWindow mw = new MainWindow();
+                mw.Show();
             }
             else
             {
@@ -126,41 +128,6 @@ namespace Projekat
 
             }
 
-
-
-
-
-
-
-
-            /*
-            Appointment ac = (Appointment)lvAppointmentsPatient.SelectedItems[0];
-
-
-            List<Appointment> svi = new List<Appointment>();
-            List<Appointment> newSvi = new List<Appointment>();
-
-            svi = JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json"));
-
-
-            foreach (Appointment a in svi)
-            {
-                if (a.Id != ac.Id)
-                {
-                    newSvi.Add(a);
-                }
-            }
-
-            File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json", JsonConvert.SerializeObject(newSvi));
-            */
-
-
-
-            //          File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\counerOfActivites.txt", Convert.ToString(numberOfActivities));
-            /*
-                        MessageBox.Show("Vas pregled je otkazan.");
-                        this.Close();
-            */
         }
 
         private void RescButton_Click_2(object sender, RoutedEventArgs e)

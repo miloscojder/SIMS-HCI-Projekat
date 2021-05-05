@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="NotificationsPatientPage" Height="450" Width="800">
+        Title="NotificationsPatientPage"  Background="LightSkyBlue" Height="450" Width="800">
     <Grid>
-        <ListView Margin="10,44,194,129" Name="lvNotificationList">
+        <ListView Margin="10,44,194,129" Background="#FFA6F4A6" Name="lvNotificationList">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding Id}" />
