@@ -1,17 +1,23 @@
 [
     
     {
-        "Id": "a1",
+        "id": 1,
         "Date": "21.12.2021.",
-        "TimeStart": "12:00",
-        "Duration": "30",
-        "EndTime": "12:30",
-        "AppointmentType": 1,
+        "startTime": "0001-01-01T00:00:00",
+        "timeStart": "12:00",
+        "duration": "30",
+        "endTime": "12:30",
+        "appointmentType": 1,
         "room": {
-
+            "Id": 1,
+            "Name": "D",
+            "RoomType": "Examination",
+            "Floor": 1,
+            "Detail": "Examination room"
         },
         "patient": {
-            "Id": "P11",
+            "record": null,
+            "id": 1,
             "Username": null,
             "Password": null,
             "firstName": "Nikolina",
@@ -21,53 +27,28 @@
             "PhoneNumber": null,
             "DateOfBirth": "0001-01-01T00:00:00"
         },
-        "anamnesis": null
+        "anamnesis": null,
+        "roomName": null,
+        "doctorUsername": null
     },
     {
-        "Id": "a2",
-        "Date": "10.05.2021.",
-        "TimeStart": "08:30",
-        "Duration": "30",
-        "EndTime": "09:00",
-        "AppointmentType": 1,
+        "id": 2,
+        "Date": "16.08.2021.",
+        "startTime": "0001-01-01T00:00:00",
+        "timeStart": "11:00",
+        "duration": "30",
+        "endTime": "10:30",
+        "appointmentType": 1,
         "room": {
-            "Id": "B3",
-            "Name": "Room A3",
-            "Floor": 3,
-            "Status": 0,
-            "Detail": "Examination room",
-            "RoomType": "Examination"
+            "Id": 0,
+            "Name": "D",
+            "RoomType": null,
+            "Floor": 0,
+            "Detail": null
         },
         "patient": {
-            "Id": "P1",
-            "Username": null,
-            "Password": null,
-            "firstName": "Kristina",
-            "lastName": "Todic",
-            "Jmbg": null,
-            "EMail": null,
-            "PhoneNumber": null,
-            "DateOfBirth": "0001-01-01T00:00:00"
-        },
-        "anamnesis": null
-    },
-    {
-        "Id": "a9",
-        "Date": "15.08.2021.",
-        "TimeStart": "10:30",
-        "Duration": "30",
-        "EndTime": "11:00",
-        "AppointmentType": 1,
-        "room": {
-            "Id": "B3",
-            "Name": "Room A3",
-            "Floor": 3,
-            "Status": 0,
-            "Detail": "Examination room",
-            "RoomType": "Examination"
-        },
-        "patient": {
-            "Id": "P3",
+            "record": null,
+            "id": 0,
             "Username": null,
             "Password": null,
             "firstName": "Mirko",
@@ -77,6 +58,70 @@
             "PhoneNumber": null,
             "DateOfBirth": "0001-01-01T00:00:00"
         },
-        "anamnesis": null
+        "anamnesis": null,
+        "roomName": null,
+        "doctorUsername": null
+    },
+    {
+        "id": 3,
+        "Date": "15.05.2021.",
+        "startTime": "0001-01-01T00:00:00",
+        "timeStart": "08:10",
+        "duration": "40",
+        "endTime": "08:50",
+        "appointmentType": 1,
+        "room": {
+            "Id": 0,
+            "Name": "B",
+            "RoomType": null,
+            "Floor": 0,
+            "Detail": null
+        },
+        "patient": {
+            "record": null,
+            "id": 0,
+            "Username": null,
+            "Password": null,
+            "firstName": "Kristina",
+            "lastName": "Todic",
+            "Jmbg": null,
+            "EMail": null,
+            "PhoneNumber": null,
+            "DateOfBirth": "0001-01-01T00:00:00"
+        },
+        "anamnesis": null,
+        "roomName": null,
+        "doctorUsername": null
+    },
+    {
+        "id": 4,
+        "Date": "18.06.2021.",
+        "startTime": "0001-01-01T00:00:00",
+        "timeStart": "09:00",
+        "duration": "20",
+        "endTime": "09:20",
+        "appointmentType": 1,
+        "room": {
+            "Id": 0,
+            "Name": "B",
+            "RoomType": null,
+            "Floor": 0,
+            "Detail": null
+        },
+        "patient": {
+            "record": null,
+            "id": 0,
+            "Username": null,
+            "Password": null,
+            "firstName": "Pera",
+            "lastName": "Peric",
+            "Jmbg": null,
+            "EMail": null,
+            "PhoneNumber": null,
+            "DateOfBirth": "0001-01-01T00:00:00"
+        },
+        "anamnesis": null,
+        "roomName": null,
+        "doctorUsername": null
     }
 ]

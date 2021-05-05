@@ -13,9 +13,9 @@ using System.Collections.Generic;
 
 namespace Service
 {
-    public class DoctorService
-    {
-        public DoctorRepository doctorRepository = new DoctorRepository();
+   public class DoctorService
+   {
+        public  DoctorRepository doctorRepository = new DoctorRepository();
 
         public int GenerateNewId()
         {
@@ -42,7 +42,7 @@ namespace Service
         {
             return doctorRepository.GetAllDoctors();
         }
-        public Doctor GetDoctor(String id)
+        public Doctor GetDoctor(int id)
         {
             return doctorRepository.GetDoctor(id);
         }
@@ -50,18 +50,18 @@ namespace Service
 
 
         public List<Operations> GetAllOperations()
-        {
-            // TODO: implement
-            return null;
-        }
-
-        public List<Patient> GetPatients()
-        {
-            // TODO: implement
-            return null;
-        }
-
-
-
-    }
+      {
+         // TODO: implement
+         return null;
+      }
+      
+      public List<Patient> GetPatients()
+      {
+         // TODO: implement
+         return null;
+      }
+   
+     
+   
+   }
 }

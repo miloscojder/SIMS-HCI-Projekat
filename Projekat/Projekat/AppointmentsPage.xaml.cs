@@ -112,7 +112,7 @@ namespace Projekat
 
                 foreach (Appointment a in svi)
                 {
-                    if (a.Id != ac.Id)
+                    if (a.id != ac.id)
                     {
                         newSvi.Add(a);
                     }

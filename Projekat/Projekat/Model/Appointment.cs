@@ -10,48 +10,48 @@ namespace Model
 {
     public class Appointment
     {
-        public String Id { get; set; }
+        public int id { get; set; }
         public String Date { get; set; }
         public DateTime StartTime { get; set; }
-        public String TimeStart { get; set; }
-        public string Duration { get; set; }
+        public String timeStart { get; set; }
+        public string duration { get; set; }
         //public Boolean Finished;
-        public String EndTime { get; set; }
-        public TypeOfAppointment AppointmentType { get; set; }
+        public String endTime { get; set; }
+        public TypeOfAppointment appointmentType { get; set; }
         //public MedicalRecord MedicalRecord { get; set; }
-
 
         public Room room { get; set; }
         public Patient patient { get; set; }
-        public Doctor doctor { get; set; }
+      //  public Doctor doctor { get; set; }
         public Anamnesis anamnesis { get; set; }
 
         public Appointment() { }
-        public Appointment(string id, String date, string start, string duration, string end, Room r, Patient p, TypeOfAppointment type)
+       /* public Appointment(int id, DateTime start, string duration, String end, Room r, Patient p, TypeOfAppointment type)
         {
-            Id = id;
-            Date = date;
-            TimeStart = start;
-            Duration = duration;
-            EndTime = end;
+            this.id = id;
+            startTime = start;
+            this.duration = duration;
+            endTime = end;
             room = r;
             patient = p;
-            AppointmentType = type;
-        }
+            appointmentType = type;
+        }*/
 
-        public Appointment(string id,  String date, string start, string duration, string end, Room r, Patient p)
+        public Appointment(int id,  String date, String start, string d, String end, Room R, Patient p)
         {
-            Id = id;
+            this.id = id;
             Date = date;
-            TimeStart = start;
-            Duration = duration;
-            EndTime = end;
+            timeStart = start;
+            duration = d;
+            endTime = end;
+            room = R;
+            patient = p;
 
         }
 
         public Appointment(DateTime date, string DoctorsName, string room)
         {
-            StartTime = date;
+           StartTime = date;
             roomName = room;
             doctorUsername = DoctorsName;
         }

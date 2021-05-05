@@ -5,29 +5,34 @@ using Controller;
 using Repository;
 using System.Windows;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Projekat
 {
    
-    public partial class ScheduleAppointment : Window
+    public partial class ReferralPatientt : Window
     {
-        public AppointmentController appointmentController = new AppointmentController();
-        public PatientRepository patientRepository = new PatientRepository();
-        public RoomRepository roomRepository = new RoomRepository();
-        public ScheduleAppointment(Patient p)
+        
+        public ReferralPatientController referralPatientController = new ReferralPatientController();
+        public List<String> specialties { get; set; }
+        public String selekt { get; set; }
+        public ReferralPatientt(Patient p)
         {
             InitializeComponent();
             this.DataContext = this;
             Name.Text = p.firstName;
             Surname.Text = p.lastName;
 
+            string[] specialtiess = File.ReadAllLines(@"C:/Users/krist/source/repos/SIMS-Projekat/Projekat/Projekat/Data/specialties.txt");
+            specialties = new List<string>(specialtiess);
+
         }
 
-        private void Schedule(object sender, RoutedEventArgs e)
+        private void Referral(object sender, RoutedEventArgs e)
         {
 
             Appointment app = new Appointment();
-            int ida = appointmentController.GenerateNewId();
+            int ida = referralPatientController.GenerateNewId();
             String date = Date.Text;
             String hours = Hours.Text;
             String minutes = Minutes.Text;
@@ -36,6 +41,7 @@ namespace Projekat
             String start = hours + ":" + minutes;
             String end = hourss + ":" + minutess;
             String duration = Duration.Text;
+            String expl = Explain.Text;
 
 
             Room r = new Room();
@@ -47,15 +53,18 @@ namespace Projekat
             p.firstName = Name.Text;
             p.lastName = Surname.Text;
 
+           
+            string selectSpecialty = (string)Combobox1.SelectedItem;
+            
 
-            Appointment a = new Appointment(ida, date, start, duration, end, r, p);
-            appointmentController.ScheduleDoctor(a);
+            ReferralPatient a = new ReferralPatient(ida, date, start, duration, end, expl, r, p, selectSpecialty);
+            referralPatientController.CreateReferral(a);
 
          
              MessageBox.Show("Appointment scheduled!");
             this.Close();
 
-            Appointments ap = new Appointments();
+            ViewReferrals ap = new ViewReferrals();
             ap.Show();
         }
     }

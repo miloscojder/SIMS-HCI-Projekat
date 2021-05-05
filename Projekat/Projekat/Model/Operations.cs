@@ -4,7 +4,7 @@ namespace Model
 {
    public class Operations
    {
-        public String Id { get; set; }
+        public int id { get; set; }
         public String Date { get; set; }
         public String TimeStart { get; set; }
         public string Duration { get; set; }
@@ -19,9 +19,9 @@ namespace Model
         public Anamnesis anamnesis { get; set; }
 
         public Operations() { }
-        public Operations(string id, String date, string start, string duration, string end, Room r, Patient p, TypeOfAppointment type)
+        public Operations(int id, String date, string start, string duration, string end, Room r, Patient p, TypeOfAppointment type)
         {
-            Id = id;
+            this.id = id;
             Date = date;
             TimeStart = start;
             Duration = duration;
@@ -31,13 +31,15 @@ namespace Model
             AppointmentType = type;
         }
 
-        public Operations(string id, String date, string start, string duration, string end)
+        public Operations(int id, String date, string start, string duration, string end, Room r, Patient p)
         {
-            Id = id;
+            this.id = id;
             Date = date;
             TimeStart = start;
             Duration = duration;
             EndTime = end;
+            room = r;
+            patient = p;
 
         }
 

@@ -42,6 +42,7 @@ namespace Projekat
 
             Operationss ap = new Operationss();
             ap.Show();
+            Close();
         }
 
         private void Reschedule(object sender, RoutedEventArgs e)
@@ -50,6 +51,7 @@ namespace Projekat
             Operations a = (Operations)dataGrid.SelectedItems[0];
             ShowChangesO sc = new ShowChangesO(a);
             sc.Show();
+            Close();
 
 
         }
@@ -57,9 +59,10 @@ namespace Projekat
         private void Schedule(object sender, RoutedEventArgs e)
         {
 
-        
-            ScheduleOperation sa = new ScheduleOperation();
+            Patient p = new Patient();
+            ScheduleOperation sa = new ScheduleOperation(p);
             sa.Show();
+            Close();
 
 
         }

@@ -19,6 +19,12 @@ namespace Service
         {
             operationRepository.ScheduleOperation(newO);
         }
+        public int GenerateNewId()
+        {
+            return operationRepository.GenerateNewId();
+
+        }
+
 
         public void RescheduleDoctor(Operations operations)
         {

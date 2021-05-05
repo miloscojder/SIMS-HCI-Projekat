@@ -12,8 +12,8 @@ using System.Collections.Generic;
 
 namespace Repository
 {
-    public class DoctorRepository
-    {
+   public class DoctorRepository
+   {
         public string FileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\doctors.json";
         public List<Doctor> doctors = new List<Doctor>();
 
@@ -44,8 +44,8 @@ namespace Repository
         {
             try
             {
-                String maxId = doctors.Max(obj => obj.Id);
-                return Int32.Parse(maxId) + 1;
+                int maxId = doctors.Max(obj => obj.id);
+                return maxId + 1;
             }
             catch
             {
@@ -64,31 +64,31 @@ namespace Repository
             WriteToJson();
         }
         public List<Doctor> GetAllDoctorsSpecialist(String specialization)
-        {
-            return doctors.FindAll(obj => obj.Specialty == specialization);
+      {
+            return doctors.FindAll(obj => obj.specialty == specialization);
         }
 
         public List<Doctor> GetAllDoctors()
         {
             return doctors;
         }
-        public Doctor GetDoctor(String id)
+        public Doctor GetDoctor(int id)
         {
-            return doctors.Find(obj => obj.Id == id);
+            return doctors.Find(obj => obj.id == id);
         }
 
 
         public List<Operations> GetAllOperations()
-        {
-            // TODO: implement
-            return null;
-        }
-
-        public List<Patient> GetPatients()
-        {
-            // TODO: implement
-            return null;
-        }
-
-    }
+      {
+         // TODO: implement
+         return null;
+      }
+      
+      public List<Patient> GetPatients()
+      {
+         // TODO: implement
+         return null;
+      }
+   
+   }
 }

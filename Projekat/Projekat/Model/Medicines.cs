@@ -6,6 +6,7 @@ namespace Projekat.Model
 {
     class Medicines
     {
+        public Medicines() { }
 
         public Medicines(int id, String name, String details, String alternative)
         {
@@ -16,7 +17,7 @@ namespace Projekat.Model
 
         }
 
-       /* public Medicines(int id, String name, String details, String alternative, String explanation, Boolean accepted)
+        public Medicines(int id, String name, String details, String alternative, String explanation, Boolean accepted)
         {
             Id = id;
             Name = name;
@@ -25,7 +26,7 @@ namespace Projekat.Model
             Explanation = explanation;
             Accepted = accepted;
 
-        }*/
+        }
 
         public int Id
         {

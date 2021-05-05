@@ -45,8 +45,8 @@ namespace Projekat
                 for (int i = 0; i < 3; i++)
                 {
                     a = new Appointment(choosenDate, doktori[i], sale[i]);
-                    a.Id = Convert.ToString(random.Next(1, 1000));
-                    a.AppointmentType = TypeOfAppointment.Examination;
+                    a.id = random.Next(1, 1000);
+                    a.appointmentType = TypeOfAppointment.Examination;
   
 
                     appointmentsDateChecked.Add(a);
@@ -75,8 +75,8 @@ namespace Projekat
                 for (int i = 0; i < 3; i++)
                 {
                     a = new Appointment(timeList[i], izabraniDoctor, sale[i]);
-                    a.Id = Convert.ToString(random.Next(1, 1000));
-                    a.AppointmentType = TypeOfAppointment.Examination;
+                    a.id = random.Next(1, 1000);
+                    a.appointmentType = TypeOfAppointment.Examination;
 
                     appointmentsDoctorChecked.Add(a);
                 }

@@ -18,8 +18,14 @@ namespace Service
       {
             prescriptionRepository.CreatePrescription(newPrescription);
         }
-      
-      public void UpdatePrescription(Prescription newPrescription)
+
+        public int GenerateNewId()
+        {
+            return prescriptionRepository.GenerateNewId();
+
+        }
+
+        public void UpdatePrescription(Prescription newPrescription)
       {
             prescriptionRepository.UpdatePrescription(newPrescription);
         }

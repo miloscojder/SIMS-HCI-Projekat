@@ -37,7 +37,7 @@ namespace Projekat
             DoctorsExpTextBox.Text = Convert.ToString(d.WorkingExperince);
             DoctorsEmailTextBox.Text = d.EMail;
             DoctorsBirthDayTextBox.Text = Convert.ToString(d.DateOfBirth);
-            DoctrsSpecialtyTextBox.Text = d.Specialty;
+            DoctrsSpecialtyTextBox.Text = d.specialty;
             DoctosPhoneNumberTextBox.Text = d.PhoneNumber;
             DoctorsFeedback.Text = d.doctorFeedback;            
 
@@ -94,7 +94,7 @@ namespace Projekat
                 for (int i = 0; i < doctors.Count; i++)
                 {
                     Doctor doc = doctors[i];
-                    if (doc.Id == posrednik.Id)
+                    if (doc.id == posrednik.id)
                     {
                         doctors.Remove(doc);
                     }

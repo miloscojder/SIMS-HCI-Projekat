@@ -20,21 +20,30 @@ namespace Projekat
     public partial class Prescribe : Window
     {
         public PrescriptionController prescriptionController = new PrescriptionController();
-        public Prescribe()
+        //public MedicalRecord md;
+        public Prescribe(Patient p)
         {
             InitializeComponent();
             this.DataContext = this;
+            Name.Text = p.firstName;
+            Surname.Text = p.lastName;
+            Allergic.Text = p.record.Allergen;
         }
 
         private void PrescribeMedicine(object sender, RoutedEventArgs e)
         {
-            String ida = Id.Text;
+            //Prescription pr = new Prescription();
+            Patient p = new Patient();
+            MedicalRecord mmm = new MedicalRecord();
+            int ida = prescriptionController.GenerateNewId();
             String med = Medicine.Text;
             String q = Quantity.Text;
             String ins = Instruction.Text;
-            // Patient idpatient = Pid.Text;
+            p.firstName = Name.Text;
+            p.lastName = Surname.Text;
+            mmm.Allergen = Allergic.Text;
 
-            Prescription a = new Prescription(ida, med, q, ins);
+            Prescription a = new Prescription(ida, med, q, ins, p);
             prescriptionController.CreatePrescription(a);
 
             MessageBox.Show("Medicine prescribed!");

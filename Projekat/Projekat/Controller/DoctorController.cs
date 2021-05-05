@@ -12,8 +12,8 @@ using System.Collections.Generic;
 
 namespace Controller
 {
-    public class DoctorController
-    {
+   public class DoctorController
+   {
         public DoctorService doctorService = new DoctorService();
 
         public int GenerateNewId()
@@ -41,31 +41,31 @@ namespace Controller
         {
             return doctorService.GetAllDoctors();
         }
-        public Doctor GetDoctor(string id)
+        public Doctor GetDoctor(int id)
         {
             return doctorService.GetDoctor(id);
         }
 
 
         public List<Appointment> GetAllAppointments()
-        {
-            // TODO: implement
-            return null;
-        }
-
-        public List<Operations> GetAllOperations()
-        {
-            // TODO: implement
-            return null;
-        }
-
-        public List<Patient> GetPatients()
-        {
-            // TODO: implement
-            return null;
-        }
-
-
-
-    }
+      {
+         // TODO: implement
+         return null;
+      }
+      
+      public List<Operations> GetAllOperations()
+      {
+         // TODO: implement
+         return null;
+      }
+      
+      public List<Patient> GetPatients()
+      {
+         // TODO: implement
+         return null;
+      }
+   
+     
+   
+   }
 }

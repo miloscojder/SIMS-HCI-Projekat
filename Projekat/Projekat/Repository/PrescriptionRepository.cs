@@ -31,6 +31,19 @@ namespace Repository
             }
         }
 
+        public int GenerateNewId()
+        {
+            try
+            {
+                int maxId = prescriptions.Max(obj => obj.id);
+                return maxId + 1;
+            }
+            catch
+            {
+                return 1;
+            }
+        }
+
         public void WriteToJson()
         {
             string json = JsonConvert.SerializeObject(prescriptions);
@@ -44,7 +57,7 @@ namespace Repository
       
       public void UpdatePrescription(Prescription newPrescription)
       {
-            int index = prescriptions.FindIndex(obj => obj.Id == newPrescription.Id);
+            int index = prescriptions.FindIndex(obj => obj.id == newPrescription.id);
             prescriptions[index] = newPrescription;
             WriteToJson();
         }
@@ -52,7 +65,7 @@ namespace Repository
      
       public Prescription GetPrescription(Prescription newPrescription)
       {
-            return prescriptions.Find(obj => obj.Id == newPrescription.Id);
+            return prescriptions.Find(obj => obj.id == newPrescription.id);
         }
       
       public List<Prescription> GetAll()

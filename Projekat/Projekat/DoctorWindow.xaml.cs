@@ -54,5 +54,26 @@ namespace Projekat
             p.Show();
 
         }
+
+        private void ViewPatients(object sender, RoutedEventArgs e)
+        {
+            ViewPatients w = new ViewPatients();
+            w.Show();
+
+        }
+
+        private void ViewRef(object sender, RoutedEventArgs e)
+        {
+            ViewReferrals w = new ViewReferrals();
+            w.Show();
+
+        }
+
+        private void Medecine(object sender, RoutedEventArgs e)
+        {
+            ViewMedecine w = new ViewMedecine();
+            w.Show();
+
+        }
     }
 }

@@ -8,18 +8,23 @@
         mc:Ignorable="d"
         Title="Prescribe" Height="450" Width="800">
     <Grid>
-        <Label Content="Prescribe" HorizontalAlignment="Center" Margin="117,28,457.6,0" VerticalAlignment="Top" FontSize="30" FontWeight="Bold" Width="219"/>
+        <Label Content="Prescribe" HorizontalAlignment="Left" Margin="123,10,0,0" VerticalAlignment="Top" FontSize="30" FontWeight="Bold" Width="219"/>
 
-        <Label Content="Id:" FontSize="18" HorizontalAlignment="Left" Margin="60,125,0,0" VerticalAlignment="Top" Height="49" RenderTransformOrigin="0.625,1.157"/>
-        <TextBox Name="Id" FontSize="18" Background="LightCyan" HorizontalAlignment="Left" Margin="190,125,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="41"/>
-        <Label Content="Medicine" FontSize="18" HorizontalAlignment="Left" Margin="60,205,0,0" VerticalAlignment="Top" Height="36"/>
-        <Label Content="Quantity:" FontSize="18" HorizontalAlignment="Left" Margin="60,291,0,0" VerticalAlignment="Top" Height="48" Width="83"/>
-        <TextBox Name="Quantity" FontSize="18" Background="LightCyan" HorizontalAlignment="Left" Margin="190,291,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="179" Height="71"/>
+        <Label Content="Patient&#xD;&#xA;" FontSize="18" HorizontalAlignment="Left" Margin="215,83,0,0" VerticalAlignment="Top" Height="49" RenderTransformOrigin="0.625,1.157"/>
+        <TextBox Name="Name" FontSize="18" Background="LightCyan" HorizontalAlignment="Left" Margin="190,125,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="179" Height="41"/>
+        <Label Content="Medicine" FontSize="18" HorizontalAlignment="Left" Margin="83,246,0,0" VerticalAlignment="Top" Height="36"/>
+        <Label Content="Quantity:" FontSize="18" HorizontalAlignment="Left" Margin="72,327,0,0" VerticalAlignment="Top" Height="48" Width="83"/>
+        <TextBox Name="Quantity" FontSize="18" Background="LightCyan" HorizontalAlignment="Left" Margin="190,327,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="179" Height="60"/>
         <Label Content="Instruction:" FontSize="18" HorizontalAlignment="Left" Margin="509,41,0,0" VerticalAlignment="Top" Height="48" Width="120"/>
-        <TextBox Name="Instruction" FontSize="18" Background="LightCyan" HorizontalAlignment="Left" Margin="509,89,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="252" Height="193"/>
+        <TextBox Name="Instruction" FontSize="18" Background="LightCyan" HorizontalAlignment="Left" Margin="509,89,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="252" Height="86"/>
 
         <Button Content="Prescribe" FontSize="20" Click="PrescribeMedicine" HorizontalAlignment="Left" Margin="608,335,0,0" VerticalAlignment="Top" Height="52" Width="131" Background="#FFB5CDE2"/>
-        <TextBox x:Name="Medicine" Background="LightCyan" HorizontalAlignment="Left" Margin="190,205,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="179" Height="51"/>
+        <TextBox x:Name="Medicine" Background="LightCyan" HorizontalAlignment="Left" Margin="190,238,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="179" Height="52"/>
+        <Label Content="Name:" FontSize="18" HorizontalAlignment="Left" Margin="83,125,0,0" VerticalAlignment="Top" Height="50" RenderTransformOrigin="0.625,1.157"/>
+        <Label Content="Surname:" FontSize="18" HorizontalAlignment="Left" Margin="72,175,0,0" VerticalAlignment="Top" Height="49" RenderTransformOrigin="0.625,1.157"/>
+        <TextBox x:Name="Surname" FontSize="18" Background="LightCyan" HorizontalAlignment="Left" Margin="190,176,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="179" Height="41"/>
+        <TextBox x:Name="Allergic" FontSize="18" Background="LightCyan" HorizontalAlignment="Left" Margin="509,246,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="179" Height="41"/>
+        <Label Content="Allergen:" FontSize="18" HorizontalAlignment="Left" Margin="534,200,0,0" VerticalAlignment="Top" Height="48" RenderTransformOrigin="0.625,1.157"/>
 
 
 

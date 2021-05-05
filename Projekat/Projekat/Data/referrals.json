@@ -1,0 +1,31 @@
+[
+    
+    {
+        "id": 1,
+        "Explanation": "Krva slika u losem stanju, ne oseca se dobro...",
+        "Date": "25.06.2021.",
+        "timeStart": "12:00",
+        "duration": "40",
+        "room": {
+            "Id": 0,
+            "Name": "A",
+            "RoomType": null,
+            "Floor": 0,
+            "Detail": null
+        },
+        "patient": {
+            "record": null,
+            "id": 0,
+            "Username": null,
+            "Password": null,
+            "firstName": "Kristina",
+            "lastName": "Todic",
+            "Jmbg": null,
+            "EMail": null,
+            "PhoneNumber": null,
+            "DateOfBirth": "0001-01-01T00:00:00"
+        },
+        "endTime": "12:40",
+        "doc": "Internist"
+    }
+]

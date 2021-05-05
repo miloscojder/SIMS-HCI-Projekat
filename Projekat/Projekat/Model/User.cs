@@ -10,11 +10,11 @@ namespace Model
 {
    public class User
    {
-      public String Id { get; set; }
+      public int id { get; set; }
       public String Username { get; set; }
         public String Password { get; set; }
-        public String FirstName { get; set; }
-        public String LastName { get; set; }
+        public String firstName { get; set; }
+        public String lastName { get; set; }
         public String Jmbg { get; set; }
         public String EMail { get; set; }
         public String PhoneNumber { get; set; }

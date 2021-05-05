@@ -4,29 +4,29 @@ namespace Model
 {
    public class Prescription
    {
-      public String Id { get; set; }
-        public String Medicine { get; set; }
-        public String Quantity { get; set; }
-        public String Instruction { get; set; }
-        public Patient Patient { get; set; }
+      public int id { get; set; }
+        public String medicine { get; set; }
+        public String quantity { get; set; }
+        public String instruction { get; set; }
+        public Patient patient { get; set; }
 
       //  public Doctor doctor { get; set; }
 
         public Prescription() { }
-        public Prescription(string id, string med, string q, string inst)
+        public Prescription(int id, string med, string q, string inst)
         {
-            Id = id;
-            Medicine = med;
-            Quantity = q;
-            Instruction = inst;
+            this.id = id;
+            medicine = med;
+            quantity = q;
+            instruction = inst;
         }
-        public Prescription(string id, string med, string q, string inst, Patient p)
+        public Prescription(int id, string med, string q, string inst, Patient p)
         {
-            Id = id;
-            Medicine = med;
-            Quantity = q;
-            Instruction = inst;
-            Patient = p;
+            this.id = id;
+            medicine = med;
+            quantity = q;
+            instruction = inst;
+            patient = p;
         }
 
     }
