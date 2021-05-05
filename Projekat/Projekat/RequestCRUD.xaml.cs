@@ -41,6 +41,7 @@ namespace Projekat
             requestsDataGrid.ItemsSource = requestToShow;
             requestsDataGrid2.ItemsSource = filterRequestsStatus(requestToShow, StatusType.Waiting);
             requestsDataGrid3.ItemsSource = requestForDinamicEquipment;
+            requestsDataGrid4.ItemsSource = requestForDinamicEquipment;
         }
 
         public List<Request> filterRequestsStatus(List<Request> requests, StatusType type) {
@@ -175,7 +176,7 @@ namespace Projekat
                
 
                 bool result = requestController.AcceptingRequest(request.Id, StatusType.Accepted, explanationBox.Text);
-                if(result) MessageBox.Show("Successfuly accepted request!");
+                if(result) MessageBox.Show("Successfully accepted request!");
                
             }
             catch
@@ -233,7 +234,7 @@ namespace Projekat
 
 
                 requestForDinamicEquipmentController.Update(request.Id, nameBox.Text);
-                MessageBox.Show("Successfuly updated request!");
+                MessageBox.Show("Successfully updated request!");
             }
             catch
             {
@@ -248,11 +249,41 @@ namespace Projekat
                 RequestForDinamicEquipment request = (RequestForDinamicEquipment)requestsDataGrid3.SelectedItems[0];
 
                 requestForDinamicEquipmentController.Delete(request.Id);
-                MessageBox.Show("Successfuly deleted request!");
+                MessageBox.Show("Successfully deleted request!");
             }
             catch
             {
                 MessageBox.Show("You have to select request which you wan't to delete !");
+            }
+        }
+
+        private void acceptDynamic_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                RequestForDinamicEquipment request = (RequestForDinamicEquipment)requestsDataGrid4.SelectedItems[0];
+
+                requestForDinamicEquipmentController.AcceptingRequestForDinamycEquipment(request.Id, StatusType.Accepted);
+                MessageBox.Show("Successfully accepted request!");
+            }
+            catch
+            {
+                MessageBox.Show("You have to select request wich you won't to accept!");
+            }
+        }
+
+        private void declineDynamic_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                RequestForDinamicEquipment request = (RequestForDinamicEquipment)requestsDataGrid4.SelectedItems[0];
+
+                requestForDinamicEquipmentController.AcceptingRequestForDinamycEquipment(request.Id, StatusType.Rejected);
+                MessageBox.Show("Successfully declined request!");
+            }
+            catch
+            {
+                MessageBox.Show("You have to select request wich you won't to decline!");
             }
         }
     }

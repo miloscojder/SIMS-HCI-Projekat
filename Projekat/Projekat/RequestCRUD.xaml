@@ -103,6 +103,26 @@
                     <TextBox x:Name="nameBox" HorizontalAlignment="Left" Margin="332,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                 </Grid>
             </TabItem>
+            <TabItem Header="Accept/Decline Dynamic Equipment" HorizontalAlignment="Right" Width="92">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="requestsDataGrid4"
+                        AutoGenerateColumns="False"
+                        IsReadOnly="True" Margin="23,23,17,277" RenderTransformOrigin="0.506,0.588" SelectionChanged="requestsDataGrid_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id"
+                                Binding="{Binding Id}" />
+                            <DataGridTextColumn Header="Name"
+                                Binding="{Binding Name}" />
+                            <DataGridTextColumn Header="Status"
+                                Binding="{Binding Status}" />
+                            <DataGridTextColumn Header="Date"
+                                Binding="{Binding Date}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="acceptDynamic" Content="Accept" HorizontalAlignment="Left" Margin="607,341,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.579,-1.637" Width="91" Click="acceptDynamic_Click"/>
+                    <Button x:Name="declineDynamic" Content="Decline" HorizontalAlignment="Left" Margin="725,341,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.579,-1.637" Width="91" Click="declineDynamic_Click"/>
+                </Grid>
+            </TabItem>
         </TabControl>
 
     </Grid>
