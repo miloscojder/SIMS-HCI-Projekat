@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="RescheduleAppointmentPatientPage"  Background="LightSkyBlue" Height="450" Width="800">
+        Title="RescheduleAppointmentPatientPage"  Background="LightSkyBlue" Height="450" Width="815">
     <Grid Margin="0,0,3.6,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
@@ -24,6 +24,7 @@
         <Button Content="Send request" Margin="326,321.7,353,53" Click="SendRequestButton_Click" Grid.Row="1">
 
         </Button>
+        <Button Content="Cancel rescheduling" HorizontalAlignment="Left" Margin="658,357,0,0" Grid.Row="1" VerticalAlignment="Top" Click="Button_Click" Height="35" Width="114"/>
 
     </Grid>
 </Window>

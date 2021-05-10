@@ -13,18 +13,13 @@ using System.Windows.Shapes;
 namespace Projekat
 {
     /// <summary>
-    /// Interaction logic for PatientProfilePage.xaml
+    /// Interaction logic for PatientQandAPage.xaml
     /// </summary>
-    public partial class PatientProfilePage : Window
+    public partial class PatientQandAPage : Window
     {
-        public PatientProfilePage()
+        public PatientQandAPage()
         {
             InitializeComponent();
-        }
-
-        private void PatientUsernameTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

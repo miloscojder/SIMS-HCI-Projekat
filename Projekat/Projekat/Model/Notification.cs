@@ -8,6 +8,7 @@ namespace Model
         public DateTime Date { get; set; }
         public String Id { get; set; }
         public String Description { get; set; }
+        public int DaysLeft { get; set; }
 
         public Patient patient;
       public System.Collections.ArrayList doctor;

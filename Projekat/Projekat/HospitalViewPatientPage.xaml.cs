@@ -34,28 +34,10 @@ namespace Projekat
             sfsd = JsonConvert.DeserializeObject<StorageForSomeData>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json"));
            
             HospitalRating.Text = Convert.ToString(sfsd.hospitalFinalGrade);
-            OpisPrikazan.Text = sfsd.hospitalFeedback;
+            lvHospitalFeedback.ItemsSource = sfsd.hospitalFeedback;
 
             List<Doctor> doktori = new List<Doctor>();
             doktori = JsonConvert.DeserializeObject<List<Doctor>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doctorsak.json"));
-
-           
-
-            /*
-            if(doktor!=null)
-            {                
-                pomocni = doktor;
-            }           
-            */
-            /*
-            foreach (Doctor d in doktori)
-            {
-                if(d.Id == pomocni.Id)
-                {
-                    doktori.Remove(d);
-                }
-            }
-            */
 
             if (doktor != null)
             {
@@ -63,8 +45,8 @@ namespace Projekat
             }
 
             File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doctorsak.json", JsonConvert.SerializeObject(doktori));
-            lvDoctorsPatient.ItemsSource = doktori;                      //dodati jos jednu kolonu u kojoj ce biti opis koji pacijent kaze za lekara
-           }
+            lvDoctorsPatient.ItemsSource = doktori;               
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -83,13 +65,13 @@ namespace Projekat
             sfsd.hospitalCounter++;
             if(sfsd.hospitalCounter==1)
             {
-                HospitalRating.Text = Ocena.Text;
-                sfsd.hospitalGradeSum += Convert.ToDouble(Ocena.Text);
-                sfsd.hospitalFinalGrade = Convert.ToDouble(Ocena.Text);
+                HospitalRating.Text = HospitalGrades.Text;
+                sfsd.hospitalGradeSum += Convert.ToDouble(HospitalGrades.Text);
+                sfsd.hospitalFinalGrade = Convert.ToDouble(HospitalGrades.Text);
             }
             else
             {
-                sfsd.hospitalGradeSum += Convert.ToDouble(Ocena.Text);
+                sfsd.hospitalGradeSum += Convert.ToDouble(HospitalGrades.Text);
                 HospitalRating.Text = Convert.ToString(sfsd.hospitalGradeSum / sfsd.hospitalCounter);
                 sfsd.hospitalFinalGrade = sfsd.hospitalGradeSum / sfsd.hospitalCounter;
             }
@@ -102,18 +84,60 @@ namespace Projekat
             StorageForSomeData sfsd = new StorageForSomeData();
             sfsd = JsonConvert.DeserializeObject<StorageForSomeData>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json"));
 
-            sfsd.hospitalFeedback = UnesiteOpis.Text;
-            OpisPrikazan.Text = sfsd.hospitalFeedback;
+
+            sfsd.hospitalFeedback.Add(UnesiteOpis.Text);
+            lvHospitalFeedback.ItemsSource = sfsd.hospitalFeedback;
             File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json", JsonConvert.SerializeObject(sfsd));
         }
 
         private void OceniteDoktoraButton_Click(object sender, RoutedEventArgs e)
         {
-            Doctor doctor = (Doctor)lvDoctorsPatient.SelectedItems[0];
+            if (lvDoctorsPatient.SelectedItems.Count < 1)
+            {
+                MessageBox.Show("Morate da selektujete bar jednog lekara.");
+            }
+            else
+            {
+                Doctor doctor = (Doctor)lvDoctorsPatient.SelectedItems[0];
+                DoctorPagePatient dpp = new DoctorPagePatient(doctor);
+                dpp.Show();
+            }
+        }
 
-            DoctorPagePatient dpp = new DoctorPagePatient(doctor);
-           
-            dpp.Show();
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            PatientMainPage pmp = new PatientMainPage();
+            pmp.Show();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            AppointmentsPage ap = new AppointmentsPage(null);
+            ap.Show();
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            NotificationsPatientPage npp = new NotificationsPatientPage();
+            npp.Show();
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage();
+            pmrp.Show();
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            PatientQandAPage pqap = new PatientQandAPage();
+            pqap.Show();
+        }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            PatientProfilePage ppp = new PatientProfilePage();
+            ppp.Show();
         }
     }
 }
