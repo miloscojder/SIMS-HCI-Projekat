@@ -5,24 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="NotificationsPatientPage"  Background="LightSkyBlue" Height="450" Width="800">
+        Title="NotificationsPatientPage"  Background="LightSkyBlue" Height="550" Width="815">
     <Grid>
-        <ListView Margin="10,44,194,129" Background="#FFA6F4A6" Name="lvNotificationList">
+        <StackPanel Orientation="Horizontal" Background="LightSkyBlue" Margin="0,0,0,470">
+            <Button Content="HOME PAGE" Click="Button_Click" Width="112" ></Button>
+            <Button Content="MY APPOINTMENTS" Click="Button_Click_1" Width="174" />
+            <Button Content="MY NOTIFICATIONS" Click="Button_Click_2" Width="157" />
+            <Button Content="MY MEDICAL RECORD" Click="Button_Click_3" Width="160"/>
+            <Button Content="Q and A" Click="Button_Click_4" Width="100"/>
+            <Button Content="MY PROFILE" Click="Button_Click_5" Width="99" />
+        </StackPanel>
+
+        <ListView Margin="10,139,134,31" Background="LightCyan" Name="lvNotificationList">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding Id}" />
                     <GridViewColumn Header="Notification name" Width="100" DisplayMemberBinding="{Binding Name}" />
                     <GridViewColumn Header="Date" Width="100" DisplayMemberBinding="{Binding Date}" />
-                    <GridViewColumn Header="Description" Width="100" DisplayMemberBinding="{Binding Description}">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Mail}" TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                    <GridViewColumn Header="Description" Width="300" DisplayMemberBinding="{Binding Description}"/>
+                    <GridViewColumn Header="Days Left" Width="100" DisplayMemberBinding="{Binding DaysLeft}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Return" HorizontalAlignment="Left" Margin="431,351,0,0" VerticalAlignment="Top" Click="ReturnButton_Click" />
+        <Button Content="Create" HorizontalAlignment="Left" Margin="711,247,0,0" VerticalAlignment="Top" Height="32" Width="61"/>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="711,301,0,0" VerticalAlignment="Top" Height="32" Width="61"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="711,346,0,0" VerticalAlignment="Top" Height="32" Width="61"/>
+        <Label Content="My notifications" HorizontalAlignment="Left" Margin="208,69,0,0" VerticalAlignment="Top" FontSize="18"/>
     </Grid>
 </Window>

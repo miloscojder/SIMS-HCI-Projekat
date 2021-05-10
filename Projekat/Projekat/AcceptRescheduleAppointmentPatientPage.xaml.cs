@@ -100,49 +100,64 @@ namespace Projekat
 
         private void AcceptRescButton_Click(object sender, RoutedEventArgs e)
         {
-            Appointment app = (Appointment)lvAcceptRescheduleAppointment.SelectedItems[0];
 
-
-            TimeSpan timeSpan = new TimeSpan(2, 0, 0, 0, 0);
-
-            //  System.Windows.MessageBox.Show(Convert.ToString(timeSpan));
-
-
-            if (((app.StartTime.Date - posrednik1.StartTime.Date) >= timeSpan) || (posrednik1.StartTime > app.StartTime))
+            if (lvAcceptRescheduleAppointment.SelectedItems.Count < 1)
             {
-                MessageBox.Show("Vas pregled je zakazan u losem terminu.");
-                this.Close();
-
-                AppointmentsPage a = new AppointmentsPage(null);
-                a.Show();
-
+                MessageBox.Show("You must choose at leas one appointment");
             }
+
             else
             {
-
-                //     System.Windows.MessageBox.Show(posrednik1.Id);  OVDE JE DOBAR
-
-                //dodaj ucitavanje iz fajla, brisanje posrednika1 i dodavanje app u listu
-
-                List<Appointment> svi = new List<Appointment>();
-                List<Appointment> newSvi = new List<Appointment>();
-
-                svi = JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json"));
+                Appointment app = (Appointment)lvAcceptRescheduleAppointment.SelectedItems[0];
 
 
-                foreach (Appointment appo in svi)
+                TimeSpan timeSpan = new TimeSpan(2, 0, 0, 0, 0);
+
+                //  System.Windows.MessageBox.Show(Convert.ToString(timeSpan));
+
+
+                if (((app.StartTime.Date - posrednik1.StartTime.Date) >= timeSpan) || (posrednik1.StartTime > app.StartTime))
                 {
-                    if (appo.id != posrednik1.id)
-                    {
-                        newSvi.Add(appo);
-                    }
+                    MessageBox.Show("Vas pregled je zakazan u losem terminu.");
+                    this.Close();
+
+                    AppointmentsPage a = new AppointmentsPage(null);
+                    a.Show();
+
                 }
+                else
+                {
 
-                File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json", JsonConvert.SerializeObject(newSvi));
+                    //     System.Windows.MessageBox.Show(posrednik1.Id);  OVDE JE DOBAR
 
-                AppointmentsPage a = new AppointmentsPage(app);
-                a.Show();
+                    //dodaj ucitavanje iz fajla, brisanje posrednika1 i dodavanje app u listu
+
+                    List<Appointment> svi = new List<Appointment>();
+                    List<Appointment> newSvi = new List<Appointment>();
+
+                    svi = JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json"));
+
+
+                    foreach (Appointment appo in svi)
+                    {
+                        if (appo.id != posrednik1.id)
+                        {
+                            newSvi.Add(appo);
+                        }
+                    }
+
+                    File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json", JsonConvert.SerializeObject(newSvi));
+
+                    AppointmentsPage a = new AppointmentsPage(app);
+                    a.Show();
+                }
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AppointmentsPage ap = new AppointmentsPage(null);
+            ap.Show();
         }
     }
 }

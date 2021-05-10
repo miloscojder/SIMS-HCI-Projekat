@@ -88,12 +88,24 @@ namespace Projekat
 
         private void AcceptButton_Click(object sender, RoutedEventArgs e)
         {
-            Appointment app = (Appointment)lvAcceptAppointment.SelectedItems[0];
+            if (lvAcceptAppointment.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("You must choose at least 1 appointment");
+            }
+            else
+            {
+                Appointment app = (Appointment)lvAcceptAppointment.SelectedItems[0];
 
-            AppointmentsPage appo = new AppointmentsPage(app);
-            appo.Show();
+                AppointmentsPage appo = new AppointmentsPage(app);
+                appo.Show();
+            }
 
+        }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AppointmentsPage app = new AppointmentsPage(null);
+            app.Show();
         }
     }
 }

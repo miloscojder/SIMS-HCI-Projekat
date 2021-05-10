@@ -50,12 +50,12 @@ namespace Projekat
 
 
         }
-
+        /*
         private void MyAppointmentsButton_Click(object sender, RoutedEventArgs e)
         {
             AppointmentsPage ap = new AppointmentsPage(null);
             ap.Show();
-        }
+        }*/
 
         private void SeeHospitalButton_Click(object sender, RoutedEventArgs e)
         {
@@ -75,27 +75,34 @@ namespace Projekat
             npp.Show();
         }
 
-        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            AppointmentsPage ap = new AppointmentsPage(null);
-            ap.Show();
-        }
-
-        private void TextBlock_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void TextBlock_MouseLeftButtonDown_2(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
         private void HomePageButton_Click(object sender, RoutedEventArgs e)
         {
             PatientMainPage pmp = new PatientMainPage();
             pmp.Show();
         }
 
+        private void MyAppointmentsButton_Click(object sender, RoutedEventArgs e)
+        {
+            AppointmentsPage ap = new AppointmentsPage(null);
+            ap.Show();
+        }
+
+        private void MedicalRecordButton_Click(object sender, RoutedEventArgs e)
+        {
+            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage();
+            pmrp.Show();
+        }
+
+        private void QandAButton_Click(object sender, RoutedEventArgs e)
+        {
+            PatientQandAPage pqap = new PatientQandAPage();
+            pqap.Show();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            PatientProfilePage ppp = new PatientProfilePage();
+            ppp.Show();
+        }
     }
 }

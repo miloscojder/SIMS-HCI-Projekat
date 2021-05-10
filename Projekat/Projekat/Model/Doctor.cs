@@ -6,6 +6,7 @@
 
 
 using System;
+using System.Collections.Generic;
 
 namespace Model
 {
@@ -16,7 +17,7 @@ namespace Model
         public double Grade { get; set; }
         public double doctorCounter { get; set; }           //za sad ce biti ovako ovo ce da se menja
         public double doctorGradeSum { get; set; }          //za sad ce biti ovako ovo ce da se menja
-        public String doctorFeedback { get; set; }          //za sad ce biti ovako ovo ce da se menja
+        public List<String> doctorFeedbacks { get; set; }          //za sad ce biti ovako ovo ce da se menja
 
 
         public Doctor() { }

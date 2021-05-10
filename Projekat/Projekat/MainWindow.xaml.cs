@@ -28,7 +28,9 @@ namespace Projekat
         {
             InitializeComponent();
 
-          
+           
+
+
         }
         private void Director_Click(object sender, RoutedEventArgs e)
         {
