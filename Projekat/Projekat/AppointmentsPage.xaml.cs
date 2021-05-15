@@ -41,19 +41,6 @@ namespace Projekat
             lvAppointmentsPatient.ItemsSource = spisak;
 
 
-            //Ovo ne radi skroz dobro ali radi
-            List<Notification> notifications = new List<Notification>();
-            notifications = JsonConvert.DeserializeObject<List<Notification>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\notificationsak.json"));
-
-
-            foreach (Notification n in notifications)
-            {
-                if (((n.Date.Date == DateTime.Now.Date) && (DateTime.Now.Hour == (n.Date.Hour - 3)) && (DateTime.Now.Minute == n.Date.Minute)) || ((n.Date.Date == DateTime.Now.Date) && (DateTime.Now.Hour >= (n.Date.Hour - 3))))
-                {
-                    MessageBox.Show("Vase danasnje obavestenje je: " + n.Name + " " + n.Description);
-                }
-            }
-
             SaveAppointments(spisak);
 
         }
@@ -72,8 +59,8 @@ namespace Projekat
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            ScheduleAppointmentPatient sa = new ScheduleAppointmentPatient();
-            sa.Show();
+            ScheduleAppointmentPatient sap = new ScheduleAppointmentPatient();
+            sap.Show();
         }
 
         private void CancButton_Click_1(object sender, RoutedEventArgs e)
@@ -109,15 +96,12 @@ namespace Projekat
                 }
                 else
                 {
-
                     Appointment ac = (Appointment)lvAppointmentsPatient.SelectedItems[0];
-
 
                     List<Appointment> svi = new List<Appointment>();
                     List<Appointment> newSvi = new List<Appointment>();
 
                     svi = JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json"));
-
 
                     foreach (Appointment a in svi)
                     {
@@ -142,7 +126,7 @@ namespace Projekat
 
             if (lvAppointmentsPatient.SelectedItems.Count < 1)
             {
-                MessageBox.Show("You must select at leas 1 appointment.");
+                MessageBox.Show("You must select at least 1 appointment.");
             }
             else
             {
@@ -153,7 +137,6 @@ namespace Projekat
                 if (ach.StartTime.Date - DateTime.Now.Date <= timeSpan)
                 {
                     MessageBox.Show("Ne mozete promeniti ovaj termin.");
-
 
                     AppointmentsPage ap = new AppointmentsPage(null);
                     ap.Show();
@@ -180,7 +163,7 @@ namespace Projekat
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage();
+            NotificationsPatientPage npp = new NotificationsPatientPage(null);
             npp.Show();
         }
 

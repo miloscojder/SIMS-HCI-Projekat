@@ -118,7 +118,7 @@ namespace Projekat
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage();
+            NotificationsPatientPage npp = new NotificationsPatientPage(null);
             npp.Show();
         }
 

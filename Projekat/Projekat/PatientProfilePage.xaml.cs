@@ -22,11 +22,6 @@ namespace Projekat
             InitializeComponent();
         }
 
-        private void PatientUsernameTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             PatientMainPage pmp = new PatientMainPage();
@@ -41,7 +36,7 @@ namespace Projekat
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage();
+            NotificationsPatientPage npp = new NotificationsPatientPage(null);
             npp.Show();
         }
 

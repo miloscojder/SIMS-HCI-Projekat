@@ -7,70 +7,65 @@
 using Model;
 using System;
 using System.Collections.Generic;
-
+using Controller;
+using Repository;
+using System.Windows;
 
 namespace Service
 {
    public class NotifficationService
    {
+      NotifficationRepository notifficationRepository = new NotifficationRepository();
+        
       public Model.Notification GetOne(String id)
       {
          // TODO: implement
          return null;
       }
       
-      public void deleteNotification(String notId)
-      {
-         // TODO: implement
-      }
       
+            
+        public List<Notification> GetAllNotiffications()
+        {
+           notifficationRepository.notifications = notifficationRepository.getAllNotifications();
+           return notifficationRepository.notifications;
+        }
 
-   
-      public System.Collections.ArrayList notifficationRepository;
-      
-      /// <pdGenerated>default getter</pdGenerated>
-      public System.Collections.ArrayList GetNotifficationRepository()
-      {
-         if (notifficationRepository == null)
-            notifficationRepository = new System.Collections.ArrayList();
-         return notifficationRepository;
-      }
-      
-      /// <pdGenerated>default setter</pdGenerated>
-      public void SetNotifficationRepository(System.Collections.ArrayList newNotifficationRepository)
-      {
-         RemoveAllNotifficationRepository();
-         foreach (Repository.NotifficationRepository oNotifficationRepository in newNotifficationRepository)
-            AddNotifficationRepository(oNotifficationRepository);
-      }
-      
-      /// <pdGenerated>default Add</pdGenerated>
-      public void AddNotifficationRepository(Repository.NotifficationRepository newNotifficationRepository)
-      {
-         if (newNotifficationRepository == null)
-            return;
-         if (this.notifficationRepository == null)
-            this.notifficationRepository = new System.Collections.ArrayList();
-         if (!this.notifficationRepository.Contains(newNotifficationRepository))
-            this.notifficationRepository.Add(newNotifficationRepository);
-      }
-      
-      /// <pdGenerated>default Remove</pdGenerated>
-      public void RemoveNotifficationRepository(Repository.NotifficationRepository oldNotifficationRepository)
-      {
-         if (oldNotifficationRepository == null)
-            return;
-         if (this.notifficationRepository != null)
-            if (this.notifficationRepository.Contains(oldNotifficationRepository))
-               this.notifficationRepository.Remove(oldNotifficationRepository);
-      }
-      
-      /// <pdGenerated>default removeAll</pdGenerated>
-      public void RemoveAllNotifficationRepository()
-      {
-         if (notifficationRepository != null)
-            notifficationRepository.Clear();
-      }
-   
+        public void DoWeHaveNotiffications()
+        {                        
+            notifficationRepository.notifications = notifficationRepository.getAllNotifications();
+
+            foreach(Notification notification in notifficationRepository.notifications)
+            {
+                //IsItTime(notification);             
+            }
+        }
+
+        public void IsItTime(List<Notification> notifications) {
+            foreach(Notification notification in notifications)
+            {
+                if(DateTime.Now.Date == notification.Date)
+                {
+                    StartWrittingNotiffications(notification);
+                }
+            }
+        }   
+
+        public void StartWrittingNotiffications(Notification notification)
+        {
+            MessageBox.Show("Today you have notiffication: " + notification.Name + ": " + notification.Description);
+            notification.Date.AddDays(1);             //da li je ovo potrebno staviti u jednu funkciju   tipa UpdateNotifficationPropertties(notification)
+            notification.DaysLeft--;
+
+            CheckHowMuchDaysLeft(notification);
+        }
+
+        public void CheckHowMuchDaysLeft(Notification notification)
+        {
+            if (notification.DaysLeft < 0)
+            {
+                notifficationRepository.DeleteNotification(notification.Id);
+            }
+        }
    }
 }
