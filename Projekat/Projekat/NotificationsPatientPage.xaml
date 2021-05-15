@@ -27,9 +27,9 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Create" HorizontalAlignment="Left" Margin="711,247,0,0" VerticalAlignment="Top" Height="32" Width="61"/>
-        <Button Content="Update" HorizontalAlignment="Left" Margin="711,301,0,0" VerticalAlignment="Top" Height="32" Width="61"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="711,346,0,0" VerticalAlignment="Top" Height="32" Width="61"/>
+        <Button Content="Create" HorizontalAlignment="Left" Margin="711,247,0,0" VerticalAlignment="Top" Click="CreateButton_Click_6" Height="32" Width="61"/>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="711,301,0,0" VerticalAlignment="Top" Click="UpdateButton_Click_7" Height="32" Width="61"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="711,346,0,0" VerticalAlignment="Top" Click="DeleteButton_Click_8" Height="32" Width="61"/>
         <Label Content="My notifications" HorizontalAlignment="Left" Margin="208,69,0,0" VerticalAlignment="Top" FontSize="18"/>
     </Grid>
 </Window>

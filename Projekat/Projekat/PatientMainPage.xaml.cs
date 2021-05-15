@@ -12,6 +12,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
 using System.IO;
+using Repository;
+using Controller;
+using Service;
 
 namespace Projekat
 {
@@ -20,42 +23,19 @@ namespace Projekat
     /// </summary>
     public partial class PatientMainPage : Window
     {
+        NotifficationController notifficationController = new NotifficationController();
+        List<Notification> notifications;
+
         public PatientMainPage()
         {
             InitializeComponent();
 
+            notifications = notifficationController.GetAllNotifications();
+            notifficationController.IsItTime(notifications);
 
-
-            List<Notification> notifications = new List<Notification>();
-            notifications = JsonConvert.DeserializeObject<List<Notification>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\notificationsak.json"));
-
-
-            foreach (Notification n in notifications)
-            {
-                if (((n.Date.Date == DateTime.Now.Date) && (DateTime.Now.Hour == (n.Date.Hour - 3)) && (DateTime.Now.Minute == n.Date.Minute)) || ((n.Date.Date == DateTime.Now.Date) && (DateTime.Now.Hour >= (n.Date.Hour - 3))))
-                {
-                    MessageBox.Show("Vase danasnje obavestenje je: " + n.Name + " " + n.Description);
-                }
-            }
-
-
-            /* treba da postoje home, appointments, medical record ,profile ,notifications, questions, info, hospital pictures with link
-             
-                boja neka svetlo plava/svetlo zelena
-                slika neke random bolnice koja vodi do njenog cenovnika i ocenjivanje nje i doktora njenih, za sada to moze biti dugme, za ovu kontrolnu tacku, to cu poslijes kontat
-                
-                
-
-            */
-
-
+           
         }
-        /*
-        private void MyAppointmentsButton_Click(object sender, RoutedEventArgs e)
-        {
-            AppointmentsPage ap = new AppointmentsPage(null);
-            ap.Show();
-        }*/
+       
 
         private void SeeHospitalButton_Click(object sender, RoutedEventArgs e)
         {
@@ -71,7 +51,7 @@ namespace Projekat
 
         private void NotificationButton_Click_1(object sender, RoutedEventArgs e)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage();
+            NotificationsPatientPage npp = new NotificationsPatientPage(null);
             npp.Show();
         }
 

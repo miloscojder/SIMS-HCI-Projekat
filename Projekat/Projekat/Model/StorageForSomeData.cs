@@ -20,5 +20,4 @@ namespace Projekat.Model
             hospitalGradeSum = hgs;
         }
     }
-
 }
