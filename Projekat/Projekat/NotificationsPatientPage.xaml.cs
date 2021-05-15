@@ -93,7 +93,7 @@ namespace Projekat
         {
             if (lvNotificationList.SelectedItems.Count < 1)
             {
-                MessageBox.Show("You must choose at leas one notiffication for update");
+                MessageBox.Show("You must choose at least one notiffication for update");
             }
             else
             {
@@ -106,7 +106,26 @@ namespace Projekat
 
         private void DeleteButton_Click_8(object sender, RoutedEventArgs e)
         {
+            if(lvNotificationList.SelectedItems.Count < 1)
+            {
+                MessageBox.Show("You must select at least one notification to delete it");
+            }
+            else
+            {
+                Notification selectedNotification = (Notification)lvNotificationList.SelectedItems[0];
+                List<Notification> allNotifications = notifficationController.GetAllNotifications();
+                List<Notification> newNotifications = new List<Notification>();
 
+                foreach(Notification n in allNotifications) {
+                    if(n.Id != selectedNotification.Id) {
+                        newNotifications.Add(n);
+                    }
+                }
+
+                File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\notificationsak.json", JsonConvert.SerializeObject(newNotifications));
+                MessageBox.Show("You deleted selected notification");
+                this.Close();
+            }
         }
     }
 }
