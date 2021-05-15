@@ -19,9 +19,7 @@ namespace Projekat
     /// Interaction logic for DoctorPagePatient.xaml
     /// </summary>
     public partial class DoctorPagePatient : Window
-    {
-      
-        //ovo radi ali samo u jendom pokretanju
+    {      
         public Doctor posrednik = new Doctor();
         public List<Doctor> doctors = new List<Doctor>();
         public List<String> doctorFeedbackList;
@@ -40,11 +38,9 @@ namespace Projekat
             DoctorsBirthDayTextBox.Text = Convert.ToString(d.DateOfBirth);
             DoctrsSpecialtyTextBox.Text = d.specialty;
             DoctosPhoneNumberTextBox.Text = d.PhoneNumber;
-
-            doctorFeedbackList = d.doctorFeedbacks;                     
+            doctorFeedbackList = d.doctorFeedbacks;       
+            
             lvDoctorsFeedback.ItemsSource = d.doctorFeedbacks; 
-
-
         }
 
         private void PotvrdiButton_Click(object sender, RoutedEventArgs e)
