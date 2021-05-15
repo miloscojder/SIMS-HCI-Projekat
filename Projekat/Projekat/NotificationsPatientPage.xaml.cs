@@ -35,9 +35,8 @@ namespace Projekat
             {
                 notifications.Add(n);
             }
-
-            lvNotificationList.ItemsSource = notifications;
             File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\notificationsak.json", JsonConvert.SerializeObject(notifications));
+            lvNotificationList.ItemsSource = notifications;
         }
 
        
@@ -97,7 +96,7 @@ namespace Projekat
             }
             else
             {
-                Notification selectedNotiffication = (Notification)lvNotificationList.SelectedItems;                
+                Notification selectedNotiffication = (Notification)lvNotificationList.SelectedItems[0];                
                 UpdateNotifficationPatientPage unpp = new UpdateNotifficationPatientPage(selectedNotiffication);
                 unpp.Show();
 
