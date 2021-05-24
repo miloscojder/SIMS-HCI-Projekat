@@ -32,12 +32,95 @@ namespace Projekat
             InitializeComponent();
             OperationRepository operationRepository = new OperationRepository();
             List<Operations> operations = operationRepository.GetAll();
-            dataGrid.ItemsSource = operations;
+            dataGridd1.ItemsSource = operations;
         }
 
+        public PatientController patientController = new PatientController();
+
+        public List<Patient> patients
+        {
+            get;
+            set;
+        }
+        public Anamnesis anam = new Anamnesis();
+
+
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            User u = new User();
+            DoctorWindow sc = new DoctorWindow(u);
+            sc.Show();
+            Close();
+
+
+        }
+
+        private void Patients(object sender, RoutedEventArgs e)
+        {
+            ViewPatients m = new ViewPatients();
+            m.Show();
+            Close();
+        }
+
+        private void AnamnesisClick(object sender, RoutedEventArgs e)
+        {
+            Anamnesiss m = new Anamnesiss();
+            m.Show();
+            Close();
+        }
+
+        private void Prescribe(object sender, RoutedEventArgs e)
+        {
+            Prescriptions m = new Prescriptions();
+            m.Show();
+            Close();
+        }
+
+        private void AppointmentClick(object sender, RoutedEventArgs e)
+        {
+            Appointments m = new Appointments();
+            m.Show();
+            Close();
+        }
+
+        private void OperationsClick(object sender, RoutedEventArgs e)
+        {
+            Operationss m = new Operationss();
+            m.Show();
+            Close();
+        }
+
+
+
+
+        private void LogOut(object sender, RoutedEventArgs e)
+        {
+            MainWindow m = new MainWindow();
+            m.Show();
+            Close();
+        }
+
+        private void ReferralP(object sender, RoutedEventArgs e)
+        {
+            Referrals m = new Referrals();
+            m.Show();
+            Close();
+        }
+
+        private void Aprove(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SeeAll(object sender, RoutedEventArgs e)
+        {
+            ViewMedicines m = new ViewMedicines();
+            m.Show();
+            Close();
+        }
         private void Cancel(object sender, RoutedEventArgs e)
         {
-            Operations a = (Operations)dataGrid.SelectedItems[0];
+            Operations a = (Operations)dataGridd1.SelectedItems[0];
             operationController.Cancel(a);
 
             Operationss ap = new Operationss();
@@ -48,7 +131,7 @@ namespace Projekat
         private void Reschedule(object sender, RoutedEventArgs e)
         {
 
-            Operations a = (Operations)dataGrid.SelectedItems[0];
+            Operations a = (Operations)dataGridd1.SelectedItems[0];
             ShowChangesO sc = new ShowChangesO(a);
             sc.Show();
             Close();
@@ -66,5 +149,7 @@ namespace Projekat
 
 
         }
+
+        
     }
 }

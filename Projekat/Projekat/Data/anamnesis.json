@@ -1,4 +1,5 @@
 [
+
   {
     "anamnesy": "Pacijent dobrog opsteg zdravlja, dolazi na kontrolu",
     "id": 1,
@@ -52,7 +53,7 @@
     "id": 4,
     "patient": {
       "record": null,
-      "id": 0,
+      "id": 6,
       "Username": null,
       "Password": null,
       "firstName": "Pera",
@@ -63,4 +64,4 @@
       "DateOfBirth": "0001-01-01T00:00:00"
     }
   }
-]
+ ]

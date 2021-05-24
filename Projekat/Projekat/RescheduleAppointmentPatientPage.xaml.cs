@@ -45,7 +45,7 @@ namespace Projekat
             posrednik.roomName = a.roomName;
             posrednik.id = a.id;
             posrednik.StartTime = a.StartTime;
-            posrednik.appointmentType = a.appointmentType;
+            posrednik.AppointmentType = a.AppointmentType;
             //  System.Windows.MessageBox.Show(a.roomName + " " + a.doctorUsername);           radi dobro
 
         }

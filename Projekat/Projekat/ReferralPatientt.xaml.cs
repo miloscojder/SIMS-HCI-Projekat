@@ -61,7 +61,7 @@ namespace Projekat
             referralPatientController.CreateReferral(a);
 
          
-             MessageBox.Show("Appointment scheduled!");
+             MessageBox.Show("Patient referraled!");
             this.Close();
 
             ViewReferrals ap = new ViewReferrals();

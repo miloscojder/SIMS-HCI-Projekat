@@ -4,6 +4,7 @@ namespace Model
 {
    public class MedicalRecord
    {
+
         public int RecordNumber { get; set; }
     //  public Patient Patient 
         public String Allergen { get; set; }      
@@ -14,5 +15,6 @@ namespace Model
         public String patientsUsername { get; set; }
                
         public MedicalRecord() { }   
+
    }
 }

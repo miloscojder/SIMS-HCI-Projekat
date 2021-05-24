@@ -35,7 +35,7 @@ namespace Repository
         {
             try
             {
-                int maxId = referrals.Max(obj => obj.id);
+                int maxId = referrals.Max(obj => obj.Id);
                 return maxId + 1;
             }
             catch
@@ -73,7 +73,7 @@ namespace Repository
 
         public ReferralPatient GetReferral(ReferralPatient refr)
         {
-            return referrals.Find(obj => obj.id == refr.id);
+            return referrals.Find(obj => obj.Id == refr.Id);
         }
 
         public List<ReferralPatient> GetAll()

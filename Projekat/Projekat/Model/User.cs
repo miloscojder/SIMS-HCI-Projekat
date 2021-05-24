@@ -20,6 +20,7 @@ namespace Model
         public String PhoneNumber { get; set; }
         public DateTime DateOfBirth { get; set; }
 
+        public Doctor doctor { get; set; }
         private String Adress { get; set; }
 
         public RoolType Rool { get; set; }

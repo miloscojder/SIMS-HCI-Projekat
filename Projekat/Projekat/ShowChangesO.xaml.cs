@@ -50,10 +50,10 @@ namespace Projekat
             Minutes.Text = minutes1;
             String end = hours1 + ":" + minutes1;
             end = op.EndTime;
-            id = op.id;
-            room.Name = op.room.Name;
-            patient.firstName = op.patient.firstName;
-            patient.lastName = op.patient.lastName;
+            id = op.Id;
+            room.Name = op.Room.Name;
+            patient.firstName = op.Patient.firstName;
+            patient.lastName = op.Patient.lastName;
 
         }
 

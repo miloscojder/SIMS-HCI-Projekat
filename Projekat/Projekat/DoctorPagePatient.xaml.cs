@@ -37,7 +37,7 @@ namespace Projekat
             DoctorsExpTextBox.Text = Convert.ToString(d.WorkingExperince);
             DoctorsEmailTextBox.Text = d.EMail;
             DoctorsBirthDayTextBox.Text = Convert.ToString(d.DateOfBirth);
-            DoctrsSpecialtyTextBox.Text = d.specialty;
+            DoctrsSpecialtyTextBox.Text = d.Specialty;
             DoctosPhoneNumberTextBox.Text = d.PhoneNumber;
             doctorFeedbackList = d.doctorFeedbacks;       
             

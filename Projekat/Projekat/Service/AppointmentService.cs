@@ -26,6 +26,8 @@ namespace Service
 
         }
 
+
+
         public void RescheduleDoctor(Appointment newAppointment)
       {
             appointmentRepository.RescheduleDoctor(newAppointment);

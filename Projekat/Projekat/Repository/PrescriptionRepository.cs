@@ -35,7 +35,7 @@ namespace Repository
         {
             try
             {
-                int maxId = prescriptions.Max(obj => obj.id);
+                int maxId = prescriptions.Max(obj => obj.Id);
                 return maxId + 1;
             }
             catch
@@ -76,7 +76,7 @@ namespace Repository
 
       public void UpdatePrescription(Prescription newPrescription)
       {
-            int index = prescriptions.FindIndex(obj => obj.id == newPrescription.id);
+            int index = prescriptions.FindIndex(obj => obj.Id == newPrescription.Id);
             prescriptions[index] = newPrescription;
             WriteToJson();
         }
@@ -84,7 +84,7 @@ namespace Repository
      
       public Prescription GetPrescription(Prescription newPrescription)
       {
-            return prescriptions.Find(obj => obj.id == newPrescription.id);
+            return prescriptions.Find(obj => obj.Id == newPrescription.Id);
         }
       
       public List<Prescription> GetAll()

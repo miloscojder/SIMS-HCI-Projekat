@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Controller;
 using Model;
 using Newtonsoft.Json;
 using Projekat.Model;
@@ -30,7 +31,7 @@ namespace Projekat
         public MainWindow()
         {
             InitializeComponent();
-           
+
         }
         private void Director_Click(object sender, RoutedEventArgs e)
         {
@@ -38,12 +39,13 @@ namespace Projekat
             director.Show();
         }
 
-        private void Doctor_Click(object sender, RoutedEventArgs e)
+      private void Doctor_Click(object sender, RoutedEventArgs e)
         {
-            DoctorWindow doctor = new DoctorWindow();
+            User u = new User();
+            DoctorWindow doctor = new DoctorWindow(u);
             doctor.Show();
         }
-
+      
 
 
         private void Request_Click(object sender, RoutedEventArgs e)
@@ -64,13 +66,22 @@ namespace Projekat
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            List<User> users = new List<User>();
+            users = userController.GetAll();
+            userController.FindUser(UsernameTextBox.Text, PasswordTextBox.Text, users);
+    
+            
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {              
             User loggedUser = userController.FindUserByUsernameAndPasswrod(UsernameTextBox.Text, PasswordTextBox.Text);
 
             switch (loggedUser.Rool)
             {
                 case RoolType.Doctor:
-                    DoctorWindow dw = new DoctorWindow();
+                    DoctorWindow dw = new DoctorWindow(loggedUser);
                     dw.Show();
                     break;
                 case RoolType.Patient:
