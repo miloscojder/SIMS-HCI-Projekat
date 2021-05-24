@@ -1,0 +1,19 @@
+[
+    
+    {
+        "Id": 1,
+        "Name": "brufen 300mg",
+        "Details": "Pomaze pri smanjivanju temperature. Sastojci: paracetamol",
+        "Alternative": "Paracetamol",
+        "Explanation": "Alergen",
+        "StatusType": "Waiting"
+    },
+    {
+        "Id": 2,
+        "Name": "fervexx",
+        "Details": "Pomaze kod prehlada. Sastojci: paracetamol",
+        "Alternative": "coldrex",
+        "Explanation": "Prejak je u kombinaciji sa drugim lekovima.",
+        "StatusType": "Waiting"
+    }
+]

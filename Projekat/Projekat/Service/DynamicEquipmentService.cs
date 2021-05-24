@@ -6,6 +6,7 @@
 
 
 using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
 
@@ -13,80 +14,44 @@ namespace Service
 {
    public class DynamicEquipmentService
    {
-      public DynamicEquipment CreateEquipment()
+        public DynamicEquipmentRepository dynamicEquipmentRepository = new DynamicEquipmentRepository();
+        private List<DynamicEquipment> dynamicEquipments = new List<DynamicEquipment>();
+
+        public void MoveDynamicEquipment(DynamicEquipment dynamicEquipment)
+        {
+            dynamicEquipmentRepository.MoveDynamicEquipment(dynamicEquipment);
+        }
+
+
+        public void Save(DynamicEquipment newEquipment)
       {
-         // TODO: implement
-         return null;
-      }
-      
-      public void Save(Model.StaticEquipment newEquipment)
-      {
-         // TODO: implement
+            // TODO: implement
+            dynamicEquipmentRepository.Save(newEquipment);
       }
       
       public List<DynamicEquipment> GetAll()
       {
          // TODO: implement
-         return null;
+         return dynamicEquipmentRepository.GetAll();
       }
       
-      public Boolean UpdateEquipment()
+      public Boolean UpdateEquipment(DynamicEquipment dynamicEquipment)
       {
          // TODO: implement
-         return false;
+         dynamicEquipmentRepository.UpdateEquipment(dynamicEquipment);
+         return true;
       }
       
-      public Boolean DeleteEquipment()
+      public Boolean DeleteEquipment(int id)
       {
-         // TODO: implement
-         return false;
-      }
-   
-      public System.Collections.ArrayList dynamicEquipmentRepository;
-      
-      /// <pdGenerated>default getter</pdGenerated>
-      public System.Collections.ArrayList GetDynamicEquipmentRepository()
-      {
-         if (dynamicEquipmentRepository == null)
-            dynamicEquipmentRepository = new System.Collections.ArrayList();
-         return dynamicEquipmentRepository;
-      }
-      
-      /// <pdGenerated>default setter</pdGenerated>
-      public void SetDynamicEquipmentRepository(System.Collections.ArrayList newDynamicEquipmentRepository)
-      {
-         RemoveAllDynamicEquipmentRepository();
-         foreach (Repository.DynamicEquipmentRepository oDynamicEquipmentRepository in newDynamicEquipmentRepository)
-            AddDynamicEquipmentRepository(oDynamicEquipmentRepository);
-      }
-      
-      /// <pdGenerated>default Add</pdGenerated>
-      public void AddDynamicEquipmentRepository(Repository.DynamicEquipmentRepository newDynamicEquipmentRepository)
-      {
-         if (newDynamicEquipmentRepository == null)
-            return;
-         if (this.dynamicEquipmentRepository == null)
-            this.dynamicEquipmentRepository = new System.Collections.ArrayList();
-         if (!this.dynamicEquipmentRepository.Contains(newDynamicEquipmentRepository))
-            this.dynamicEquipmentRepository.Add(newDynamicEquipmentRepository);
-      }
-      
-      /// <pdGenerated>default Remove</pdGenerated>
-      public void RemoveDynamicEquipmentRepository(Repository.DynamicEquipmentRepository oldDynamicEquipmentRepository)
-      {
-         if (oldDynamicEquipmentRepository == null)
-            return;
-         if (this.dynamicEquipmentRepository != null)
-            if (this.dynamicEquipmentRepository.Contains(oldDynamicEquipmentRepository))
-               this.dynamicEquipmentRepository.Remove(oldDynamicEquipmentRepository);
-      }
-      
-      /// <pdGenerated>default removeAll</pdGenerated>
-      public void RemoveAllDynamicEquipmentRepository()
-      {
-         if (dynamicEquipmentRepository != null)
-            dynamicEquipmentRepository.Clear();
-      }
-   
-   }
+            dynamicEquipmentRepository.DeleteEquipment(id);
+            return true;
+        }
+        public int GenerateNewId()
+        {
+            return dynamicEquipmentRepository.GenerateNewId();
+        }
+
+
+    }
 }

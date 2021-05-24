@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 using Model;
+using Service;
 using System;
 using System.Collections.Generic;
 
@@ -12,80 +13,44 @@ namespace Controller
 {
    public class DynamicEquipmentController
    {
-      public DynamicEquipment CreateEquipment()
+
+        public DynamicEquipmentService dynamicEquipmentService = new DynamicEquipmentService();
+        private List<DynamicEquipment> dynamicEquipments = new List<DynamicEquipment>();
+
+        public void MoveDynamicEquipment(DynamicEquipment dynamicEquipment)
+        {
+            dynamicEquipmentService.MoveDynamicEquipment(dynamicEquipment);
+        }
+
+        public void Save(DynamicEquipment newEquipment)
       {
-         // TODO: implement
-         return null;
-      }
-      
-      public void Save(Model.StaticEquipment newEquipment)
-      {
-         // TODO: implement
+            // TODO: implement
+            dynamicEquipmentService.Save(newEquipment);
       }
       
       public List<DynamicEquipment> GetAll()
       {
          // TODO: implement
-         return null;
+         return dynamicEquipmentService.GetAll();
       }
       
-      public Boolean UpdateEquipment()
+      public Boolean UpdateEquipment(DynamicEquipment dynamicEquipment)
       {
-         // TODO: implement
-         return false;
+            // TODO: implement
+            dynamicEquipmentService.UpdateEquipment(dynamicEquipment);
+         return true;
       }
       
-      public Boolean DeleteEquipment()
+      public Boolean DeleteEquipment(int id)
       {
-         // TODO: implement
-         return false;
-      }
-   
-      public System.Collections.ArrayList dynamicEquipmentService;
-      
-      /// <pdGenerated>default getter</pdGenerated>
-      public System.Collections.ArrayList GetDynamicEquipmentService()
-      {
-         if (dynamicEquipmentService == null)
-            dynamicEquipmentService = new System.Collections.ArrayList();
-         return dynamicEquipmentService;
-      }
-      
-      /// <pdGenerated>default setter</pdGenerated>
-      public void SetDynamicEquipmentService(System.Collections.ArrayList newDynamicEquipmentService)
-      {
-         RemoveAllDynamicEquipmentService();
-         foreach (Service.DynamicEquipmentService oDynamicEquipmentService in newDynamicEquipmentService)
-            AddDynamicEquipmentService(oDynamicEquipmentService);
-      }
-      
-      /// <pdGenerated>default Add</pdGenerated>
-      public void AddDynamicEquipmentService(Service.DynamicEquipmentService newDynamicEquipmentService)
-      {
-         if (newDynamicEquipmentService == null)
-            return;
-         if (this.dynamicEquipmentService == null)
-            this.dynamicEquipmentService = new System.Collections.ArrayList();
-         if (!this.dynamicEquipmentService.Contains(newDynamicEquipmentService))
-            this.dynamicEquipmentService.Add(newDynamicEquipmentService);
-      }
-      
-      /// <pdGenerated>default Remove</pdGenerated>
-      public void RemoveDynamicEquipmentService(Service.DynamicEquipmentService oldDynamicEquipmentService)
-      {
-         if (oldDynamicEquipmentService == null)
-            return;
-         if (this.dynamicEquipmentService != null)
-            if (this.dynamicEquipmentService.Contains(oldDynamicEquipmentService))
-               this.dynamicEquipmentService.Remove(oldDynamicEquipmentService);
-      }
-      
-      /// <pdGenerated>default removeAll</pdGenerated>
-      public void RemoveAllDynamicEquipmentService()
-      {
-         if (dynamicEquipmentService != null)
-            dynamicEquipmentService.Clear();
-      }
-   
-   }
+            dynamicEquipmentService.DeleteEquipment(id);
+            return true;
+        }
+        public int GenerateNewId()
+        {
+            return dynamicEquipmentService.GenerateNewId();
+        }
+
+
+    }
 }

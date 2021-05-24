@@ -6,37 +6,44 @@
 
 using Model;
 using System;
+using Service;
 using System.Collections.Generic;
 
 namespace Controller
 {
    public class PatientController
    {
-      public Model.Patient GetById(String id)
+        public PatientService patient_service = new PatientService();       
+      public Model.Patient GetById(int id)
       {
-         // TODO: implement
-         return null;
+
+         return patient_service.GetById(id);
       }
       
       public void Update(Model.Patient patient)
       {
          // TODO: implement
       }
-      
-      public void Delete(Model.Patient patient)
+        public int GenerateNewId()
+        {
+            return patient_service.GenerateNewId();
+
+        }
+        public void Delete(Model.Patient patient)
       {
-         // TODO: implement
+            
+            patient_service.Delete(patient);
       }
       
       public void Save(Model.Patient newPatient)
       {
-         // TODO: implement
+            patient_service.Save(newPatient);
       }
       
       public List<Patient> GetAll()
       {
-         // TODO: implement
-         return null;
+            // TODO: implement
+            return patient_service.GetAll();
       }
    
       public System.Collections.ArrayList patientService;

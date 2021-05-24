@@ -1,0 +1,61 @@
+[
+    
+    {
+        "Id": 1,
+        "Explanation": "Krva slika u losem stanju, ne oseca se dobro...",
+        "Date": "25.06.2021.",
+        "TimeStart": "12:00",
+        "Duration": "40",
+        "Room": {
+            "Id": 0,
+            "Name": "A",
+            "RoomType": null,
+            "Floor": 0,
+            "Detail": null,
+            "StaticEquipments": null
+        },
+        "Patient": {
+            "record": null,
+            "id": 0,
+            "Username": null,
+            "Password": null,
+            "firstName": "Kristina",
+            "lastName": "Todic",
+            "Jmbg": null,
+            "EMail": null,
+            "PhoneNumber": null,
+            "DateOfBirth": "0001-01-01T00:00:00"
+        },
+        "EndTime": "12:40",
+        "Doc": "Internist"
+    },
+    {
+        "Id": 2,
+        "Explanation": "Problemi sa kozom lica",
+        "Date": "12.05.2021",
+        "TimeStart": "12:00",
+        "Duration": "30",
+        "Room": {
+            "Id": 0,
+            "Name": "D",
+            "RoomType": null,
+            "Floor": 0,
+            "Detail": null,
+            "StaticEquipments": null
+        },
+        "Patient": {
+            "record": null,
+            "id": 0,
+            "Username": null,
+            "Password": null,
+            "firstName": "Nikolina",
+            "lastName": "Todic",
+            "Jmbg": null,
+            "EMail": null,
+            "PhoneNumber": null,
+            "DateOfBirth": "0001-01-01T00:00:00"
+        },
+        "EndTime": "12:30",
+        "Doc": "Dermatologist"
+    }
+]

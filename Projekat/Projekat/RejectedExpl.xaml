@@ -1,0 +1,29 @@
+﻿<Window x:Class="Projekat.RejectedExpl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       
+        xmlns:local="clr-namespace:Projekat"
+        mc:Ignorable="d"
+        Title="RejectedExpl" Height="450" Width="800">
+    <Grid>
+
+        <Button Content="Save changes" FontSize="20" Click="SaveChanges" HorizontalAlignment="Left" Margin="634,55,0,0" VerticalAlignment="Top" Height="42" Width="142" Background="#FFB5CDE2"/>
+        <TextBox x:Name="Rejection" FontSize="18" Background="LightCyan" HorizontalAlignment="Left" Margin="35,298,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="577" Height="93"/>
+        <Label Content="Explanation for rejection:" FontSize="18" HorizontalAlignment="Left" Margin="35,259,0,0" VerticalAlignment="Top" Width="244"/>
+        <DataGrid x:Name="dataGrid" ItemsSource="{Binding Medicines}" IsReadOnly="True"
+            SelectionMode="Single" AutoGenerateColumns="False" Margin="35,30,188,0" Height="222" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn  Header="Medicine Id" Width="80"  Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Name" Width="100" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Details" Width="200" Binding="{Binding Details}"/>
+                <DataGridTextColumn Header="Alternative" Width="100" Binding="{Binding Alternative}"/>
+                <DataGridTextColumn Header="Accepted" Width="100" Binding="{Binding StatusType}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+
+    </Grid>
+</Window>

@@ -1,0 +1,35 @@
+﻿<Window x:Class="Projekat.TransferStaticEquipment"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat"
+        mc:Ignorable="d"
+        Title="TransferStaticEquipment" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="staticDataGrid"
+                        AutoGenerateColumns="False"
+                        IsReadOnly="True" Margin="10,0,484,148">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id"
+                            Binding="{Binding Id}" />
+                <DataGridTextColumn Header="Name"
+                            Binding="{Binding Name}" />
+                <DataGridTextColumn Header="RoomId"
+                            Binding="{Binding RoomId}" />
+                <DataGridTextColumn Header="Quantity"
+                            Binding="{Binding Quantity}" />
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Move" HorizontalAlignment="Left" Height="23" Margin="10,286,0,0" Click="MoveToTransfer_Click" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.49,-0.181"/>
+        <Label HorizontalAlignment="Left" Height="23" Margin="344,43,0,0" Content="Name"  VerticalAlignment="Top" Width="56"/>
+        <Label HorizontalAlignment="Left" Height="23" Margin="344,80,0,0" Content="To Room"  VerticalAlignment="Top" Width="56"/>
+        <TextBox x:Name="name" HorizontalAlignment="Left" Margin="425,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="toRoom" HorizontalAlignment="Left" Margin="425,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="acceptButton" Content="Accept" HorizontalAlignment="Left" Margin="425,276,0,0" Visibility="Collapsed" Click="AcceptTransfer_Click" VerticalAlignment="Top" Height="30" Width="60"/>
+        <Button x:Name="cancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="337,276,0,0" Visibility="Collapsed" Click="CancelTransfer_Click" VerticalAlignment="Top" Height="30" Width="63"/>
+        <DatePicker  x:Name="transfer_date" HorizontalAlignment="Left" Height="23" Margin="425,134,0,0" VerticalAlignment="Top" Width="138"/>
+
+    </Grid>
+</Window>

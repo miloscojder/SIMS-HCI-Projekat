@@ -5,68 +5,54 @@
  ***********************************************************************/
 
 using System;
+using Service;
+using Model;
+using System.IO;
+using System.Collections.Generic;
+using Repository;
 
 namespace Controller
 {
    public class NotifficationController
    {
-      public Model.Notification GetOne(String id)
-      {
-         // TODO: implement
-         return null;
-      }
-      
-      public void deleteNotification(String notId)
-      {
-         // TODO: implement
-      }
-      
-   
-      public System.Collections.ArrayList notifficationService;
-      
-      /// <pdGenerated>default getter</pdGenerated>
-      public System.Collections.ArrayList GetNotifficationService()
-      {
-         if (notifficationService == null)
-            notifficationService = new System.Collections.ArrayList();
-         return notifficationService;
-      }
-      
-      /// <pdGenerated>default setter</pdGenerated>
-      public void SetNotifficationService(System.Collections.ArrayList newNotifficationService)
-      {
-         RemoveAllNotifficationService();
-         foreach (Service.NotifficationService oNotifficationService in newNotifficationService)
-            AddNotifficationService(oNotifficationService);
-      }
-      
-      /// <pdGenerated>default Add</pdGenerated>
-      public void AddNotifficationService(Service.NotifficationService newNotifficationService)
-      {
-         if (newNotifficationService == null)
-            return;
-         if (this.notifficationService == null)
-            this.notifficationService = new System.Collections.ArrayList();
-         if (!this.notifficationService.Contains(newNotifficationService))
-            this.notifficationService.Add(newNotifficationService);
-      }
-      
-      /// <pdGenerated>default Remove</pdGenerated>
-      public void RemoveNotifficationService(Service.NotifficationService oldNotifficationService)
-      {
-         if (oldNotifficationService == null)
-            return;
-         if (this.notifficationService != null)
-            if (this.notifficationService.Contains(oldNotifficationService))
-               this.notifficationService.Remove(oldNotifficationService);
-      }
-      
-      /// <pdGenerated>default removeAll</pdGenerated>
-      public void RemoveAllNotifficationService()
-      {
-         if (notifficationService != null)
-            notifficationService.Clear();
-      }
-   
+
+        public NotifficationService notifficationService = new NotifficationService();
+        List<Notification> notifications;
+                      
+        public void IsItTime(List<Notification> notifications)
+        {
+            notifficationService.IsItTime(notifications);
+        }
+
+        public List<Notification> GetAllNotifications()
+        {
+            notifications= notifficationService.GetAllNotiffications();
+            return notifications;
+        }
+
+        public void DeleteOutOfBoundsNotifications(List<Notification> notifications)
+        {
+            notifficationService.DeleteOutOfBoundsNotifications(notifications);
+        }
+
+        public void ShouldIAdd(Notification n, List<Notification> notifications)
+        {
+            notifficationService.ShouldIAdd(n, notifications);
+        }
+
+        public void WriteNotificationsToJason(List<Notification> newNotifications)
+        {
+            notifficationService.WriteNotificationsToJason(newNotifications);
+        }
+       
+        public void DeleteChoosenNotification(List<Notification> allNotifications, Notification choosenNotification) {
+            notifficationService.DeleteChoosenNotification(allNotifications, choosenNotification);
+        }
+
+        public void IsDateChoosenCorectlly(DateTime choosenDate)
+        {
+            notifficationService.IsDateChoosenCorectlly(choosenDate.Date.Date);
+        }
+
    }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,6 +15,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model;
 using Newtonsoft.Json;
+using Projekat.Model;
+using Controller;
 
 namespace Projekat
 {
@@ -23,27 +25,73 @@ namespace Projekat
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        UserController userController = new UserController();
         public MainWindow()
         {
             InitializeComponent();
 
-            Request request = new Request(1, "description1", new DateTime(), new DateTime(), 2, StatusType.Waiting, "", new Doctor());
-            //Primer serijalizacije
-            string outPut = JsonConvert.SerializeObject(request);
-            System.Console.WriteLine(outPut);
-            string location = "C:\\Users\\cojder\\Desktop\\SIMS_Projekat\\SIMS-HCI-Projekat\\Projekat\\Projekat\\Data\\Requests.json";
+        }
+        private void Director_Click(object sender, RoutedEventArgs e)
+        {
+            DirectorWindow director = new DirectorWindow();
+            director.Show();
+        }
 
-            File.WriteAllText(location, outPut);
-            //Primer deserijalizacije
-            using (StreamReader r = new StreamReader(location)) {
-                string allData = r.ReadToEnd();
-                if (allData != "") {
-                    Request loaded = JsonConvert.DeserializeObject<Request>(allData);
-                    System.Console.WriteLine(loaded);
-                }
+      private void Doctor_Click(object sender, RoutedEventArgs e)
+        {
+            User u = new User();
+            DoctorWindow doctor = new DoctorWindow(u);
+            doctor.Show();
+        }
+      
+
+
+        private void Request_Click(object sender, RoutedEventArgs e)
+        {
+            RequestCRUD request = new RequestCRUD();
+            request.Show();
+        }
+
+        private void PatientButton_Click(object sender, RoutedEventArgs e)
+        {
+            PatientMainPage pmp = new PatientMainPage(null);
+            pmp.Show();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {              
+            User loggedUser = userController.FindUserByUsernameAndPasswrod(UsernameTextBox.Text, PasswordTextBox.Text);
+
+            switch (loggedUser.Rool)
+            {
+                case RoolType.Doctor:
+                    DoctorWindow dw = new DoctorWindow(loggedUser);
+                    dw.Show();
+                    break;
+                case RoolType.Patient:
+                    PatientMainPage pw = new PatientMainPage(loggedUser);
+                    pw.Show();
+                    break;
+                case RoolType.Secretary:
+                    SecretaryWindow sw = new SecretaryWindow();
+                    sw.Show();
+                    break;
+                case RoolType.Director:
+                    DirectorWindow dirw = new DirectorWindow();
+                    dirw.Show();
+                    break;
+                default:
+                    MessageBox.Show("Nemate nalog!");
+                    break;
             }
 
-                
+            
         }
     }
 }

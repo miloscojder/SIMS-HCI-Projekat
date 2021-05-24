@@ -1,0 +1,82 @@
+[
+
+    {
+        "id": "1",
+        "Username": "pera123",
+        "Password": "kgbpassword",
+        "firstName": "Pera",
+        "lastName": "Peric",
+        "Jmbg": "020202455555",
+        "EMail": null,
+        "PhoneNumber": "064-889-554",
+        "DateOfBirth": "0001-01-01T00:00:00",
+        "record": {
+            "RecordNumber": 1,
+            "Allergen" : "none"
+        }
+    },
+
+    {
+        "id": "2",
+        "Username": null,
+        "Password": null,
+        "firstName": "Kristina",
+        "lastName": "Todic",
+        "Jmbg": null,
+        "EMail": null,
+        "PhoneNumber": null,
+        "DateOfBirth": "0001-01-01T00:00:00",
+        "record": {
+            "RecordNumber": 2,
+            "Allergen": "none"
+        }
+    },
+
+    {
+        "id": "5",
+        "Username": null,
+        "Password": null,
+        "firstName": "Nikolina",
+        "lastName": "Todic",
+        "Jmbg": null,
+        "EMail": null,
+        "PhoneNumber": null,
+        "DateOfBirth": "0001-01-01T00:00:00",
+        "record": {
+            "RecordNumber": 3,
+            "Allergen": "none"
+        }
+    },
+
+    {
+        "id": "3",
+        "Username": null,
+        "Password": null,
+        "firstName": "Anamarija",
+        "lastName": "Popovic",
+        "Jmbg": null,
+        "EMail": null,
+        "PhoneNumber": null,
+        "DateOfBirth": "0001-01-01T00:00:00",
+        "record": {
+            "RecordNumber": 4,
+            "Allergen": "brufen"
+        }
+    },
+
+    {
+        "id": "4",
+        "Username": null,
+        "Password": null,
+        "firstName": "Mirko",
+        "lastName": "Mirkovic",
+        "Jmbg": null,
+        "EMail": null,
+        "PhoneNumber": null,
+        "DateOfBirth": "0001-01-01T00:00:00",
+        "record": {
+            "RecordNumber": 5,
+            "Allergen": "paracetamol"
+        }
+    }
+]

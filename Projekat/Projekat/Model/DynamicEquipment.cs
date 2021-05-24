@@ -10,10 +10,19 @@ namespace Model
 {
    public class DynamicEquipment
    {
-      public int Id;
-      public String Name;
-      public EquipmentType Type;
-      public int Quantity;
-   
-   }
+      public int Id { get; set; }
+      public String Name { get; set; }
+        public EquipmentType Type { get; set; }
+        public int Quantity { get; set; }
+
+        public DynamicEquipment(int id, string name, EquipmentType type, int quantity)
+        {
+            Id = id;
+            Name = name;
+            Type = type;
+            Quantity = quantity;
+
+
+        }
+    }
 }

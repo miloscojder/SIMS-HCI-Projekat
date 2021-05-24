@@ -1,0 +1,97 @@
+[
+    
+    {
+        "Id": 1,
+        "Name": "B",
+        "RoomType": "Room",
+        "Floor": 2,
+        "Detail": "Room is ready for two patients.",
+        "StaticEquipments": [
+            {
+                "Id": 1,
+                "Name": "chair",
+                "Type": 0,
+                "Quantity": 22,
+                "RoomId": 1
+            }
+        ]
+    },
+    {
+        "Id": 2,
+        "Name": "A",
+        "RoomType": "Operation room",
+        "Floor": 4,
+        "Detail": "Room is ready for operation.",
+        "StaticEquipments": [
+            {
+                "Id": 2,
+                "Name": "table",
+                "Type": 0,
+                "Quantity": 10,
+                "RoomId": 2
+            },
+            {
+                "Id": 5,
+                "Name": "drawer",
+                "Type": 0,
+                "Quantity": 15,
+                "RoomId": 2
+            }
+        ]
+    },
+    {
+        "Id": 3,
+        "Name": "F",
+        "RoomType": "Bathroom",
+        "Floor": 1,
+        "Detail": "There are 3 bathrooms.",
+        "StaticEquipments": [
+            {
+                "Id": 3,
+                "Name": "apparatus",
+                "Type": 0,
+                "Quantity": 20,
+                "RoomId": 3
+            }
+        ]
+    },
+    {
+        "Id": 4,
+        "Name": "C",
+        "RoomType": "Operating room",
+        "Floor": 4,
+        "Detail": "Operation has started.",
+        "StaticEquipments": [
+            {
+                "Id": 4,
+                "Name": "bed",
+                "Type": 0,
+                "Quantity": 30,
+                "RoomId": 4
+            },
+            {
+                "Id": 4,
+                "Name": "bed",
+                "Type": 0,
+                "Quantity": 30,
+                "RoomId": 4
+            }
+        ]
+    },
+    {
+        "Id": 5,
+        "Name": "D",
+        "RoomType": "Room",
+        "Floor": 2,
+        "Detail": "Room is for 15 patients",
+        "StaticEquipments": [
+            {
+                "Id": 5,
+                "Name": "drawer",
+                "Type": 0,
+                "Quantity": 15,
+                "RoomId": 5
+            }
+        ]
+    }
+]

@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 using Model;
+using Service;
 using System;
 using System.Collections.Generic;
 
@@ -12,41 +13,41 @@ namespace Controller
 {
    public class RequestController
    {
+        public RequestService requestService = new RequestService();
       public Model.Request ReadRequest(int id)
       {
-         // TODO: implement
-         return null;
+         return requestService.ReadRequest(id);
       }
       
       public void UpdateRequest(int id, String newDescription, DateTime newDateOfVacation, int newDurationOfVacation)
       {
-         // TODO: implement
+            requestService.UpdateRequest(id, newDescription, newDateOfVacation, newDurationOfVacation);
       }
       
       public Boolean DeleteRequest(int id)
       {
-         // TODO: implement
-         return false;
+         return requestService.DeleteRequest(id);
       }
-      
-      public void Save(Model.Request newRequest)
+        public int GenerateNextId()
+        {
+            return requestService.GenerateNextId();
+        }
+        public void Save(Model.Request newRequest)
       {
-         // TODO: implement
+            requestService.Save(newRequest);
       }
       
       public List<Request> GetAll()
       {
-         // TODO: implement
-         return null;
+         return requestService.GetAll();
       }
       
       public Boolean AcceptingRequest(int id, Model.StatusType newStatus, String explanation)
       {
-         // TODO: implement
-         return false;
+         return requestService.AcceptingRequest(id, newStatus, explanation);
       }
       
-      public void CreateRequest(String description, DateTime dateOfVacation, int durationOfVacation)
+    /*  public void CreateRequest(String description, DateTime dateOfVacation, int durationOfVacation)
       {
          // TODO: implement
       }
@@ -96,6 +97,6 @@ namespace Controller
          if (requestService != null)
             requestService.Clear();
       }
-   
+   */
    }
 }

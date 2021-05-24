@@ -3,8 +3,10 @@
  * Author:  Aleksa
  * Purpose: Definition of the Class Model.OperationFileStorage
  ***********************************************************************/
-
 using Model;
+using Newtonsoft.Json;
+using System.IO;
+using System.Linq;
 using System;
 using System.Collections.Generic;
 
@@ -12,58 +14,74 @@ namespace Repository
 {
    public class OperationRepository
    {
-      public Boolean ScheduleOperation()
+        public OperationRepository()
+        {
+            if (!File.Exists(FileLocation))
+            {
+                File.Create(FileLocation).Close();
+            }
+            using (StreamReader r = new StreamReader(FileLocation))
+            {
+                string json = r.ReadToEnd();
+                if (json != "")
+                {
+                    operations = JsonConvert.DeserializeObject<List<Operations>>(json);
+                }
+
+            }
+        }
+
+        public int GenerateNewId()
+        {
+            try
+            {
+                int maxId = operations.Max(obj => obj.Id);
+                return maxId + 1;
+            }
+            catch
+            {
+                return 1;
+            }
+        }
+
+        public void WriteToJson()
+        {
+            string json = JsonConvert.SerializeObject(operations);
+            File.WriteAllText(FileLocation, json);
+        }
+        public void ScheduleOperation(Operations op)
       {
-         // TODO: implement
-         return false;
-      }
+            operations.Add(op);
+            WriteToJson();
+        }
       
-      public Boolean RescheduleOperation(DateTime date, double durations)
+      public void RescheduleOperation(Operations op)
       {
-         // TODO: implement
-         return false;
-      }
+            int index = operations.FindIndex(obj => obj.Id == op.Id);
+            operations[index] = op;
+            WriteToJson();
+        }
       
-      public Boolean CancelOperation()
+      public void CancelOperation(Operations op)
       {
-         // TODO: implement
-         return false;
-      }
+            int index = operations.FindIndex(obj => obj.Id == op.Id);
+            operations.RemoveAt(index);
+            WriteToJson();
+        }
       
-      public Model.Operations ReadOperation()
-      {
-         // TODO: implement
-         return null;
-      }
+     
       
-      public Model.Operations UpdateOperation()
-      {
-         // TODO: implement
-         return null;
-      }
+    
       
-      public Model.Operations DeleteOperation()
+      public Operations GetOperation(Operations newOperations)
       {
-         // TODO: implement
-         return null;
-      }
-      
-      public Model.Operations Save(Model.Operations newOperation)
-      {
-         // TODO: implement
-         return null;
-      }
-      
-      public Model.Operations GetOperation()
-      {
-         // TODO: implement
-         return null;
-      }
+         return operations.Find(obj => obj.Id == newOperations.Id);
+        }
       
       public List<Operations> GetAll()
       {
-         // TODO: implement
-         return null;
+    
+         return operations;
       }
       
       public Model.Operations DatePriority(DateTime date)
@@ -77,8 +95,9 @@ namespace Repository
          // TODO: implement
          return null;
       }
-   
-      public String FileLocation;
-   
-   }
+
+        public string FileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\operations.json";
+        public List<Operations> operations = new List<Operations>();
+
+    }
 }

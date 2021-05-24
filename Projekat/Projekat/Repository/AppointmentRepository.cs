@@ -5,6 +5,9 @@
  ***********************************************************************/
 
 using Model;
+using Newtonsoft.Json;
+using System.IO;
+using System.Linq;
 using System;
 using System.Collections.Generic;
 
@@ -12,20 +15,58 @@ namespace Repository
 {
    public class AppointmentRepository
    {
-      public Appointment ScheduleDoctor()
+        public AppointmentRepository()
+        {
+            if(!File.Exists(FileLocation))
+            {
+                File.Create(FileLocation).Close();
+            }
+            using (StreamReader r = new StreamReader(FileLocation))
+            {
+                string json = r.ReadToEnd();
+                if(json!="")
+                {
+                    appointments = JsonConvert.DeserializeObject<List<Appointment>>(json);
+                }
+
+            }
+        }
+        public int GenerateNewId()
+        {
+            try
+            {
+                int maxId = appointments.Max(obj => obj.id);
+                return maxId + 1;
+            }
+            catch
+            {
+                return 1;
+            }
+        }
+        public void WriteToJson()
+        {
+            string json = JsonConvert.SerializeObject(appointments);
+            File.WriteAllText(FileLocation, json);
+        }
+      public void ScheduleDoctor(Appointment appointment)
       {
-         // TODO: implement
-         return null;
+          appointments.Add(appointment);
+            WriteToJson();
+        }
+      
+      public void RescheduleDoctor(Appointment appointment)
+      {
+            int index = appointments.FindIndex(obj => obj.id == appointment.id);
+            appointments[index] = appointment;
+            WriteToJson();
       }
       
-      public void RescheduleDoctor(DateTime date, double durations)
+      public void Cancel(Appointment newAppointemnt)
       {
-         // TODO: implement
-      }
-      
-      public void Cancel()
-      {
-         // TODO: implement
+            int index = appointments.FindIndex(obj => obj.id == newAppointemnt.id);
+            appointments.RemoveAt(index);
+            WriteToJson();
+           // return false;
       }
       
       public Appointment StartAppointment()
@@ -57,18 +98,16 @@ namespace Repository
          return null;
       }
       
-      public void Save(String appointments, Boolean sign)
-      {
-         // TODO: implement
-      }
+    
       
       public List<Appointment> GetAll()
       {
-         // TODO: implement
-         return null;
+         return appointments;
       }
       
-      public List<Doctor> GetAllDoctors()
+
+
+        public List<Doctor> GetAllDoctors()
       {
          // TODO: implement
          return null;
@@ -80,20 +119,16 @@ namespace Repository
          return null;
       }
       
-      public Model.Appointment GetAppointment()
+      public Appointment GetAppointment(int idd)
       {
-         // TODO: implement
-         return null;
+         return appointments.Find(obj => obj.id == idd);
       }
+
       
-      public List<Appointment> GetAllAppointments()
-      {
-         // TODO: implement
-         return null;
-      }
-   
-      public String FileLocation;
-      public List<Appointment> Appoinments;
+
+        public string FileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\appointments.json";
+      public List<Appointment> appointments = new List<Appointment>();
+        public Appointment appointment = new Appointment();
    
    }
 }

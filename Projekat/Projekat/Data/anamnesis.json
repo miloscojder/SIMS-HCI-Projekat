@@ -1,0 +1,52 @@
+[
+    
+    {
+        "Anamnesy": "Pacijent dobrog opsteg zdravlja, dolazi na kontrolu",
+        "Id": 1,
+        "Patient": {
+            "record": null,
+            "id": 4,
+            "Username": null,
+            "Password": null,
+            "firstName": "Mirko",
+            "lastName": "Mirkovic",
+            "Jmbg": null,
+            "EMail": null,
+            "PhoneNumber": null,
+            "DateOfBirth": "0001-01-01T00:00:00"
+        }
+    },
+    {
+        "Anamnesy": "Pacijentkinja dosla sa bolovima u donjem predelu ledja sa nalazima krvi: CRP=234, urea:23....",
+        "Id": 2,
+        "Patient": {
+            "record": null,
+            "id": 2,
+            "Username": null,
+            "Password": null,
+            "firstName": "Kristina",
+            "lastName": "Todic",
+            "Jmbg": null,
+            "EMail": null,
+            "PhoneNumber": null,
+            "DateOfBirth": "0001-01-01T00:00:00"
+        }
+    },
+    {
+        "Anamnesy": "Pacijent se dobro oseca, nalazi nisu dobri.",
+        "Id": 3,
+        "Patient": {
+            "record": null,
+            "id": 0,
+            "Username": null,
+            "Password": null,
+            "firstName": "Pera",
+            "lastName": "Peric",
+            "Jmbg": null,
+            "EMail": null,
+            "PhoneNumber": null,
+            "DateOfBirth": "0001-01-01T00:00:00"
+        }
+    }
+    
+]

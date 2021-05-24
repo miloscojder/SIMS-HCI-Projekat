@@ -1,0 +1,58 @@
+[
+    
+    {
+        "Id": 1,
+        "Medicine": "diclofen 300mg",
+        "Quantity": " 1 kutija",
+        "Instruction": "1x1 jedna tableta na dan",
+        "Patient": {
+            "record": null,
+            "id": 3,
+            "Username": null,
+            "Password": null,
+            "firstName": "Anamarija",
+            "lastName": "Dolovac",
+            "Jmbg": null,
+            "EMail": null,
+            "PhoneNumber": null,
+            "DateOfBirth": "0001-01-01T00:00:00"
+        }
+    },
+    {
+        "Id": 2,
+        "Medicine": "Posakonazol 500mg",
+        "Quantity": " 2 kutija",
+        "Instruction": "1x3 tableta na svakih 8h",
+        "Patient": {
+            "record": null,
+            "id": 4,
+            "Username": null,
+            "Password": null,
+            "firstName": "Mirko",
+            "lastName": "Mirkovic",
+            "Jmbg": null,
+            "EMail": null,
+            "PhoneNumber": null,
+            "DateOfBirth": "0001-01-01T00:00:00"
+        }
+    },
+    {
+        "Id": 3,
+        "Medicine": "Rapten K",
+        "Quantity": "1 kutija",
+        "Instruction": "1 do 2 tablete dnevno, nedelju dana",
+        "Patient": {
+            "record": null,
+            "id": 0,
+            "Username": null,
+            "Password": null,
+            "firstName": "Nikolina",
+            "lastName": "Todic",
+            "Jmbg": null,
+            "EMail": null,
+            "PhoneNumber": null,
+            "DateOfBirth": "0001-01-01T00:00:00"
+        }
+    
+    }
+]
