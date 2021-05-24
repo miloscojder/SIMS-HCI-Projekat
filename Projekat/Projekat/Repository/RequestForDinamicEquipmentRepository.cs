@@ -92,10 +92,11 @@ namespace Repository
             WriteToJson();
         }
       
-      public Boolean AcceptingRequestForDinamycEquipment(int id, Model.StatusType newStatus)
+      public Boolean AcceptingRequestForDinamycEquipment(int id, Model.StatusType newStatus, String explanation)
       {
             int index = requestsForDinamicEquipment.FindIndex(obj => obj.Id == id);
             requestsForDinamicEquipment[index].Status = newStatus;
+            requestsForDinamicEquipment[index].Explanation = explanation;
             WriteToJson();
             if (requestsForDinamicEquipment[index].Status == StatusType.Accepted)
             {
@@ -109,6 +110,26 @@ namespace Repository
       {
           return requestsForDinamicEquipment;
       }
+
+
+        public List<RequestForDinamicEquipment> FilterByName(String name)
+        {
+            // TODO: implement
+            return null;
+        }
+
+        public List<RequestForDinamicEquipment> FilterByStatus(Model.StatusType status)
+        {
+            // TODO: implement
+            return null;
+        }
+
+        public List<RequestForDinamicEquipment> SortByDateOfCreation()
+        {
+            // TODO: implement
+            return null;
+        }
+
 
     }
 }

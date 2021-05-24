@@ -52,7 +52,7 @@ namespace Projekat
         //morace da stoji u drugom sloju
         private static List<Appointment> getAppointments()
         {
-            return JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json"));
+            return JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(@"C:\Users\cojder\Desktop\SIMS_Projekat\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json"));
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)

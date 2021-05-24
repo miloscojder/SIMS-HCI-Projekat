@@ -34,9 +34,9 @@ namespace Controller
             requestForDinamicEquipmentService.Save(newRequestForDinamicEquipment);
       }
       
-      public Boolean AcceptingRequestForDinamycEquipment(int id, Model.StatusType newStatus)
+      public Boolean AcceptingRequestForDinamycEquipment(int id, Model.StatusType newStatus, String explanation)
       {
-         return requestForDinamicEquipmentService.AcceptingRequestForDinamycEquipment(id, newStatus);
+         return requestForDinamicEquipmentService.AcceptingRequestForDinamycEquipment(id, newStatus, explanation);
       }
 
         public List<RequestForDinamicEquipment> GetAll()
@@ -47,5 +47,25 @@ namespace Controller
         public int generateNextId() {
             return requestForDinamicEquipmentService.generateNextId();
         }
+
+
+        public List<RequestForDinamicEquipment> FilterByName(String name)
+        {
+            // TODO: implement
+            return null;
+        }
+
+        public List<RequestForDinamicEquipment> FilterByStatus(Model.StatusType status)
+        {
+            // TODO: implement
+            return null;
+        }
+
+        public List<RequestForDinamicEquipment> SortByDateOfCreation()
+        {
+            // TODO: implement
+            return null;
+        }
+
     }
 }
