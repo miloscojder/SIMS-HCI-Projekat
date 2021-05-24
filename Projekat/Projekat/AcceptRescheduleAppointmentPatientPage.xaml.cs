@@ -102,6 +102,7 @@ namespace Projekat
 
                     AppointmentsPage a = new AppointmentsPage(null);
                     a.Show();
+                    this.Close();
                 }
                 else
                 {
@@ -122,6 +123,7 @@ namespace Projekat
 
                     AppointmentsPage a = new AppointmentsPage(app);
                     a.Show();
+                    this.Close();
                 }
             }
         }
@@ -130,6 +132,7 @@ namespace Projekat
         {
             AppointmentsPage ap = new AppointmentsPage(null);
             ap.Show();
+            this.Close();
         }
     }
 }

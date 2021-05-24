@@ -25,6 +25,7 @@ namespace Projekat
 
         NotifficationController notifficationController = new NotifficationController();
         public List<string> Termini { get; set; }
+        Notification createdNotification { get; set; }
 
         public CreateNotifficationPatientPage()
         {
@@ -37,22 +38,24 @@ namespace Projekat
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Notification newNotification = new Notification();
-            string hoursAndMinutes = (String)NotrificationDateComboBox.SelectedItem;
-            string[] choosenHours = hoursAndMinutes.Split(':');           
-            DateTime choosenDate = new DateTime(NotifciationDateDatePicker.SelectedDate.Value.Year, NotifciationDateDatePicker.SelectedDate.Value.Month, NotifciationDateDatePicker.SelectedDate.Value.Day, Convert.ToInt32(choosenHours[0]), Convert.ToInt32(choosenHours[1]), 0);
-            Random random = new Random();
+            try
+            {
+                string hoursAndMinutes = (String)NotrificationDateComboBox.SelectedItem;
+                string[] choosenHours = hoursAndMinutes.Split(':');
+                DateTime choosenDate = new DateTime(NotifciationDateDatePicker.SelectedDate.Value.Year, NotifciationDateDatePicker.SelectedDate.Value.Month, NotifciationDateDatePicker.SelectedDate.Value.Day, Convert.ToInt32(choosenHours[0]), Convert.ToInt32(choosenHours[1]), 0);
+                Random random = new Random();
 
-            newNotification.Name = NotificationNameTextBox.Text;
-            newNotification.Description = NotificationDescriptionTextBox.Text;
-            newNotification.Date = choosenDate;
-            newNotification.DaysLeft = Convert.ToInt32(NotificationDaysLeftTextBox.Text);
-            newNotification.Id = Convert.ToString(random.Next(1, 10000));
+                createdNotification = new Notification(NotificationNameTextBox.Text, NotificationDescriptionTextBox.Text, choosenDate, Convert.ToInt32(NotificationDaysLeftTextBox.Text), Convert.ToString(random.Next(1, 10000)));
 
-            NotificationsPatientPage npp = new NotificationsPatientPage(newNotification);
-            npp.Show();
+                NotificationsPatientPage npp = new NotificationsPatientPage(createdNotification);
+                npp.Show();
+            }
+            catch (Exception EX)
+            {
+                notifficationController.IsDateChoosenCorectlly(createdNotification.Date.Date);
+            }
         }
-
+           
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             NotificationsPatientPage npp = new NotificationsPatientPage(null);

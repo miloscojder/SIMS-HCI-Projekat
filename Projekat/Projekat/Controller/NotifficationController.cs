@@ -18,12 +18,7 @@ namespace Controller
 
         public NotifficationService notifficationService = new NotifficationService();
         List<Notification> notifications;
-               
-        public void DoWeHaveNotifications()
-        {
-            notifficationService.DoWeHaveNotiffications();
-        }
-
+                      
         public void IsItTime(List<Notification> notifications)
         {
             notifficationService.IsItTime(notifications);
@@ -35,6 +30,29 @@ namespace Controller
             return notifications;
         }
 
-      
+        public void DeleteOutOfBoundsNotifications(List<Notification> notifications)
+        {
+            notifficationService.DeleteOutOfBoundsNotifications(notifications);
+        }
+
+        public void ShouldIAdd(Notification n, List<Notification> notifications)
+        {
+            notifficationService.ShouldIAdd(n, notifications);
+        }
+
+        public void WriteNotificationsToJason(List<Notification> newNotifications)
+        {
+            notifficationService.WriteNotificationsToJason(newNotifications);
+        }
+       
+        public void DeleteChoosenNotification(List<Notification> allNotifications, Notification choosenNotification) {
+            notifficationService.DeleteChoosenNotification(allNotifications, choosenNotification);
+        }
+
+        public void IsDateChoosenCorectlly(DateTime choosenDate)
+        {
+            notifficationService.IsDateChoosenCorectlly(choosenDate.Date.Date);
+        }
+
    }
 }

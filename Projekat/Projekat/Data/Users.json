@@ -1,0 +1,72 @@
+[
+  {
+    "specialty": "Cardiologist",
+    "free": false,
+    "appointment": null,
+    "operations": null,
+    "prescription": null,
+    "Salary": 0.0,
+    "VacationTime": "00:00:00",
+    "WorkingHours": "00:00:00",
+    "WorkingExperince": 0,
+    "Id": 0,
+    "Username": "Pera",
+    "Password": "123",
+    "firstName": "Kristina",
+    "lastName": "Miletic",
+    "Jmbg": null,
+    "EMail": null,
+    "PhoneNumber": null,
+    "DateOfBirth": "0001-01-01T00:00:00",
+    "Rool": 0
+  },
+  {
+    "id": 1,
+    "Username": "Aca",
+    "Password": "123",
+    "firstName": null,
+    "lastName": null,
+    "Jmbg": null,
+    "EMail": null,
+    "PhoneNumber": null,
+    "DateOfBirth": "0001-01-01T00:00:00",
+    "Rool": 1
+  },
+  {
+    "id": 2,
+    "Username": "Zika",
+    "Password": "345",
+    "firstName": null,
+    "lastName": null,
+    "Jmbg": null,
+    "EMail": null,
+    "PhoneNumber": null,
+    "DateOfBirth": "0001-01-01T00:00:00",
+    "Rool": 2
+  },
+  {
+    "id": 3,
+    "Username": "Ana",
+    "Password": "445",
+    "firstName": null,
+    "lastName": null,
+    "Jmbg": null,
+    "EMail": null,
+    "PhoneNumber": null,
+    "DateOfBirth": "0001-01-01T00:00:00",
+    "Rool": 3
+  },
+  {
+    "id": 4,
+    "Username": "Marko",
+    "Password": "555",
+    "firstName": null,
+    "lastName": null,
+    "Jmbg": null,
+    "EMail": null,
+    "PhoneNumber": null,
+    "DateOfBirth": "0001-01-01T00:00:00",
+    "Rool": 0
+  }
+
+]

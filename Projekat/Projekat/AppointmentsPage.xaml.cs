@@ -40,9 +40,7 @@ namespace Projekat
 
             lvAppointmentsPatient.ItemsSource = spisak;
 
-
             SaveAppointments(spisak);
-
         }
 
         //morace da stoji u drugom sloju
@@ -61,6 +59,7 @@ namespace Projekat
         {
             ScheduleAppointmentPatient sap = new ScheduleAppointmentPatient();
             sap.Show();
+            this.Close();
         }
 
         private void CancButton_Click_1(object sender, RoutedEventArgs e)
@@ -85,17 +84,18 @@ namespace Projekat
                 MessageBox.Show("Blokirani ste zbog spamovanja, javite nam se za vise informacija");
                 MainWindow mw = new MainWindow();
                 mw.Show();
+                this.Close();
             }
             else
             {
-                sfsd.activityCounter++;
-
+               
                 if (lvAppointmentsPatient.SelectedItems.Count < 1)
                 {
                     MessageBox.Show("You must choose at leas one appointment.");
                 }
                 else
                 {
+                    sfsd.activityCounter++;
                     Appointment ac = (Appointment)lvAppointmentsPatient.SelectedItems[0];
 
                     List<Appointment> svi = new List<Appointment>();
@@ -140,49 +140,57 @@ namespace Projekat
 
                     AppointmentsPage ap = new AppointmentsPage(null);
                     ap.Show();
+                    this.Close();
                 }
                 else
                 {
                     RescheduleAppointmentPatientPage rapp = new RescheduleAppointmentPatientPage(ach);
                     rapp.Show();
+                    this.Close();
                 }
             }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PatientMainPage pmp = new PatientMainPage();
+            PatientMainPage pmp = new PatientMainPage(null);
             pmp.Show();
+            this.Close();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             AppointmentsPage ap = new AppointmentsPage(null);
             ap.Show();
+            this.Close();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             NotificationsPatientPage npp = new NotificationsPatientPage(null);
             npp.Show();
+            this.Close();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage();
             pmrp.Show();
+            this.Close();
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             PatientQandAPage pqap = new PatientQandAPage();
             pqap.Show();
+            this.Close();
         }
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
             PatientProfilePage ppp = new PatientProfilePage();
             ppp.Show();
+            this.Close();
         }
     }
 }

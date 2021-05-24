@@ -18,9 +18,9 @@ namespace Repository
             return notifications;
       }
 
-        public void WriteNotificationsToJason()
+        public void WriteNotificationsToJason(List<Notification> saveNotifications)
         {
-            string json = JsonConvert.SerializeObject(notifications);
+            string json = JsonConvert.SerializeObject(saveNotifications);
             File.WriteAllText(fileLocation, json);
         }
 
@@ -36,7 +36,7 @@ namespace Repository
           return null;
       }
       
-      public void DeleteNotification(String Id)
+      public void DeleteNotificationById(String Id)
       {
             notifications = getAllNotifications();
 

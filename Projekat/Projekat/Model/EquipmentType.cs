@@ -5,7 +5,6 @@ namespace Model
    public enum EquipmentType
    {
       Static,
-      Dynamic
-   
+      Dynamic   
    }
 }
