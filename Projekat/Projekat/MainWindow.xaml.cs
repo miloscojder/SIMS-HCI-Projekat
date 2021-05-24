@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Controller;
 using Model;
 using Newtonsoft.Json;
 using Projekat.Model;
@@ -24,12 +25,14 @@ namespace Projekat
     /// </summary>
     public partial class MainWindow : Window
     {
+        UserController userController = new UserController();
         public MainWindow()
         {
             InitializeComponent();
-
-          
         }
+
+
+
         private void Director_Click(object sender, RoutedEventArgs e)
         {
             DirectorWindow director = new DirectorWindow();
@@ -59,6 +62,15 @@ namespace Projekat
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            List<User> users = new List<User>();
+            users = userController.GetAll();
+            userController.FindUser(UsernameTextBox.Text, PasswordTextBox.Text, users);
+    
+            
         }
     }
 }

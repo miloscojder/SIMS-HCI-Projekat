@@ -14,7 +14,7 @@
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="requestsDataGrid"
                         AutoGenerateColumns="False"
-                        IsReadOnly="True" Margin="23,23,17,277" RenderTransformOrigin="0.506,0.588" SelectionChanged="requestsDataGrid_SelectionChanged">
+                        IsReadOnly="True" Margin="23,23,17,277" RenderTransformOrigin="0.506,0.588">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id"
                                 Binding="{Binding Id}" />
@@ -54,7 +54,7 @@
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="requestsDataGrid2"
                         AutoGenerateColumns="False"
-                        IsReadOnly="True" Margin="23,23,17,277" RenderTransformOrigin="0.506,0.588" SelectionChanged="requestsDataGrid_SelectionChanged">
+                        IsReadOnly="True" Margin="23,23,17,277" RenderTransformOrigin="0.506,0.588">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id"
                                 Binding="{Binding Id}" />
@@ -84,7 +84,7 @@
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="requestsDataGrid3"
                         AutoGenerateColumns="False"
-                        IsReadOnly="True" Margin="23,23,17,277" RenderTransformOrigin="0.506,0.588" SelectionChanged="requestsDataGrid_SelectionChanged">
+                        IsReadOnly="True" Margin="23,23,17,277" RenderTransformOrigin="0.506,0.588">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id"
                                 Binding="{Binding Id}" />
@@ -94,6 +94,8 @@
                                 Binding="{Binding Status}" />
                             <DataGridTextColumn Header="Date"
                                 Binding="{Binding Date}" />
+                            <DataGridTextColumn Header="Explanation"
+                                Binding="{Binding Explanation}" />
                         </DataGrid.Columns>
                     </DataGrid>
                     <Button x:Name="updateDynamicButton" Content="Update" HorizontalAlignment="Left" Margin="23,203,0,0" VerticalAlignment="Top" Width="72" Click="Button_Click_1"/>
@@ -107,7 +109,7 @@
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="requestsDataGrid4"
                         AutoGenerateColumns="False"
-                        IsReadOnly="True" Margin="23,23,17,277" RenderTransformOrigin="0.506,0.588" SelectionChanged="requestsDataGrid_SelectionChanged">
+                        IsReadOnly="True" Margin="23,23,17,277" RenderTransformOrigin="0.506,0.588">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id"
                                 Binding="{Binding Id}" />
@@ -117,10 +119,14 @@
                                 Binding="{Binding Status}" />
                             <DataGridTextColumn Header="Date"
                                 Binding="{Binding Date}" />
+                            <DataGridTextColumn Header="Explanation"
+                                Binding="{Binding Explanation}" />
                         </DataGrid.Columns>
                     </DataGrid>
                     <Button x:Name="acceptDynamic" Content="Accept" HorizontalAlignment="Left" Margin="607,341,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.579,-1.637" Width="91" Click="acceptDynamic_Click"/>
                     <Button x:Name="declineDynamic" Content="Decline" HorizontalAlignment="Left" Margin="725,341,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.579,-1.637" Width="91" Click="declineDynamic_Click"/>
+                    <Label Content="Explanation:" HorizontalAlignment="Left" Margin="140,223,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="explanationDynamicBox" HorizontalAlignment="Left" Margin="219,223,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="103"  AcceptsReturn="True" />
                 </Grid>
             </TabItem>
         </TabControl>

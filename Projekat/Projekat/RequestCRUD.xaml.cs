@@ -157,10 +157,6 @@ namespace Projekat
             title.Content = "Create new request";
         }
 
-        private void requestsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
 
         private void accept_Click(object sender, RoutedEventArgs e)
         {
@@ -217,7 +213,7 @@ namespace Projekat
 
 
             int id = requestForDinamicEquipmentController.generateNextId();
-            RequestForDinamicEquipment requestForDinamicEquipment = new RequestForDinamicEquipment(nameBox.Text, StatusType.Waiting, DateTime.Now, id);
+            RequestForDinamicEquipment requestForDinamicEquipment = new RequestForDinamicEquipment(nameBox.Text, StatusType.Waiting, DateTime.Now, id, "");
             requestForDinamicEquipmentController.Save(requestForDinamicEquipment);
         }
 
@@ -262,8 +258,13 @@ namespace Projekat
             try
             {
                 RequestForDinamicEquipment request = (RequestForDinamicEquipment)requestsDataGrid4.SelectedItems[0];
+                if (explanationDynamicBox.Text == "")
+                {
+                    MessageBox.Show("You have to fill explanation box!");
+                    return;
+                }
 
-                requestForDinamicEquipmentController.AcceptingRequestForDinamycEquipment(request.Id, StatusType.Accepted);
+                requestForDinamicEquipmentController.AcceptingRequestForDinamycEquipment(request.Id, StatusType.Accepted, explanationDynamicBox.Text);
                 MessageBox.Show("Successfully accepted request!");
             }
             catch
@@ -277,8 +278,13 @@ namespace Projekat
             try
             {
                 RequestForDinamicEquipment request = (RequestForDinamicEquipment)requestsDataGrid4.SelectedItems[0];
+                if (explanationDynamicBox.Text == "")
+                {
+                    MessageBox.Show("You have to fill explanation box!");
+                    return;
+                }
 
-                requestForDinamicEquipmentController.AcceptingRequestForDinamycEquipment(request.Id, StatusType.Rejected);
+                requestForDinamicEquipmentController.AcceptingRequestForDinamycEquipment(request.Id, StatusType.Rejected, explanationDynamicBox.Text);
                 MessageBox.Show("Successfully declined request!");
             }
             catch

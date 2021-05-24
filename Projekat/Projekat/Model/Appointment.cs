@@ -22,7 +22,7 @@ namespace Model
 
         public Room room { get; set; }
         public Patient patient { get; set; }
-      //  public Doctor doctor { get; set; }
+        public Doctor doctor { get; set; }
         public Anamnesis anamnesis { get; set; }
 
         public Appointment() { }

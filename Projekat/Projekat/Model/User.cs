@@ -22,5 +22,7 @@ namespace Model
 
         private String Adress { get; set; }
 
+        public RoolType Rool { get; set; }
+
     }
 }
