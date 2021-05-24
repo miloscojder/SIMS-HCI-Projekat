@@ -35,7 +35,7 @@ namespace Repository
         {
             try
             {
-                int maxId = anamneses.Max(obj => obj.id);
+                int maxId = anamneses.Max(obj => obj.Id);
                 return maxId + 1;
             }
             catch
@@ -57,13 +57,13 @@ namespace Repository
       
       public void UpdateAnamnesis(Anamnesis ana)
       {
-            int index = anamneses.FindIndex(obj => obj.id == ana.id);
+            int index = anamneses.FindIndex(obj => obj.Id == ana.Id);
             anamneses[index] = ana;
             WriteToJson();
         }
         public Anamnesis GetAnamnesis(Anamnesis ana)
         {
-            return anamneses.Find(obj => obj.id == ana.id);
+            return anamneses.Find(obj => obj.Id == ana.Id);
         }
 
         public List<Anamnesis> GetAll()

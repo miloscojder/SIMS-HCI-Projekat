@@ -12,12 +12,12 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Width="40" Binding="{Binding id}"/>
                 <DataGridTextColumn Header="Date" Width="80" Binding="{Binding Date}"/>
-                <DataGridTextColumn Header="Time start" Width="70" Binding="{Binding timeStart}"/>
-                <DataGridTextColumn Header="Duration" Width="70" Binding="{Binding duration}"/>
-                <DataGridTextColumn Header="End time" Width="70" Binding="{Binding endTime}"/>
-                <DataGridTextColumn Header="Room" Width="50" Binding="{Binding room.Name}"/>
-                <DataGridTextColumn Header="Patient name" Width="100" Binding="{Binding patient.firstName}"/>
-                <DataGridTextColumn Header="Patient surname" Width="100" Binding="{Binding patient.lastName}"/>
+                <DataGridTextColumn Header="Time start" Width="70" Binding="{Binding TimeStart}"/>
+                <DataGridTextColumn Header="Duration" Width="70" Binding="{Binding Duration}"/>
+                <DataGridTextColumn Header="End time" Width="70" Binding="{Binding EndTime}"/>
+                <DataGridTextColumn Header="Room" Width="50" Binding="{Binding Room.Name}"/>
+                <DataGridTextColumn Header="Patient name" Width="100" Binding="{Binding Patient.firstName}"/>
+                <DataGridTextColumn Header="Patient surname" Width="100" Binding="{Binding Patient.lastName}"/>
             </DataGrid.Columns>
         </DataGrid>
 

@@ -1,0 +1,76 @@
+﻿<Window x:Class="Projekat.HospitalReferralss"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat"
+        mc:Ignorable="d"
+        Title="HospitalReferralss" Height="450" Width="800">
+    <Grid Margin="0,0,0,-108">
+        <TabControl Margin="18,10,18,126" Background="AliceBlue">
+            <TabItem Header="Profile"  RenderTransformOrigin="13.591,2.146">
+                <Grid Height="358">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="107*"/>
+                        <ColumnDefinition Width="651*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Doctor FirstName LastName" FontSize="18" HorizontalAlignment="Left" Margin="47,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Rectangle HorizontalAlignment="Left" Height="236" Margin="47,63,0,0" Stroke="Black" VerticalAlignment="Top" Width="258" Grid.ColumnSpan="2"/>
+                    <Label Content="First Name:" FontSize="12" HorizontalAlignment="Left" Margin="53,81,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Label Content="Last Name:" FontSize="12" HorizontalAlignment="Left" Margin="53,107,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Label Content="Personal identification:" FontSize="12" HorizontalAlignment="Left" Margin="53,138,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Label Content="JMBG:" FontSize="12" HorizontalAlignment="Left" Margin="56,169,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Date of birth:" FontSize="12" HorizontalAlignment="Left" Margin="56,195,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Label Content="Email:" FontSize="12" HorizontalAlignment="Left" Margin="58,221,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Phone number:" FontSize="12" HorizontalAlignment="Left" Margin="56,247,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Label Content="Specialization:" FontSize="12" HorizontalAlignment="Left" Margin="59,273,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Calendar Margin="147,60,135,75" Grid.Column="1" />
+                    <Label Name="Name" Content="" HorizontalAlignment="Left" Margin="190,81,0,0" VerticalAlignment="Top" Width="91" Height="26"/>
+                    <Label Name="Surname" Content="" HorizontalAlignment="Left" Margin="190,107,0,0" VerticalAlignment="Top" Width="91"/>
+                    <Label Name="Id" Content="" HorizontalAlignment="Left" Margin="196,138,0,0" VerticalAlignment="Top" Width="85"/>
+                    <Label Name="jmbg" Content="" HorizontalAlignment="Left" Margin="190,0,0,0" VerticalAlignment="Center" Width="115" Height="30"/>
+                    <Label Name="Date" Content="" HorizontalAlignment="Left" Margin="190,190,0,0" VerticalAlignment="Top" Width="71"/>
+                    <Label Name="Email" Content="" HorizontalAlignment="Left" Margin="190,221,0,0" VerticalAlignment="Top" Width="115"/>
+                    <Label Name="Phone" Content="" HorizontalAlignment="Left" Margin="196,247,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Label Name="Spec" Content="" HorizontalAlignment="Left" Margin="200,273,0,0" VerticalAlignment="Top" Width="105"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Appointment" IsSelected="True" RenderTransformOrigin="13.591,2.146" Height="22" Margin="-2,-2,-2,0" VerticalAlignment="Top">
+                <Grid Height="392">
+                    <Button Content="Patients" Click="Patients" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="39" Width="89"/>
+                    <Button Content="Anamnesis" Click="AnamnesisClick" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="99,10,0,0" VerticalAlignment="Top" Height="39" Width="103"/>
+                    <Button Content="Prescrptions" Click="Prescribe" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="202,10,0,0" VerticalAlignment="Top" Height="39" Width="109"/>
+                    <Button Content="Referrals" Click="ReferralP" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="311,10,0,0" VerticalAlignment="Top" Height="39" Width="91"/>
+                    <Button Content="Appointments" Click="AppointmentClick" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="402,10,0,0" VerticalAlignment="Top" Height="39" Width="125"/>
+                    <Button Content="Operations" Click="OperationsClick" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="527,10,0,0" VerticalAlignment="Top" Height="39" Width="106"/>
+                    <DataGrid x:Name="dataGriid" ItemsSource="{Binding HospitalReferrals}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="10,96,199,97">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Width="50" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Date" Width="100" Binding="{Binding Date}"/>
+                            <DataGridTextColumn Header="End time" Width="100" Binding="{Binding EndDate}"/>
+                            <DataGridTextColumn Header="Room" Width="70" Binding="{Binding Room.Name}"/>
+                            <DataGridTextColumn Header="Patient name" Width="120" Binding="{Binding Patient.firstName}"/>
+                            <DataGridTextColumn Header="Patient surname" Width="120" Binding="{Binding Patient.lastName}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="Referral" Click="ReferalPatient"  FontSize="18" Margin="605,317,31,0" VerticalAlignment="Top" Height="39" Background="#FFB5CDE2"/>
+                    <Button Content="Extend treatment" Click="Extend"  FontSize="18" Margin="580,130,25,0" VerticalAlignment="Top" Height="39" Background="#FFB5CDE2"/>
+
+                </Grid>
+
+            </TabItem>
+            <TabItem Header="Medicine"   RenderTransformOrigin="13.591,2.146">
+                <Grid>
+                    <Button Content="View medicines" Click="SeeAll" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="34,39,0,0" VerticalAlignment="Top" Height="39" Width="173"/>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <Button Content="Log out" Click="LogOut" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="698,48,0,0" VerticalAlignment="Top" Height="39" Width="84"/>
+        <Button Content="Back" Click="Back"  FontSize="18" Margin="41,374,670,0" VerticalAlignment="Top" Height="27" Background="#FFB5CDE2"/>
+
+    </Grid>
+</Window>

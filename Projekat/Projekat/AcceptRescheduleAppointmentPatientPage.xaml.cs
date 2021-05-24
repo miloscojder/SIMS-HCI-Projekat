@@ -40,7 +40,7 @@ namespace Projekat
                 {
                     a = new Appointment(date, doktori[i], sale[i]);   
                     a.id = random.Next(1, 1000);  
-                    a.appointmentType = TypeOfAppointment.Examination;
+                    a.AppointmentType = TypeOfAppointment.Examination;
 
                     appointmentsDateChecked.Add(a);
                 }
@@ -68,7 +68,7 @@ namespace Projekat
                 {
                     a = new Appointment(timeList[i], doctorsUsername, sale[i]);
                     a.id = random.Next(1, 1000);
-                    a.appointmentType = TypeOfAppointment.Examination;
+                    a.AppointmentType = TypeOfAppointment.Examination;
 
                     appointmentDoctorChecked.Add(a);
                 }
@@ -80,7 +80,7 @@ namespace Projekat
             posrednik1.id = posred.id;
             posrednik1.roomName = posred.roomName;
             posrednik1.StartTime = posred.StartTime;
-            posrednik1.appointmentType = posred.appointmentType;
+            posrednik1.AppointmentType = posred.AppointmentType;
         }
 
         private void AcceptRescButton_Click(object sender, RoutedEventArgs e)

@@ -1,72 +1,86 @@
 [
-  {
-    "specialty": "Cardiologist",
-    "free": false,
-    "appointment": null,
-    "operations": null,
-    "prescription": null,
-    "Salary": 0.0,
-    "VacationTime": "00:00:00",
-    "WorkingHours": "00:00:00",
-    "WorkingExperince": 0,
-    "Id": 0,
-    "Username": "Pera",
-    "Password": "123",
-    "firstName": "Kristina",
-    "lastName": "Miletic",
-    "Jmbg": null,
-    "EMail": null,
-    "PhoneNumber": null,
-    "DateOfBirth": "0001-01-01T00:00:00",
-    "Rool": 0
-  },
-  {
-    "id": 1,
-    "Username": "Aca",
-    "Password": "123",
-    "firstName": null,
-    "lastName": null,
-    "Jmbg": null,
-    "EMail": null,
-    "PhoneNumber": null,
-    "DateOfBirth": "0001-01-01T00:00:00",
-    "Rool": 1
-  },
-  {
-    "id": 2,
-    "Username": "Zika",
-    "Password": "345",
-    "firstName": null,
-    "lastName": null,
-    "Jmbg": null,
-    "EMail": null,
-    "PhoneNumber": null,
-    "DateOfBirth": "0001-01-01T00:00:00",
-    "Rool": 2
-  },
-  {
-    "id": 3,
-    "Username": "Ana",
-    "Password": "445",
-    "firstName": null,
-    "lastName": null,
-    "Jmbg": null,
-    "EMail": null,
-    "PhoneNumber": null,
-    "DateOfBirth": "0001-01-01T00:00:00",
-    "Rool": 3
-  },
-  {
-    "id": 4,
-    "Username": "Marko",
-    "Password": "555",
-    "firstName": null,
-    "lastName": null,
-    "Jmbg": null,
-    "EMail": null,
-    "PhoneNumber": null,
-    "DateOfBirth": "0001-01-01T00:00:00",
-    "Rool": 0
-  }
+    {
+        
+        "id": 1,
+        "Username": "kris",
+        "Password": "123",
+        "firstName": "Kristina",
+        "lastName": "Miletic",
+        "Jmbg": "1221999805043",
+        "EMail": "kristina@gmail.com",
+        "PhoneNumber": "0691118180",
+        "DateOfBirth": "1999-12-21T10:30:05",
+        "Rool": 0,
+        "doctor": {
+            "specialty": "General",
+            "free": false,
+            "appointment": null,
+            "operations": null,
+            "prescription": null,
+            "Salary": 0.0,
+            "VacationTime": "00:00:00",
+            "WorkingHours": "00:00:00",
+            "WorkingExperince": 0
+        }
+    },
+    {
+        "id": 2,
+        "Username": "Mika",
+        "Password": "233",
+        "firstName": null,
+        "lastName": null,
+        "Jmbg": null,
+        "EMail": null,
+        "PhoneNumber": null,
+        "DateOfBirth": "0001-01-01T00:00:00",
+        "Rool": 1
+    },
+    {
+        "id": 3,
+        "Username": "Zika",
+        "Password": "345",
+        "firstName": null,
+        "lastName": null,
+        "Jmbg": null,
+        "EMail": null,
+        "PhoneNumber": null,
+        "DateOfBirth": "0001-01-01T00:00:00",
+        "Rool": 2
+    },
+    {
+        "id": 4,
+        "Username": "Ana",
+        "Password": "445",
+        "firstName": null,
+        "lastName": null,
+        "Jmbg": null,
+        "EMail": null,
+        "PhoneNumber": null,
+        "DateOfBirth": "0001-01-01T00:00:00",
+        "Rool": 3
+    },
+    {
+        "id": 5,
+        "Username": "Miki",
+        "Password": "555",
+        "firstName": "Miroslav",
+        "lastName": "Jokic",
+        "Jmbg": "2304987800503",
+        "EMail": "mikica@gmail.com",
+        "PhoneNumber": "0644432851",
+        "DateOfBirth": "1987-04-23T17:34:56",
+        "Rool": 0,
+        "doctor": {
+            "specialty": "Internist",
+            "free": false,
+            "appointment": null,
+            "operations": null,
+            "prescription": null,
+            "Salary": 0.0,
+            "VacationTime": "00:00:00",
+            "WorkingHours": "00:00:00",
+            "WorkingExperince": 0
+        }
+    }
 
 ]

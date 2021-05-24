@@ -29,10 +29,10 @@ namespace Projekat
             AnamnesisRepository anamnesisRepository = new AnamnesisRepository();
             List<Anamnesis> anamnesses = anamnesisRepository.GetAll();
             dataGrid.ItemsSource = anamnesses;
-            Anam.Text = an.anamnesy;
-            FirstName.Text = an.patient.firstName;
-            LastName.Text = an.patient.lastName;
-            id = an.id;
+            Anam.Text = an.Anamnesy;
+            FirstName.Text = an.Patient.firstName;
+            LastName.Text = an.Patient.lastName;
+            id = an.Id;
         }
 
         private void Save(object sender, RoutedEventArgs e)

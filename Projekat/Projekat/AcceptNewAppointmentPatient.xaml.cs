@@ -41,7 +41,7 @@ namespace Projekat
                 {
                     a = new Appointment(choosenDate, doktori[i], sale[i]);
                     a.id = random.Next(1, 1000);
-                    a.appointmentType = TypeOfAppointment.Examination;
+                    a.AppointmentType = TypeOfAppointment.Examination;
   
                     appointmentsDateChecked.Add(a);
                 }                            
@@ -69,7 +69,7 @@ namespace Projekat
                 {
                     a = new Appointment(timeList[i], izabraniDoctor, sale[i]);
                     a.id = random.Next(1, 1000);
-                    a.appointmentType = TypeOfAppointment.Examination;
+                    a.AppointmentType = TypeOfAppointment.Examination;
 
                     appointmentsDoctorChecked.Add(a);
                 }

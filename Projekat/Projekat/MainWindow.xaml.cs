@@ -38,12 +38,13 @@ namespace Projekat
             director.Show();
         }
 
-        private void Doctor_Click(object sender, RoutedEventArgs e)
+      private void Doctor_Click(object sender, RoutedEventArgs e)
         {
-            DoctorWindow doctor = new DoctorWindow();
+            User u = new User();
+            DoctorWindow doctor = new DoctorWindow(u);
             doctor.Show();
         }
-
+      
 
 
         private void Request_Click(object sender, RoutedEventArgs e)
@@ -70,7 +71,7 @@ namespace Projekat
             switch (loggedUser.Rool)
             {
                 case RoolType.Doctor:
-                    DoctorWindow dw = new DoctorWindow();
+                    DoctorWindow dw = new DoctorWindow(loggedUser);
                     dw.Show();
                     break;
                 case RoolType.Patient:

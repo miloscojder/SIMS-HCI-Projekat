@@ -35,7 +35,7 @@ namespace Repository
         {
             try
             {
-                int maxId = operations.Max(obj => obj.id);
+                int maxId = operations.Max(obj => obj.Id);
                 return maxId + 1;
             }
             catch
@@ -57,14 +57,14 @@ namespace Repository
       
       public void RescheduleOperation(Operations op)
       {
-            int index = operations.FindIndex(obj => obj.id == op.id);
+            int index = operations.FindIndex(obj => obj.Id == op.Id);
             operations[index] = op;
             WriteToJson();
         }
       
       public void CancelOperation(Operations op)
       {
-            int index = operations.FindIndex(obj => obj.id == op.id);
+            int index = operations.FindIndex(obj => obj.Id == op.Id);
             operations.RemoveAt(index);
             WriteToJson();
         }
@@ -75,7 +75,7 @@ namespace Repository
       
       public Operations GetOperation(Operations newOperations)
       {
-         return operations.Find(obj => obj.id == newOperations.id);
+         return operations.Find(obj => obj.Id == newOperations.Id);
         }
       
       public List<Operations> GetAll()

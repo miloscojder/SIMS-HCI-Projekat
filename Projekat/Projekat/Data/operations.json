@@ -1,20 +1,20 @@
 [
     
     {
-        "id": 1,
+        "Id": 1,
         "Date": "20.12.2021.",
         "TimeStart": "12:00",
         "Duration": "60",
         "EndTime": "13:00",
         "AppointmentType": 0,
-        "room": {
+        "Room": {
             "Id": 1,
             "Name": "C",
             "RoomType": "Operation",
             "Floor": 1,
             "Detail": "Operation room"
         },
-        "patient": {
+        "Patient": {
             "id": 3,
             "Username": null,
             "Password": null,
@@ -25,23 +25,23 @@
             "PhoneNumber": null,
             "DateOfBirth": "0001-01-01T00:00:00"
         },
-        "anamnesis": null
+        "Anamnesis": null
     },
     {
-        "id": 2,
+        "Id": 2,
         "Date": "10.05.2021.",
         "TimeStart": "08:30",
         "Duration": "30",
         "EndTime": "09:00",
         "AppointmentType": 0,
-        "room": {
+        "Room": {
             "Id": 4,
             "Name": "A",
             "RoomType": "Operation",
             "Floor": 3,
             "Detail": "Operaition room"
         },
-        "patient": {
+        "Patient": {
             "id": 4,
             "Username": null,
             "Password": null,
@@ -52,23 +52,23 @@
             "PhoneNumber": null,
             "DateOfBirth": "0001-01-01T00:00:00"
         },
-        "anamnesis": null
+        "Anamnesis": null
     },
     {
-        "id": 4,
+        "Id": 4,
         "Date": "21.06.2021",
         "TimeStart": "18:00",
         "Duration": "20",
         "EndTime": "18:20",
         "AppointmentType": 0,
-        "room": {
+        "Room": {
             "Id": 0,
             "Name": "C",
             "RoomType": null,
             "Floor": 0,
             "Detail": null
         },
-        "patient": {
+        "Patient": {
             "id": 0,
             "Username": null,
             "Password": null,
@@ -79,6 +79,6 @@
             "PhoneNumber": null,
             "DateOfBirth": "0001-01-01T00:00:00"
         },
-        "anamnesis": null
+        "Anamnesis": null
     }
 ]

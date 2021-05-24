@@ -1,21 +1,22 @@
 [
-    
+
     {
         "id": 1,
         "Date": "21.12.2021.",
-        "startTime": "0001-01-01T00:00:00",
-        "timeStart": "12:00",
-        "duration": "30",
-        "endTime": "12:30",
-        "appointmentType": 1,
-        "room": {
+        "StartTime": "0001-01-01T00:00:00",
+        "TimeStart": "12:00",
+        "Duration": "30",
+        "EndTime": "12:30",
+        "AppointmentType": 1,
+        "Room": {
             "Id": 1,
             "Name": "D",
             "RoomType": "Examination",
             "Floor": 1,
-            "Detail": "Examination room"
+            "Detail": "Examination room",
+            "StaticEquipments": null
         },
-        "patient": {
+        "Patient": {
             "record": null,
             "id": 1,
             "Username": null,
@@ -27,26 +28,27 @@
             "PhoneNumber": null,
             "DateOfBirth": "0001-01-01T00:00:00"
         },
-        "anamnesis": null,
+        "Anamnesis": null,
         "roomName": null,
         "doctorUsername": null
     },
     {
         "id": 2,
         "Date": "16.08.2021.",
-        "startTime": "0001-01-01T00:00:00",
-        "timeStart": "11:00",
-        "duration": "30",
-        "endTime": "10:30",
-        "appointmentType": 1,
-        "room": {
+        "StartTime": "0001-01-01T00:00:00",
+        "TimeStart": "11:00",
+        "Duration": "30",
+        "EndTime": "10:30",
+        "AppointmentType": 1,
+        "Room": {
             "Id": 0,
             "Name": "D",
             "RoomType": null,
             "Floor": 0,
-            "Detail": null
+            "Detail": null,
+            "StaticEquipments": null
         },
-        "patient": {
+        "Patient": {
             "record": null,
             "id": 0,
             "Username": null,
@@ -58,26 +60,27 @@
             "PhoneNumber": null,
             "DateOfBirth": "0001-01-01T00:00:00"
         },
-        "anamnesis": null,
+        "Anamnesis": null,
         "roomName": null,
         "doctorUsername": null
     },
     {
         "id": 3,
         "Date": "15.05.2021.",
-        "startTime": "0001-01-01T00:00:00",
-        "timeStart": "08:10",
-        "duration": "40",
-        "endTime": "08:50",
-        "appointmentType": 1,
-        "room": {
+        "StartTime": "0001-01-01T00:00:00",
+        "TimeStart": "08:10",
+        "Duration": "40",
+        "EndTime": "08:50",
+        "AppointmentType": 1,
+        "Room": {
             "Id": 0,
             "Name": "B",
             "RoomType": null,
             "Floor": 0,
-            "Detail": null
+            "Detail": null,
+            "StaticEquipments": null
         },
-        "patient": {
+        "Patient": {
             "record": null,
             "id": 0,
             "Username": null,
@@ -89,26 +92,27 @@
             "PhoneNumber": null,
             "DateOfBirth": "0001-01-01T00:00:00"
         },
-        "anamnesis": null,
+        "Anamnesis": null,
         "roomName": null,
         "doctorUsername": null
     },
     {
         "id": 4,
         "Date": "18.06.2021.",
-        "startTime": "0001-01-01T00:00:00",
-        "timeStart": "09:00",
-        "duration": "20",
-        "endTime": "09:20",
-        "appointmentType": 1,
-        "room": {
+        "StartTime": "0001-01-01T00:00:00",
+        "TimeStart": "09:00",
+        "Duration": "20",
+        "EndTime": "09:20",
+        "AppointmentType": 1,
+        "Room": {
             "Id": 0,
             "Name": "B",
             "RoomType": null,
             "Floor": 0,
-            "Detail": null
+            "Detail": null,
+            "StaticEquipments": null
         },
-        "patient": {
+        "Patient": {
             "record": null,
             "id": 0,
             "Username": null,
@@ -120,7 +124,39 @@
             "PhoneNumber": null,
             "DateOfBirth": "0001-01-01T00:00:00"
         },
-        "anamnesis": null,
+        "Anamnesis": null,
+        "roomName": null,
+        "doctorUsername": null
+    },
+    {
+        "id": 5,
+        "Date": "14.05.2021",
+        "StartTime": "0001-01-01T00:00:00",
+        "TimeStart": "13:00",
+        "Duration": "20",
+        "EndTime": "13:20",
+        "AppointmentType": 1,
+        "Room": {
+            "Id": 0,
+            "Name": "B",
+            "RoomType": null,
+            "Floor": 0,
+            "Detail": null,
+            "StaticEquipments": null
+        },
+        "Patient": {
+            "record": null,
+            "id": 0,
+            "Username": null,
+            "Password": null,
+            "firstName": "Nikolina",
+            "lastName": "Todic",
+            "Jmbg": null,
+            "EMail": null,
+            "PhoneNumber": null,
+            "DateOfBirth": "0001-01-01T00:00:00"
+        },
+        "Anamnesis": null,
         "roomName": null,
         "doctorUsername": null
     }
