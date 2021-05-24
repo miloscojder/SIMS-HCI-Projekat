@@ -13,6 +13,14 @@ namespace Controller
    public class PrescriptionController
    {
         public PrescriptionService prescriptionService = new PrescriptionService();
+        public List<Prescription> patientsPrescriptions;
+
+        public List<Prescription> GetAllPrescriptionsByPatientsUsername(String patientsUsername)
+        {
+            patientsPrescriptions = prescriptionService.GetAllPrescriptionsByPatientsUsername(patientsUsername);
+            return patientsPrescriptions;
+        }
+
         public void CreatePrescription(Prescription newPrescription)
       {
             prescriptionService.CreatePrescription(newPrescription);

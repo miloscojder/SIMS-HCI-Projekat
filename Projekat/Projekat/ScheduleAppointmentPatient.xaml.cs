@@ -26,7 +26,7 @@ namespace Projekat
     {
 
         public enum Priority { DATE, DOCTOR }
-
+        public User prenosilac = new User();
         public List<String> Termini { get; set; }
         public string SelektovanTermin { get; set; }
         public List<String> Doktori { get; set; }
@@ -129,7 +129,7 @@ namespace Projekat
                     newAppointment.doctorUsername = izabraniDoktor;
                     newAppointment.StartTime = choosenDate;
 
-                    AppointmentsPage ap = new AppointmentsPage(newAppointment);
+                    AppointmentsPage ap = new AppointmentsPage(newAppointment, prenosilac);
                     ap.Show();
                     this.Close();
                 }
@@ -139,7 +139,7 @@ namespace Projekat
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AppointmentsPage ap = new AppointmentsPage(null);
+            AppointmentsPage ap = new AppointmentsPage(null, prenosilac);
             ap.Show();
             this.Close();
         }

@@ -21,6 +21,7 @@ namespace Projekat
     public partial class AcceptRescheduleAppointmentPatientPage : Window
     {
         Appointment posrednik1 = new Appointment();
+        public User prenosilac = new User();
 
         public AcceptRescheduleAppointmentPatientPage(Appointment posred, ScheduleAppointmentPatient.Priority priority, DateTime date, String doctorsUsername)
         {
@@ -100,7 +101,7 @@ namespace Projekat
                     MessageBox.Show("Vas pregled je zakazan u losem terminu.");
                     this.Close();
 
-                    AppointmentsPage a = new AppointmentsPage(null);
+                    AppointmentsPage a = new AppointmentsPage(null, prenosilac);
                     a.Show();
                     this.Close();
                 }
@@ -121,7 +122,7 @@ namespace Projekat
 
                     File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json", JsonConvert.SerializeObject(newSvi));
 
-                    AppointmentsPage a = new AppointmentsPage(app);
+                    AppointmentsPage a = new AppointmentsPage(app, prenosilac);
                     a.Show();
                     this.Close();
                 }
@@ -130,7 +131,7 @@ namespace Projekat
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AppointmentsPage ap = new AppointmentsPage(null);
+            AppointmentsPage ap = new AppointmentsPage(null,prenosilac);
             ap.Show();
             this.Close();
         }

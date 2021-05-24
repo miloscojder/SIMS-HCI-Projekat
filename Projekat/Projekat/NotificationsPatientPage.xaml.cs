@@ -21,27 +21,31 @@ namespace Projekat
     /// </summary>
     public partial class NotificationsPatientPage : Window
     {
-        List<Notification> posrednaListaNotifikacija = new List<Notification>();
-        private List<Notification> notifications;
-        NotifficationController notifficationController = new NotifficationController();
+        
+        public List<Notification> thisPatientsNotifications;
+        public NotifficationController notifficationController = new NotifficationController();
+        public List<Notification> allNotifications;
+        public User prenosilac;     
 
-        public NotificationsPatientPage(Notification newNotification) 
+        public NotificationsPatientPage(Notification newNotification, User loggedUser)     //user ce biti globalan na main page i odatle cu ga uveg pozivati
         {
             InitializeComponent();
             this.DataContext = this;
+            prenosilac = loggedUser;
+            
+            allNotifications = notifficationController.GetAllNotifications();           
+            notifficationController.DeleteOutOfBoundsNotifications(allNotifications);
+            notifficationController.ShouldIAdd(newNotification, allNotifications);
+            notifficationController.WriteNotificationsToJason(allNotifications);
 
-            notifications = notifficationController.GetAllNotifications();
-            notifficationController.DeleteOutOfBoundsNotifications(notifications);
-            notifficationController.ShouldIAdd(newNotification, notifications);
-            notifficationController.WriteNotificationsToJason(notifications);
-               
-            lvNotificationList.ItemsSource = notifications;
+            thisPatientsNotifications = notifficationController.FindNotificationsByPatientUsername(loggedUser.Username);
+            lvNotificationList.ItemsSource = thisPatientsNotifications;
         }
 
        
         private void ReturnButton_Click(object sender, RoutedEventArgs e)
         {
-            AppointmentsPage ap = new AppointmentsPage(null);
+            AppointmentsPage ap = new AppointmentsPage(null,prenosilac);
             ap.Show();
             this.Close();
         }
@@ -55,21 +59,21 @@ namespace Projekat
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            AppointmentsPage ap = new AppointmentsPage(null);
+            AppointmentsPage ap = new AppointmentsPage(null,prenosilac);
             ap.Show();
             this.Close();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null);
+            NotificationsPatientPage npp = new NotificationsPatientPage(null,prenosilac);
             npp.Show();
             this.Close();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage();
+            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage(prenosilac);
             pmrp.Show();
             this.Close();
         }
@@ -90,7 +94,7 @@ namespace Projekat
 
         private void CreateButton_Click_6(object sender, RoutedEventArgs e)
         {
-            CreateNotifficationPatientPage cnpp = new CreateNotifficationPatientPage();
+            CreateNotifficationPatientPage cnpp = new CreateNotifficationPatientPage(prenosilac);
             cnpp.Show();
             this.Close();
         }
@@ -100,7 +104,7 @@ namespace Projekat
             try 
             {
                 Notification selectedNotiffication = (Notification)lvNotificationList.SelectedItems[0];                
-                UpdateNotifficationPatientPage unpp = new UpdateNotifficationPatientPage(selectedNotiffication);
+                UpdateNotifficationPatientPage unpp = new UpdateNotifficationPatientPage(selectedNotiffication, prenosilac);
                 unpp.Show();
                 this.Close();
             }
@@ -117,7 +121,7 @@ namespace Projekat
                 Notification selectedNotification = (Notification)lvNotificationList.SelectedItems[0];
                 List<Notification> allNotifications = notifficationController.GetAllNotifications();
 
-                notifficationController.DeleteChoosenNotification(allNotifications, selectedNotification);
+                notifficationController.DeleteNotificationById(selectedNotification.Id);
                 notifficationController.WriteNotificationsToJason(allNotifications);
 
                 MessageBox.Show("You deleted selected notification");

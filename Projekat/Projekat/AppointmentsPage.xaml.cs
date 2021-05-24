@@ -21,11 +21,11 @@ namespace Projekat
     /// </summary>
     public partial class AppointmentsPage : Window
     {
-
+        public User posrednik = new User();
         public List<DateTime> activityTime = new List<DateTime>();
         TimeSpan timeSpan = new TimeSpan(7, 0, 0, 0, 0);
 
-        public AppointmentsPage(Appointment a)
+        public AppointmentsPage(Appointment a, User loggedUser)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -138,7 +138,7 @@ namespace Projekat
                 {
                     MessageBox.Show("Ne mozete promeniti ovaj termin.");
 
-                    AppointmentsPage ap = new AppointmentsPage(null);
+                    AppointmentsPage ap = new AppointmentsPage(null,posrednik);
                     ap.Show();
                     this.Close();
                 }
@@ -160,21 +160,21 @@ namespace Projekat
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            AppointmentsPage ap = new AppointmentsPage(null);
+            AppointmentsPage ap = new AppointmentsPage(null,posrednik);
             ap.Show();
             this.Close();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null);
+            NotificationsPatientPage npp = new NotificationsPatientPage(null,null);
             npp.Show();
             this.Close();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage();
+            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage(posrednik);
             pmrp.Show();
             this.Close();
         }

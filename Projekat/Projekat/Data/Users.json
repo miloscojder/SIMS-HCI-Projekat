@@ -1,5 +1,5 @@
-[
-    {
+
+[    {
         
         "id": 1,
         "Username": "kris",
@@ -23,18 +23,32 @@
             "WorkingExperince": 0
         }
     },
-    {
-        "id": 2,
-        "Username": "Mika",
-        "Password": "233",
-        "firstName": null,
-        "lastName": null,
-        "Jmbg": null,
-        "EMail": null,
-        "PhoneNumber": null,
-        "DateOfBirth": "0001-01-01T00:00:00",
-        "Rool": 1
-    },
+   {
+    "id": 0,
+    "Username": "Aca",
+    "Password": "123",
+    "firstName": null,
+    "lastName": null,
+    "Jmbg": null,
+    "EMail": null,
+    "PhoneNumber": null,
+    "DateOfBirth": "0001-01-01T00:00:00",
+    "Rool": 1,
+    "isBanned": false
+  },
+  {
+    "id": 33,
+    "Username": "Keba",
+    "Password": "123",
+    "firstName": null,
+    "lastName": null,
+    "Jmbg": null,
+    "EMail": null,
+    "PhoneNumber": null,
+    "DateOfBirth": "0001-01-01T00:00:00",
+    "Rool": 1,
+    "isBanned": false
+  },
     {
         "id": 3,
         "Username": "Zika",

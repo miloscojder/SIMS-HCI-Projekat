@@ -25,10 +25,14 @@ namespace Projekat
     {
         NotifficationController notifficationController = new NotifficationController();
         List<Notification> notifications;
+        User prenosilac = new User();
 
-        public PatientMainPage(User user)
+        public PatientMainPage(User loggedUser)
         {
             InitializeComponent();
+           prenosilac = loggedUser;
+
+        //    MessageBox.Show(passenger.Username);
 
             notifications = notifficationController.GetAllNotifications();
             notifficationController.IsItTime(notifications);           
@@ -51,7 +55,7 @@ namespace Projekat
 
         private void NotificationButton_Click_1(object sender, RoutedEventArgs e)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null);
+            NotificationsPatientPage npp = new NotificationsPatientPage(null,prenosilac);
             npp.Show();
             this.Close();
         }
@@ -65,14 +69,14 @@ namespace Projekat
 
         private void MyAppointmentsButton_Click(object sender, RoutedEventArgs e)
         {
-            AppointmentsPage ap = new AppointmentsPage(null);
+            AppointmentsPage ap = new AppointmentsPage(null, prenosilac);
             ap.Show();
             this.Close();
         }
 
         private void MedicalRecordButton_Click(object sender, RoutedEventArgs e)
         {
-            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage();
+            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage(prenosilac);
             pmrp.Show();
             this.Close();
         }

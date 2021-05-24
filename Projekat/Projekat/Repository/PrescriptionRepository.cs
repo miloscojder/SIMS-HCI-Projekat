@@ -49,12 +49,31 @@ namespace Repository
             string json = JsonConvert.SerializeObject(prescriptions);
             File.WriteAllText(FileLocation, json);
         }
+
+
+        public List<Prescription> GetAllPrescriptionsByPatientsUsername(String patientsUsername)
+        {
+            List<Prescription> prescriptionsForPatient = new List<Prescription>();
+
+            for (int i = 0; i < prescriptions.Count; i++)
+            {
+                Prescription p = prescriptions[i];
+                if (p.patient.Username == patientsUsername)
+                {
+                    prescriptionsForPatient.Add(p);
+                }
+            }
+            return prescriptionsForPatient;
+        }
+
         public void CreatePrescription(Prescription newPrescription)
       {
             prescriptions.Add(newPrescription);
             WriteToJson();
         }
       
+
+
       public void UpdatePrescription(Prescription newPrescription)
       {
             int index = prescriptions.FindIndex(obj => obj.Id == newPrescription.Id);

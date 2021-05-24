@@ -14,9 +14,17 @@ namespace Controller
    public class ReferralPatientController
    {
         public ReferralPatientService referralPatientService = new ReferralPatientService();
+        public List<ReferralPatient> referralPatients;
+
         public void CreateReferral(ReferralPatient newReferral)
         {
             referralPatientService.CreateReferral(newReferral);
+        }
+
+        public List<ReferralPatient> GerAllReferralsByPatientsUsername(String patientsUsername)
+        {
+            referralPatients= referralPatientService.GerAllReferralsByPatientsUsername(patientsUsername);
+            return referralPatients;
         }
 
         public int GenerateNewId()

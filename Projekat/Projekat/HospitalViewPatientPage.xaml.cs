@@ -24,6 +24,7 @@ namespace Projekat
         
         public List<Doctor> doctors = new List<Doctor>();
         public Doctor pomocni = new Doctor();
+        public User prenosilac = new User();
 
         public HospitalViewPatientPage(Doctor doktor)
         {
@@ -114,21 +115,21 @@ namespace Projekat
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            AppointmentsPage ap = new AppointmentsPage(null);
+            AppointmentsPage ap = new AppointmentsPage(null,prenosilac);
             ap.Show();
             this.Close();
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null);
+            NotificationsPatientPage npp = new NotificationsPatientPage(null,null);
             npp.Show();
             this.Close();
         }
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
-            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage();
+            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage(prenosilac);
             pmrp.Show();
             this.Close();
         }

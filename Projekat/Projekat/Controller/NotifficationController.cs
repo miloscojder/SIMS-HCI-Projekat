@@ -54,5 +54,15 @@ namespace Controller
             notifficationService.IsDateChoosenCorectlly(choosenDate.Date.Date);
         }
 
+        public List<Notification> FindNotificationsByPatientUsername(String patientsUsername)
+        {
+            notifications = notifficationService.FindNotificationsByPatientUsername(patientsUsername);
+            return notifications;
+        }
+
+        public void DeleteNotificationById(String notificationsId)
+        {
+            notifficationService.DeleteNotificationById(notificationsId);
+        }
    }
 }

@@ -12,16 +12,47 @@ namespace Repository
         public string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\notificationsak.json";
         public List<Notification> notifications = new List<Notification>();
         
+        public NotifficationRepository()
+        {
+            if(!File.Exists(fileLocation))
+            {
+                File.Create(fileLocation).Close();
+            }
+            using StreamReader r = new StreamReader(fileLocation);
+
+            string allData = r.ReadToEnd();
+            if (allData != "")
+            {
+                notifications = JsonConvert.DeserializeObject<List<Notification>>(allData);
+
+            }
+        }
+
       public List<Notification> getAllNotifications()
       {
             notifications = JsonConvert.DeserializeObject<List<Notification>>(File.ReadAllText(fileLocation));
             return notifications;
       }
 
-        public void WriteNotificationsToJason(List<Notification> saveNotifications)
+        public void WriteNotificationsToJason()
         {
-            string json = JsonConvert.SerializeObject(saveNotifications);
+            string json = JsonConvert.SerializeObject(notifications);
             File.WriteAllText(fileLocation, json);
+        }
+
+        public List<Notification> FindNotificationByPatientsUsername(String patientsUsername)
+        {
+            List<Notification> notificationsForPatient = new List<Notification>();
+
+            for (int i = 0; i < notifications.Count; i++)
+            {
+                Notification n = notifications[i];
+                if (n.patientsUsername == patientsUsername)
+                {
+                    notificationsForPatient.Add(n);
+                }
+            }
+            return notificationsForPatient;
         }
 
       public Model.Notification GetOne(String id)
@@ -38,11 +69,10 @@ namespace Repository
       
       public void DeleteNotificationById(String Id)
       {
-            notifications = getAllNotifications();
-
-            foreach (Notification notification in notifications)
+            for (int i = 0; i < notifications.Count; i++)
             {
-                if(notification.Id == Id)
+                Notification notification = notifications[i];
+                if (notification.Id == Id)
                 {
                     notifications.Remove(notification);
                 }
