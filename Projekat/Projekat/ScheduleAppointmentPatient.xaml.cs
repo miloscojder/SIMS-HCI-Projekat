@@ -75,7 +75,7 @@ namespace Projekat
                 if ((DateTime.Now.Date - datum.Date) > timeSpan)    
                 {
                     listaVremenaZakazivanja.Remove(datum);
-                    sfsd.activityCounter--;                                                              // ovo cu da ucitam iz fajla nekog posle
+                    sfsd.activityCounter--;                                                              
                 }    
             }        
             
@@ -85,6 +85,7 @@ namespace Projekat
                 //window close        
                 MainWindow mw = new MainWindow();
                 mw.Show();
+                this.Close();
             } 
             else 
             {
@@ -117,6 +118,7 @@ namespace Projekat
                 {
                    AcceptNewAppointmentPatient anap = new AcceptNewAppointmentPatient(/*a,*/ priority, choosenDate, izabraniDoktor);
                    anap.Show();
+                    this.Close();
                 } 
                 else
                 {
@@ -129,6 +131,7 @@ namespace Projekat
 
                     AppointmentsPage ap = new AppointmentsPage(newAppointment);
                     ap.Show();
+                    this.Close();
                 }
               
             }
@@ -138,6 +141,7 @@ namespace Projekat
         {
             AppointmentsPage ap = new AppointmentsPage(null);
             ap.Show();
+            this.Close();
         }
     }
 }

@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using Model;
 using Newtonsoft.Json;
 using Projekat.Model;
+using Controller;
 
 namespace Projekat
 {
@@ -24,12 +25,11 @@ namespace Projekat
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        UserController userController = new UserController();
         public MainWindow()
         {
             InitializeComponent();
-
-           
-
 
         }
         private void Director_Click(object sender, RoutedEventArgs e)
@@ -54,13 +54,43 @@ namespace Projekat
 
         private void PatientButton_Click(object sender, RoutedEventArgs e)
         {
-            PatientMainPage pmp = new PatientMainPage();
+            PatientMainPage pmp = new PatientMainPage(null);
             pmp.Show();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {              
+            User loggedUser = userController.FindUserByUsernameAndPasswrod(UsernameTextBox.Text, PasswordTextBox.Text);
+
+            switch (loggedUser.Rool)
+            {
+                case RoolType.Doctor:
+                    DoctorWindow dw = new DoctorWindow();
+                    dw.Show();
+                    break;
+                case RoolType.Patient:
+                    PatientMainPage pw = new PatientMainPage(loggedUser);
+                    pw.Show();
+                    break;
+                case RoolType.Secretary:
+                    SecretaryWindow sw = new SecretaryWindow();
+                    sw.Show();
+                    break;
+                case RoolType.Director:
+                    DirectorWindow dirw = new DirectorWindow();
+                    dirw.Show();
+                    break;
+                default:
+                    MessageBox.Show("Nemate nalog!");
+                    break;
+            }
+
+            
         }
     }
 }

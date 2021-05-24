@@ -90,6 +90,7 @@ namespace Projekat
 
                 AppointmentsPage appo = new AppointmentsPage(app);
                 appo.Show();
+                this.Close();
             }
         }
 
@@ -97,6 +98,7 @@ namespace Projekat
         {
             AppointmentsPage app = new AppointmentsPage(null);
             app.Show();
+            this.Close();
         }
     }
 }

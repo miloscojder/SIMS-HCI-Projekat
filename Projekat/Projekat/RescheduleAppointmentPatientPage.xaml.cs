@@ -80,12 +80,14 @@ namespace Projekat
 
             AcceptRescheduleAppointmentPatientPage arapp = new AcceptRescheduleAppointmentPatientPage(posrednik, priority, newChoosenDate, izabraniDoktor);
             arapp.Show();
+            this.Close();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             AppointmentsPage ap = new AppointmentsPage(null);
             ap.Show();
+            this.Close();
         }
     }
 }

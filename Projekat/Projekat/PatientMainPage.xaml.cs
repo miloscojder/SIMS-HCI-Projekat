@@ -26,14 +26,12 @@ namespace Projekat
         NotifficationController notifficationController = new NotifficationController();
         List<Notification> notifications;
 
-        public PatientMainPage()
+        public PatientMainPage(User user)
         {
             InitializeComponent();
 
             notifications = notifficationController.GetAllNotifications();
-            notifficationController.IsItTime(notifications);
-
-           
+            notifficationController.IsItTime(notifications);           
         }
        
 
@@ -41,48 +39,56 @@ namespace Projekat
         {
             HospitalViewPatientPage hvpp = new HospitalViewPatientPage(null);
             hvpp.Show();
+            this.Close();
         }
 
         private void PatientProfileButton_Click(object sender, RoutedEventArgs e)
         {
             PatientProfilePage ppp = new PatientProfilePage();
             ppp.Show();
+            this.Close();
         }
 
         private void NotificationButton_Click_1(object sender, RoutedEventArgs e)
         {
             NotificationsPatientPage npp = new NotificationsPatientPage(null);
             npp.Show();
+            this.Close();
         }
 
         private void HomePageButton_Click(object sender, RoutedEventArgs e)
         {
-            PatientMainPage pmp = new PatientMainPage();
+            PatientMainPage pmp = new PatientMainPage(null);
             pmp.Show();
+            this.Close();
         }
 
         private void MyAppointmentsButton_Click(object sender, RoutedEventArgs e)
         {
             AppointmentsPage ap = new AppointmentsPage(null);
             ap.Show();
+            this.Close();
         }
 
         private void MedicalRecordButton_Click(object sender, RoutedEventArgs e)
         {
             PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage();
             pmrp.Show();
+            this.Close();
         }
 
         private void QandAButton_Click(object sender, RoutedEventArgs e)
         {
             PatientQandAPage pqap = new PatientQandAPage();
             pqap.Show();
+            this.Close();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             PatientProfilePage ppp = new PatientProfilePage();
             ppp.Show();
+            this.Close();
         }
     }
 }

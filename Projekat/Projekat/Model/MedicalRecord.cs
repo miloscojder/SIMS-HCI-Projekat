@@ -4,13 +4,10 @@ namespace Model
 {
    public class MedicalRecord
    {
-      public int RecordNumber;
+        public int RecordNumber;
     //  public Patient Patient;
-      public String Allergen { get; set; }
-      
-      public Appointment appointment;
-
-       public MedicalRecord() { }
-   
+        public String Allergen { get; set; }      
+        public Appointment appointment;   
+        public MedicalRecord() { }   
    }
 }

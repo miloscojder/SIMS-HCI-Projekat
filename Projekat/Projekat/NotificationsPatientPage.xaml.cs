@@ -25,17 +25,16 @@ namespace Projekat
         private List<Notification> notifications;
         NotifficationController notifficationController = new NotifficationController();
 
-        public NotificationsPatientPage(Notification n) 
+        public NotificationsPatientPage(Notification newNotification) 
         {
             InitializeComponent();
             this.DataContext = this;
 
             notifications = notifficationController.GetAllNotifications();
-            if (n != null)
-            {
-                notifications.Add(n);
-            }
-            File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\notificationsak.json", JsonConvert.SerializeObject(notifications));
+            notifficationController.DeleteOutOfBoundsNotifications(notifications);
+            notifficationController.ShouldIAdd(newNotification, notifications);
+            notifficationController.WriteNotificationsToJason(notifications);
+               
             lvNotificationList.ItemsSource = notifications;
         }
 
@@ -44,86 +43,89 @@ namespace Projekat
         {
             AppointmentsPage ap = new AppointmentsPage(null);
             ap.Show();
+            this.Close();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PatientMainPage pmp = new PatientMainPage();
+            PatientMainPage pmp = new PatientMainPage(null);
             pmp.Show();
+            this.Close();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             AppointmentsPage ap = new AppointmentsPage(null);
             ap.Show();
+            this.Close();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             NotificationsPatientPage npp = new NotificationsPatientPage(null);
             npp.Show();
+            this.Close();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage();
             pmrp.Show();
+            this.Close();
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             PatientQandAPage pqap = new PatientQandAPage();
             pqap.Show();
+            this.Close();
         }
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
             PatientProfilePage ppp = new PatientProfilePage();
             ppp.Show();
+            this.Close();
         }
 
         private void CreateButton_Click_6(object sender, RoutedEventArgs e)
         {
             CreateNotifficationPatientPage cnpp = new CreateNotifficationPatientPage();
             cnpp.Show();
+            this.Close();
         }
 
         private void UpdateButton_Click_7(object sender, RoutedEventArgs e)
-        {
-            if (lvNotificationList.SelectedItems.Count < 1)
-            {
-                MessageBox.Show("You must choose at least one notiffication for update");
-            }
-            else
+        {     
+            try 
             {
                 Notification selectedNotiffication = (Notification)lvNotificationList.SelectedItems[0];                
                 UpdateNotifficationPatientPage unpp = new UpdateNotifficationPatientPage(selectedNotiffication);
                 unpp.Show();
-
+                this.Close();
+            }
+            catch (System.ArgumentOutOfRangeException exeption)
+            {
+                MessageBox.Show("Item not selected");
             }
         }
 
         private void DeleteButton_Click_8(object sender, RoutedEventArgs e)
-        {
-            if(lvNotificationList.SelectedItems.Count < 1)
-            {
-                MessageBox.Show("You must select at least one notification to delete it");
-            }
-            else
+        {            
+            try
             {
                 Notification selectedNotification = (Notification)lvNotificationList.SelectedItems[0];
                 List<Notification> allNotifications = notifficationController.GetAllNotifications();
-                List<Notification> newNotifications = new List<Notification>();
 
-                foreach(Notification n in allNotifications) {
-                    if(n.Id != selectedNotification.Id) {
-                        newNotifications.Add(n);
-                    }
-                }
+                notifficationController.DeleteChoosenNotification(allNotifications, selectedNotification);
+                notifficationController.WriteNotificationsToJason(allNotifications);
 
-                File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\notificationsak.json", JsonConvert.SerializeObject(newNotifications));
                 MessageBox.Show("You deleted selected notification");
                 this.Close();
+            }
+            catch (System.ArgumentOutOfRangeException exeption)
+            {
+                MessageBox.Show("Item not selected");
             }
         }
     }

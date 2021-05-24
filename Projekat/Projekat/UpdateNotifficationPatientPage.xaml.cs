@@ -23,20 +23,20 @@ namespace Projekat
     {
         NotifficationController notifficationController = new NotifficationController();
         public List<string> Termini { get; set; }
-        Notification posrednik = new Notification();
+        Notification choosenNotification = new Notification();
         List<Notification> notifications = new List<Notification>();
 
-        public UpdateNotifficationPatientPage(Notification chossenNotification)
+        public UpdateNotifficationPatientPage(Notification selectedNotification)
         {
             InitializeComponent();
             this.DataContext = this;
 
-            OldNotificationNameTextBox.Text = chossenNotification.Name;
-            OldNotificationDescTextBox.Text = chossenNotification.Description;
-            OldNotificationDateTextBox.Text = Convert.ToString(chossenNotification.Date);
-            OldNotificationDaysTextBox.Text = Convert.ToString(chossenNotification.DaysLeft);
+            OldNotificationNameTextBox.Text = selectedNotification.Name;
+            OldNotificationDescTextBox.Text = selectedNotification.Description;
+            OldNotificationDateTextBox.Text = Convert.ToString(selectedNotification.Date);
+            OldNotificationDaysTextBox.Text = Convert.ToString(selectedNotification.DaysLeft);
 
-            posrednik = chossenNotification;
+            choosenNotification = selectedNotification;
                 
             string[] termini = File.ReadAllLines(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\terminiak.txt", Encoding.UTF8);
             Termini = new List<string>(termini);
@@ -45,41 +45,38 @@ namespace Projekat
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
 
-            notifications = notifficationController.GetAllNotifications();
-
-            string hoursAndMinutes = (String)NewNotificationHourComboBox.SelectedItem;
-            string[] choosenHours = hoursAndMinutes.Split(':');
-            DateTime formedDate = new DateTime(NewNotificationDateDatePicker.SelectedDate.Value.Year, NewNotificationDateDatePicker.SelectedDate.Value.Month, NewNotificationDateDatePicker.SelectedDate.Value.Day, Convert.ToInt32(choosenHours[0]), Convert.ToInt32(choosenHours[1]), 0);
-
-            posrednik.Name = NewNotificationNameTextBox.Text;
-            posrednik.Description = NewNotificationDescTextBox.Text;
-            posrednik.Date = formedDate;
-            posrednik.DaysLeft = Convert.ToInt32(NewNotificationDaysTextBox.Text);
-
-            if(posrednik.Date.Date < DateTime.Now.Date)
+            try
             {
-                MessageBox.Show("You cant choose date in past");
-            }
+                notifications = notifficationController.GetAllNotifications();
 
-            for (int i = 0; i < notifications.Count; i++)
+                string hoursAndMinutes = (String)NewNotificationHourComboBox.SelectedItem;
+                string[] choosenHours = hoursAndMinutes.Split(':');
+                DateTime formedDate = new DateTime(NewNotificationDateDatePicker.SelectedDate.Value.Year, NewNotificationDateDatePicker.SelectedDate.Value.Month, NewNotificationDateDatePicker.SelectedDate.Value.Day, Convert.ToInt32(choosenHours[0]), Convert.ToInt32(choosenHours[1]), 0);
+
+                choosenNotification = new Notification(NewNotificationNameTextBox.Text, NewNotificationDescTextBox.Text, formedDate, Convert.ToInt32(NewNotificationDaysTextBox.Text), choosenNotification.Id);
+
+                notifficationController.DeleteChoosenNotification(notifications, choosenNotification);
+                notifficationController.WriteNotificationsToJason(notifications);
+
+                
+
+                NotificationsPatientPage npp = new NotificationsPatientPage(choosenNotification);
+                npp.Show();
+                this.Close();
+            }
+            catch(Exception ex)
             {
-                Notification n = notifications[i];
-                if (n.Id == posrednik.Id)
-                {
-                   notifications.Remove(n);
-                }
+                notifficationController.IsDateChoosenCorectlly(choosenNotification.Date.Date);
             }
-
-            File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\notificationsak.json", JsonConvert.SerializeObject(notifications));
-
-            NotificationsPatientPage npp = new NotificationsPatientPage(posrednik);
-            npp.Show();
+            
         }
 
         private void CancelButton_Click_1(object sender, RoutedEventArgs e)
         {
             NotificationsPatientPage npp = new NotificationsPatientPage(null);
             npp.Show();
+            this.Close();
         }
+
     }
 }

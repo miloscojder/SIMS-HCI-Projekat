@@ -21,7 +21,7 @@
         </StackPanel>
         <Label Content="BOLNICA 1: " HorizontalAlignment="Left" Margin="46,83,0,0" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="602,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1"/>
-        <ListView Margin="435,91,21,64" Background="LightGreen"  Name="lvDoctorsPatient" Grid.Row="1" >
+        <ListView Margin="435,91,21,64" Background="AliceBlue" Name="lvDoctorsPatient" Grid.Row="1" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding id}" />
