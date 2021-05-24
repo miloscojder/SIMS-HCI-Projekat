@@ -19,7 +19,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Date" Width="150" DisplayMemberBinding="{Binding timeOfAppointment}" />
-                    <GridViewColumn Header="Anamnesis" Width="326" DisplayMemberBinding="{Binding anamnesis.anamnesy}" />
+                    <GridViewColumn Header="Anamnesis" Width="326" DisplayMemberBinding="{Binding anamnesis.Anamnesy}" />
                     <GridViewColumn Header="Doctors name" Width="100" DisplayMemberBinding="{Binding doctorsName}"/>
                 </GridView>
             </ListView.View>
@@ -28,8 +28,8 @@
         <ListView x:Name="lvPrescriptions" Background="Azure" Margin="44,461,447,-15">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding medicine}" />
-                    <GridViewColumn Header="Instruction" Width="219" DisplayMemberBinding="{Binding instruction}" />
+                    <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding Medicine}" />
+                    <GridViewColumn Header="Instruction" Width="219" DisplayMemberBinding="{Binding Instruction}" />
                 </GridView>
             </ListView.View>
         </ListView>
@@ -37,9 +37,9 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Date" Width="100" DisplayMemberBinding="{Binding Date}" />
-                    <GridViewColumn Header="Time" Width="100" DisplayMemberBinding="{Binding timeStart}" />
-                    <GridViewColumn Header="Room" Width="100" DisplayMemberBinding="{Binding room.Name}" />
-                    <GridViewColumn Header="Doctor" Width="100" DisplayMemberBinding="{Binding doc}" />
+                    <GridViewColumn Header="Time" Width="100" DisplayMemberBinding="{Binding TimeStart}" />
+                    <GridViewColumn Header="Room" Width="100" DisplayMemberBinding="{Binding Room.Name}" />
+                    <GridViewColumn Header="Doctor" Width="100" DisplayMemberBinding="{Binding Doc}" />
                 </GridView>
             </ListView.View>
         </ListView>

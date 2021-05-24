@@ -125,6 +125,8 @@ namespace Projekat
                 notifficationController.WriteNotificationsToJason(allNotifications);
 
                 MessageBox.Show("You deleted selected notification");
+                PatientMainPage pmp = new PatientMainPage(prenosilac);
+                pmp.Show();
                 this.Close();
             }
             catch (System.ArgumentOutOfRangeException exeption)

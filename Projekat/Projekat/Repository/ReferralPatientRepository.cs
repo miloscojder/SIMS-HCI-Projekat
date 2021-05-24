@@ -57,7 +57,7 @@ namespace Repository
             for (int i = 0; i < referrals.Count; i++)
             {
                 ReferralPatient rp = referrals[i];
-                if (rp.patient.Username == patientUsername)
+                if (rp.Patient.Username == patientUsername)
                 {
                     referalsForPatient.Add(rp);
                 }

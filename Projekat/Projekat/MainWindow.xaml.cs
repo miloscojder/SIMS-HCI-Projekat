@@ -66,15 +66,6 @@ namespace Projekat
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            List<User> users = new List<User>();
-            users = userController.GetAll();
-            userController.FindUser(UsernameTextBox.Text, PasswordTextBox.Text, users);
-    
-            
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
         {              
             User loggedUser = userController.FindUserByUsernameAndPasswrod(UsernameTextBox.Text, PasswordTextBox.Text);
 

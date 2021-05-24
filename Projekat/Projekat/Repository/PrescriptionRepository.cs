@@ -58,7 +58,7 @@ namespace Repository
             for (int i = 0; i < prescriptions.Count; i++)
             {
                 Prescription p = prescriptions[i];
-                if (p.patient.Username == patientsUsername)
+                if (p.Patient.Username == patientsUsername)
                 {
                     prescriptionsForPatient.Add(p);
                 }
