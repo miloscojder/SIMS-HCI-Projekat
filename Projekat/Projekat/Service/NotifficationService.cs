@@ -16,6 +16,7 @@ namespace Service
     public class NotifficationService
     {
         NotifficationRepository notifficationRepository = new NotifficationRepository();
+        List<Notification> notifications;
 
         public Model.Notification GetOne(String id)
         {
@@ -30,7 +31,7 @@ namespace Service
 
         public void WriteNotificationsToJason(List<Notification> newNotifications)
         {
-            notifficationRepository.WriteNotificationsToJason(newNotifications);
+            notifficationRepository.WriteNotificationsToJason();
         }
 
         public void IsItTime(List<Notification> notifications)
@@ -101,5 +102,15 @@ namespace Service
             }
         }
 
+        public List<Notification> FindNotificationsByPatientUsername(String patientsUsername)
+        {
+            notifications = notifficationRepository.FindNotificationByPatientsUsername(patientsUsername);
+            return notifications;
+        }
+
+        public void DeleteNotificationById(String notifciationId)
+        {
+            notifficationRepository.DeleteNotificationById(notifciationId);
+        }
     }
 }

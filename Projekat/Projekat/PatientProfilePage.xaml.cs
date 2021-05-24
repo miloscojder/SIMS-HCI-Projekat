@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using Model;
 
 namespace Projekat
 {
@@ -17,6 +8,9 @@ namespace Projekat
     /// </summary>
     public partial class PatientProfilePage : Window
     {
+
+        public User prenosilac = new User();
+
         public PatientProfilePage()
         {
             InitializeComponent();
@@ -31,21 +25,21 @@ namespace Projekat
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            AppointmentsPage ap = new AppointmentsPage(null);
+            AppointmentsPage ap = new AppointmentsPage(null,prenosilac);
             ap.Show();
             this.Close();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null);
+            NotificationsPatientPage npp = new NotificationsPatientPage(null,null);
             npp.Show();
             this.Close();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage();
+            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage(prenosilac);
             pmrp.Show();
             this.Close();
         }

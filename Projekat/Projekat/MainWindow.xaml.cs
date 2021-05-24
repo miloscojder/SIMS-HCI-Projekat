@@ -30,7 +30,7 @@ namespace Projekat
         public MainWindow()
         {
             InitializeComponent();
-
+           
         }
         private void Director_Click(object sender, RoutedEventArgs e)
         {

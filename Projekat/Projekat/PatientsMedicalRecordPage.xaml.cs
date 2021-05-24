@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -9,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Controller;
 
 namespace Projekat
 {
@@ -17,9 +19,32 @@ namespace Projekat
     /// </summary>
     public partial class PatientsMedicalRecordPage : Window
     {
-        public PatientsMedicalRecordPage()
+        public User prenosilac = new User();
+        MedicalRecordController medicalRecordController = new MedicalRecordController();
+        PrescriptionController prescriptionController = new PrescriptionController();
+        ReferralPatientController ReferralPatientController = new ReferralPatientController();
+        
+
+        public PatientsMedicalRecordPage(User loggedUser)
         {
             InitializeComponent();
+            this.DataContext = this;
+
+            List<MedicalRecord> patientsRecords = new List<MedicalRecord>();
+            patientsRecords = medicalRecordController.GetAllRecordsByPatientsUsername(loggedUser.Username);
+
+            lvMedicalRecord.ItemsSource = patientsRecords;
+
+            List<Prescription> patientsPrescriptions = new List<Prescription>();
+            patientsPrescriptions = prescriptionController.GetAllPrescriptionsByPatientsUsername(loggedUser.Username);
+
+            List<ReferralPatient> referralPatients = new List<ReferralPatient>();
+            referralPatients = ReferralPatientController.GerAllReferralsByPatientsUsername(loggedUser.Username);
+
+           
+            lvRaferrals.ItemsSource = referralPatients;
+            lvPrescriptions.ItemsSource = patientsPrescriptions;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -31,21 +56,21 @@ namespace Projekat
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            AppointmentsPage ap = new AppointmentsPage(null);
+            AppointmentsPage ap = new AppointmentsPage(null,prenosilac);
             ap.Show();
             this.Close();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null);
+            NotificationsPatientPage npp = new NotificationsPatientPage(null,null);
             npp.Show();
             this.Close();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage();
+            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage(prenosilac);
             pmrp.Show();
             this.Close();
         }
