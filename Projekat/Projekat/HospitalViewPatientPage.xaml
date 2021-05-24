@@ -5,16 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="HospitalViewPatientPage" Height="450" Width="800">
+        Title="HospitalViewPatientPage"  Background="LightSkyBlue" Height="550" Width="815">
     <Grid RenderTransformOrigin="0.349,0.65">
-        <Label Content="BOLNICA 1: " HorizontalAlignment="Left" Margin="63,30,0,0" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="581,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <ListView Margin="28,161,255,30"  Name="lvDoctorsPatient" Grid.ColumnSpan="2" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="121*"/>
+            <RowDefinition Height="413*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Background="LightSkyBlue" Margin="0,0,0,50">
+            <Button Content="HOME PAGE" Click="Button_Click_2" Width="112" ></Button>
+            <Button Content="MY APPOINTMENTS" Click="Button_Click_3" Width="174" />
+            <Button Content="MY NOTIFICATIONS" Click="Button_Click_4" Width="157" />
+            <Button Content="MY MEDICAL RECORD" Click="Button_Click_5" Width="160"/>
+            <Button Content="Q and A" Click="Button_Click_6" Width="100"/>
+            <Button Content="MY PROFILE" Click="Button_Click_7" Width="99" />
+        </StackPanel>
+        <Label Content="BOLNICA 1: " HorizontalAlignment="Left" Margin="46,83,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="602,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1"/>
+        <ListView Margin="435,91,21,64" Background="AliceBlue" Name="lvDoctorsPatient" Grid.Row="1" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding Id}" />
+                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding id}" />
                     <GridViewColumn Header="Doctors Name" Width="100" DisplayMemberBinding="{Binding Username}" />
-                    <GridViewColumn Header="Specialty" Width="100" DisplayMemberBinding="{Binding Specialty}" />
+                    <GridViewColumn Header="Specialty" Width="100" DisplayMemberBinding="{Binding specialty}" />
                     <GridViewColumn Header="Rating" Width="100" DisplayMemberBinding="{Binding Grade}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -25,16 +37,37 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox x:Name="HospitalRating" HorizontalAlignment="Left" Margin="248,37,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" Height="21"/>
-        <TextBox x:Name="UnesiteOpis" HorizontalAlignment="Left" Margin="355,109,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="243" Height="19"/>
-        <Label Content="Rejting:" HorizontalAlignment="Left" Margin="174,32,0,0" VerticalAlignment="Top"/>
-        <Label Content="Dodajte vase misljenje" HorizontalAlignment="Left" Margin="222,106,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="Ocena" HorizontalAlignment="Left" Margin="118,103,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" Height="21" RenderTransformOrigin="-0.047,0.645"/>
-        <Label Content="Ocenite" HorizontalAlignment="Left" Margin="37,102,0,0" VerticalAlignment="Top"/>
-        <Button Content="Update ocene" HorizontalAlignment="Left" Margin="633,133,0,0" VerticalAlignment="Top" Click="Button_Click" />
-        <Button Content="Ocenite Doktora" HorizontalAlignment="Left" Margin="588,301,0,0" VerticalAlignment="Top" Click="OceniteDoktoraButton_Click"/>
-        <TextBox x:Name="OpisPrikazan" HorizontalAlignment="Left" Margin="372,24,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="359" Height="42"/>
-        <Button Content="Update Opisa" HorizontalAlignment="Left" Margin="635,95,0,0" VerticalAlignment="Top" Click="Button_Click_1" />
+        <TextBox x:Name="HospitalRating" HorizontalAlignment="Left" Margin="231,85,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" Height="21" IsReadOnlyCaretVisible="True" IsEnabled="False" FontWeight="Bold"/>
+        <TextBox x:Name="UnesiteOpis" HorizontalAlignment="Left" Margin="157,27,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="243" Height="19" Grid.Row="1"/>
+        <Label Content="Rejting:" HorizontalAlignment="Left" Margin="157,83,0,0" VerticalAlignment="Top"/>
+        <Label Content="Dodajte vase misljenje" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Grid.Row="1"/>
 
+        <Label Content="Ocenite" HorizontalAlignment="Left" Margin="357,83,0,0" VerticalAlignment="Top"/>
+        <Button Content="Update ocene" HorizontalAlignment="Left" Margin="539,81,0,0" VerticalAlignment="Top" Click="Button_Click" Height="29" />
+        <Button Content="Ocenite Doktora" HorizontalAlignment="Left" Margin="582,353,0,0" VerticalAlignment="Top" Click="OceniteDoktoraButton_Click" Grid.Row="1"/>
+
+        <Button Content="Update Opisa" HorizontalAlignment="Left" Margin="418,27,0,0" VerticalAlignment="Top" Click="Button_Click_1" Width="78" Grid.Row="1" Height="24" />
+        <Label Content="Lista lekara ove bolnice" HorizontalAlignment="Left" Margin="561,59,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <ListView x:Name="lvHospitalFeedback" Background="LightCyan" Margin="33,91,428,64" Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Feedback" Width="384" DisplayMemberBinding="{Binding }" />
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ComboBox Name="HospitalGrades" HorizontalAlignment="Left" Margin="431,81,0,0" VerticalAlignment="Top" Width="55" Height="30">
+            <ComboBoxItem Content="1"/>
+            <ComboBoxItem Content="2"/>
+            <ComboBoxItem Content="3"/>
+            <ComboBoxItem Content="4"/>
+            <ComboBoxItem Content="5"/>
+            <ComboBoxItem Content="6"/>
+            <ComboBoxItem Content="7"/>
+            <ComboBoxItem Content="8"/>
+            <ComboBoxItem Content="9"/>
+            <ComboBoxItem Content="10"/>
+        </ComboBox>
+        <Label Content="Dosadasnja misljenja o bolnici" HorizontalAlignment="Left" Margin="128,59,0,0" Grid.Row="1" VerticalAlignment="Top"/>
     </Grid>
 </Window>

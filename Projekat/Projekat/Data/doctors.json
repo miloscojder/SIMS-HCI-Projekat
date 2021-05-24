@@ -1,7 +1,7 @@
 [
     
     {
-        "specialty": "Cardiologist",
+        "Specialty": "General",
         "free": false,
         "appointment": null,
         "operations": null,
@@ -11,17 +11,17 @@
         "WorkingHours": "00:00:00",
         "WorkingExperince": 0,
         "Id": 1,
-        "Username": null,
-        "Password": null,
+        "Username": "kris",
+        "Password": "123",
         "firstName": "Kristina",
         "lastName": "Miletic",
-        "Jmbg": null,
-        "EMail": null,
-        "PhoneNumber": null,
+        "Jmbg": "1221999805043",
+        "EMail": "kristina@gmail.com",
+        "PhoneNumber": "0691118180",
         "DateOfBirth": "0001-01-01T00:00:00"
     },
     {
-        "specialty": "Internist",
+        "Specialty": "Internist",
         "free": false,
         "appointment": null,
         "operations": null,
@@ -31,17 +31,17 @@
         "WorkingHours": "00:00:00",
         "WorkingExperince": 0,
         "Id": 2,
-        "Username": null,
-        "Password": null,
+        "Username": "Miki",
+        "Password": "555",
         "firstName": "Miroslav",
         "lastName": "Jokic",
-        "Jmbg": null,
-        "EMail": null,
-        "PhoneNumber": null,
-        "DateOfBirth": "0001-01-01T00:00:00"
+        "Jmbg": "2304987800503",
+        "EMail": "mikica@gmail.com",
+        "PhoneNumber": "0644432851",
+        "DateOfBirth": "1987-04-23T17:34:56"
     },
     {
-        "specialty": "Internist",
+        "Specialty": "Internist",
         "free": false,
         "appointment": null,
         "operations": null,
@@ -61,7 +61,7 @@
         "DateOfBirth": "0001-01-01T00:00:00"
     },
     {
-        "specialty": "Dermatologist",
+        "Specialty": "Dermatologist",
         "free": false,
         "appointment": null,
         "operations": null,
@@ -81,7 +81,7 @@
         "DateOfBirth": "0001-01-01T00:00:00"
     },
     {
-        "specialty": "General",
+        "Specialty": "General",
         "free": false,
         "appointment": null,
         "operations": null,
@@ -101,7 +101,7 @@
         "DateOfBirth": "0001-01-01T00:00:00"
     },
     {
-        "specialty": "Internist",
+        "Specialty": "Cardiologist",
         "free": false,
         "appointment": null,
         "operations": null,
@@ -121,7 +121,7 @@
         "DateOfBirth": "0001-01-01T00:00:00"
     },
     {
-        "specialty": "Cardiologist",
+        "Specialty": "Cardiologist",
         "free": false,
         "appointment": null,
         "operations": null,

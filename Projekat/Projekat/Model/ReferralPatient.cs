@@ -10,29 +10,29 @@ namespace Model
 {
    public class ReferralPatient
    {
-        public int id { get; set; }
+        public int Id { get; set; }
       public String Explanation { get; set; }
         public String Date { get; set; }
-        public String timeStart { get; set; }
-        public string duration { get; set; }
-        public Room room { get; set; }
-        public Patient patient { get; set; }
-        public String endTime { get; set; }
-        public String doc { get; set; }
+        public String TimeStart { get; set; }
+        public string Duration { get; set; }
+        public Room Room { get; set; }
+        public Patient Patient { get; set; }
+        public String EndTime { get; set; }
+        public String Doc { get; set; }
 
         public ReferralPatient() { }
 
         public ReferralPatient(int id,String date, String start, String duration, String end, String ex, Room r, Patient p, String doctor) 
         {
-            this.id = id;
+            this.Id = id;
             Date = date;
-            timeStart = start;
-            this.duration = duration;
-            endTime = end;
+            TimeStart = start;
+            this.Duration = duration;
+            EndTime = end;
             Explanation = ex;
-            room = r;
-            patient = p;
-            doc = doctor;
+            Room = r;
+            Patient = p;
+            Doc = doctor;
         }
 
     }

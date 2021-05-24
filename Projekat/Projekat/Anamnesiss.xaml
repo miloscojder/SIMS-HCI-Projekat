@@ -6,21 +6,71 @@
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
         Title="Anamnesis" Height="450" Width="800">
-    <Grid>
-        <DataGrid x:Name="dataGrid" ItemsSource="{Binding Anamnesis}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="88,58,94,116">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Width="40" Binding="{Binding id}"/>
-                <DataGridTextColumn Header="Patient name" Width="100" Binding="{Binding patient.firstName}"/>
-                <DataGridTextColumn Header="Patient surname" Width="100" Binding="{Binding patient.lastName}"/>
-                <DataGridTextColumn Header="Anamnesis" Width="380" Binding="{Binding anamnesy}"/>
+    <Grid Margin="0,0,0,-113">
+        <TabControl Margin="18,10,18,126" Background="AliceBlue">
+            <TabItem Header="Profile"  RenderTransformOrigin="13.591,2.146">
+                <Grid Height="358">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="107*"/>
+                        <ColumnDefinition Width="651*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Doctor FirstName LastName" FontSize="18" HorizontalAlignment="Left" Margin="47,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Rectangle HorizontalAlignment="Left" Height="236" Margin="47,63,0,0" Stroke="Black" VerticalAlignment="Top" Width="258" Grid.ColumnSpan="2"/>
+                    <Label Content="First Name:" FontSize="12" HorizontalAlignment="Left" Margin="53,81,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Label Content="Last Name:" FontSize="12" HorizontalAlignment="Left" Margin="53,107,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Label Content="Personal identification:" FontSize="12" HorizontalAlignment="Left" Margin="53,138,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Label Content="JMBG:" FontSize="12" HorizontalAlignment="Left" Margin="56,169,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Date of birth:" FontSize="12" HorizontalAlignment="Left" Margin="56,195,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Label Content="Email:" FontSize="12" HorizontalAlignment="Left" Margin="58,221,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Phone number:" FontSize="12" HorizontalAlignment="Left" Margin="56,247,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Label Content="Specialization:" FontSize="12" HorizontalAlignment="Left" Margin="59,273,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Calendar Margin="147,60,135,75" Grid.Column="1" />
+                    <Label Name="Name" Content="" HorizontalAlignment="Left" Margin="190,81,0,0" VerticalAlignment="Top" Width="91" Height="26"/>
+                    <Label Name="Surname" Content="" HorizontalAlignment="Left" Margin="190,107,0,0" VerticalAlignment="Top" Width="91"/>
+                    <Label Name="Id" Content="" HorizontalAlignment="Left" Margin="196,138,0,0" VerticalAlignment="Top" Width="85"/>
+                    <Label Name="jmbg" Content="" HorizontalAlignment="Left" Margin="190,0,0,0" VerticalAlignment="Center" Width="115" Height="30"/>
+                    <Label Name="Date" Content="" HorizontalAlignment="Left" Margin="190,190,0,0" VerticalAlignment="Top" Width="71"/>
+                    <Label Name="Email" Content="" HorizontalAlignment="Left" Margin="190,221,0,0" VerticalAlignment="Top" Width="115"/>
+                    <Label Name="Phone" Content="" HorizontalAlignment="Left" Margin="196,247,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Label Name="Spec" Content="" HorizontalAlignment="Left" Margin="200,273,0,0" VerticalAlignment="Top" Width="105"/>
 
-            </DataGrid.Columns>
-        </DataGrid>
-        <Button Content="Update" Click="Update"  FontSize="18" HorizontalAlignment="Left" Margin="574,349,0,0" VerticalAlignment="Top" Height="39" Width="132" Background="#FFB5CDE2"/>
-        <Label Content="Anamnesis" FontSize="25" HorizontalAlignment="Left" Margin="327,15,0,0" VerticalAlignment="Top" Width="149"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Appointment" IsSelected="True" RenderTransformOrigin="13.591,2.146" Height="22" Margin="-2,-2,-2,0" VerticalAlignment="Top">
+                <Grid Height="396">
+                    <Button Content="Patients" Click="Patients" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="39" Width="89"/>
+                    <Button Content="Anamnesis" Click="AnamnesisClick" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="99,10,0,0" VerticalAlignment="Top" Height="39" Width="103"/>
+                    <Button Content="Prescrptions" Click="Prescribe" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="202,10,0,0" VerticalAlignment="Top" Height="39" Width="109"/>
+                    <Button Content="Referrals" Click="ReferralP" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="311,10,0,0" VerticalAlignment="Top" Height="39" Width="91"/>
+                    <Button Content="Appointments" Click="AppointmentClick" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="402,10,0,0" VerticalAlignment="Top" Height="39" Width="125"/>
+                    <Button Content="Operations" Click="OperationsClick" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="527,10,0,0" VerticalAlignment="Top" Height="39" Width="106"/>
+                    <DataGrid x:Name="dataGrid" ItemsSource="{Binding Anamnesis}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="37,87,145,114">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Width="40" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Patient name" Width="100" Binding="{Binding Patient.firstName}"/>
+                            <DataGridTextColumn Header="Patient surname" Width="100" Binding="{Binding Patient.lastName}"/>
+                            <DataGridTextColumn Header="Anamnesis" Width="380" Binding="{Binding Anamnesy}"/>
 
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="Update" Click="Update"  FontSize="18" Margin="311,314,325,0" VerticalAlignment="Top" Height="39" Background="#FFB5CDE2"/>
+                    <Button Content="Give anamnesis" Click="AnamnesisGive"  FontSize="18" Margin="540,314,52,0" VerticalAlignment="Top" Height="39" Background="#FFB5CDE2"/>
 
+                </Grid>
+
+            </TabItem>
+            <TabItem Header="Medicine"   RenderTransformOrigin="13.591,2.146">
+                <Grid>
+                    <Button Content="View medicines" Click="SeeAll" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="34,39,0,0" VerticalAlignment="Top" Height="39" Width="173"/>
+                    <Button Content="Aprove medicine" Click="Aprove" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="34,134,0,0" VerticalAlignment="Top" Height="39" Width="173"/>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <Button Content="Log out" Click="LogOut" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="634,111,0,0" VerticalAlignment="Top" Height="39" Width="124"/>
+        <Button Content="Back" Click="Update"  FontSize="18" Margin="69,366,642,0" VerticalAlignment="Top" Height="27" Background="#FFB5CDE2"/>
 
     </Grid>
 </Window>

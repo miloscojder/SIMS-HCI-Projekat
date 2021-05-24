@@ -65,7 +65,7 @@ namespace Repository
         }
         public List<Doctor> GetAllDoctorsSpecialist(String specialization)
       {
-            return doctors.FindAll(obj => obj.specialty == specialization);
+            return doctors.FindAll(obj => obj.Specialty == specialization);
         }
 
         public List<Doctor> GetAllDoctors()

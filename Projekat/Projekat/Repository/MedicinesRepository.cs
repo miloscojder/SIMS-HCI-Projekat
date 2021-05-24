@@ -12,6 +12,7 @@ namespace Projekat.Repository
     {
         private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\medicines.json";
         private List<Medicines> medicines = new List<Medicines>();
+        private Medicines medicine = new Medicines(); 
     
         public MedicinesRepository()
         {
@@ -36,9 +37,15 @@ namespace Projekat.Repository
 
         public List<Medicines> GetAll()
         {
+            
             return medicines;
         }
 
+        public List<Medicines> GetAllRejected(String status)
+        {
+          
+            return medicines.FindAll(obj => obj.StatusType == status); 
+        }
         public Medicines GetOne(int id)
         {
             return medicines.Find(obj => obj.Id == id);

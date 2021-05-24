@@ -105,7 +105,9 @@ namespace Repository
          return appointments;
       }
       
-      public List<Doctor> GetAllDoctors()
+
+
+        public List<Doctor> GetAllDoctors()
       {
          // TODO: implement
          return null;
@@ -121,10 +123,12 @@ namespace Repository
       {
          return appointments.Find(obj => obj.id == idd);
       }
+
       
-   
-      public string FileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\appointments.json";
+
+        public string FileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\appointments.json";
       public List<Appointment> appointments = new List<Appointment>();
+        public Appointment appointment = new Appointment();
    
    }
 }

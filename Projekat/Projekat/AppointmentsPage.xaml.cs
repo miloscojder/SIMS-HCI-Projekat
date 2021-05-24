@@ -40,22 +40,7 @@ namespace Projekat
 
             lvAppointmentsPatient.ItemsSource = spisak;
 
-
-            //Ovo ne radi skroz dobro ali radi
-            List<Notification> notifications = new List<Notification>();
-            notifications = JsonConvert.DeserializeObject<List<Notification>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\notificationsak.json"));
-
-
-            foreach (Notification n in notifications)
-            {
-                if (((n.Date.Date == DateTime.Now.Date) && (DateTime.Now.Hour == (n.Date.Hour - 3)) && (DateTime.Now.Minute == n.Date.Minute)) || ((n.Date.Date == DateTime.Now.Date) && (DateTime.Now.Hour >= (n.Date.Hour - 3))))
-                {
-                    MessageBox.Show("Vase danasnje obavestenje je: " + n.Name + " " + n.Description);
-                }
-            }
-
             SaveAppointments(spisak);
-
         }
 
         //morace da stoji u drugom sloju
@@ -72,8 +57,9 @@ namespace Projekat
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            ScheduleAppointmentPatient sa = new ScheduleAppointmentPatient();
-            sa.Show();
+            ScheduleAppointmentPatient sap = new ScheduleAppointmentPatient();
+            sap.Show();
+            this.Close();
         }
 
         private void CancButton_Click_1(object sender, RoutedEventArgs e)
@@ -88,107 +74,123 @@ namespace Projekat
                 if ((DateTime.Now.Date - datum.Date) > timeSpan)
                 {
                     activityTime.Remove(datum);
-                    sfsd.activityCounter--;                                                       // ovo cu da ucitam iz fajla nekog posle
-                   // File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json", JsonConvert.SerializeObject(sfsd));
+                    sfsd.activityCounter--;                                                     
+                    File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json", JsonConvert.SerializeObject(sfsd));
                 }
             }
 
             if(sfsd.activityCounter > 10)
             {
                 MessageBox.Show("Blokirani ste zbog spamovanja, javite nam se za vise informacija");
+                MainWindow mw = new MainWindow();
+                mw.Show();
+                this.Close();
             }
             else
             {
-                sfsd.activityCounter++;
-
-                Appointment ac = (Appointment)lvAppointmentsPatient.SelectedItems[0];
-
-
-                List<Appointment> svi = new List<Appointment>();
-                List<Appointment> newSvi = new List<Appointment>();
-
-                svi = JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json"));
-
-
-                foreach (Appointment a in svi)
+               
+                if (lvAppointmentsPatient.SelectedItems.Count < 1)
                 {
-                    if (a.id != ac.id)
+                    MessageBox.Show("You must choose at leas one appointment.");
+                }
+                else
+                {
+                    sfsd.activityCounter++;
+                    Appointment ac = (Appointment)lvAppointmentsPatient.SelectedItems[0];
+
+                    List<Appointment> svi = new List<Appointment>();
+                    List<Appointment> newSvi = new List<Appointment>();
+
+                    svi = JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json"));
+
+                    foreach (Appointment a in svi)
                     {
-                        newSvi.Add(a);
+                        if (a.id != ac.id)
+                        {
+                            newSvi.Add(a);
+                        }
                     }
-                }
 
-                File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json", JsonConvert.SerializeObject(newSvi));
-                File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json", JsonConvert.SerializeObject(sfsd));
+                    File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json", JsonConvert.SerializeObject(newSvi));
+                    File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json", JsonConvert.SerializeObject(sfsd));
 
-                MessageBox.Show("Vas pregled je otkazan.");
-                this.Close();
-
-            }
-
-
-
-
-
-
-
-
-            /*
-            Appointment ac = (Appointment)lvAppointmentsPatient.SelectedItems[0];
-
-
-            List<Appointment> svi = new List<Appointment>();
-            List<Appointment> newSvi = new List<Appointment>();
-
-            svi = JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json"));
-
-
-            foreach (Appointment a in svi)
-            {
-                if (a.Id != ac.Id)
-                {
-                    newSvi.Add(a);
+                    MessageBox.Show("Vas pregled je otkazan.");
+                    this.Close();
                 }
             }
 
-            File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json", JsonConvert.SerializeObject(newSvi));
-            */
-
-
-
-            //          File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\counerOfActivites.txt", Convert.ToString(numberOfActivities));
-            /*
-                        MessageBox.Show("Vas pregled je otkazan.");
-                        this.Close();
-            */
         }
 
         private void RescButton_Click_2(object sender, RoutedEventArgs e)
         {
 
-            Appointment ach = (Appointment)lvAppointmentsPatient.SelectedItems[0];
-
-            TimeSpan timeSpan = new TimeSpan(1, 0, 0, 0, 0);
-
-            if (ach.StartTime.Date - DateTime.Now.Date <= timeSpan)
+            if (lvAppointmentsPatient.SelectedItems.Count < 1)
             {
-                MessageBox.Show("Ne mozete promeniti ovaj termin.");
-
-
-                AppointmentsPage ap = new AppointmentsPage(null);
-                ap.Show();
+                MessageBox.Show("You must select at least 1 appointment.");
             }
             else
             {
-                RescheduleAppointmentPatientPage rapp = new RescheduleAppointmentPatientPage(ach);
-                rapp.Show();
+                Appointment ach = (Appointment)lvAppointmentsPatient.SelectedItems[0];
+
+                TimeSpan timeSpan = new TimeSpan(1, 0, 0, 0, 0);
+
+                if (ach.StartTime.Date - DateTime.Now.Date <= timeSpan)
+                {
+                    MessageBox.Show("Ne mozete promeniti ovaj termin.");
+
+                    AppointmentsPage ap = new AppointmentsPage(null);
+                    ap.Show();
+                    this.Close();
+                }
+                else
+                {
+                    RescheduleAppointmentPatientPage rapp = new RescheduleAppointmentPatientPage(ach);
+                    rapp.Show();
+                    this.Close();
+                }
             }
         }
 
-        private void NotificationsButton_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage();
+            PatientMainPage pmp = new PatientMainPage(null);
+            pmp.Show();
+            this.Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            AppointmentsPage ap = new AppointmentsPage(null);
+            ap.Show();
+            this.Close();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            NotificationsPatientPage npp = new NotificationsPatientPage(null);
             npp.Show();
+            this.Close();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage();
+            pmrp.Show();
+            this.Close();
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            PatientQandAPage pqap = new PatientQandAPage();
+            pqap.Show();
+            this.Close();
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            PatientProfilePage ppp = new PatientProfilePage();
+            ppp.Show();
+            this.Close();
         }
     }
 }

@@ -27,23 +27,23 @@ namespace Projekat
             List<Appointment> appointments = appointmentRepository.GetAll();
             dataGrid.ItemsSource = appointments;
             Date.Text = appoin.Date;
-            Duration.Text = appoin.duration;
+            Duration.Text = appoin.Duration;
             String hours = "";
             String minutes = "";
             Hourss.Text = hours;
             Minutess.Text = minutes;
             String start = hours + ":" + minutes;
-            start = appoin.timeStart;
+            start = appoin.TimeStart;
             String hours1 = "";
             String minutes1 = "";
             Hours.Text = hours1;
             Minutes.Text = minutes1;
             String end = hours + ":" + minutes;
-            end = appoin.endTime;
+            end = appoin.EndTime;
             id = appoin.id;
-            room.Name = appoin.room.Name;
-            patient.firstName = appoin.patient.firstName;
-            patient.lastName = appoin.patient.lastName;
+            room.Name = appoin.Room.Name;
+            patient.firstName = appoin.Patient.firstName;
+            patient.lastName = appoin.Patient.lastName;
         }
 
         private void Save(object sender, RoutedEventArgs e)
@@ -59,8 +59,10 @@ namespace Projekat
             String start = hourss + ":" + minutess;
             String duration = Duration.Text;
 
+            TypeOfAppointment type = TypeOfAppointment.Examination;
 
-            Appointment a = new Appointment(id, date, start, duration, end, room, patient);
+
+            Appointment a = new Appointment(id, date, start, duration, end, room, patient, type);
             appointmentController.RescheduleDoctor(a);
 
             Appointments ap = new Appointments();

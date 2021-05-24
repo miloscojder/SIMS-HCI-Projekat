@@ -47,8 +47,10 @@ namespace Projekat
             p.firstName = Name.Text;
             p.lastName = Surname.Text;
 
+            app.AppointmentType = TypeOfAppointment.Examination;
+            TypeOfAppointment type = app.AppointmentType;
 
-            Appointment a = new Appointment(ida, date, start, duration, end, r, p);
+             Appointment a = new Appointment(ida, date, start, duration, end, r, p, type);
             appointmentController.ScheduleDoctor(a);
 
          

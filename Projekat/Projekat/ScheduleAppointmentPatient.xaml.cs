@@ -44,7 +44,7 @@ namespace Projekat
             InitializeComponent();
             this.DataContext = this;
 
-            string[] termini = File.ReadAllLines(@"C:\Users\Korisnik\Desktop\asdas\SIMS-HCI-Projekat-main\Projekat\Projekat\Data\terminiak.txt", Encoding.UTF8);
+            string[] termini = File.ReadAllLines(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\terminiak.txt", Encoding.UTF8);
             Termini = new List<string>(termini);
 
             string[] doktori = File.ReadAllLines(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doktoriak.txt", Encoding.UTF8);
@@ -75,14 +75,17 @@ namespace Projekat
                 if ((DateTime.Now.Date - datum.Date) > timeSpan)    
                 {
                     listaVremenaZakazivanja.Remove(datum);
-                    sfsd.activityCounter--;                                                              // ovo cu da ucitam iz fajla nekog posle
+                    sfsd.activityCounter--;                                                              
                 }    
             }        
             
             if(sfsd.activityCounter > 10)                             
             {
-                MessageBox.Show("Blokirani ste zbog spamovanja, javite nam se za vis enformacija");
+                MessageBox.Show("Blokirani ste zbog spamovanja, javite nam se za vise informacija");
                 //window close        
+                MainWindow mw = new MainWindow();
+                mw.Show();
+                this.Close();
             } 
             else 
             {
@@ -115,6 +118,7 @@ namespace Projekat
                 {
                    AcceptNewAppointmentPatient anap = new AcceptNewAppointmentPatient(/*a,*/ priority, choosenDate, izabraniDoktor);
                    anap.Show();
+                    this.Close();
                 } 
                 else
                 {
@@ -127,9 +131,17 @@ namespace Projekat
 
                     AppointmentsPage ap = new AppointmentsPage(newAppointment);
                     ap.Show();
+                    this.Close();
                 }
               
             }
-        }    
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AppointmentsPage ap = new AppointmentsPage(null);
+            ap.Show();
+            this.Close();
+        }
     }
 }

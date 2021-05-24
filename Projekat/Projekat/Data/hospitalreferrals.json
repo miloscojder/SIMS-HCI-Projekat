@@ -1,0 +1,28 @@
+[
+    
+    {
+        "Id": 1,
+        "Date": "15.05.2021.",
+        "Room": {
+            "Id": 0,
+            "Name": "C",
+            "RoomType": null,
+            "Floor": 0,
+            "Detail": null,
+            "StaticEquipments": null
+        },
+        "Patient": {
+            "record": null,
+            "id": 0,
+            "Username": null,
+            "Password": null,
+            "firstName": "Mirko",
+            "lastName": "Mirkovic",
+            "Jmbg": null,
+            "EMail": null,
+            "PhoneNumber": null,
+            "DateOfBirth": "0001-01-01T00:00:00"
+        },
+        "EndDate": "30.05.2021."
+    }
+]

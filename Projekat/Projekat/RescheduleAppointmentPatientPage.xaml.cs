@@ -47,7 +47,7 @@ namespace Projekat
             posrednik.roomName = a.roomName;
             posrednik.id = a.id;
             posrednik.StartTime = a.StartTime;
-            posrednik.appointmentType = a.appointmentType;
+            posrednik.AppointmentType = a.AppointmentType;
             //  System.Windows.MessageBox.Show(a.roomName + " " + a.doctorUsername);           radi dobro
 
         }
@@ -80,7 +80,14 @@ namespace Projekat
 
             AcceptRescheduleAppointmentPatientPage arapp = new AcceptRescheduleAppointmentPatientPage(posrednik, priority, newChoosenDate, izabraniDoktor);
             arapp.Show();
+            this.Close();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AppointmentsPage ap = new AppointmentsPage(null);
+            ap.Show();
+            this.Close();
+        }
     }
 }

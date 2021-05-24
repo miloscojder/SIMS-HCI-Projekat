@@ -8,10 +8,10 @@ using System;
 
 namespace Model
 {
-   public class User
-   {
-      public int id { get; set; }
-      public String Username { get; set; }
+    public class User
+    {
+        public int id { get; set; }
+        public String Username { get; set; }
         public String Password { get; set; }
         public String firstName { get; set; }
         public String lastName { get; set; }
@@ -20,6 +20,7 @@ namespace Model
         public String PhoneNumber { get; set; }
         public DateTime DateOfBirth { get; set; }
 
+        public Doctor doctor { get; set; }
         private String Adress { get; set; }
 
         public RoolType Rool { get; set; }

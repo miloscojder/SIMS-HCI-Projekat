@@ -13,8 +13,8 @@ using System.Linq;
 
 namespace Repository
 {
-   public class UserRepository
-   {
+    public class UserRepository
+    {
 
         public String FileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\Users.json";
         public List<User> users = new List<User>();
@@ -64,47 +64,59 @@ namespace Repository
             user = users[index];
             return user;
         }
-        
+
+        public User FindUserByUsernameAndPassword(String username, String passwrod)
+        {           
+            foreach(User u in users) {
+                if((username==u.Username) && (passwrod == u.Password))
+                {
+                    return u;
+                }
+            }
+
+            return null;
+        }
+
         public List<User> GetAll()
         {
             return users;
         }
 
         public void ChangeUsername()
-      {
-         // TODO: implement
-      }
-      
-      public void ChangePassword()
-      {
-         // TODO: implement
-      }
-      
-      public void ChangeFisteName()
-      {
-         // TODO: implement
-      }
-      
-      public void ChangeLastName()
-      {
-         // TODO: implement
-      }
-      
-      public void ChangeEMail()
-      {
-         // TODO: implement
-      }
-      
-      public void ChangePhoneNumber()
-      {
-         // TODO: implement
-      }
-      
-      public void ChangeAdress(String newNumber, String newStreet, String newCity, String newCountry, String newPostCode)
-      {
-         // TODO: implement
-      }
-   
-   
-   }
+        {
+            // TODO: implement
+        }
+
+        public void ChangePassword()
+        {
+            // TODO: implement
+        }
+
+        public void ChangeFisteName()
+        {
+            // TODO: implement
+        }
+
+        public void ChangeLastName()
+        {
+            // TODO: implement
+        }
+
+        public void ChangeEMail()
+        {
+            // TODO: implement
+        }
+
+        public void ChangePhoneNumber()
+        {
+            // TODO: implement
+        }
+
+        public void ChangeAdress(String newNumber, String newStreet, String newCity, String newCountry, String newPostCode)
+        {
+            // TODO: implement
+        }
+
+
+    }
 }
