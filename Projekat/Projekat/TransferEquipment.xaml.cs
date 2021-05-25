@@ -25,16 +25,24 @@ namespace Projekat
             dynamicEquipments = dynamicEquipmentController.GetAll();
             dataGridDynamicEquipment.ItemsSource = dynamicEquipments;
             lb_transfers.Items.Clear();
-            foreach (string line in File.ReadAllLines(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\dynamicTransfer.txt"))
-            {
-                lb_transfers.Items.Add(line);
-            }
+            IspisivanjeSpiskaDinamickeOpreme();
         }
 
         DynamicEquipmentController dynamicEquipmentController = new DynamicEquipmentController();
         List<DynamicEquipment> dynamicEquipments = new List<DynamicEquipment>();
         EquipmentType eqType1 = (EquipmentType)1;
         int id1;
+
+
+        private void IspisivanjeSpiskaDinamickeOpreme() {
+            var spisakDinamickeOpreme = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\dynamicTransfer.txt";
+
+            foreach (string line in File.ReadAllLines(spisakDinamickeOpreme))
+            {
+                lb_transfers.Items.Add(line);
+            }
+
+        }
 
 
         private void MoveDynamic_Click(object sender, RoutedEventArgs e)

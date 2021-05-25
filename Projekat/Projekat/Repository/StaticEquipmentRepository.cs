@@ -1,8 +1,4 @@
-/***********************************************************************
- * Module:  EquipmentFileStorage.cs
- * Author:  Ana_Marija
- * Purpose: Definition of the Class Model.EquipmentFileStorage
- ***********************************************************************/
+
 
 using Model;
 using Newtonsoft.Json;
@@ -41,7 +37,6 @@ namespace Repository
         }
         public void Save(StaticEquipment newEquipment)
       {
-            // TODO: implement
             staticEquipments.Add(newEquipment);
             WriteToJson();
         }
@@ -74,7 +69,7 @@ namespace Repository
       
       public StaticEquipment CreateEquipment()
       {
-         // TODO: implement
+         
          return null;
       }
 

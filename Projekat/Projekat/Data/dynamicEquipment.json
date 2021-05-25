@@ -9,13 +9,13 @@
     "Id": 2,
     "Name": "compress",
     "Type": 1,
-    "Quantity": 7
+    "Quantity": 5
   },
   {
     "Id": 3,
     "Name": "band-aid",
     "Type": 1,
-    "Quantity": 34
+    "Quantity": 23
   },
   {
     "Id": 4,

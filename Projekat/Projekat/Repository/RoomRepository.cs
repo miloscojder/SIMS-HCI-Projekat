@@ -17,9 +17,10 @@ namespace Repository
    {
         private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\rooms.json";
         private List<Room> rooms = new List<Room>();
+
       public Boolean ClassicRenovation(Room room)
       {
-         // TODO: implement
+         
          return false;
       }
         public RoomRepository()
@@ -73,6 +74,18 @@ namespace Repository
             WriteToJson();
         }
 
+
+        public Boolean AdvancedRenovation(Room room)
+      {
+         // TODO: implement
+         return false;
+      }
+      
+      public void MoveStaticEquipment(DateTime date)
+      {
+         // TODO: implement
+      }
+
         public int GenerateNewId()
         {
             try
@@ -85,23 +98,8 @@ namespace Repository
                 return 1;
             }
         }
-        public Boolean AdvancedRenovation(Room room)
-      {
-         // TODO: implement
-         return false;
-      }
-      
-      public void MoveStaticEquipment(DateTime date)
-      {
-         // TODO: implement
-      }
-      
-      public void MoveDynamicEquipment(Model.StaticEquipment quantity, Model.StaticEquipment name)
-      {
-         // TODO: implement
-      }
-  
-  
-   
-   }
+
+
+
+    }
 }

@@ -1,14 +1,10 @@
-/***********************************************************************
- * Module:  RoomFileStorage.cs
- * Author:  Ana_Marija
- * Purpose: Definition of the Class RoomFileStorage
- ***********************************************************************/
+
 
 using Model;
 using Repository;
 using System;
 using System.Collections.Generic;
-
+using System.Linq;
 
 namespace Service
 {
@@ -16,6 +12,8 @@ namespace Service
    {
         public RoomRepository roomRepository = new RoomRepository();
         public StaticEquipmentRepository staticRepository = new Repository.StaticEquipmentRepository();
+     
+
         public Boolean ClassicRenovation(Room room)
       {
          // TODO: implement
@@ -30,6 +28,7 @@ namespace Service
 
         public void MoveStaticEquipment(int staticId, int toRoom, DateTime time)
         {
+            //ispraviti
             if (time.Ticks < DateTime.Now.Ticks)
             {
                 StaticEquipment staticEquipment = staticRepository.GetOne(staticId);
@@ -44,10 +43,7 @@ namespace Service
             }
         }
 
-            public void MoveDynamicEquipment(Model.StaticEquipment quantity, Model.StaticEquipment name)
-      {
-         // TODO: implement
-      }
+ 
       
       public void Save(Room newRoom)
       {
@@ -80,7 +76,6 @@ namespace Service
         public int GenerateNewId()
         {
             return roomRepository.GenerateNewId();
-
         }
 
 

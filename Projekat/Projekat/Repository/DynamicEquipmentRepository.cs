@@ -1,8 +1,3 @@
-/***********************************************************************
- * Module:  EquipmentFileStorage.cs
- * Author:  Ana_Marija
- * Purpose: Definition of the Class Model.EquipmentFileStorage
- ***********************************************************************/
 
 using Model;
 using Newtonsoft.Json;
@@ -16,7 +11,7 @@ namespace Repository
    public class DynamicEquipmentRepository
    {
         private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\dynamicEquipment.json";
-        private readonly string _spisak = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\dynamicTransfer.txt";
+        private readonly string _spisakDinamickeOpreme = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\dynamicTransfer.txt";
         private List<DynamicEquipment> dynamicEquipments = new List<DynamicEquipment>();
 
         public DynamicEquipmentRepository()
@@ -45,29 +40,23 @@ namespace Repository
             File.WriteAllText(fileLocation, json);
         }
 
-
-        public DynamicEquipment CreateEquipment()
-      {
-         // TODO: implement
-         return null;
-      }
       
       public void Save(DynamicEquipment newEquipment)
       {
-            // TODO: implement
+            
             dynamicEquipments.Add(newEquipment);
             WriteToJson();
         }
       
       public List<DynamicEquipment> GetAll()
       {
-            // TODO: implement
+           
             return dynamicEquipments;
         }
       
       public Boolean UpdateEquipment(DynamicEquipment dynamicEquipment)
       {
-            // TODO: implement
+            
             int index = dynamicEquipments.FindIndex(obj => obj.Id == dynamicEquipment.Id);
             dynamicEquipments[index] = dynamicEquipment;
             WriteToJson();
@@ -86,12 +75,11 @@ namespace Repository
             int index = dynamicEquipments.FindIndex(obj => obj.Id == dynamicEquipment.Id);
             DynamicEquipment dynamic = dynamicEquipments[index];
             dynamic.Quantity -= dynamicEquipment.Quantity;
-            UpdateEquipment(dynamic);
+            //UpdateEquipment(dynamic);
             WriteToJson();
-
-            string lines = "Extracted dynamic equipment: " + Convert.ToString(dynamicEquipment.Quantity) + " " + dynamicEquipment.Name + "\n";
-            File.AppendAllText(_spisak, lines);
+           
         }
+
         public int GenerateNewId()
         {
             try
@@ -104,7 +92,6 @@ namespace Repository
                 return 1;
             }
         }
-
 
 
     }
