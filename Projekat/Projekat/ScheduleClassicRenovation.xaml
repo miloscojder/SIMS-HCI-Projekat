@@ -18,10 +18,12 @@
         </DataGrid>
         <Button Content="Select Room" HorizontalAlignment="Left" Margin="209,254,0,0" VerticalAlignment="Top" Width="106" Height="28"/>
         <Label Content="Choose Date:" HorizontalAlignment="Left" Margin="419,87,0,0" VerticalAlignment="Top"/>
-        <DatePicker HorizontalAlignment="Left" Margin="522,87,0,0" VerticalAlignment="Top" Width="119"/>
-        <Label Content="Duration in days:" HorizontalAlignment="Left" Margin="419,134,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.423,0.586"/>
-        <TextBox HorizontalAlignment="Left" Margin="523,134,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="122" Height="26"/>
+        <DatePicker x:Name="date" HorizontalAlignment="Left" Margin="522,87,0,0" VerticalAlignment="Top" Width="119"/>
+        <Label Content="Start Time:" HorizontalAlignment="Left" Margin="419,134,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.423,0.586"/>
+        <TextBox x:Name="startTime" HorizontalAlignment="Left" Margin="523,134,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="122" Height="26"/>
         <Button Content="Schedule Renovation" Click="ScheduleRenovation_Click" HorizontalAlignment="Left" Margin="518,356,0,0" VerticalAlignment="Top" Height="31" Width="139"/>
+        <Label Content="Duration:" HorizontalAlignment="Left" Margin="419,183,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.423,0.586"/>
+        <TextBox x:Name="duration" HorizontalAlignment="Left" Margin="523,183,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="122" Height="26"/>
 
     </Grid>
 </Window>
