@@ -14,6 +14,8 @@ namespace Service
    public class HospitalReferralsService
     {
         public HospitalReferralsRepository hospitalReferralsRepository = new HospitalReferralsRepository();
+        public List<HospitalReferrals> hospitalReferrals;
+
         public void CreateReferral(HospitalReferrals newReferral)
       {
             hospitalReferralsRepository.CreateReferral(newReferral);
@@ -30,6 +32,11 @@ namespace Service
             hospitalReferralsRepository.Update(ana);
         }
 
+        public List<HospitalReferrals> GetAllHospitalRefferalsByPatientsUsername(String loggedUsername)
+        {
+            hospitalReferrals = hospitalReferralsRepository.GetAllHospitalRefferalsByPatientsUsername(loggedUsername);
+            return hospitalReferrals;
+        }
 
         public List<HospitalReferrals> GetAll()
         {

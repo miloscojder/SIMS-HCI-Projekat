@@ -23,7 +23,7 @@ namespace Projekat
         MedicalRecordController medicalRecordController = new MedicalRecordController();
         PrescriptionController prescriptionController = new PrescriptionController();
         ReferralPatientController ReferralPatientController = new ReferralPatientController();
-        
+        HospitalReferralsController referralsController = new HospitalReferralsController();
 
         public PatientsMedicalRecordPage(User loggedUser)
         {
@@ -41,7 +41,10 @@ namespace Projekat
             List<ReferralPatient> referralPatients = new List<ReferralPatient>();
             referralPatients = ReferralPatientController.GerAllReferralsByPatientsUsername(loggedUser.Username);
 
-           
+            List<HospitalReferrals> hospitalReferrals = new List<HospitalReferrals>();
+            hospitalReferrals = referralsController.GetAllHospitalRefferalsByPatientsUsername(loggedUser.Username);
+
+            lvHospitalReferrals.ItemsSource = hospitalReferrals;           
             lvRaferrals.ItemsSource = referralPatients;
             lvPrescriptions.ItemsSource = patientsPrescriptions;
 
