@@ -12,9 +12,12 @@
         <TabControl>
             <TabItem Header="Add/Delete">
                 <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
                     <DataGrid x:Name="requestsDataGrid"
                         AutoGenerateColumns="False"
-                        IsReadOnly="True" Margin="23,23,17,277" RenderTransformOrigin="0.506,0.588">
+                        IsReadOnly="True" Margin="23,47,17,260" RenderTransformOrigin="0.506,0.588" ItemsSource="{Binding Request}" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id"
                                 Binding="{Binding Id}" />
@@ -34,20 +37,28 @@
                                 Binding="{Binding doctor}" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Content="Delete" HorizontalAlignment="Left" Margin="715,153,0,0" VerticalAlignment="Top" Click="Delete_Request_Click" Height="28" Width="62"/>
+                    <Button Content="Delete" HorizontalAlignment="Left" Margin="712,191,0,0" VerticalAlignment="Top" Click="Delete_Request_Click" Height="28" Width="62"/>
                     <Label Content="Description" HorizontalAlignment="Left" Margin="198,225,0,0" VerticalAlignment="Top" Width="116"/>
                     <TextBox x:Name="Description" HorizontalAlignment="Left" Margin="360,233,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
-                    <Button x:Name="createRequest" Content="Add request" HorizontalAlignment="Left" Margin="615,391,0,0" VerticalAlignment="Top" Click="New_Request_Click" Height="33" Width="131"/>
+                    <Button x:Name="createRequest" Content="Add request" HorizontalAlignment="Left" Margin="612,354,0,0" VerticalAlignment="Top" Click="New_Request_Click" Height="33" Width="131"/>
 
                     <DatePicker x:Name="dateOfVacation" HorizontalAlignment="Left" Margin="360,264,0,0" VerticalAlignment="Top" Height="24" Width="120"/>
                     <Label Content="Date of vacaton" HorizontalAlignment="Left" Margin="198,262,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.142,-0.368"/>
                     <Label x:Name="title" Content="Create new Request" HorizontalAlignment="Left" Margin="23,224,0,0" VerticalAlignment="Top" Width="106"/>
-                    <Button Content="Update" HorizontalAlignment="Left" Margin="23,153,0,0" VerticalAlignment="Top" Click="updateRequestButton_Click" Height="28" Width="66"/>
+                    <Button Content="Update" HorizontalAlignment="Left" Margin="23,191,0,0" VerticalAlignment="Top" Click="updateRequestButton_Click" Height="28" Width="66"/>
                     <Label Content="Duration" HorizontalAlignment="Left" Margin="198,301,0,0" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.529,-0.638"/>
                     <TextBox x:Name="duration" HorizontalAlignment="Left" Margin="360,309,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                     <Label Content="Doctor" HorizontalAlignment="Left" Margin="197,339,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.529,-0.638"/>
                     <ComboBox x:Name="doctorsBox" HorizontalAlignment="Left" Margin="360,343,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Filter By:" HorizontalAlignment="Left" Margin="23,10,0,0" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="StatusBox" HorizontalAlignment="Left" Margin="110,12,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="StatusBox_SelectionChanged">
+                        <ComboBoxItem Content="Select status" IsSelected="True"/>
+                        <ComboBoxItem Content="Waiting"/>
+                        <ComboBoxItem Content="Accepted"/>
+                        <ComboBoxItem Content="Rejected"/>
+                    </ComboBox>
+                    <ComboBox x:Name="DoctorBox" HorizontalAlignment="Left" Margin="300,12,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="DoctorBox_SelectionChanged"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Accept/Decline" HorizontalAlignment="Right" Width="92">

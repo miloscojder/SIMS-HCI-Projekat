@@ -17,8 +17,6 @@ using Controller;
 using Model;
 using Newtonsoft.Json;
 using Projekat.Model;
-using Controller;
-
 namespace Projekat
 {
     /// <summary>
@@ -33,9 +31,9 @@ namespace Projekat
             InitializeComponent();
         }
 
-
-        }
-        private void Director_Click(object sender, RoutedEventArgs e)
+      
+    
+    private void Director_Click(object sender, RoutedEventArgs e)
         {
             DirectorWindow director = new DirectorWindow();
             director.Show();
@@ -67,14 +65,6 @@ namespace Projekat
 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            List<User> users = new List<User>();
-            users = userController.GetAll();
-            userController.FindUser(UsernameTextBox.Text, PasswordTextBox.Text, users);
-    
-            
-        }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {              
