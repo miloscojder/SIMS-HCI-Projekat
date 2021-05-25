@@ -7,11 +7,21 @@
 using Model;
 using System;
 using System.Collections.Generic;
+using Service;
 
 namespace Controller
 {
    public class MedicalRecordController
    {
+       public MedicalRecordService medicalRecordService = new MedicalRecordService();
+        public List<MedicalRecord> patientsRecords;
+
+        public List<MedicalRecord> GetAllRecordsByPatientsUsername(String patientsUsername)
+        {
+            patientsRecords = medicalRecordService.GetAllRecordsByPatientsUsername(patientsUsername);
+            return patientsRecords;
+        }
+
       public void Save(Model.MedicalRecord newMedRecord)
       {
          // TODO: implement
@@ -46,51 +56,6 @@ namespace Controller
          // TODO: implement
       }
    
-      public System.Collections.ArrayList medicalRecordService;
-      
-      /// <pdGenerated>default getter</pdGenerated>
-      public System.Collections.ArrayList GetMedicalRecordService()
-      {
-         if (medicalRecordService == null)
-            medicalRecordService = new System.Collections.ArrayList();
-         return medicalRecordService;
-      }
-      
-      /// <pdGenerated>default setter</pdGenerated>
-      public void SetMedicalRecordService(System.Collections.ArrayList newMedicalRecordService)
-      {
-         RemoveAllMedicalRecordService();
-         foreach (Service.MedicalRecordService oMedicalRecordService in newMedicalRecordService)
-            AddMedicalRecordService(oMedicalRecordService);
-      }
-      
-      /// <pdGenerated>default Add</pdGenerated>
-      public void AddMedicalRecordService(Service.MedicalRecordService newMedicalRecordService)
-      {
-         if (newMedicalRecordService == null)
-            return;
-         if (this.medicalRecordService == null)
-            this.medicalRecordService = new System.Collections.ArrayList();
-         if (!this.medicalRecordService.Contains(newMedicalRecordService))
-            this.medicalRecordService.Add(newMedicalRecordService);
-      }
-      
-      /// <pdGenerated>default Remove</pdGenerated>
-      public void RemoveMedicalRecordService(Service.MedicalRecordService oldMedicalRecordService)
-      {
-         if (oldMedicalRecordService == null)
-            return;
-         if (this.medicalRecordService != null)
-            if (this.medicalRecordService.Contains(oldMedicalRecordService))
-               this.medicalRecordService.Remove(oldMedicalRecordService);
-      }
-      
-      /// <pdGenerated>default removeAll</pdGenerated>
-      public void RemoveAllMedicalRecordService()
-      {
-         if (medicalRecordService != null)
-            medicalRecordService.Clear();
-      }
-   
+     
    }
 }

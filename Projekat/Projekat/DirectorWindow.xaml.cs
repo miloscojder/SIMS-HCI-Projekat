@@ -85,6 +85,13 @@ namespace Projekat
             Close();
         }
 
+        private void ScheduleClassicRenovation_Click(object sender, RoutedEventArgs e)
+        {
+            ScheduleClassicRenovation scr = new ScheduleClassicRenovation();
+            scr.Show();
+            Close();
+        }
+
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

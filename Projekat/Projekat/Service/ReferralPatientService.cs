@@ -14,6 +14,15 @@ namespace Service
    public class ReferralPatientService
    {
         public ReferralPatientRepository referralPatientRepository = new ReferralPatientRepository();
+        public List<ReferralPatient> referralPatients;
+
+        public List<ReferralPatient> GerAllReferralsByPatientsUsername(String patientUsername)
+        {
+            referralPatients = referralPatientRepository.GerAllReferralsByPatientsUsername(patientUsername);
+            return referralPatients;
+        }
+
+
         public void CreateReferral(ReferralPatient newReferral)
       {
             referralPatientRepository.CreateReferral(newReferral);

@@ -23,15 +23,17 @@ namespace Projekat
     public partial class CreateNotifficationPatientPage : Window
     {
 
-        NotifficationController notifficationController = new NotifficationController();
+        public NotifficationController notifficationController = new NotifficationController();
         public List<string> Termini { get; set; }
-        Notification createdNotification { get; set; }
+        public Notification createdNotification { get; set; }
+        public User prenosilac = new User();
 
-        public CreateNotifficationPatientPage()
+        public CreateNotifficationPatientPage(User loggedUser)
         {
             InitializeComponent();
             this.DataContext = this;
-
+            prenosilac = loggedUser;
+            
             string[] termini = File.ReadAllLines(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\terminiak.txt", Encoding.UTF8);
             Termini = new List<string>(termini);
         }
@@ -40,14 +42,17 @@ namespace Projekat
         {
             try
             {
+               
                 string hoursAndMinutes = (String)NotrificationDateComboBox.SelectedItem;
                 string[] choosenHours = hoursAndMinutes.Split(':');
                 DateTime choosenDate = new DateTime(NotifciationDateDatePicker.SelectedDate.Value.Year, NotifciationDateDatePicker.SelectedDate.Value.Month, NotifciationDateDatePicker.SelectedDate.Value.Day, Convert.ToInt32(choosenHours[0]), Convert.ToInt32(choosenHours[1]), 0);
                 Random random = new Random();
 
-                createdNotification = new Notification(NotificationNameTextBox.Text, NotificationDescriptionTextBox.Text, choosenDate, Convert.ToInt32(NotificationDaysLeftTextBox.Text), Convert.ToString(random.Next(1, 10000)));
+                createdNotification = new Notification(NotificationNameTextBox.Text, NotificationDescriptionTextBox.Text, choosenDate, Convert.ToInt32(NotificationDaysLeftTextBox.Text), Convert.ToString(random.Next(1, 10000)), prenosilac.Username);
 
-                NotificationsPatientPage npp = new NotificationsPatientPage(createdNotification);
+              
+
+                NotificationsPatientPage npp = new NotificationsPatientPage(createdNotification,prenosilac);
                 npp.Show();
             }
             catch (Exception EX)
@@ -58,7 +63,7 @@ namespace Projekat
            
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null);
+            NotificationsPatientPage npp = new NotificationsPatientPage(null,prenosilac);
             npp.Show();
         }
     }

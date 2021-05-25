@@ -49,6 +49,22 @@ namespace Repository
             string json = JsonConvert.SerializeObject(referrals);
             File.WriteAllText(FileLocation, json);
         }
+
+        public List<ReferralPatient> GerAllReferralsByPatientsUsername(String patientUsername)
+        {
+            List<ReferralPatient> referalsForPatient = new List<ReferralPatient>();
+
+            for (int i = 0; i < referrals.Count; i++)
+            {
+                ReferralPatient rp = referrals[i];
+                if (rp.Patient.Username == patientUsername)
+                {
+                    referalsForPatient.Add(rp);
+                }
+            }
+            return referalsForPatient; 
+        }
+
         public void CreateReferral(ReferralPatient newReferral)
       {
             referrals.Add(newReferral);

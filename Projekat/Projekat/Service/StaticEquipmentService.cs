@@ -1,8 +1,4 @@
-/***********************************************************************
- * Module:  EquipmentFileStorage.cs
- * Author:  Ana_Marija
- * Purpose: Definition of the Class Model.EquipmentFileStorage
- ***********************************************************************/
+
 
 
 using Model;
@@ -18,6 +14,7 @@ namespace Service
    {
         public StaticEquipmentRepository staticEquipmentRepository = new StaticEquipmentRepository();
         private List<StaticEquipment> staticEquipments = new List<StaticEquipment>();
+
         public void Save(StaticEquipment newEquipment)
       {
             staticEquipmentRepository.Save(newEquipment);
@@ -25,13 +22,13 @@ namespace Service
       
       public List<StaticEquipment> GetAll()
       {
-            // TODO: implement
+            
             return staticEquipmentRepository.GetAll();
       }
       
       public Boolean UpdateEquipment(StaticEquipment newStaticEquipment)
       {
-         // TODO: implement
+         
          return staticEquipmentRepository.UpdateEquipment(newStaticEquipment);
       }
 
@@ -42,10 +39,11 @@ namespace Service
 
         public Boolean DeleteEquipment(int id)
       {
-         // TODO: implement
+         
          return staticEquipmentRepository.DeleteEquipment(id);
       }
-      
+
+
 
         public int GenerateNewId()
         {

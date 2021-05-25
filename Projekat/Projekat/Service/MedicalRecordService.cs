@@ -8,12 +8,21 @@
 using Model;
 using System;
 using System.Collections.Generic;
-
+using Repository;
 
 namespace Service
 {
    public class MedicalRecordService
    {
+       public List<MedicalRecord> patientMedicalRecords;
+        public MedicalRecordRepository medicalRecordRepositry = new MedicalRecordRepository();
+
+      public List<MedicalRecord> GetAllRecordsByPatientsUsername(String patientsUsername)
+        {
+            patientMedicalRecords = medicalRecordRepositry.GetAllRecordsByPatientsUsername(patientsUsername);
+            return patientMedicalRecords;
+        }
+
       public void Save(Model.MedicalRecord newMedRecord)
       {
          // TODO: implement

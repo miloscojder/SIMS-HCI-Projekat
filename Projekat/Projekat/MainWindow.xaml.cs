@@ -29,11 +29,9 @@ namespace Projekat
         public MainWindow()
         {
             InitializeComponent();
-        }
 
-      
-    
-    private void Director_Click(object sender, RoutedEventArgs e)
+        }
+        private void Director_Click(object sender, RoutedEventArgs e)
         {
             DirectorWindow director = new DirectorWindow();
             director.Show();
@@ -64,7 +62,6 @@ namespace Projekat
         {
 
         }
-
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {              
