@@ -26,8 +26,9 @@ namespace Projekat
         {
             hospital = hospitalController.GetAllHospitalsData();
             hospitals.Add(hospital);
-            hospitalAssessmentDataGrid.ItemsSource = hospitals;
             InitializeComponent();
+
+            hospitalAssessmentDataGrid.ItemsSource = hospitals;
         }
 
     }

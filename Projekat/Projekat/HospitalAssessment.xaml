@@ -7,15 +7,13 @@
         mc:Ignorable="d"
         Title="HospitalAssessment" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="hospitalAssessmentDataGrid" Margin="0,0,0,267" >
+        <DataGrid x:Name="hospitalAssessmentDataGrid" Margin="0,0,0,267" AutoGenerateColumns="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name"
                     Binding="{Binding HospitalName}" />
-                <DataGridTextColumn Header="Hospital Adress"
+                <DataGridTextColumn Header="Adress"
                     Binding="{Binding HospitalAdress}" />
-                <DataGridTextColumn Header="hospitalFeedback"
-                    Binding="{Binding hospitalFeedback}" />
-                <DataGridTextColumn Header="gradesOfThisHospital"
+                <DataGridTextColumn Header="Assessment"
                     Binding="{Binding gradesOfThisHospital}" />
                
             </DataGrid.Columns>

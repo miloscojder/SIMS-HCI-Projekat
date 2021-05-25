@@ -15,6 +15,9 @@
 
         public HospitalGrade() { }
 
-
+        public override string ToString()
+        {
+            return this.hospitalFinalGrade.ToString();
+        }
     }
 }
