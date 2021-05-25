@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="DoctorAssessment" Height="450" Width="800">
     <Grid>
-        
+        <DataGrid Margin="0,0,0,255" x:Name="doctorAssessmentDataGrid" AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Doctor username"
+                    Binding="{Binding Username}" />
+                <DataGridTextColumn Header="Assessment"
+                    Binding="{Binding Grade}" />
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
 </Window>
