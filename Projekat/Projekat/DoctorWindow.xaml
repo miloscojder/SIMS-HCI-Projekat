@@ -29,6 +29,7 @@
                     <Label Name="Email" Content="" HorizontalAlignment="Left" Margin="190,221,0,0" VerticalAlignment="Top" Width="115"/>
                     <Label Name="Phone" Content="" HorizontalAlignment="Left" Margin="196,247,0,0" VerticalAlignment="Top" Width="120"/>
                     <Label Name="Spec" Content="" HorizontalAlignment="Left" Margin="200,273,0,0" VerticalAlignment="Top" Width="105"/>
+                    <Button Content="Requests" HorizontalAlignment="Left" Margin="658,286,0,0" VerticalAlignment="Top" Height="43" Width="79" Click="Button_Click"/>
 
                 </Grid>
             </TabItem>

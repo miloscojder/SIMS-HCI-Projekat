@@ -23,22 +23,35 @@ namespace Projekat
         private DoctorController doctorController = new DoctorController();
         private RequestForDinamicEquipmentController requestForDinamicEquipmentController = new RequestForDinamicEquipmentController();
         List<Request> requestToShow = new List<Request>();
+        List<Request> requestss = new List<Request>();
+        List<Request> filteredRequestStatus = new List<Request>();
+        List<Request> filteredRequestDoctor = new List<Request>();
         List<Doctor> doctorsToShow = new List<Doctor>();
         List<RequestForDinamicEquipment> requestForDinamicEquipment = new List<RequestForDinamicEquipment>();
         List<string> doctorNames = new List<string>();
+        string searchStatus = "Select status";
+        string searchDoctor = "Select doctor";
+        List<string> doctorNames2 = new List<string>();
         private int id;
   
         public RequestCRUD()
         {
             InitializeComponent();
             requestToShow = requestController.GetAll();
+            requestss = requestToShow;
+            filteredRequestStatus = requestToShow;
+            filteredRequestDoctor = requestToShow;
             doctorsToShow = doctorController.GetAllDoctors();
             requestForDinamicEquipment = requestForDinamicEquipmentController.GetAll();
             foreach(Doctor d in doctorsToShow){
                 doctorNames.Add(d.firstName + " " + d.lastName);
             }
+            doctorNames2.Add("Select doctor");
+            doctorNames2.AddRange(doctorNames);
             doctorsBox.ItemsSource = doctorNames;
-            requestsDataGrid.ItemsSource = requestToShow;
+            DoctorBox.ItemsSource = doctorNames2;
+            DoctorBox.SelectedIndex = DoctorBox.Items.IndexOf("Select doctor");
+            requestsDataGrid.ItemsSource = requestss;
             requestsDataGrid2.ItemsSource = filterRequestsStatus(requestToShow, StatusType.Waiting);
             requestsDataGrid3.ItemsSource = requestForDinamicEquipment;
             requestsDataGrid4.ItemsSource = requestForDinamicEquipment;
@@ -54,6 +67,38 @@ namespace Projekat
 
             return ret;
         }
+
+        public Doctor findDoctorByName(string name) {
+            string firstName = name.Split(" ")[0];
+            string lastName = name.Split(" ")[1];
+            Doctor doc = new Doctor();
+            foreach (Doctor d in doctorsToShow)
+            {
+                if (String.Compare(d.firstName, firstName) == 0 && String.Compare(d.lastName, lastName) == 0)
+                {
+                    doc = d;
+                    break;
+                }
+            }
+
+            return doc;
+        }
+
+        public List<Request> filterRequestsDoctor(List<Request> requests, string name) {
+            List<Request> ret = new List<Request>();
+            Doctor doc = findDoctorByName(name);
+            
+            foreach (Request r in requests)
+            {
+                if (r.doctor.id == doc.id)
+                {
+                    ret.Add(r);
+                }
+            }
+            return ret;
+        }
+
+
 
 
         private Request CreateRequest()
@@ -291,6 +336,75 @@ namespace Projekat
             {
                 MessageBox.Show("You have to select request wich you won't to decline!");
             }
+        }
+
+        private void StatusBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem selectedItem = (ComboBoxItem) StatusBox.SelectedItem;
+            string selectedStatus = selectedItem.Content.ToString();
+            if (selectedStatus.Equals("Select status"))
+            {
+                searchStatus = selectedStatus;
+                if (searchDoctor.Equals("Select Doctor"))
+                {
+                    requestss = requestToShow;
+                }
+            }
+            else if (selectedStatus.Equals("Waiting"))
+            {
+                if (searchDoctor.Equals("Select Doctor")) requestss = filterRequestsStatus(requestToShow, StatusType.Waiting);
+                else { 
+                    requestss = filterRequestsStatus(requestss, StatusType.Waiting);
+                    searchStatus = "";
+                }
+            }
+            else if (selectedStatus.Equals("Accepted"))
+            {
+                if (searchDoctor.Equals("Select Doctor")) requestss = filterRequestsStatus(requestToShow, StatusType.Accepted);
+                else
+                {
+                    requestss = filterRequestsStatus(requestss, StatusType.Accepted);
+                    searchStatus = "";
+                }
+            }
+            else if (selectedStatus.Equals("Rejected"))
+            {
+                if (searchDoctor.Equals("Select Doctor")) requestss = filterRequestsStatus(requestToShow, StatusType.Rejected);
+                else
+                {
+                    requestss = filterRequestsStatus(requestss, StatusType.Rejected);
+                    searchStatus = "";
+                }
+            }
+
+            requestsDataGrid.ItemsSource = requestss;
+
+
+        }
+
+        private void DoctorBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           
+            string selectedDoctor = DoctorBox.SelectedItem.ToString();
+
+            if (selectedDoctor.Equals("Select doctor"))
+            {
+                searchDoctor = "Select doctor";
+                if (searchStatus.Equals("Select status"))
+                {
+                    searchDoctor = selectedDoctor;
+                    requestss = requestToShow;
+                }
+            }
+            else {
+                searchDoctor = "";
+                requestss = filterRequestsDoctor(requestToShow, selectedDoctor);
+            }
+
+
+
+
+            requestsDataGrid.ItemsSource = requestss;
         }
     }
 }

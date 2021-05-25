@@ -17,8 +17,6 @@ using Controller;
 using Model;
 using Newtonsoft.Json;
 using Projekat.Model;
-using Controller;
-
 namespace Projekat
 {
     /// <summary>

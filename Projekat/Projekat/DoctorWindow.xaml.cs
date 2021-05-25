@@ -111,6 +111,11 @@ namespace Projekat
             Close();
         }
 
-
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            RequestCRUD rq = new RequestCRUD();
+            rq.Show();
+            Close();
+        }
     }
 }
