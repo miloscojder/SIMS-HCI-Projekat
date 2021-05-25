@@ -31,6 +31,19 @@ namespace Repository
             }
         }
 
+        public int GenerateNewId()
+        {
+            try
+            {
+                int maxId = operations.Max(obj => obj.Id);
+                return maxId + 1;
+            }
+            catch
+            {
+                return 1;
+            }
+        }
+
         public void WriteToJson()
         {
             string json = JsonConvert.SerializeObject(operations);

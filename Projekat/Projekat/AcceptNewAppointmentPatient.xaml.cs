@@ -20,12 +20,12 @@ namespace Projekat
     /// </summary>
     public partial class AcceptNewAppointmentPatient : Window
     {
-        public AcceptNewAppointmentPatient(/*Appointment a,*/ ScheduleAppointmentPatient.Priority priority, DateTime choosenDate, string izabraniDoctor)
+        public User prenosilac = new User();
+
+        public AcceptNewAppointmentPatient(ScheduleAppointmentPatient.Priority priority, DateTime choosenDate, string izabraniDoctor)
         {
             InitializeComponent();
             this.DataContext = this;
-
-          
 
             if (priority == ScheduleAppointmentPatient.Priority.DATE)
             {
@@ -33,30 +33,25 @@ namespace Projekat
 
                 a.StartTime = choosenDate;
 
-
                 List<Appointment> appointmentsDateChecked = new List<Appointment>();
 
                 string[] doktori = File.ReadAllLines(@"C:\Users\Korisnik\Desktop\asdas\SIMS-HCI-Projekat-main\Projekat\Projekat\Data\doktoriak.txt", Encoding.UTF8);
                 string[] sale = File.ReadAllLines(@"C:\Users\Korisnik\Desktop\asdas\SIMS-HCI-Projekat-main\Projekat\Projekat\Data\saleak.txt", Encoding.UTF8);
-                Random random = new Random(); // za sad koristim random za id.. bice pretraga u fajlu pa onaj koji fali ili ako su svi tu poslednji + 1
-
-
+                Random random = new Random(); 
 
                 for (int i = 0; i < 3; i++)
                 {
                     a = new Appointment(choosenDate, doktori[i], sale[i]);
-                    a.Id = Convert.ToString(random.Next(1, 1000));
+                    a.id = random.Next(1, 1000);
                     a.AppointmentType = TypeOfAppointment.Examination;
   
-
                     appointmentsDateChecked.Add(a);
-                }                
-            
+                }                            
+
                 lvAcceptAppointment.ItemsSource = appointmentsDateChecked;
             }
             else
             {
-
                 Appointment a = new Appointment();
 
                 a.doctorUsername = izabraniDoctor;
@@ -75,25 +70,37 @@ namespace Projekat
                 for (int i = 0; i < 3; i++)
                 {
                     a = new Appointment(timeList[i], izabraniDoctor, sale[i]);
-                    a.Id = Convert.ToString(random.Next(1, 1000));
+                    a.id = random.Next(1, 1000);
                     a.AppointmentType = TypeOfAppointment.Examination;
 
                     appointmentsDoctorChecked.Add(a);
                 }
 
                 lvAcceptAppointment.ItemsSource = appointmentsDoctorChecked;
-
             }
         }
 
         private void AcceptButton_Click(object sender, RoutedEventArgs e)
         {
-            Appointment app = (Appointment)lvAcceptAppointment.SelectedItems[0];
+            if (lvAcceptAppointment.SelectedItems.Count < 1)
+            {
+                MessageBox.Show("You must choose at least 1 appointment");
+            }
+            else
+            {
+                Appointment app = (Appointment)lvAcceptAppointment.SelectedItems[0];
 
-            AppointmentsPage appo = new AppointmentsPage(app);
-            appo.Show();
+                AppointmentsPage appo = new AppointmentsPage(app,prenosilac);
+                appo.Show();
+                this.Close();
+            }
+        }
 
-
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AppointmentsPage app = new AppointmentsPage(null,prenosilac);
+            app.Show();
+            this.Close();
         }
     }
 }

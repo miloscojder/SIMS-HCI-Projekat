@@ -4,7 +4,7 @@ namespace Model
 {
    public class Prescription
    {
-      public String Id { get; set; }
+      public int Id { get; set; }
         public String Medicine { get; set; }
         public String Quantity { get; set; }
         public String Instruction { get; set; }
@@ -13,16 +13,16 @@ namespace Model
       //  public Doctor doctor { get; set; }
 
         public Prescription() { }
-        public Prescription(string id, string med, string q, string inst)
+        public Prescription(int id, string med, string q, string inst)
         {
-            Id = id;
+            this.Id = id;
             Medicine = med;
             Quantity = q;
             Instruction = inst;
         }
-        public Prescription(string id, string med, string q, string inst, Patient p)
+        public Prescription(int id, string med, string q, string inst, Patient p)
         {
-            Id = id;
+            this.Id = id;
             Medicine = med;
             Quantity = q;
             Instruction = inst;

@@ -31,17 +31,49 @@ namespace Repository
             }
         }
 
+        public int GenerateNewId()
+        {
+            try
+            {
+                int maxId = prescriptions.Max(obj => obj.Id);
+                return maxId + 1;
+            }
+            catch
+            {
+                return 1;
+            }
+        }
+
         public void WriteToJson()
         {
             string json = JsonConvert.SerializeObject(prescriptions);
             File.WriteAllText(FileLocation, json);
         }
+
+
+        public List<Prescription> GetAllPrescriptionsByPatientsUsername(String patientsUsername)
+        {
+            List<Prescription> prescriptionsForPatient = new List<Prescription>();
+
+            for (int i = 0; i < prescriptions.Count; i++)
+            {
+                Prescription p = prescriptions[i];
+                if (p.Patient.Username == patientsUsername)
+                {
+                    prescriptionsForPatient.Add(p);
+                }
+            }
+            return prescriptionsForPatient;
+        }
+
         public void CreatePrescription(Prescription newPrescription)
       {
             prescriptions.Add(newPrescription);
             WriteToJson();
         }
       
+
+
       public void UpdatePrescription(Prescription newPrescription)
       {
             int index = prescriptions.FindIndex(obj => obj.Id == newPrescription.Id);

@@ -58,13 +58,6 @@ namespace Repository
             }
         }
 
-      /*public void CreateRequest(String description, DateTime dateOfVacation, int durationOfVacation)
-      {
-            Request request = new Request(GenerateNextId(), description, dateOfVacation, DateTime.Now, durationOfVacation, StatusType.Waiting, "", this.doctor);
-
-         // TODO: implement
-      }
-      */
       public Model.Request ReadRequest(int id)
       {
         Request request = new Request();
@@ -75,29 +68,17 @@ namespace Repository
       
       public void UpdateRequest(int id, String newDescription, DateTime newDateOfVacation, int newDurationOfVacation)
       {
-            int index = requestss.FindIndex(obj => obj.Id == id);
-            Request r = new Request();
-            requestss[index].Description = newDescription;
-            requestss[index].DateOfVacation = newDateOfVacation;
-            requestss[index].DurationOfVacation = newDurationOfVacation;
-            WriteToJson();
+           
       }
       
       public Boolean DeleteRequest(int id)
       {
-            int index = requestss.FindIndex(obj => obj.Id == id);
-            if (index == -1) {
-                return false;
-            }
-            requestss.RemoveAt(index);
-            WriteToJson();
-            return true;
+            return false;
       }
       
       public void Save(Model.Request newRequest)
       {
-            requestss.Add(newRequest);
-            WriteToJson();
+           
       }
       
       public List<Request> GetAll()
@@ -110,13 +91,14 @@ namespace Repository
             int index = requestss.FindIndex(obj => obj.Id == id);
             requestss[index].Status = newStatus;
             requestss[index].Explanation = explanation;
-
+            WriteToJson();
             if (requestss[index].Status == StatusType.Accepted)
             {
                 return true;
             }
 
-         return false;
-      }
+            return false;
+        }
+
    }
 }

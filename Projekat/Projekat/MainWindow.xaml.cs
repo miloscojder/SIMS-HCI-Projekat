@@ -13,9 +13,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Controller;
 using Model;
 using Newtonsoft.Json;
 using Projekat.Model;
+using Controller;
 
 namespace Projekat
 {
@@ -24,11 +26,12 @@ namespace Projekat
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        UserController userController = new UserController();
         public MainWindow()
         {
             InitializeComponent();
 
-          
         }
         private void Director_Click(object sender, RoutedEventArgs e)
         {
@@ -36,12 +39,13 @@ namespace Projekat
             director.Show();
         }
 
-        private void Doctor_Click(object sender, RoutedEventArgs e)
+      private void Doctor_Click(object sender, RoutedEventArgs e)
         {
-            DoctorWindow doctor = new DoctorWindow();
+            User u = new User();
+            DoctorWindow doctor = new DoctorWindow(u);
             doctor.Show();
         }
-
+      
 
 
         private void Request_Click(object sender, RoutedEventArgs e)
@@ -52,13 +56,43 @@ namespace Projekat
 
         private void PatientButton_Click(object sender, RoutedEventArgs e)
         {
-            PatientMainPage pmp = new PatientMainPage();
+            PatientMainPage pmp = new PatientMainPage(null);
             pmp.Show();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {              
+            User loggedUser = userController.FindUserByUsernameAndPasswrod(UsernameTextBox.Text, PasswordTextBox.Text);
+
+            switch (loggedUser.Rool)
+            {
+                case RoolType.Doctor:
+                    DoctorWindow dw = new DoctorWindow(loggedUser);
+                    dw.Show();
+                    break;
+                case RoolType.Patient:
+                    PatientMainPage pw = new PatientMainPage(loggedUser);
+                    pw.Show();
+                    break;
+                case RoolType.Secretary:
+                    SecretaryWindow sw = new SecretaryWindow();
+                    sw.Show();
+                    break;
+                case RoolType.Director:
+                    DirectorWindow dirw = new DirectorWindow();
+                    dirw.Show();
+                    break;
+                default:
+                    MessageBox.Show("Nemate nalog!");
+                    break;
+            }
+
+            
         }
     }
 }

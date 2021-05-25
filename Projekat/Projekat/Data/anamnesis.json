@@ -1,66 +1,67 @@
 [
-    
-    {
-        "Anamnesy": "Pacijent dobrog opsteg zdravlja, dolazi na kontrolu",
-        "Id": "AN1",
-        "patient": {
-            "Id": "P1",
-            "firstName": "Kristina",
-            "lastName": "Todic",
-            "Username": null,
-            "Password": null,
-            "Jmbg": null,
-            "EMail": null,
-            "PhoneNumber": null,
-            "DateOfBirth": "0001-01-01T00:00:00"
-        }
-    },
-    {
-        "Anamnesy": "Pacijent dosao u pratnji majke, zali se na bolove u stomaku.",
-        "Id": "AN11",
-        "patient": {
-            "Id": "P3",
-            "firstName": "Mirko",
-            "lastName": "Mirkovic",
-            "Username": null,
-            "Password": null,
-            "Jmbg": null,
-            "EMail": null,
-            "PhoneNumber": null,
-            "DateOfBirth": "0001-01-01T00:00:00"
-        }
-    },
-    {
-        "Anamnesy": "Pacijentkinja dosla sa temperaturom, poslata na covid ambulantu",
-        "Id": "PN15",
-        "patient": {
-            "Id": "P11",
-            "firstName": "Nikolina",
-            "lastName": "Todic",
-            "Username": null,
-            "Password": null,
-            "Jmbg": null,
-            "EMail": null,
-            "PhoneNumber": null,
-            "DateOfBirth": "0001-01-01T00:00:00"
-        }
-    },
-    {
-        "Anamnesy": "Pacijent dosao sa nalazima krvi, crp=120, kreatinin=233",
-        "Id": "AN3",
-        "patient": {
-            "id": "P15",
-            "firstName": "Anamarija",
-            "lastName": "Dolovac",
-            "Id": null,
-            "Username": null,
-            "Password": null,
-            "Jmbg": null,
-            "EMail": null,
-            "PhoneNumber": null,
-            "DateOfBirth": "0001-01-01T00:00:00"
-        }
-    }
-    
 
-]
+  {
+    "anamnesy": "Pacijent dobrog opsteg zdravlja, dolazi na kontrolu",
+    "id": 1,
+    "patient": {
+      "record": null,
+      "id": 4,
+      "Username": null,
+      "Password": null,
+      "firstName": "Mirko",
+      "lastName": "Mirkovic",
+      "Jmbg": null,
+      "EMail": null,
+      "PhoneNumber": null,
+      "DateOfBirth": "0001-01-01T00:00:00"
+    }
+  },
+  {
+    "anamnesy": "Pacijentkinja dosla sa bolovima u donjem predelu ledja sa nalazima krvi: CRP=234, urea:23....",
+    "id": 2,
+    "patient": {
+      "record": null,
+      "id": 2,
+      "Username": null,
+      "Password": null,
+      "firstName": "Kristina",
+      "lastName": "Todic",
+      "Jmbg": null,
+      "EMail": null,
+      "PhoneNumber": null,
+      "DateOfBirth": "0001-01-01T00:00:00"
+    }
+  },
+  {
+    "anamnesy": "Pacijent se dobro oseca, nalazi nisu dobri.",
+    "id": 3,
+    "patient": {
+      "record": null,
+      "id": 0,
+      "Username": null,
+      "Password": null,
+      "firstName": "Pera",
+      "lastName": "Peric",
+      "Jmbg": null,
+      "EMail": null,
+      "PhoneNumber": null,
+      "DateOfBirth": "0001-01-01T00:00:00"
+    }
+  },
+  {
+    "anamnesy": "DJsjdiudhvvvvvvvvvvvvvvvv",
+    "id": 4,
+    "patient": {
+      "record": null,
+      "id": 6,
+      "Username": null,
+      "Password": null,
+      "firstName": "Pera",
+      "lastName": "Peric",
+      "Jmbg": null,
+      "EMail": null,
+      "PhoneNumber": null,
+      "DateOfBirth": "0001-01-01T00:00:00"
+    }
+  }
+ ]

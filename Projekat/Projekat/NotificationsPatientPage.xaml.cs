@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Model;
 using Newtonsoft.Json;
+using Controller;
 
 namespace Projekat
 {
@@ -20,31 +21,118 @@ namespace Projekat
     /// </summary>
     public partial class NotificationsPatientPage : Window
     {
+        
+        public List<Notification> thisPatientsNotifications;
+        public NotifficationController notifficationController = new NotifficationController();
+        public List<Notification> allNotifications;
+        public User prenosilac;     
 
-        List<Notification> posrednaListaNotifikacija = new List<Notification>();
-
-
-        public NotificationsPatientPage()
+        public NotificationsPatientPage(Notification newNotification, User loggedUser)     //user ce biti globalan na main page i odatle cu ga uveg pozivati
         {
             InitializeComponent();
             this.DataContext = this;
+            prenosilac = loggedUser;
+            
+            allNotifications = notifficationController.GetAllNotifications();           
+            notifficationController.DeleteOutOfBoundsNotifications(allNotifications);
+            notifficationController.ShouldIAdd(newNotification, allNotifications);
+            notifficationController.WriteNotificationsToJason(allNotifications);
 
-            List<Notification> notifications = new List<Notification>();
-
-            notifications = JsonConvert.DeserializeObject<List<Notification>>(File.ReadAllText(@"C:\Users\Korisnik\Desktop\asdas\SIMS-HCI-Projekat-main\Projekat\Projekat\Data\notificationsak.json"));
-
-            lvNotificationList.ItemsSource = notifications;
-
-            //  File.WriteAllText(@"C:\Users\Korisnik\Desktop\asdas\SIMS-HCI-Projekat-main\Projekat\Projekat\Data\notificationsak.json", JsonConvert.SerializeObject(notifications));
-            posrednaListaNotifikacija = notifications;
+            thisPatientsNotifications = notifficationController.FindNotificationsByPatientUsername(loggedUser.Username);
+            lvNotificationList.ItemsSource = thisPatientsNotifications;
         }
 
        
-
         private void ReturnButton_Click(object sender, RoutedEventArgs e)
         {
-            AppointmentsPage ap = new AppointmentsPage(null);
+            AppointmentsPage ap = new AppointmentsPage(null,prenosilac);
             ap.Show();
+            this.Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            PatientMainPage pmp = new PatientMainPage(null);
+            pmp.Show();
+            this.Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            AppointmentsPage ap = new AppointmentsPage(null,prenosilac);
+            ap.Show();
+            this.Close();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            NotificationsPatientPage npp = new NotificationsPatientPage(null,prenosilac);
+            npp.Show();
+            this.Close();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage(prenosilac);
+            pmrp.Show();
+            this.Close();
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            PatientQandAPage pqap = new PatientQandAPage();
+            pqap.Show();
+            this.Close();
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            PatientProfilePage ppp = new PatientProfilePage();
+            ppp.Show();
+            this.Close();
+        }
+
+        private void CreateButton_Click_6(object sender, RoutedEventArgs e)
+        {
+            CreateNotifficationPatientPage cnpp = new CreateNotifficationPatientPage(prenosilac);
+            cnpp.Show();
+            this.Close();
+        }
+
+        private void UpdateButton_Click_7(object sender, RoutedEventArgs e)
+        {     
+            try 
+            {
+                Notification selectedNotiffication = (Notification)lvNotificationList.SelectedItems[0];                
+                UpdateNotifficationPatientPage unpp = new UpdateNotifficationPatientPage(selectedNotiffication, prenosilac);
+                unpp.Show();
+                this.Close();
+            }
+            catch (System.ArgumentOutOfRangeException exeption)
+            {
+                MessageBox.Show("Item not selected");
+            }
+        }
+
+        private void DeleteButton_Click_8(object sender, RoutedEventArgs e)
+        {            
+            try
+            {
+                Notification selectedNotification = (Notification)lvNotificationList.SelectedItems[0];
+                List<Notification> allNotifications = notifficationController.GetAllNotifications();
+
+                notifficationController.DeleteNotificationById(selectedNotification.Id);
+                notifficationController.WriteNotificationsToJason(allNotifications);
+
+                MessageBox.Show("You deleted selected notification");
+                PatientMainPage pmp = new PatientMainPage(prenosilac);
+                pmp.Show();
+                this.Close();
+            }
+            catch (System.ArgumentOutOfRangeException exeption)
+            {
+                MessageBox.Show("Item not selected");
+            }
         }
     }
 }

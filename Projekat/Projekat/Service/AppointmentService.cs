@@ -19,8 +19,16 @@ namespace Service
       {
             appointmentRepository.ScheduleDoctor(newAppointment);
       }
-      
-      public void RescheduleDoctor(Appointment newAppointment)
+
+        public int GenerateNewId()
+        {
+            return appointmentRepository.GenerateNewId();
+
+        }
+
+
+
+        public void RescheduleDoctor(Appointment newAppointment)
       {
             appointmentRepository.RescheduleDoctor(newAppointment);
            
@@ -80,7 +88,7 @@ namespace Service
          return null;
       }
       
-      public Appointment GetAppointment(string id)
+      public Appointment GetAppointment(int id)
       {
             return appointmentRepository.GetAppointment(id);
       }

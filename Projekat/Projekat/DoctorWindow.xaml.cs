@@ -3,56 +3,114 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Controller;
+using Model;
+using Repository;
 
 namespace Projekat
 {
-    
+
     public partial class DoctorWindow : Window
     {
-        public DoctorWindow()
+        public PatientController patientController = new PatientController();
+        
+
+        public List<Patient> patients
+        {
+            get;
+            set;
+        }
+        public Anamnesis anam = new Anamnesis();
+        public DoctorWindow(User user)
         {
             InitializeComponent();
+
+            AppointmentRepository appointmentRepository = new AppointmentRepository();
+            List<Appointment> appointments = appointmentRepository.GetAll();
+            dataGridd.ItemsSource = appointments;
+
+            OperationRepository operationRepository = new OperationRepository();
+            List<Operations> operations = operationRepository.GetAll();
+            dataGridd1.ItemsSource = operations;
+
+            Name.Content = user.firstName;
+            Surname.Content = user.lastName;
+            Id.Content = user.id;
+            jmbg.Content = user.Jmbg;
+            Date.Content = user.DateOfBirth;
+            Email.Content = user.EMail;
+            Phone.Content = user.PhoneNumber;
+            Spec.Content = user.doctor.Specialty;
+
         }
 
-        private void Appointments(object sender, RoutedEventArgs e)
+
+
+        private void Patients(object sender, RoutedEventArgs e)
         {
-            Appointments a = new Appointments();
-            a.Show();
-
+            ViewPatients m = new ViewPatients();
+            m.Show();
+            Close();
         }
 
-        private void Operationss(object sender, RoutedEventArgs e)
+        private void AnamnesisClick(object sender, RoutedEventArgs e)
         {
-            Operationss o = new Operationss();
-            o.Show();
-
+            Anamnesiss m = new Anamnesiss();
+            m.Show();
+            Close();
         }
 
-        private void ViewSchedule(object sender, RoutedEventArgs e)
+        private void Prescribe(object sender, RoutedEventArgs e)
         {
-            ViewSchedule w = new ViewSchedule();
-            w.Show();
-
+            Prescriptions m = new Prescriptions();
+            m.Show();
+            Close();
         }
-        private void Anamnesiss(object sender, RoutedEventArgs e)
+
+        private void AppointmentClick(object sender, RoutedEventArgs e)
         {
-            Anamnesiss a = new Anamnesiss();
-            a.Show();
-
+            Appointments m = new Appointments();
+            m.Show();
+            Close();
         }
 
-        private void Prescriptions(object sender, RoutedEventArgs e)
+        private void OperationsClick(object sender, RoutedEventArgs e)
         {
-            Prescriptions p = new Prescriptions();
-            p.Show();
+            Operationss m = new Operationss();
+            m.Show();
+            Close();
+        }
+
+
+
+
+        private void LogOut(object sender, RoutedEventArgs e)
+        {
+            MainWindow m = new MainWindow();
+            m.Show();
+            Close();
+        }
+
+        private void ReferralP(object sender, RoutedEventArgs e)
+        {
+            Referrals m = new Referrals();
+            m.Show();
+            Close();
+        }
+
+        private void Aprove(object sender, RoutedEventArgs e)
+        {
 
         }
+
+
+        private void SeeAll(object sender, RoutedEventArgs e)
+        {
+            ViewMedecine m = new ViewMedecine();
+            m.Show();
+            Close();
+        }
+
+
     }
 }

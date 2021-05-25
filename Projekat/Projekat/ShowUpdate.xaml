@@ -12,18 +12,19 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Width="40" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Patient name" Width="100" Binding="{Binding Patient.firstName}"/>
-                <DataGridTextColumn Header="Patient surname" Width="100" Binding="{Binding patient.lastName}"/>
+                <DataGridTextColumn Header="Patient surname" Width="100" Binding="{Binding Patient.lastName}"/>
                 <DataGridTextColumn Header="Anamnesis" Width="380" Binding="{Binding Anamnesy}"/>
 
             </DataGrid.Columns>
         </DataGrid>
 
-        <Label Content="Anamnesis:" FontSize="18" HorizontalAlignment="Left" Margin="50,174,0,0" VerticalAlignment="Top" Height="42" Width="125"/>
+        <Label Content="Anamnesis:" FontSize="18" HorizontalAlignment="Left" Margin="50,232,0,0" VerticalAlignment="Top" Height="42" Width="125"/>
 
-        <TextBox Name="Anam" HorizontalAlignment="Left" Background="LightCyan" Margin="180,174,0,0" VerticalAlignment="Top" Height="165" Width="422"/>
-        <Label Content="Id:" FontSize="18" HorizontalAlignment="Left" Margin="703,174,0,0" VerticalAlignment="Top" Height="42" Width="44"/>
-        <TextBox Name="Id" Background="LightCyan" HorizontalAlignment="Left" Margin="703,221,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Height="36"/>
+        <TextBox Name="Anam" HorizontalAlignment="Center" Background="LightCyan" Margin="0,253,0,0" VerticalAlignment="Top" Height="165" Width="422"/>
         <Button Content="Save" FontSize="20" Click="Save" HorizontalAlignment="Left" Margin="652,339,0,0" VerticalAlignment="Top" Height="50" Width="125" Background="#FFB5CDE2"/>
+        <TextBox x:Name="FirstName" HorizontalAlignment="Left" Background="LightCyan" Margin="191,176,0,0" VerticalAlignment="Top" Height="41" Width="182"/>
+        <TextBox x:Name="LastName" HorizontalAlignment="Left" Background="LightCyan" Margin="400,176,0,0" VerticalAlignment="Top" Height="41" Width="182"/>
+        <Label Content="Patient" FontSize="18" HorizontalAlignment="Left" Margin="50,172,0,0" VerticalAlignment="Top" Height="42" Width="125"/>
 
     </Grid>
 </Window>

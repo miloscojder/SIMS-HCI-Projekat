@@ -10,7 +10,7 @@ namespace Model
 {
     public class Appointment
     {
-        public String Id { get; set; }
+        public int id { get; set; }
         public String Date { get; set; }
         public DateTime StartTime { get; set; }
         public String TimeStart { get; set; }
@@ -20,38 +20,38 @@ namespace Model
         public TypeOfAppointment AppointmentType { get; set; }
         //public MedicalRecord MedicalRecord { get; set; }
 
-
-        public Room room { get; set; }
-        public Patient patient { get; set; }
-        public Doctor doctor { get; set; }
-        public Anamnesis anamnesis { get; set; }
+        public Room Room { get; set; }
+        public Patient Patient { get; set; }
+      //  public Doctor doctor { get; set; }
+        public Anamnesis Anamnesis { get; set; }
 
         public Appointment() { }
-        public Appointment(string id, String date, string start, string duration, string end, Room r, Patient p, TypeOfAppointment type)
+       /* public Appointment(int id, DateTime start, string duration, String end, Room r, Patient p, TypeOfAppointment type)
         {
-            Id = id;
-            Date = date;
-            TimeStart = start;
-            Duration = duration;
+            this.id = id;
+            StartTime = start;
+            this.Duration = duration;
             EndTime = end;
-            room = r;
-            patient = p;
+            Room = r;
+            Patient = p;
             AppointmentType = type;
-        }
+        } */
 
-        public Appointment(string id,  String date, string start, string duration, string end, Room r, Patient p)
+        public Appointment(int id,  String date, String start, string d, String end, Room R, Patient p, TypeOfAppointment type)
         {
-            Id = id;
+            this.id = id;
             Date = date;
             TimeStart = start;
-            Duration = duration;
+            Duration = d;
             EndTime = end;
-
-        }
+            Room = R;
+            Patient = p;
+            AppointmentType = type;
+        } 
 
         public Appointment(DateTime date, string DoctorsName, string room)
         {
-            StartTime = date;
+           StartTime = date;
             roomName = room;
             doctorUsername = DoctorsName;
         }

@@ -25,6 +25,12 @@ namespace Controller
 
         }
 
+        public int GenerateNewId()
+        {
+            return operationService.GenerateNewId();
+
+        }
+
         public void Cancel(Operations op)
         {
             operationService.Cancel(op);

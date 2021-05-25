@@ -4,7 +4,7 @@ using System;
 using Controller;
 using Repository;
 using System.Windows;
-
+using System.Collections.Generic;
 
 namespace Projekat
 {
@@ -14,17 +14,20 @@ namespace Projekat
         public AppointmentController appointmentController = new AppointmentController();
         public PatientRepository patientRepository = new PatientRepository();
         public RoomRepository roomRepository = new RoomRepository();
-        public ScheduleAppointment()
+        public ScheduleAppointment(Patient p)
         {
             InitializeComponent();
             this.DataContext = this;
+            Name.Text = p.firstName;
+            Surname.Text = p.lastName;
+
         }
 
         private void Schedule(object sender, RoutedEventArgs e)
         {
 
             Appointment app = new Appointment();
-            String ida = Id.Text;
+            int ida = appointmentController.GenerateNewId();
             String date = Date.Text;
             String hours = Hours.Text;
             String minutes = Minutes.Text;
@@ -34,20 +37,20 @@ namespace Projekat
             String end = hourss + ":" + minutess;
             String duration = Duration.Text;
 
+
             Room r = new Room();
-           // r.Id = Idr.Text;
-           // app.patient.SetId(Idr.Text);// = Idr.Text;
-          //  app.room.Id = Idr.Text;
+            r.Name = RoomName.Text;
+           
 
 
             Patient p = new Patient();
-            p.Id=Idp.Text;
-           // patientRepository.GetById(Idp.Text);
+            p.firstName = Name.Text;
+            p.lastName = Surname.Text;
 
-            //roomRepository.GetById(Idr.Text);
+            app.AppointmentType = TypeOfAppointment.Examination;
+            TypeOfAppointment type = app.AppointmentType;
 
-
-            Appointment a = new Appointment(ida, date, start, duration, end, r, p );
+             Appointment a = new Appointment(ida, date, start, duration, end, r, p, type);
             appointmentController.ScheduleDoctor(a);
 
          

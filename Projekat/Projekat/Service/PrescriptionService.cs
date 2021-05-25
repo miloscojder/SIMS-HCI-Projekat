@@ -14,12 +14,26 @@ namespace Service
    public class PrescriptionService
    {
         public PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
+        public List<Prescription> patientsPrescription;
+
+        public List<Prescription> GetAllPrescriptionsByPatientsUsername(String patientUsername)
+        {
+            patientsPrescription = prescriptionRepository.GetAllPrescriptionsByPatientsUsername(patientUsername);
+            return patientsPrescription;
+        }
+
         public void CreatePrescription(Prescription newPrescription)
       {
             prescriptionRepository.CreatePrescription(newPrescription);
         }
-      
-      public void UpdatePrescription(Prescription newPrescription)
+
+        public int GenerateNewId()
+        {
+            return prescriptionRepository.GenerateNewId();
+
+        }
+
+        public void UpdatePrescription(Prescription newPrescription)
       {
             prescriptionRepository.UpdatePrescription(newPrescription);
         }

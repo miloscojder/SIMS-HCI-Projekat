@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace Repository
 {
@@ -40,12 +41,23 @@ namespace Repository
             File.WriteAllText(fileLocation, json);
         }
 
+        public int GenerateNewId()
+        {
+            try
+            {
+                int maxId = patients.Max(obj => obj.id);
+                return maxId + 1;
+            }
+            catch
+            {
+                return 1;
+            }
+        }
 
-        public Model.Patient GetById(String id)
+        public Model.Patient GetById(int id)
       {
-         // TODO: implement
-         return null;
-      }
+            return patients.Find(obj => obj.id == id);
+        }
       
       public void Update(Model.Patient patient)
       {
@@ -54,7 +66,7 @@ namespace Repository
       
       public void Delete(Model.Patient patient)
       {
-            int index = patients.FindIndex(obj => obj.Id == patient.Id);
+            int index = patients.FindIndex(obj => obj.id == patient.id);
             patients.RemoveAt(index);
           //  patients.Remove(patient);
             WriteToJson();
@@ -72,7 +84,7 @@ namespace Repository
             return patients;
       }
    
-      private String FileLocation;
-        private String jsonstring;
+     // private String FileLocation;
+       // private String jsonstring;
     }
 }

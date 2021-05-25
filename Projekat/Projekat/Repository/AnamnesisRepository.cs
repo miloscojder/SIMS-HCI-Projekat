@@ -31,6 +31,18 @@ namespace Repository
 
             }
         }
+        public int GenerateNewId()
+        {
+            try
+            {
+                int maxId = anamneses.Max(obj => obj.Id);
+                return maxId + 1;
+            }
+            catch
+            {
+                return 1;
+            }
+        }
 
         public void WriteToJson()
         {

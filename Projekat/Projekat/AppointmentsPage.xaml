@@ -5,20 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="AppointmentsPage" Height="450" Width="800">
+        Title="AppointmentsPage"  Background="LightSkyBlue" Height="500" Width="815">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="27*"/>
             <ColumnDefinition Width="13*"/>
         </Grid.ColumnDefinitions>
 
-        <ListView Margin="10,10,193.6,163" Name="lvAppointmentsPatient" Grid.ColumnSpan="2">
+        <StackPanel Orientation="Horizontal" Background="LightSkyBlue" Margin="0,0,0,409" Grid.ColumnSpan="2">
+
+            <Button Content="HOME PAGE" Click="Button_Click" Width="112" ></Button>
+            <Button Content="MY APPOINTMENTS" Click="Button_Click_1" Width="174" />
+            <Button Content="MY NOTIFICATIONS" Click="Button_Click_2" Width="157" />
+            <Button Content="MY MEDICAL RECORD" Click="Button_Click_3" Width="160"/>
+            <Button Content="Q and A" Click="Button_Click_4" Width="100"/>
+            <Button Content="MY PROFILE" Click="Button_Click_5" Width="99" />
+        </StackPanel>
+
+        <ListView Margin="26,138,178,67" Background="LightCyan" Name="lvAppointmentsPatient" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding Id}" />
+                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding id}" />
                     <GridViewColumn Header="Start Time" Width="100" DisplayMemberBinding="{Binding StartTime}" />
                     <GridViewColumn Header="Room name" Width="100" DisplayMemberBinding="{Binding roomName}" />
-                    <GridViewColumn Header="Doctor name" Width="100" DisplayMemberBinding="{Binding doctorUsername}">
+                    <GridViewColumn Header="Doctor name" Width="150" DisplayMemberBinding="{Binding doctorUsername}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Mail}" TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
@@ -29,13 +39,15 @@
             </ListView.View>
         </ListView>
 
-        <Button Content="Schedule" Margin="94,313,329,53" Click="AddButton_Click">
+        <Button Content="Schedule" Margin="60,422,363,15" Click="AddButton_Click">
         </Button>
-        <Button Content="Cancel" Margin="315,313,117,53" Click="CancButton_Click_1">
+        <Button Content="Cancel" Margin="290,422,142,15" Click="CancButton_Click_1">
         </Button>
-        <Button Content="Reschedule" Margin="207,313,221,53" Click="RescButton_Click_2">
+        <Button Content="Reschedule" Margin="178,422,250,15" Click="RescButton_Click_2">
         </Button>
-        <Button Content="Report&#xD;&#xA;" Grid.Column="1" HorizontalAlignment="Left" Margin="80,313,0,0" VerticalAlignment="Top" Width="75" Height="56"/>
-        <Button Content="Notifications" HorizontalAlignment="Left" Margin="492,321,0,0" VerticalAlignment="Top" Click="NotificationsButton_Click" Grid.ColumnSpan="2" Height="48"/>
+        <Button Content="Report&#xD;&#xA;" Grid.Column="1" HorizontalAlignment="Left" Margin="180,422,0,0" VerticalAlignment="Top" Width="75" Height="56"/>
+        <Label Content="My Appoinemtns: &#xD;&#xA;" HorizontalAlignment="Left" Margin="232,89,0,0" VerticalAlignment="Top" FontSize="22"/>
+        <Label Content="Patient name&#xD;&#xA;" HorizontalAlignment="Left" Margin="130,96,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="PatientsUsernameTextBox" Grid.Column="1" HorizontalAlignment="Left" Margin="110,143,0,0" Text="Patients Username" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="30" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold"/>
     </Grid>
 </Window>

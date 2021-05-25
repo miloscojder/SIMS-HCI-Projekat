@@ -17,8 +17,14 @@ namespace Controller
       {
             anamnesisService.CreateAnamnesis(newAnamnesis);
         }
-      
-      public void UpdateAnamnesis(Anamnesis anam)
+
+        public int GenerateNewId()
+        {
+            return anamnesisService.GenerateNewId();
+
+        }
+
+        public void UpdateAnamnesis(Anamnesis anam)
       {
             anamnesisService.UpdateAnamnesis(anam);
       }

@@ -4,7 +4,7 @@ namespace Model
 {
    public class Operations
    {
-        public String Id { get; set; }
+        public int Id { get; set; }
         public String Date { get; set; }
         public String TimeStart { get; set; }
         public string Duration { get; set; }
@@ -13,31 +13,33 @@ namespace Model
         public TypeOfAppointment AppointmentType { get; set; }
         //public MedicalRecord MedicalRecord { get; set; }
 
-        public Room room { get; set; }
-        public Patient patient { get; set; }
+        public Room Room { get; set; }
+        public Patient Patient { get; set; }
         //  public Doctor doctor { get; set; }
-        public Anamnesis anamnesis { get; set; }
+        public Anamnesis Anamnesis { get; set; }
 
         public Operations() { }
-        public Operations(string id, String date, string start, string duration, string end, Room r, Patient p, TypeOfAppointment type)
+        public Operations(int id, String date, string start, string duration, string end, Room r, Patient p, TypeOfAppointment type)
         {
-            Id = id;
+            this.Id = id;
             Date = date;
             TimeStart = start;
             Duration = duration;
             EndTime = end;
-            room = r;
-            patient = p;
+            Room = r;
+            Patient = p;
             AppointmentType = type;
         }
 
-        public Operations(string id, String date, string start, string duration, string end)
+        public Operations(int id, String date, string start, string duration, string end, Room r, Patient p)
         {
-            Id = id;
+            this.Id = id;
             Date = date;
             TimeStart = start;
             Duration = duration;
             EndTime = end;
+            Room = r;
+            Patient = p;
 
         }
 

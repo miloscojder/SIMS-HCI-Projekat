@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Model;
+using Repository;
 
 namespace Projekat.Model
 {
     class Medicines
     {
+
+        public Medicines() { }
 
         public Medicines(int id, String name, String details, String alternative)
         {
@@ -16,24 +20,18 @@ namespace Projekat.Model
 
         }
 
-       /* public Medicines(int id, String name, String details, String alternative, String explanation, Boolean accepted)
+        public Medicines(int id, String name, String details, String alternative, String explanation, String statusType)
         {
             Id = id;
             Name = name;
             Details = details;
             Alternative = alternative;
             Explanation = explanation;
-            Accepted = accepted;
+            this.StatusType = statusType;
 
-        }*/
-
-        public int Id
-        {
-            get
-            ;
-            set
-            ;
         }
+
+        public int Id { get; set; }
 
         public String Name
         {
@@ -67,13 +65,7 @@ namespace Projekat.Model
             ;
         }
 
-        public Boolean Accepted
-        {
-            get
-            ;
-            set
-            ;
-        }
-    }
+        public String StatusType { get; set; }
 
     }
+   }

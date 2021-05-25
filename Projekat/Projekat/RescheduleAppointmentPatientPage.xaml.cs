@@ -21,7 +21,7 @@ namespace Projekat
     {
 
         //public enum Priority { DATE, DOCTOR }
-
+        public User prenosilac = new User();
         public List<String> Termini { get; set; }
         public string SelektovanTermin { get; set; }
         public List<String> Doktori { get; set; }
@@ -35,8 +35,6 @@ namespace Projekat
             InitializeComponent();
             this.DataContext = this;
 
-            
-
             string[] termini = File.ReadAllLines(@"C:\Users\Korisnik\Desktop\asdas\SIMS-HCI-Projekat-main\Projekat\Projekat\Data\terminiak.txt", Encoding.UTF8);
             Termini = new List<string>(termini);
 
@@ -45,7 +43,7 @@ namespace Projekat
 
             posrednik.doctorUsername = a.doctorUsername;
             posrednik.roomName = a.roomName;
-            posrednik.Id = a.Id;
+            posrednik.id = a.id;
             posrednik.StartTime = a.StartTime;
             posrednik.AppointmentType = a.AppointmentType;
             //  System.Windows.MessageBox.Show(a.roomName + " " + a.doctorUsername);           radi dobro
@@ -80,7 +78,14 @@ namespace Projekat
 
             AcceptRescheduleAppointmentPatientPage arapp = new AcceptRescheduleAppointmentPatientPage(posrednik, priority, newChoosenDate, izabraniDoktor);
             arapp.Show();
+            this.Close();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AppointmentsPage ap = new AppointmentsPage(null,prenosilac);
+            ap.Show();
+            this.Close();
+        }
     }
 }

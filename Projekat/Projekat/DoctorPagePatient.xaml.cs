@@ -19,11 +19,11 @@ namespace Projekat
     /// Interaction logic for DoctorPagePatient.xaml
     /// </summary>
     public partial class DoctorPagePatient : Window
-    {
-      
-        //ovo radi ali samo u jendom pokretanju
+    {      
         public Doctor posrednik = new Doctor();
-         public List<Doctor> doctors = new List<Doctor>();
+        public List<Doctor> doctors = new List<Doctor>();
+        public List<String> doctorFeedbackList;
+        public User prenosilac = new User();
 
         public DoctorPagePatient(Doctor d)
         {
@@ -39,13 +39,13 @@ namespace Projekat
             DoctorsBirthDayTextBox.Text = Convert.ToString(d.DateOfBirth);
             DoctrsSpecialtyTextBox.Text = d.Specialty;
             DoctosPhoneNumberTextBox.Text = d.PhoneNumber;
-            DoctorsFeedback.Text = d.doctorFeedback;            
-
+            doctorFeedbackList = d.doctorFeedbacks;       
+            
+            lvDoctorsFeedback.ItemsSource = d.doctorFeedbacks; 
         }
 
         private void PotvrdiButton_Click(object sender, RoutedEventArgs e)
-        {
-           
+        {           
             List<Appointment> appointments = new List<Appointment>();
             appointments = JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json"));
 
@@ -53,7 +53,6 @@ namespace Projekat
             doctors = JsonConvert.DeserializeObject<List<Doctor>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doctorsak.json"));
 
             posrednik.doctorCounter++;
-
             
             for (int i = 0; i < appointments.Count; i++)
             {
@@ -66,50 +65,85 @@ namespace Projekat
 
             if(brojac<1)
             {
-                MessageBox.Show("Ne mozete zakazati pregled, nemate ni jedan zakazan termin kod ovog lekara");
+                MessageBox.Show("Ne mozete oceniti lekara, nemate ni jedan zakazan termin kod ovog lekara");
                 HospitalViewPatientPage hospViewPaitPage = new HospitalViewPatientPage(null);
                 hospViewPaitPage.Show();
+                this.Close();
             }
             else
             {
                 if (posrednik.doctorCounter == 1)
                 {
-                    DoctorsRatingTextBox.Text = RateDoctorTextBox.Text;
-                    posrednik.doctorGradeSum += Convert.ToDouble(RateDoctorTextBox.Text);
-                    posrednik.Grade = Convert.ToDouble(RateDoctorTextBox.Text);
-                    posrednik.doctorFeedback = FeedbackDoctorTextBox.Text;
+                      DoctorsRatingTextBox.Text = DoctorsGrades.Text;
+                      posrednik.doctorGradeSum += Convert.ToDouble(DoctorsGrades.Text);
+                      posrednik.Grade = Convert.ToDouble(DoctorsGrades.Text);
+                      posrednik.doctorFeedbacks.Add(FeedbackDoctorTextBox.Text);               
                 }
                 else
                 {
-                    posrednik.doctorGradeSum += Convert.ToDouble(RateDoctorTextBox.Text);
-                    DoctorsRatingTextBox.Text = Convert.ToString(posrednik.doctorGradeSum / posrednik.doctorCounter);
-                    posrednik.Grade = posrednik.doctorGradeSum / posrednik.doctorCounter;
-                    posrednik.doctorFeedback = FeedbackDoctorTextBox.Text;
+                      posrednik.doctorGradeSum += Convert.ToDouble(DoctorsGrades.Text);
+                      DoctorsRatingTextBox.Text = Convert.ToString(posrednik.doctorGradeSum / posrednik.doctorCounter);
+                      posrednik.Grade = posrednik.doctorGradeSum / posrednik.doctorCounter;
+                      posrednik.doctorFeedbacks.Add(FeedbackDoctorTextBox.Text);
                 }
-
-                /*
-                doctors = JsonConvert.DeserializeObject<List<Doctor>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doctorsak.json"));
-    */
 
                 for (int i = 0; i < doctors.Count; i++)
                 {
                     Doctor doc = doctors[i];
-                    if (doc.Id == posrednik.Id)
+                    if (doc.id == posrednik.id)
                     {
                         doctors.Remove(doc);
                     }
                 }
 
-                //doctors.Add(posrednik);
                 File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doctorsak.json", JsonConvert.SerializeObject(doctors));
-
 
                 HospitalViewPatientPage hvpp = new HospitalViewPatientPage(posrednik);
                 hvpp.Show();
+                this.Close();
+            }           
+        }
 
-            }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            PatientMainPage pmp = new PatientMainPage(null);
+            pmp.Show();
+            this.Close();
+        }
 
-           
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            AppointmentsPage ap = new AppointmentsPage(null,prenosilac);
+            ap.Show();
+            this.Close();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            NotificationsPatientPage npp = new NotificationsPatientPage(null, prenosilac);
+            npp.Show();
+            this.Close();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage(prenosilac);
+            pmrp.Show();
+            this.Close();
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            PatientQandAPage pqap = new PatientQandAPage();
+            pqap.Show();
+            this.Close();
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            PatientProfilePage ppp = new PatientProfilePage();
+            ppp.Show();
+            this.Close();
         }
     }
 }

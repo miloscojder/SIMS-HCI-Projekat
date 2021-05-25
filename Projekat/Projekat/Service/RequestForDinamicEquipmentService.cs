@@ -4,85 +4,66 @@
  * Purpose: Definition of the Class Model.RequestForDinamicEquipment
  ***********************************************************************/
 
+using Model;
+using Repository;
 using System;
+using System.Collections.Generic;
 
 namespace Service
 {
-   public class RequestForDinamicEquipmentService
-   {
-      public Model.RequestForDinamicEquipment ReadRequest(int id)
-      {
-         // TODO: implement
-         return null;
-      }
-      
-      public void Update(int id, String name)
-      {
-         // TODO: implement
-      }
-      
-      public Boolean Delete(int id)
-      {
-         // TODO: implement
-         return false;
-      }
-      
-      public void Save(int id)
-      {
-         // TODO: implement
-      }
-      
-      public int AcceptingRequestForDinamycEquipment(int id, Model.StatusType newStatus, String explanation)
-      {
-         // TODO: implement
-         return 0;
-      }
-   
-      public System.Collections.ArrayList requestForDinamicEquipmentRepository;
-      
-      /// <pdGenerated>default getter</pdGenerated>
-      public System.Collections.ArrayList GetRequestForDinamicEquipmentRepository()
-      {
-         if (requestForDinamicEquipmentRepository == null)
-            requestForDinamicEquipmentRepository = new System.Collections.ArrayList();
-         return requestForDinamicEquipmentRepository;
-      }
-      
-      /// <pdGenerated>default setter</pdGenerated>
-      public void SetRequestForDinamicEquipmentRepository(System.Collections.ArrayList newRequestForDinamicEquipmentRepository)
-      {
-         RemoveAllRequestForDinamicEquipmentRepository();
-         foreach (Repository.RequestForDinamicEquipmentRepository oRequestForDinamicEquipmentRepository in newRequestForDinamicEquipmentRepository)
-            AddRequestForDinamicEquipmentRepository(oRequestForDinamicEquipmentRepository);
-      }
-      
-      /// <pdGenerated>default Add</pdGenerated>
-      public void AddRequestForDinamicEquipmentRepository(Repository.RequestForDinamicEquipmentRepository newRequestForDinamicEquipmentRepository)
-      {
-         if (newRequestForDinamicEquipmentRepository == null)
-            return;
-         if (this.requestForDinamicEquipmentRepository == null)
-            this.requestForDinamicEquipmentRepository = new System.Collections.ArrayList();
-         if (!this.requestForDinamicEquipmentRepository.Contains(newRequestForDinamicEquipmentRepository))
-            this.requestForDinamicEquipmentRepository.Add(newRequestForDinamicEquipmentRepository);
-      }
-      
-      /// <pdGenerated>default Remove</pdGenerated>
-      public void RemoveRequestForDinamicEquipmentRepository(Repository.RequestForDinamicEquipmentRepository oldRequestForDinamicEquipmentRepository)
-      {
-         if (oldRequestForDinamicEquipmentRepository == null)
-            return;
-         if (this.requestForDinamicEquipmentRepository != null)
-            if (this.requestForDinamicEquipmentRepository.Contains(oldRequestForDinamicEquipmentRepository))
-               this.requestForDinamicEquipmentRepository.Remove(oldRequestForDinamicEquipmentRepository);
-      }
-      
-      /// <pdGenerated>default removeAll</pdGenerated>
-      public void RemoveAllRequestForDinamicEquipmentRepository()
-      {
-         if (requestForDinamicEquipmentRepository != null)
-            requestForDinamicEquipmentRepository.Clear();
-      }
-   
-   }
+    public class RequestForDinamicEquipmentService
+    {
+        private RequestForDinamicEquipmentRepository requestForDinamicEquipmentRepository = new RequestForDinamicEquipmentRepository();
+        public RequestForDinamicEquipment ReadRequest(int id)
+        {
+            return requestForDinamicEquipmentRepository.ReadRequest(id);
+        }
+
+        public void Update(int id, String name)
+        {
+            requestForDinamicEquipmentRepository.Update(id, name);
+        }
+
+        public Boolean Delete(int id)
+        {
+            return requestForDinamicEquipmentRepository.Delete(id);
+        }
+
+        public void Save(RequestForDinamicEquipment newRequestForDinamicEquipment)
+        {
+            requestForDinamicEquipmentRepository.Save(newRequestForDinamicEquipment);
+        }
+
+        public Boolean AcceptingRequestForDinamycEquipment(int id, Model.StatusType newStatus, String explanation)
+        {
+            return requestForDinamicEquipmentRepository.AcceptingRequestForDinamycEquipment(id, newStatus, explanation);
+        }
+        public List<RequestForDinamicEquipment> GetAll()
+        {
+            return requestForDinamicEquipmentRepository.GetAll();
+        }
+
+        public int generateNextId() {
+            return requestForDinamicEquipmentRepository.GenerateNextId();
+        }
+
+        public List<RequestForDinamicEquipment> FilterByName(String name)
+        {
+            // TODO: implement
+            return null;
+        }
+
+        public List<RequestForDinamicEquipment> FilterByStatus(Model.StatusType status)
+        {
+            // TODO: implement
+            return null;
+        }
+
+        public List<RequestForDinamicEquipment> SortByDateOfCreation()
+        {
+            // TODO: implement
+            return null;
+        }
+
+    }
 }

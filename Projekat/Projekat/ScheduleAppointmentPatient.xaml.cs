@@ -26,7 +26,7 @@ namespace Projekat
     {
 
         public enum Priority { DATE, DOCTOR }
-
+        public User prenosilac = new User();
         public List<String> Termini { get; set; }
         public string SelektovanTermin { get; set; }
         public List<String> Doktori { get; set; }
@@ -44,7 +44,7 @@ namespace Projekat
             InitializeComponent();
             this.DataContext = this;
 
-            string[] termini = File.ReadAllLines(@"C:\Users\Korisnik\Desktop\asdas\SIMS-HCI-Projekat-main\Projekat\Projekat\Data\terminiak.txt", Encoding.UTF8);
+            string[] termini = File.ReadAllLines(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\terminiak.txt", Encoding.UTF8);
             Termini = new List<string>(termini);
 
             string[] doktori = File.ReadAllLines(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doktoriak.txt", Encoding.UTF8);
@@ -75,14 +75,17 @@ namespace Projekat
                 if ((DateTime.Now.Date - datum.Date) > timeSpan)    
                 {
                     listaVremenaZakazivanja.Remove(datum);
-                    sfsd.activityCounter--;                                                              // ovo cu da ucitam iz fajla nekog posle
+                    sfsd.activityCounter--;                                                              
                 }    
             }        
             
             if(sfsd.activityCounter > 10)                             
             {
-                MessageBox.Show("Blokirani ste zbog spamovanja, javite nam se za vis enformacija");
+                MessageBox.Show("Blokirani ste zbog spamovanja, javite nam se za vise informacija");
                 //window close        
+                MainWindow mw = new MainWindow();
+                mw.Show();
+                this.Close();
             } 
             else 
             {
@@ -115,21 +118,30 @@ namespace Projekat
                 {
                    AcceptNewAppointmentPatient anap = new AcceptNewAppointmentPatient(/*a,*/ priority, choosenDate, izabraniDoktor);
                    anap.Show();
+                    this.Close();
                 } 
                 else
                 {
                     Appointment newAppointment = new Appointment();
                     Random rid = new Random();
-                    newAppointment.Id = Convert.ToString(rid.Next(1, 1000));
+                    newAppointment.id = rid.Next(1, 1000);
                     newAppointment.roomName = "R1";
                     newAppointment.doctorUsername = izabraniDoktor;
                     newAppointment.StartTime = choosenDate;
 
-                    AppointmentsPage ap = new AppointmentsPage(newAppointment);
+                    AppointmentsPage ap = new AppointmentsPage(newAppointment, prenosilac);
                     ap.Show();
+                    this.Close();
                 }
               
             }
-        }    
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AppointmentsPage ap = new AppointmentsPage(null, prenosilac);
+            ap.Show();
+            this.Close();
+        }
     }
 }

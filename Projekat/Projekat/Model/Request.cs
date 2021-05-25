@@ -52,12 +52,12 @@ namespace Model
             {
                Doctor oldDoctor = this.doctor;
                this.doctor = null;
-               oldDoctor.RemoveRequest(this);
+//               oldDoctor.RemoveRequest(this);
             }
             if (newDoctor != null)
             {
                this.doctor = newDoctor;
-               this.doctor.AddRequest(this);
+              // this.doctor.AddRequest(this);
             }
          }
       }

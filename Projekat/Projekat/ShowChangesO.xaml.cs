@@ -26,6 +26,9 @@ namespace Projekat
             get;
             set;
         }
+        int id;
+        Room room = new Room();
+        Patient patient = new Patient();
         public ShowChangesO(Operations op)
         {
             InitializeComponent();
@@ -33,30 +36,50 @@ namespace Projekat
         OperationRepository operationRepository = new OperationRepository();
         List<Operations> operations = operationRepository.GetAll();
         dataGrid.ItemsSource = operations;
-            
+            Date.Text = op.Date;
+            Duration.Text = op.Duration;
+            String hours = "";
+            String minutes = "";
+            Hourss.Text = hours;
+            Minutess.Text = minutes;
+            String start = hours + ":" + minutes;
+            start = op.TimeStart;
+            String hours1 = "";
+            String minutes1 = "";
+            Hours.Text = hours1;
+            Minutes.Text = minutes1;
+            String end = hours1 + ":" + minutes1;
+            end = op.EndTime;
+            id = op.Id;
+            room.Name = op.Room.Name;
+            patient.firstName = op.Patient.firstName;
+            patient.lastName = op.Patient.lastName;
+
         }
 
     private void Save(object sender, RoutedEventArgs e)
     {
 
-        String ida = Id.Text;
-        String date = Date.Text;
-        String hours = Hours.Text;
-        String minutes = Minutes.Text;
-        String hourss = Hourss.Text;
-        String minutess = Minutess.Text;
-        String start = hours + ":" + minutes;
-        String end = hourss + ":" + minutess;
-        String duration = Duration.Text;
+            String date = Date.Text;
+            String hours = Hours.Text;
+            String minutes = Minutes.Text;
+            String hourss = Hourss.Text;
+            String minutess = Minutess.Text;
+            String end = hours + ":" + minutes;
+            String start = hourss + ":" + minutess;
+            String duration = Duration.Text;
 
 
-        Operations a = new Operations(ida, date, start, duration, end);
-            operationController.RescheduleDoctor(a);
 
-        Operationss ap = new Operationss();
+             Operations a = new Operations(id, date, start, duration, end, room, patient);
+                operationController.RescheduleDoctor(a);
+
+            Operationss ap = new Operationss();
         ap.Show();
 
 
     }
-}
+
+       
+    }
 }

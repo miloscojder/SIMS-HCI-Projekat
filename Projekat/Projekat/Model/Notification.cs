@@ -2,15 +2,30 @@ using System;
 
 namespace Model
 {
-   public class Notification
-   {
+    public class Notification
+    {
+
         public String Name { get; set; }
         public DateTime Date { get; set; }
         public String Id { get; set; }
         public String Description { get; set; }
+        public int DaysLeft { get; set; }
 
         public Patient patient;
-      public System.Collections.ArrayList doctor;
+        public String patientsUsername { get; set; }
+
+        public Notification() { }
+        public Notification(String Name, String Description, DateTime Date, int DaysLeft, String Id, String username)
+        {
+            this.Name = Name;
+            this.Description = Description;
+            this.Date = Date;
+            this.DaysLeft = DaysLeft;
+            this.Id = Id;
+            patientsUsername = username;
+        }
+        
+        public System.Collections.ArrayList doctor;
       
       /// <pdGenerated>default getter</pdGenerated>
       public System.Collections.ArrayList GetDoctor()

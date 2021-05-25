@@ -20,16 +20,39 @@ namespace Projekat
     public partial class RequestCRUD : Window
     {
         private RequestController requestController = new RequestController();
+        private DoctorController doctorController = new DoctorController();
+        private RequestForDinamicEquipmentController requestForDinamicEquipmentController = new RequestForDinamicEquipmentController();
         List<Request> requestToShow = new List<Request>();
         List<Doctor> doctorsToShow = new List<Doctor>();
+        List<RequestForDinamicEquipment> requestForDinamicEquipment = new List<RequestForDinamicEquipment>();
+        List<string> doctorNames = new List<string>();
         private int id;
   
         public RequestCRUD()
         {
             InitializeComponent();
             requestToShow = requestController.GetAll();
-
+            doctorsToShow = doctorController.GetAllDoctors();
+            requestForDinamicEquipment = requestForDinamicEquipmentController.GetAll();
+            foreach(Doctor d in doctorsToShow){
+                doctorNames.Add(d.firstName + " " + d.lastName);
+            }
+            doctorsBox.ItemsSource = doctorNames;
             requestsDataGrid.ItemsSource = requestToShow;
+            requestsDataGrid2.ItemsSource = filterRequestsStatus(requestToShow, StatusType.Waiting);
+            requestsDataGrid3.ItemsSource = requestForDinamicEquipment;
+            requestsDataGrid4.ItemsSource = requestForDinamicEquipment;
+        }
+
+        public List<Request> filterRequestsStatus(List<Request> requests, StatusType type) {
+            List<Request> ret = new List<Request>();
+            foreach (Request r in requests) {
+                if (r.Status == type) {
+                    ret.Add(r);
+                }
+            }
+
+            return ret;
         }
 
 
@@ -39,10 +62,16 @@ namespace Projekat
             String descriptions = Description.Text;
             DateTime dt = dateOfVacation.DisplayDate;
             int durations = Int32.Parse(duration.Text);
-
-            //int docId = Int32.Parse(Doctor.Text);
-
+            string doctorName = (string)doctorsBox.SelectedItem;
+            string firstName = doctorName.Split(" ")[0];
+            string lastName = doctorName.Split(" ")[1];
             Doctor doc = new Doctor();
+            foreach (Doctor d in doctorsToShow){
+                if (String.Compare(d.firstName, firstName) == 0 && String.Compare(d.lastName, lastName) == 0) {
+                    doc = d;
+                    break;
+                }
+            }
             Request request = new Request(id, descriptions, dt, DateTime.Now, durations, StatusType.Waiting, "", doc);
             requestController.Save(request);
             return request;
@@ -50,6 +79,11 @@ namespace Projekat
         }
         private void New_Request_Click(object sender, RoutedEventArgs e)
         {
+            if(doctorsBox.SelectedItem == null)
+            {
+                MessageBox.Show("You have to fill in all input boxes!");
+                return;
+            }
             try
             {
                 Request request = CreateRequest();
@@ -123,9 +157,140 @@ namespace Projekat
             title.Content = "Create new request";
         }
 
-        private void requestsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
+        private void accept_Click(object sender, RoutedEventArgs e)
+        {
+           
+            try
+            {
+                Request request = (Request)requestsDataGrid2.SelectedItems[0];
+                if (explanationBox.Text == "")
+                {
+                    MessageBox.Show("You have to fill explanation box!");
+                    return;
+                }
+               
+
+                bool result = requestController.AcceptingRequest(request.Id, StatusType.Accepted, explanationBox.Text);
+                if(result) MessageBox.Show("Successfully accepted request!");
+               
+            }
+            catch
+            {
+                MessageBox.Show("You have to select request which you wan't to accept !");
+            }
+        }
+
+        private void decline_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Request request = (Request)requestsDataGrid2.SelectedItems[0];
+                if (explanationBox.Text == "")
+                {
+                    MessageBox.Show("You have to fill explanation box!");
+                    return;
+                }
+
+
+                bool result = requestController.AcceptingRequest(request.Id, StatusType.Rejected, explanationBox.Text);
+                if (!result) MessageBox.Show("Successfuly declined request!");
+            }
+            catch
+            {
+                MessageBox.Show("You have to select request which you wan't to decline !");
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+           
+                if (nameBox.Text == "")
+                {
+                    MessageBox.Show("You have to fill name box!");
+                    return;
+                }
+
+
+            int id = requestForDinamicEquipmentController.generateNextId();
+            RequestForDinamicEquipment requestForDinamicEquipment = new RequestForDinamicEquipment(nameBox.Text, StatusType.Waiting, DateTime.Now, id, "");
+            requestForDinamicEquipmentController.Save(requestForDinamicEquipment);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                RequestForDinamicEquipment request = (RequestForDinamicEquipment) requestsDataGrid3.SelectedItems[0];
+                if (nameBox.Text == "")
+                {
+                    MessageBox.Show("You have to fill name box!");
+                    return;
+                }
+
+
+                requestForDinamicEquipmentController.Update(request.Id, nameBox.Text);
+                MessageBox.Show("Successfully updated request!");
+            }
+            catch
+            {
+                MessageBox.Show("You have to select request which you wan't to update !");
+            }
+        }
+
+        private void deleteDynamicButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                RequestForDinamicEquipment request = (RequestForDinamicEquipment)requestsDataGrid3.SelectedItems[0];
+
+                requestForDinamicEquipmentController.Delete(request.Id);
+                MessageBox.Show("Successfully deleted request!");
+            }
+            catch
+            {
+                MessageBox.Show("You have to select request which you wan't to delete !");
+            }
+        }
+
+        private void acceptDynamic_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                RequestForDinamicEquipment request = (RequestForDinamicEquipment)requestsDataGrid4.SelectedItems[0];
+                if (explanationDynamicBox.Text == "")
+                {
+                    MessageBox.Show("You have to fill explanation box!");
+                    return;
+                }
+
+                requestForDinamicEquipmentController.AcceptingRequestForDinamycEquipment(request.Id, StatusType.Accepted, explanationDynamicBox.Text);
+                MessageBox.Show("Successfully accepted request!");
+            }
+            catch
+            {
+                MessageBox.Show("You have to select request wich you won't to accept!");
+            }
+        }
+
+        private void declineDynamic_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                RequestForDinamicEquipment request = (RequestForDinamicEquipment)requestsDataGrid4.SelectedItems[0];
+                if (explanationDynamicBox.Text == "")
+                {
+                    MessageBox.Show("You have to fill explanation box!");
+                    return;
+                }
+
+                requestForDinamicEquipmentController.AcceptingRequestForDinamycEquipment(request.Id, StatusType.Rejected, explanationDynamicBox.Text);
+                MessageBox.Show("Successfully declined request!");
+            }
+            catch
+            {
+                MessageBox.Show("You have to select request wich you won't to decline!");
+            }
         }
     }
 }
