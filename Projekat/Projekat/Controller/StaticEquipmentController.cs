@@ -1,8 +1,4 @@
-/***********************************************************************
- * Module:  EquipmentFileStorage.cs
- * Author:  Ana_Marija
- * Purpose: Definition of the Class Model.EquipmentFileStorage
- ***********************************************************************/
+
 
 using Model;
 using Newtonsoft.Json;

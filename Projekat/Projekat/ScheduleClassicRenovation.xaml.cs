@@ -31,5 +31,10 @@ namespace Projekat
             vcr.Show();
             Close();
         }
+
+        private void ScheduleRenovation_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }
