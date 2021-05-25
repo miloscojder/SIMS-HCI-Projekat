@@ -1,5 +1,8 @@
 ﻿using Controller;
 using Model;
+using Projekat.Controller;
+using Projekat.Model;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,23 +21,40 @@ namespace Projekat
     public partial class TransferStaticEquipment : Window
     {
         private StaticEquipmentController staticEquipmentController = new StaticEquipmentController();
-        private RoomController roomController = new RoomController();
+        private MovingStaticEquipmentController movingStaticController = new MovingStaticEquipmentController();
         private List<StaticEquipment> staticEquipments = new List<StaticEquipment>();
-        int id;
+        private readonly RoomController roomController = new RoomController();
+        int staticId;
 
         public TransferStaticEquipment()
         {
             InitializeComponent();
             staticDataGrid.ItemsSource = staticEquipmentController.GetAll();
+            MovingStaticEquipment();
         }
 
-        private void MoveToTransfer_Click(object sender, RoutedEventArgs e)
+        //proverava datum pri pokretanju
+        private void MovingStaticEquipment()
+        {
+            List<MovingStaticEquipment> listOfStatic = movingStaticController.GetAll();
+            foreach (MovingStaticEquipment staticToMove in listOfStatic)
+            {
+                if (staticToMove.DateTime.Ticks <= DateTime.Now.Ticks)
+                {
+                    roomController.MoveStaticEquipment(staticToMove.StaticId, staticToMove.RoomId);
+                    movingStaticController.DeleteEquipment(staticToMove.Id);
+                }
+
+            }
+        }
+
+            private void MoveToTransfer_Click(object sender, RoutedEventArgs e)
         {
             StaticEquipment equipment = (StaticEquipment)staticDataGrid.SelectedItems[0];
             acceptButton.Visibility = Visibility.Visible;
             cancelButton.Visibility = Visibility.Visible;
 
-            id = equipment.Id;
+            staticId = equipment.Id;
             name.Text = equipment.Name;
             toRoom.Text = equipment.RoomId.ToString();
         }
@@ -43,10 +63,12 @@ namespace Projekat
         {
             try
             {
-                DateTime pickerDate = transfer_date.SelectedDate.Value;
-                DateTime TransferDateTime = new DateTime(pickerDate.Year, pickerDate.Month, pickerDate.Day, 00, 00, 00);
-                roomController.MoveStaticEquipment(id, Int32.Parse(toRoom.Text), TransferDateTime);
-                id = -1;
+                DateTime pickerDate = SelectedDate();
+                int id = movingStaticController.GenerateNewId();
+                int roomId = Int32.Parse(toRoom.Text);
+                MovingStaticEquipment movingStatic =  new MovingStaticEquipment(id, staticId, roomId, pickerDate);
+                movingStaticController.Save(movingStatic);
+                staticId = -1;
                 CancelTransfer_Click(sender, e);
             }
             catch
@@ -61,7 +83,15 @@ namespace Projekat
                 acceptButton.Visibility = Visibility.Collapsed;
                 cancelButton.Visibility = Visibility.Collapsed;
             }
-
+        private DateTime SelectedDate()
+        {
+            DateTime pickedDate = date.SelectedDate.Value;
+            int hours = Int32.Parse(startTime.Text.Split(':')[0]);
+            int minutes = Int32.Parse(startTime.Text.Split(':')[1]);
+            DateTime renovationDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
+            return renovationDateTime;
         }
+
+    }
     }
 
