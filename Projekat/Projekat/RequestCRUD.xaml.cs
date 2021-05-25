@@ -406,5 +406,17 @@ namespace Projekat
 
             requestsDataGrid.ItemsSource = requestss;
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            HospitalAssessment ha = new HospitalAssessment();
+            ha.Show();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            DoctorAssessment da = new DoctorAssessment();
+            da.Show();
+        }
     }
 }

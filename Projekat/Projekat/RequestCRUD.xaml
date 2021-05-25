@@ -140,6 +140,13 @@
                     <TextBox x:Name="explanationDynamicBox" HorizontalAlignment="Left" Margin="219,223,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="103"  AcceptsReturn="True" />
                 </Grid>
             </TabItem>
+            <TabItem Header="Ocene" HorizontalAlignment="Right" Width="46">
+                <Grid Background="#FFE5E5E5">
+                    <Button Content="Ocene bolnice" HorizontalAlignment="Left" Margin="176,171,0,0" VerticalAlignment="Top" Height="40" Width="100" Click="Button_Click_2"/>
+                    <Button Content="Ocene doktora" HorizontalAlignment="Left" Margin="518,171,0,0" VerticalAlignment="Top" Height="40" Width="103" Click="Button_Click_3"/>
+
+                </Grid>
+            </TabItem>
         </TabControl>
 
     </Grid>
