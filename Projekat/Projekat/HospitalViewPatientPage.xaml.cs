@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 using Model;
 using Newtonsoft.Json;
 using Projekat.Model;
+using Controller;
 
 namespace Projekat
 {
@@ -25,17 +26,18 @@ namespace Projekat
         public List<Doctor> doctors = new List<Doctor>();
         public Doctor pomocni = new Doctor();
         public User prenosilac = new User();
+        public HospitalController hospitalController = new HospitalController();
 
         public HospitalViewPatientPage(Doctor doktor)
         {
             InitializeComponent();
             this.DataContext = this;
 
-            StorageForSomeData sfsd = new StorageForSomeData();
-            sfsd = JsonConvert.DeserializeObject<StorageForSomeData>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json"));
-           
-            HospitalRating.Text = Convert.ToString(sfsd.hospitalFinalGrade);
-            lvHospitalFeedback.ItemsSource = sfsd.hospitalFeedback;
+            Hospital hospitalData = new Hospital();
+            hospitalData = hospitalController.GetAllHospitalsData();
+
+            HospitalRating.Text = Convert.ToString(hospitalData.gradesOfThisHospital.hospitalFinalGrade);
+            lvHospitalFeedback.ItemsSource = hospitalData.hospitalFeedback;
 
             List<Doctor> doktori = new List<Doctor>();
             doktori = JsonConvert.DeserializeObject<List<Doctor>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doctorsak.json"));
@@ -51,8 +53,8 @@ namespace Projekat
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            StorageForSomeData sfsd = new StorageForSomeData();
-            sfsd = JsonConvert.DeserializeObject<StorageForSomeData>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json"));
+            Hospital hospitalData = new Hospital();
+            hospitalData = hospitalController.GetAllHospitalsData();
 
             List<Appointment> appointments = new List<Appointment>();
             appointments = JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json"));
@@ -63,32 +65,32 @@ namespace Projekat
                 this.Close();
             }
 
-            sfsd.hospitalCounter++;
-            if(sfsd.hospitalCounter==1)
+            hospitalData.gradesOfThisHospital.hospitalGradeCounter++;
+            if(hospitalData.gradesOfThisHospital.hospitalGradeCounter==1)
             {
                 HospitalRating.Text = HospitalGrades.Text;
-                sfsd.hospitalGradeSum += Convert.ToDouble(HospitalGrades.Text);
-                sfsd.hospitalFinalGrade = Convert.ToDouble(HospitalGrades.Text);
+                hospitalData.gradesOfThisHospital.hospitalGradeSum += Convert.ToDouble(HospitalGrades.Text);
+                hospitalData.gradesOfThisHospital.hospitalFinalGrade = Convert.ToDouble(HospitalGrades.Text);
             }
             else
             {
-                sfsd.hospitalGradeSum += Convert.ToDouble(HospitalGrades.Text);
-                HospitalRating.Text = Convert.ToString(sfsd.hospitalGradeSum / sfsd.hospitalCounter);
-                sfsd.hospitalFinalGrade = sfsd.hospitalGradeSum / sfsd.hospitalCounter;
+                hospitalData.gradesOfThisHospital.hospitalGradeSum += Convert.ToDouble(HospitalGrades.Text);
+                HospitalRating.Text = Convert.ToString(hospitalData.gradesOfThisHospital.hospitalGradeSum / hospitalData.gradesOfThisHospital.hospitalGradeCounter);
+                hospitalData.gradesOfThisHospital.hospitalFinalGrade = hospitalData.gradesOfThisHospital.hospitalGradeSum / hospitalData.gradesOfThisHospital.hospitalGradeCounter;
             }
 
-            File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json", JsonConvert.SerializeObject(sfsd));
+            hospitalController.WriteHospitalToJason(hospitalData);
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            StorageForSomeData sfsd = new StorageForSomeData();
-            sfsd = JsonConvert.DeserializeObject<StorageForSomeData>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json"));
+            Hospital hospitalData = new Hospital();
+            hospitalData = hospitalController.GetAllHospitalsData();
 
-
-            sfsd.hospitalFeedback.Add(UnesiteOpis.Text);
-            lvHospitalFeedback.ItemsSource = sfsd.hospitalFeedback;
-            File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json", JsonConvert.SerializeObject(sfsd));
+            hospitalData.hospitalFeedback.Add(UnesiteOpis.Text);
+            lvHospitalFeedback.ItemsSource = hospitalData.hospitalFeedback;
+            hospitalController.WriteHospitalToJason(hospitalData);       
         }
 
         private void OceniteDoktoraButton_Click(object sender, RoutedEventArgs e)

@@ -34,7 +34,8 @@
     "PhoneNumber": null,
     "DateOfBirth": "0001-01-01T00:00:00",
     "Rool": 1,
-    "isBanned": false
+    "isBanned": false,
+    "ActivityCounter": 3
   },
   {
     "id": 33,
@@ -47,7 +48,8 @@
     "PhoneNumber": null,
     "DateOfBirth": "0001-01-01T00:00:00",
     "Rool": 1,
-    "isBanned": false
+    "isBanned": false,
+    "ActivityCounter": 8
   },
     {
         "id": 3,

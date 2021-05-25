@@ -26,7 +26,7 @@
                 <GridView>
                     <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding id}" />
                     <GridViewColumn Header="Doctors Name" Width="100" DisplayMemberBinding="{Binding Username}" />
-                    <GridViewColumn Header="Specialty" Width="100" DisplayMemberBinding="{Binding specialty}" />
+                    <GridViewColumn Header="Specialty" Width="100" DisplayMemberBinding="{Binding Specialty}" />
                     <GridViewColumn Header="Rating" Width="100" DisplayMemberBinding="{Binding Grade}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
