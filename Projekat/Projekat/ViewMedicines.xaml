@@ -8,7 +8,19 @@
         Title="ViewMedicines" Height="450" Width="800">
     <Grid>
         <DataGrid x:Name="dataGridMedicines" ItemsSource="{Binding Medicines}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="45,33,109,0" Height="221" VerticalAlignment="Top">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="45,33,481,0" Height="221" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn  Header="Medicine Id" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Details" Binding="{Binding Details}"/>
+                <DataGridTextColumn Header="Alternative" Binding="{Binding Alternative}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+
+        <DataGrid x:Name="dataGridRejectedMedicines" ItemsSource="{Binding Medicines}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="467,33,59,0" Height="221" VerticalAlignment="Top">
             <DataGrid.Columns>
                 <DataGridTextColumn  Header="Medicine Id" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
@@ -18,6 +30,17 @@
         </DataGrid>
         <Button Content="Back" Click="Back_Click" HorizontalAlignment="Left" Margin="45,373,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Content="Delete" Click="DeleteMedicine_Click" HorizontalAlignment="Left" Margin="159,373,0,0" VerticalAlignment="Top" Width="74"/>
+        <Button Content="Send new request" HorizontalAlignment="Left" Margin="625,254,0,0" VerticalAlignment="Top" Click="RejectedMedShow_Click" Height="27" Width="116"/>
+        <Button x:Name="createMedicine" Content="Add meds" HorizontalAlignment="Left" Visibility="Visible" Margin="646,373,0,0" VerticalAlignment="Top" Click="New_Medicine_Click" Height="20" Width="95" RenderTransformOrigin="0.511,-0.913"/>
+        <Button x:Name="rejectMedicine" Content="Send request" Visibility="Collapsed" HorizontalAlignment="Left" Margin="615,220,0,0" VerticalAlignment="Top" Click="Reject_Medicine_Click" Height="29" Width="126"/>
+
+        <Label Content="Rejected Medicines:" HorizontalAlignment="Left" Margin="467,10,0,0" VerticalAlignment="Top" Width="122"/>
+        <Label Content="Name:" HorizontalAlignment="Left" Margin="318,319,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="name" HorizontalAlignment="Left" Margin="367,323,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="97"/>
+        <Label Content="Details:" HorizontalAlignment="Left" Margin="469,318,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.031,0.687"/>
+        <TextBox x:Name="details" HorizontalAlignment="Left" Margin="517,323,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Alternative:" HorizontalAlignment="Left" Margin="625,318,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.484,0.186"/>
+        <TextBox  x:Name="alternative" HorizontalAlignment="Left" Margin="700,322,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Height="19"/>
 
     </Grid>
 </Window>

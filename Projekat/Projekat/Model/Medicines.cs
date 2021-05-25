@@ -15,6 +15,7 @@ namespace Projekat.Model
         {
             Id = id;
             Name = name;
+            Verification = VerificationType.Waiting;
             Details = details;
             Alternative = alternative;
 
@@ -64,6 +65,7 @@ namespace Projekat.Model
             set
             ;
         }
+        public VerificationType Verification { get; set; }
 
         public String StatusType { get; set; }
 
