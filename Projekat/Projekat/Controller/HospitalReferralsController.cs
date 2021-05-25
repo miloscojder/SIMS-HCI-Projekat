@@ -14,6 +14,8 @@ namespace Controller
    public class HospitalReferralsController
     {
         public HospitalReferralsService hospitalReferralsService = new HospitalReferralsService();
+        public List<HospitalReferrals> hospitalReferrals;
+
         public void CreateReferral(HospitalReferrals newReferral)
         {
             hospitalReferralsService.CreateReferral(newReferral);
@@ -30,6 +32,10 @@ namespace Controller
         }
 
 
+        public List<HospitalReferrals> GetAllHospitalRefferalsByPatientsUsername(String loggedUsername) {
+            hospitalReferrals = hospitalReferralsService.GetAllHospitalRefferalsByPatientsUsername(loggedUsername);
+            return hospitalReferrals;
+        }
 
         public List<HospitalReferrals> GetAll()
         {
