@@ -26,9 +26,9 @@ namespace Controller
          return false;
       }
 
-        public void MoveStaticEquipment(int staticId, int toRoom, DateTime time)
+        public void MoveStaticEquipment(int staticId, int toRoom)
         {
-            roomService.MoveStaticEquipment(staticId, toRoom, time);
+            roomService.MoveStaticEquipment(staticId, toRoom);
         }
 
         public void MoveDynamicEquipment(Model.StaticEquipment quantity, Model.StaticEquipment name)

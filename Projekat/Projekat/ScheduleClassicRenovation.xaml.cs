@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace Projekat
 
     public partial class ScheduleClassicRenovation : Window
     {
+        private readonly RoomController roomController = new RoomController();
         public ScheduleClassicRenovation()
         {
             InitializeComponent();
@@ -34,7 +36,25 @@ namespace Projekat
 
         private void ScheduleRenovation_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                Room room = (Room)classicRenovationDataGrid.SelectedItems[0];
+                DateTime renovationDate = SelectedDate();
+                //roomController.Renovation(room.Id, renovationDate, Double.Parse(duration.Text));
+            }
+            catch
+            {
+                MessageBox.Show("Ponovo zauzmite datum");
+            }
         }
+        private DateTime SelectedDate()
+        {
+            DateTime pickedDate = date.SelectedDate.Value;
+            int hours = Int32.Parse(startTime.Text.Split(':')[0]);
+            int minutes = Int32.Parse(startTime.Text.Split(':')[1]);
+            DateTime renovationDateTime = new DateTime(pickedDate.Year, pickedDate.Month, pickedDate.Day, hours, minutes, 00);
+            return renovationDateTime;
+        }
+
     }
 }

@@ -26,11 +26,9 @@ namespace Service
          return false;
       }
 
-        public void MoveStaticEquipment(int staticId, int toRoom, DateTime time)
+        public void MoveStaticEquipment(int staticId, int toRoom)
         {
-            //ispraviti
-            if (time.Ticks < DateTime.Now.Ticks)
-            {
+
                 StaticEquipment staticEquipment = staticRepository.GetOne(staticId);
                 Room room = GetRoom(staticEquipment.RoomId);
                 room.StaticEquipments.Remove(staticEquipment);
@@ -38,9 +36,10 @@ namespace Service
                 staticEquipment.RoomId = room2.Id;
                 room2.StaticEquipments.Add(staticEquipment);
                 staticRepository.UpdateEquipment(staticEquipment);
+
                 UpdateRoom(room);
                 UpdateRoom(room2);
-            }
+
         }
 
  

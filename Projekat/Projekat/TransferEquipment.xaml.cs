@@ -34,6 +34,7 @@ namespace Projekat
         int id1;
 
 
+        //ispravljeno
         private void IspisivanjeSpiskaDinamickeOpreme() {
             var spisakDinamickeOpreme = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\dynamicTransfer.txt";
 
