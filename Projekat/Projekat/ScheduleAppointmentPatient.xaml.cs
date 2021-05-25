@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 using Model;
 using Newtonsoft.Json;
 using Projekat.Model;
+using Controller;
 
 namespace Projekat
 {
@@ -24,7 +25,7 @@ namespace Projekat
 
     public partial class ScheduleAppointmentPatient : Window
     {
-
+        
         public enum Priority { DATE, DOCTOR }
         public User prenosilac = new User();
         public List<String> Termini { get; set; }
@@ -36,6 +37,7 @@ namespace Projekat
         List<DateTime> listaVremenaZakazivanja = new List<DateTime>();
         TimeSpan timeSpan = new TimeSpan(7, 0, 0, 0, 0);
         private static int kolikoSamDatumaNasao = 0;
+        public HospitalController hospitalController;
 
         //globalni brojac
 
@@ -64,10 +66,8 @@ namespace Projekat
         private void SendRequestClick(object sender, RoutedEventArgs e)
         {
 
-
-            StorageForSomeData sfsd = new StorageForSomeData();
-            sfsd = JsonConvert.DeserializeObject<StorageForSomeData>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json"));
-
+            Hospital hospitalData = new Hospital();
+            hospitalData = hospitalController.GetAllHospitalsData();
 
             //atni spam zastita? proveriti ovo malo
             foreach (DateTime datum in listaVremenaZakazivanja)
@@ -75,11 +75,11 @@ namespace Projekat
                 if ((DateTime.Now.Date - datum.Date) > timeSpan)    
                 {
                     listaVremenaZakazivanja.Remove(datum);
-                    sfsd.activityCounter--;                                                              
+                    hospitalData.activityCounter--;                                                              
                 }    
             }        
             
-            if(sfsd.activityCounter > 10)                             
+            if(hospitalData.activityCounter > 10)                             
             {
                 MessageBox.Show("Blokirani ste zbog spamovanja, javite nam se za vise informacija");
                 //window close        
@@ -89,10 +89,10 @@ namespace Projekat
             } 
             else 
             {
-                sfsd.activityCounter++;
+                hospitalData.activityCounter++;
+                hospitalController.WriteHospitalToJason(hospitalData);
 
-                File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json", JsonConvert.SerializeObject(sfsd));
-
+                
                 listaVremenaZakazivanja.Add(DateTime.Now);
 
                 DateTime choosenDate = new DateTime();

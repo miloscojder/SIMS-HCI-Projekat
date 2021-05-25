@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 using Model;
 using Newtonsoft.Json;
 using Projekat.Model;
+using Controller;
 
 namespace Projekat
 {
@@ -23,7 +24,8 @@ namespace Projekat
     {
         public User posrednik = new User();
         public List<DateTime> activityTime = new List<DateTime>();
-        TimeSpan timeSpan = new TimeSpan(7, 0, 0, 0, 0);
+        public TimeSpan timeSpanForReset = new TimeSpan(7, 0, 0, 0, 0);
+        public HospitalController hospitalController;
 
         public AppointmentsPage(Appointment a, User loggedUser)
         {
@@ -65,21 +67,12 @@ namespace Projekat
         private void CancButton_Click_1(object sender, RoutedEventArgs e)
         {
 
-            StorageForSomeData sfsd = new StorageForSomeData();
-            sfsd = JsonConvert.DeserializeObject<StorageForSomeData>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json"));
+            Hospital hospitalData = new Hospital();
+            hospitalData = hospitalController.GetAllHospitalsData();
 
+            hospitalController.DeleteOutDatedActivities(activityTime,  timeSpanForReset);        // u ovo cu morati da ukljucim pacijenta
 
-            foreach (DateTime datum in activityTime)
-            {
-                if ((DateTime.Now.Date - datum.Date) > timeSpan)
-                {
-                    activityTime.Remove(datum);
-                    sfsd.activityCounter--;                                                     
-                    File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json", JsonConvert.SerializeObject(sfsd));
-                }
-            }
-
-            if(sfsd.activityCounter > 10)
+            if(hospitalData.activityCounter > 10)
             {
                 MessageBox.Show("Blokirani ste zbog spamovanja, javite nam se za vise informacija");
                 MainWindow mw = new MainWindow();
@@ -91,11 +84,11 @@ namespace Projekat
                
                 if (lvAppointmentsPatient.SelectedItems.Count < 1)
                 {
-                    MessageBox.Show("You must choose at leas one appointment.");
+                    MessageBox.Show("You must choose at least one appointment.");
                 }
                 else
                 {
-                    sfsd.activityCounter++;
+                    hospitalData.activityCounter++;
                     Appointment ac = (Appointment)lvAppointmentsPatient.SelectedItems[0];
 
                     List<Appointment> svi = new List<Appointment>();
@@ -112,7 +105,8 @@ namespace Projekat
                     }
 
                     File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json", JsonConvert.SerializeObject(newSvi));
-                    File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\hospitaldata.json", JsonConvert.SerializeObject(sfsd));
+
+                    hospitalController.WriteHospitalToJason(hospitalData);
 
                     MessageBox.Show("Vas pregled je otkazan.");
                     this.Close();
