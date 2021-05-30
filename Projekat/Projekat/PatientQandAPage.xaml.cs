@@ -34,21 +34,21 @@ namespace Projekat
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            AppointmentsPage ap = new AppointmentsPage(null,posrednik);
+            AppointmentsPage ap = new AppointmentsPage(null);
             ap.Show();
             this.Close();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null,null);
+            NotificationsPatientPage npp = new NotificationsPatientPage(null);
             npp.Show();
             this.Close();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage(posrednik);
+            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage();
             pmrp.Show();
             this.Close();
         }

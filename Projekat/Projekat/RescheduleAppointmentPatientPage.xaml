@@ -8,23 +8,24 @@
         Title="RescheduleAppointmentPatientPage"  Background="LightSkyBlue" Height="450" Width="815">
     <Grid Margin="0,0,3.6,0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="137*"/>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="127*"/>
+            <RowDefinition Height="298*"/>
         </Grid.RowDefinitions>
-        <Label Content="Choose time of appointment&#xD;&#xA;" HorizontalAlignment="Left" Margin="99,68.7,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <DatePicker Name="IzaberiDatum" HorizontalAlignment="Left" Margin="313,69.7,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <ComboBox Name="Combobox1" ItemsSource="{Binding Termini}" SelectedItem="{Binding SelektovanTermin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="472,69.7,199,311" Grid.Row="1">
+        <Label Content="Pick time of appointment&#xA;" HorizontalAlignment="Left" Margin="99,69,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <DatePicker Name="IzaberiDatum" HorizontalAlignment="Left" Margin="313,70,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <ComboBox Name="Combobox1" ItemsSource="{Binding Termini}" SelectedItem="{Binding SelektovanTermin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="472,60,199,23" Grid.Row="1">
         </ComboBox>
 
-        <Label Content="Choose doctor&#xA;" HorizontalAlignment="Left" Margin="99,146.7,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <ComboBox Name="Combobox2" ItemsSource="{Binding Doktori}" SelectedItem="{Binding SelektovanDoktor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left" Margin="242,146.7,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
-        <Label Content="Choose priorty  &#xA;" Margin="326,212.7,375,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <RadioButton Content="Date" HorizontalAlignment="Left" Margin="269,256.7,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked" Grid.Row="1"/>
-        <RadioButton Content="Doctor" HorizontalAlignment="Left" Margin="415,256.7,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked_1" Grid.Row="1"/>
-        <Button Content="Send request" Margin="326,321.7,353,53" Click="SendRequestButton_Click" Grid.Row="1">
+        <Label Content="Choose doctor&#xA;" HorizontalAlignment="Left" Margin="99,20,0,0" VerticalAlignment="Top" Grid.Row="2"/>
+        <ComboBox Name="Combobox2" ItemsSource="{Binding Doktori}" SelectedItem="{Binding SelektovanDoktor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left" Margin="244,25,0,0" VerticalAlignment="Top" Width="120" Grid.Row="2"/>
+        <Label Content="Choose priorty  &#xA;" Margin="326,86,375,0" VerticalAlignment="Top" Grid.Row="2"/>
+        <RadioButton Content="Date" HorizontalAlignment="Left" Margin="269,130,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked" Grid.Row="2"/>
+        <RadioButton Content="Doctor" HorizontalAlignment="Left" Margin="415,130,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked_1" Grid.Row="2"/>
+        <Button Content="Send request for rescheduling" Margin="180,197,462,50" Click="SendRequestButton_Click" Grid.Row="2">
 
         </Button>
-        <Button Content="Cancel rescheduling" HorizontalAlignment="Left" Margin="658,357,0,0" Grid.Row="1" VerticalAlignment="Top" Click="Button_Click" Height="35" Width="114"/>
+        <Button Content="Cancel rescheduling" HorizontalAlignment="Left" Margin="381,197,0,0" Grid.Row="2" VerticalAlignment="Top" Click="Button_Click" Height="51" Width="169"/>
 
     </Grid>
 </Window>

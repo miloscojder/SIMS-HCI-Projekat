@@ -25,25 +25,24 @@ namespace Projekat
         ReferralPatientController ReferralPatientController = new ReferralPatientController();
         HospitalReferralsController referralsController = new HospitalReferralsController();
 
-        public PatientsMedicalRecordPage(User loggedUser)
+        public PatientsMedicalRecordPage()
         {
             InitializeComponent();
             this.DataContext = this;
 
             List<MedicalRecord> patientsRecords = new List<MedicalRecord>();
-            patientsRecords = medicalRecordController.GetAllRecordsByPatientsUsername(loggedUser.Username);
-
-            lvMedicalRecord.ItemsSource = patientsRecords;
-
+            patientsRecords = medicalRecordController.GetAllRecordsByPatientsUsername(PatientMainPage.prenosilac.Username);
+           
             List<Prescription> patientsPrescriptions = new List<Prescription>();
-            patientsPrescriptions = prescriptionController.GetAllPrescriptionsByPatientsUsername(loggedUser.Username);
+            patientsPrescriptions = prescriptionController.GetAllPrescriptionsByPatientsUsername(PatientMainPage.prenosilac.Username);
 
             List<ReferralPatient> referralPatients = new List<ReferralPatient>();
-            referralPatients = ReferralPatientController.GerAllReferralsByPatientsUsername(loggedUser.Username);
+            referralPatients = ReferralPatientController.GerAllReferralsByPatientsUsername(PatientMainPage.prenosilac.Username);
 
             List<HospitalReferrals> hospitalReferrals = new List<HospitalReferrals>();
-            hospitalReferrals = referralsController.GetAllHospitalRefferalsByPatientsUsername(loggedUser.Username);
+            hospitalReferrals = referralsController.GetAllHospitalRefferalsByPatientsUsername(PatientMainPage.prenosilac.Username);
 
+            lvMedicalRecord.ItemsSource = patientsRecords;
             lvHospitalReferrals.ItemsSource = hospitalReferrals;           
             lvRaferrals.ItemsSource = referralPatients;
             lvPrescriptions.ItemsSource = patientsPrescriptions;
@@ -59,21 +58,21 @@ namespace Projekat
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            AppointmentsPage ap = new AppointmentsPage(null,prenosilac);
+            AppointmentsPage ap = new AppointmentsPage(null);
             ap.Show();
             this.Close();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null,null);
+            NotificationsPatientPage npp = new NotificationsPatientPage(null);
             npp.Show();
             this.Close();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage(prenosilac);
+            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage();
             pmrp.Show();
             this.Close();
         }

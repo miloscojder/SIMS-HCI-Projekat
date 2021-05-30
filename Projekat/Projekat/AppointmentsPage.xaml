@@ -22,10 +22,9 @@
             <Button Content="MY PROFILE" Click="Button_Click_5" Width="99" />
         </StackPanel>
 
-        <ListView Margin="26,138,178,67" Background="LightCyan" Name="lvAppointmentsPatient" Grid.ColumnSpan="2">
+        <ListView Margin="368,160,87,112" Background="LightCyan" Name="lvAppointmentsPatient" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding id}" />
                     <GridViewColumn Header="Start Time" Width="100" DisplayMemberBinding="{Binding StartTime}" />
                     <GridViewColumn Header="Room name" Width="100" DisplayMemberBinding="{Binding roomName}" />
                     <GridViewColumn Header="Doctor name" Width="150" DisplayMemberBinding="{Binding doctorUsername}">
@@ -45,9 +44,9 @@
         </Button>
         <Button Content="Reschedule" Margin="178,422,250,15" Click="RescButton_Click_2">
         </Button>
-        <Button Content="Report&#xD;&#xA;" Grid.Column="1" HorizontalAlignment="Left" Margin="180,422,0,0" VerticalAlignment="Top" Width="75" Height="56"/>
-        <Label Content="My Appoinemtns: &#xD;&#xA;" HorizontalAlignment="Left" Margin="232,89,0,0" VerticalAlignment="Top" FontSize="22"/>
-        <Label Content="Patient name&#xD;&#xA;" HorizontalAlignment="Left" Margin="130,96,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <TextBox x:Name="PatientsUsernameTextBox" Grid.Column="1" HorizontalAlignment="Left" Margin="110,143,0,0" Text="Patients Username" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="30" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold"/>
+        <Button Content="Generate report" Grid.Column="1" HorizontalAlignment="Left" Margin="149,422,0,0" VerticalAlignment="Top" Width="106" Height="56"/>
+        <Label Content="My Appoinemtns: &#xD;&#xA;" HorizontalAlignment="Left" Margin="290,89,0,0" VerticalAlignment="Top" FontSize="22"/>
+        <Calendar HorizontalAlignment="Left" Margin="117,191,0,0" VerticalAlignment="Top"/>
+        <Label Content="Pick date" HorizontalAlignment="Left" Margin="178,160,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

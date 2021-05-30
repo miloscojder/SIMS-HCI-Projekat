@@ -3,7 +3,7 @@
     "RecordNumber": 0,
     "Allergen": null,
     "appointment": null,
-    "timeOfAppointment": "2020-01-21T15:40:00",
+    "timeOfAppointment": "2020-01-22T15:30:00",
     "anamnesis": {
       "anamnesy": "Pacijent se dobro oseca, nalazi nisu dobri.",
       "id": 0,
@@ -29,7 +29,7 @@
     "RecordNumber": 2,
     "Allergen": null,
     "appointment": null,
-    "timeOfAppointment": "2021-01-21T15:40:00",
+    "timeOfAppointment": "2021-01-19T15:45:00",
     "anamnesis": {
       "anamnesy": "Pacijent se dasfasfasfasobro oseca, nalazi nisu dobri.",
       "id":2,
@@ -42,7 +42,7 @@
     "RecordNumber": 3,
     "Allergen": null,
     "appointment": null,
-    "timeOfAppointment": "2021-01-21T15:40:00",
+    "timeOfAppointment": "2020-01-21T15:40:00",
     "anamnesis": {
       "anamnesy": "Paciasfasfsajent se dobro oseca, nalazi nisu dobri.",
       "id": 3,

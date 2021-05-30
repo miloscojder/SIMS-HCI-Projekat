@@ -9,16 +9,18 @@
         Title="CreateNotifficationPatientPage" Background="LightSkyBlue" Height="550" Width="800">
     <Grid>
         <Label Content="Create your notification" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top" FontSize="21" FontFamily="Arial Black"/>
-        <Label Content="Name: " HorizontalAlignment="Left" Margin="77,130,0,0" VerticalAlignment="Top"/>
-        <Label Content="Description: " HorizontalAlignment="Left" Margin="77,194,0,0" VerticalAlignment="Top"/>
-        <Label Content="Starting date and time: " HorizontalAlignment="Left" Margin="77,287,0,0" VerticalAlignment="Top"/>
-        <Label Content="Days repeat: " HorizontalAlignment="Left" Margin="77,348,0,0" VerticalAlignment="Top"/>
+        <Label Content="Write notifications name: " HorizontalAlignment="Left" Margin="29,136,0,0" VerticalAlignment="Top"/>
+        <Label Content="Write notifications description: " HorizontalAlignment="Left" Margin="29,204,0,0" VerticalAlignment="Top"/>
+        <Label Content="Pick starting date and time: " HorizontalAlignment="Left" Margin="29,293,0,0" VerticalAlignment="Top"/>
+        <Label Content="How many days you want to recive this notification " HorizontalAlignment="Left" Margin="29,354,0,0" VerticalAlignment="Top"/>
+        <Label Content="Write time spawn between notifications: " HorizontalAlignment="Left" Margin="29,394,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="NotificationNameTextBox" HorizontalAlignment="Left" Margin="225,138,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="NotificationDescriptionTextBox" HorizontalAlignment="Left" Margin="225,176,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="535" Height="79"/>
-        <TextBox x:Name="NotificationDaysLeftTextBox" HorizontalAlignment="Left" Margin="225,356,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <DatePicker Name="NotifciationDateDatePicker" HorizontalAlignment="Left" Margin="225,289,0,0" VerticalAlignment="Top"/>
-        <Button Content="Create" HorizontalAlignment="Left" Margin="259,453,0,0" VerticalAlignment="Top" Click="Button_Click" Height="33" Width="68"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="473,453,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="33" Width="68"/>
-        <ComboBox Name="NotrificationDateComboBox" ItemsSource="{Binding Termini}" HorizontalAlignment="Center" Margin="0,291,0,0" VerticalAlignment="Top" Width="90"/>
+        <TextBox x:Name="NotificationDaysLeftTextBox" HorizontalAlignment="Left" Margin="357,354,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="NotificationTimeSpawnTextBox" HorizontalAlignment="Left" Margin="355,394,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <DatePicker Name="NotifciationDateDatePicker" HorizontalAlignment="Left" Margin="255,293,0,0" VerticalAlignment="Top"/>
+        <Button Content="Create notification" HorizontalAlignment="Left" Margin="259,453,0,0" VerticalAlignment="Top" Click="Button_Click" Height="33" Width="115"/>
+        <Button Content="Cancel " HorizontalAlignment="Left" Margin="473,453,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="33" Width="68"/>
+        <ComboBox Name="NotrificationDateComboBox" ItemsSource="{Binding Termini}" HorizontalAlignment="Left" Margin="385,295,0,0" VerticalAlignment="Top" Width="90"/>
     </Grid>
 </Window>

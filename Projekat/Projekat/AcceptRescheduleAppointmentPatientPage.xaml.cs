@@ -101,7 +101,7 @@ namespace Projekat
                     MessageBox.Show("Vas pregled je zakazan u losem terminu.");
                     this.Close();
 
-                    AppointmentsPage a = new AppointmentsPage(null, prenosilac);
+                    AppointmentsPage a = new AppointmentsPage(null);
                     a.Show();
                     this.Close();
                 }
@@ -122,7 +122,7 @@ namespace Projekat
 
                     File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json", JsonConvert.SerializeObject(newSvi));
 
-                    AppointmentsPage a = new AppointmentsPage(app, prenosilac);
+                    AppointmentsPage a = new AppointmentsPage(app);
                     a.Show();
                     this.Close();
                 }
@@ -131,7 +131,7 @@ namespace Projekat
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AppointmentsPage ap = new AppointmentsPage(null,prenosilac);
+            AppointmentsPage ap = new AppointmentsPage(null);
             ap.Show();
             this.Close();
         }
