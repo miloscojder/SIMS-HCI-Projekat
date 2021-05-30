@@ -83,7 +83,7 @@ namespace Projekat
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AppointmentsPage ap = new AppointmentsPage(null,prenosilac);
+            AppointmentsPage ap = new AppointmentsPage(null);
             ap.Show();
             this.Close();
         }

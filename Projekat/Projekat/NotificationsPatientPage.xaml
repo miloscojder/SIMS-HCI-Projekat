@@ -19,7 +19,6 @@
         <ListView Margin="10,139,134,31" Background="LightCyan" Name="lvNotificationList">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding Id}" />
                     <GridViewColumn Header="Notification name" Width="100" DisplayMemberBinding="{Binding Name}" />
                     <GridViewColumn Header="Date" Width="100" DisplayMemberBinding="{Binding Date}" />
                     <GridViewColumn Header="Description" Width="300" DisplayMemberBinding="{Binding Description}"/>

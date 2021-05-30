@@ -52,12 +52,6 @@ namespace Projekat
             request.Show();
         }
 
-        private void PatientButton_Click(object sender, RoutedEventArgs e)
-        {
-            PatientMainPage pmp = new PatientMainPage(null);
-            pmp.Show();
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 

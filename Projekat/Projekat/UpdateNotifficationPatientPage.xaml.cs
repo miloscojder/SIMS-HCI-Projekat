@@ -60,7 +60,7 @@ namespace Projekat
                 notifficationController.DeleteNotificationById(choosenNotification.Id);
                 notifficationController.WriteNotificationsToJason(notifications);
                
-                NotificationsPatientPage npp = new NotificationsPatientPage(choosenNotification,prenosilac);
+                NotificationsPatientPage npp = new NotificationsPatientPage(choosenNotification);
                 npp.Show();
                 this.Close();
             }
@@ -73,7 +73,7 @@ namespace Projekat
 
         private void CancelButton_Click_1(object sender, RoutedEventArgs e)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null,prenosilac);
+            NotificationsPatientPage npp = new NotificationsPatientPage(null);
             npp.Show();
             this.Close();
         }

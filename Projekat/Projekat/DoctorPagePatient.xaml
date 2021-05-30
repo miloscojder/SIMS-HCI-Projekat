@@ -9,23 +9,23 @@
     <Grid>
         <Label Content="Doctors username" HorizontalAlignment="Left" Margin="26,125,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.503,-0.696"/>
         <Label Content="Doctors specialty" HorizontalAlignment="Left" Margin="26,168,0,0" VerticalAlignment="Top"/>
-        <Label Content="Doctors e-mail" HorizontalAlignment="Left" Margin="26,204,0,0" VerticalAlignment="Top"/>
-        <Label Content="Doctors phoneNumber" HorizontalAlignment="Left" Margin="26,244,0,0" VerticalAlignment="Top"/>
-        <Label Content="Doctors date of birth" HorizontalAlignment="Left" Margin="26,296,0,0" VerticalAlignment="Top"/>
-        <Label Content="Doctors working exp:" HorizontalAlignment="Left" Margin="26,362,0,0" VerticalAlignment="Top"/>
-        <Label Content="Doctors rating" HorizontalAlignment="Left" Margin="26,407,0,0" VerticalAlignment="Top"/>
-        <Label Content="Ocenite ovog doktora:" HorizontalAlignment="Left" Margin="28,456,0,0" VerticalAlignment="Top"/>
-        <Label Content="Unesite feedback o doktoru:" HorizontalAlignment="Left" Margin="13,513,0,0" VerticalAlignment="Top"/>
+        <Label Content="Doctors e-mail" HorizontalAlignment="Left" Margin="26,305,0,0" VerticalAlignment="Top"/>
+        <Label Content="Doctors phoneNumber" HorizontalAlignment="Left" Margin="26,345,0,0" VerticalAlignment="Top"/>
+        <Label Content="Doctors date of birth" HorizontalAlignment="Left" Margin="26,397,0,0" VerticalAlignment="Top"/>
+        <Label Content="Doctors working exp:" HorizontalAlignment="Left" Margin="27,266,0,0" VerticalAlignment="Top"/>
+        <Label Content="Doctors rating" HorizontalAlignment="Left" Margin="27,215,0,0" VerticalAlignment="Top"/>
+        <Label Content="Rate doctor:" HorizontalAlignment="Left" Margin="29,464,0,0" VerticalAlignment="Top"/>
+        <Label Content="Write feedback about doktor:" HorizontalAlignment="Left" Margin="24,520,0,0" VerticalAlignment="Top"/>
         <Label Content="Doctors feedback" HorizontalAlignment="Left" Margin="537,107,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="DoctorsNameTextBox" HorizontalAlignment="Left" Height="26" Margin="182,125,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold"/>
-        <TextBox x:Name="DoctorsRatingTextBox" HorizontalAlignment="Left" Height="26" Margin="182,407,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold"/>
-        <TextBox x:Name="DoctorsExpTextBox" HorizontalAlignment="Left" Height="26" Margin="182,362,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold"/>
-        <TextBox x:Name="DoctorsBirthDayTextBox" HorizontalAlignment="Left" Height="48" Margin="182,288,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold"/>
-        <TextBox x:Name="DoctosPhoneNumberTextBox" HorizontalAlignment="Left" Height="26" Margin="182,244,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold"/>
-        <TextBox x:Name="DoctorsEmailTextBox" HorizontalAlignment="Left" Height="26" Margin="182,204,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold"/>
+        <TextBox x:Name="DoctorsRatingTextBox" HorizontalAlignment="Left" Height="26" Margin="183,215,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold"/>
+        <TextBox x:Name="DoctorsExpTextBox" HorizontalAlignment="Left" Height="26" Margin="183,266,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold"/>
+        <TextBox x:Name="DoctorsBirthDayTextBox" HorizontalAlignment="Left" Height="48" Margin="182,389,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold"/>
+        <TextBox x:Name="DoctosPhoneNumberTextBox" HorizontalAlignment="Left" Height="26" Margin="182,345,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold"/>
+        <TextBox x:Name="DoctorsEmailTextBox" HorizontalAlignment="Left" Height="26" Margin="182,305,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold"/>
         <TextBox x:Name="DoctrsSpecialtyTextBox" HorizontalAlignment="Left" Height="26" Margin="182,168,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold"/>
-        <TextBox x:Name="FeedbackDoctorTextBox" HorizontalAlignment="Left" Margin="200,502,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" Height="47"/>
-        <Button Content="Potvrdi Anketu" HorizontalAlignment="Left" Margin="525,501,0,0" VerticalAlignment="Top" Width="115" Click="PotvrdiButton_Click" Height="41" />
+        <TextBox x:Name="FeedbackDoctorTextBox" HorizontalAlignment="Left" Margin="210,509,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" Height="47"/>
+        <Button Content="Send feedback" HorizontalAlignment="Left" Margin="535,484,0,0" VerticalAlignment="Top" Width="115" Click="PotvrdiButton_Click" Height="41" />
         <ListView x:Name="lvDoctorsFeedback" Background="LightCyan" Margin="395,147,25,122">
             <ListView.View>
                 <GridView>
@@ -41,7 +41,7 @@
             <Button Content="Q and A" Click="Button_Click_4" Width="100"/>
             <Button Content="MY PROFILE" Click="Button_Click_5" Width="99" />
         </StackPanel>
-        <ComboBox Name="DoctorsGrades" HorizontalAlignment="Left" Margin="182,458,0,0" VerticalAlignment="Top" Width="55">
+        <ComboBox Name="DoctorsGrades" HorizontalAlignment="Left" Margin="183,466,0,0" VerticalAlignment="Top" Width="55">
             <ComboBoxItem Content="2"/>
             <ComboBoxItem Content="3"/>
             <ComboBoxItem Content="4"/>

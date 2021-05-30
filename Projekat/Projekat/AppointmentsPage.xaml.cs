@@ -25,9 +25,9 @@ namespace Projekat
         public User posrednik = new User();
         public List<DateTime> activityTime = new List<DateTime>();
         public TimeSpan timeSpanForReset = new TimeSpan(7, 0, 0, 0, 0);
-        public HospitalController hospitalController;
+        public HospitalController hospitalController = new HospitalController();
 
-        public AppointmentsPage(Appointment a, User loggedUser)
+        public AppointmentsPage(Appointment a)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -54,7 +54,7 @@ namespace Projekat
         //morace da stoji u drugom sloju
         private static List<Appointment> getAppointments()
         {
-            return JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(@"C:\Users\cojder\Desktop\SIMS_Projekat\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json"));
+            return JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json"));
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -75,8 +75,8 @@ namespace Projekat
             if(hospitalData.activityCounter > 10)
             {
                 MessageBox.Show("Blokirani ste zbog spamovanja, javite nam se za vise informacija");
-                MainWindow mw = new MainWindow();
-                mw.Show();
+                PatientMainPage pmp = new PatientMainPage(PatientMainPage.prenosilac);
+                pmp.Show();
                 this.Close();
             }
             else
@@ -132,7 +132,7 @@ namespace Projekat
                 {
                     MessageBox.Show("Ne mozete promeniti ovaj termin.");
 
-                    AppointmentsPage ap = new AppointmentsPage(null,posrednik);
+                    AppointmentsPage ap = new AppointmentsPage(null);
                     ap.Show();
                     this.Close();
                 }
@@ -154,21 +154,21 @@ namespace Projekat
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            AppointmentsPage ap = new AppointmentsPage(null,posrednik);
+            AppointmentsPage ap = new AppointmentsPage(null);
             ap.Show();
             this.Close();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null,null);
+            NotificationsPatientPage npp = new NotificationsPatientPage(null);
             npp.Show();
             this.Close();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage(posrednik);
+            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage();
             pmrp.Show();
             this.Close();
         }
