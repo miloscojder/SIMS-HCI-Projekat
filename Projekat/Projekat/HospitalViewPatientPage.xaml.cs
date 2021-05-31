@@ -22,17 +22,17 @@ namespace Projekat
     /// </summary>
     public partial class HospitalViewPatientPage : Window
     {
-        
+
         public List<Doctor> doctors = new List<Doctor>();
-        public Doctor pomocni = new Doctor();      
+        public Doctor pomocni = new Doctor();
         public HospitalController hospitalController = new HospitalController();
 
         public HospitalViewPatientPage(Doctor doktor)
         {
             InitializeComponent();
             this.DataContext = this;
-            
-           
+
+
             Hospital hospitalData = new Hospital();
             hospitalData = hospitalController.GetAllHospitalsData();
 
@@ -48,7 +48,7 @@ namespace Projekat
             }
 
             File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doctorsak.json", JsonConvert.SerializeObject(doktori));
-            lvDoctorsPatient.ItemsSource = doktori;               
+            lvDoctorsPatient.ItemsSource = doktori;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -66,7 +66,7 @@ namespace Projekat
             }
 
             hospitalData.gradesOfThisHospital.hospitalGradeCounter++;
-            if(hospitalData.gradesOfThisHospital.hospitalGradeCounter==1)
+            if (hospitalData.gradesOfThisHospital.hospitalGradeCounter == 1)
             {
                 HospitalRating.Text = HospitalGrades.Text;
                 hospitalData.gradesOfThisHospital.hospitalGradeSum += Convert.ToDouble(HospitalGrades.Text);
@@ -90,11 +90,11 @@ namespace Projekat
 
             hospitalData.hospitalFeedback.Add(UnesiteOpis.Text);
             lvHospitalFeedback.ItemsSource = hospitalData.hospitalFeedback;
-            hospitalController.WriteHospitalToJason(hospitalData);       
+            hospitalController.WriteHospitalToJason(hospitalData);
         }
 
         private void OceniteDoktoraButton_Click(object sender, RoutedEventArgs e)
-        {
+        {                        
             if (lvDoctorsPatient.SelectedItems.Count < 1)
             {
                 MessageBox.Show("Morate da selektujete bar jednog lekara.");
@@ -110,7 +110,7 @@ namespace Projekat
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            PatientMainPage pmp = new PatientMainPage(null);
+            PatientMainPage pmp = new PatientMainPage(PatientMainPage.prenosilac);
             pmp.Show();
             this.Close();
         }
@@ -149,5 +149,28 @@ namespace Projekat
             ppp.Show();
             this.Close();
         }
+
+        private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (lvDoctorsPatient.SelectedItems.Count < 1)
+            {
+                e.CanExecute = false;
+                MessageBox.Show("Morate da selektujete bar jednog lekara.");
+            }
+            else {
+                e.CanExecute = true;
+            }
+        }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Doctor doctor = (Doctor)lvDoctorsPatient.SelectedItems[0];
+            DoctorPagePatient dpp = new DoctorPagePatient(doctor);
+            dpp.Show();
+            this.Close();
+        }
+
+        public static readonly RoutedUICommand Proba = new RoutedUICommand() { };
+
     }
 }

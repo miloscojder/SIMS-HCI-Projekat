@@ -21,7 +21,7 @@ namespace Projekat
     {
 
         //public enum Priority { DATE, DOCTOR }
-        public User prenosilac = new User();
+   
         public List<String> Termini { get; set; }
         public string SelektovanTermin { get; set; }
         public List<String> Doktori { get; set; }
@@ -35,10 +35,10 @@ namespace Projekat
             InitializeComponent();
             this.DataContext = this;
 
-            string[] termini = File.ReadAllLines(@"C:\Users\Korisnik\Desktop\asdas\SIMS-HCI-Projekat-main\Projekat\Projekat\Data\terminiak.txt", Encoding.UTF8);
+            string[] termini = File.ReadAllLines(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\terminiak.txt", Encoding.UTF8);
             Termini = new List<string>(termini);
 
-            string[] doktori = File.ReadAllLines(@"C:\Users\Korisnik\Desktop\asdas\SIMS-HCI-Projekat-main\Projekat\Projekat\Data\doktoriak.txt", Encoding.UTF8);
+            string[] doktori = File.ReadAllLines(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doktoriak.txt", Encoding.UTF8);
             Doktori = new List<string>(doktori);
 
             posrednik.doctorUsername = a.doctorUsername;

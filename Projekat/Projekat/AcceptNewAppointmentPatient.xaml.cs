@@ -20,7 +20,7 @@ namespace Projekat
     /// </summary>
     public partial class AcceptNewAppointmentPatient : Window
     {
-        public User prenosilac = new User();
+     
 
         public AcceptNewAppointmentPatient(ScheduleAppointmentPatient.Priority priority, DateTime choosenDate, string izabraniDoctor)
         {

@@ -24,7 +24,6 @@ namespace Projekat
         public List<Notification> thisPatientsNotifications;
         public NotifficationController notifficationController = new NotifficationController();
         public List<Notification> allNotifications;
-        public User prenosilac = new User();     
 
         public NotificationsPatientPage(Notification newNotification)     //user ce biti globalan na main page i odatle cu ga uveg pozivati
         {
@@ -51,7 +50,7 @@ namespace Projekat
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PatientMainPage pmp = new PatientMainPage(null);
+            PatientMainPage pmp = new PatientMainPage(PatientMainPage.prenosilac);
             pmp.Show();
             this.Close();
         }
@@ -103,7 +102,7 @@ namespace Projekat
             try 
             {
                 Notification selectedNotiffication = (Notification)lvNotificationList.SelectedItems[0];                
-                UpdateNotifficationPatientPage unpp = new UpdateNotifficationPatientPage(selectedNotiffication, prenosilac);
+                UpdateNotifficationPatientPage unpp = new UpdateNotifficationPatientPage(selectedNotiffication);
                 unpp.Show();
                 this.Close();
             }
@@ -124,7 +123,7 @@ namespace Projekat
                 notifficationController.WriteNotificationsToJason(allNotifications);
 
                 MessageBox.Show("You deleted selected notification");
-                PatientMainPage pmp = new PatientMainPage(prenosilac);
+                PatientMainPage pmp = new PatientMainPage(PatientMainPage.prenosilac);
                 pmp.Show();
                 this.Close();
             }

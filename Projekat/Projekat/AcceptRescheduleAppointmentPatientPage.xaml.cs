@@ -33,8 +33,8 @@ namespace Projekat
                 Appointment a = new Appointment();
                 List<Appointment> appointmentsDateChecked = new List<Appointment>();
            
-                string[] doktori = File.ReadAllLines(@"C:\Users\Korisnik\Desktop\asdas\SIMS-HCI-Projekat-main\Projekat\Projekat\Data\doktoriak.txt", Encoding.UTF8);
-                string[] sale = File.ReadAllLines(@"C:\Users\Korisnik\Desktop\asdas\SIMS-HCI-Projekat-main\Projekat\Projekat\Data\saleak.txt", Encoding.UTF8);
+                string[] doktori = File.ReadAllLines(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doktoriak.txt", Encoding.UTF8);
+                string[] sale = File.ReadAllLines(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\saleak.txt", Encoding.UTF8);
                 Random random = new Random();
 
                 for (int i = 0; i < 3; i++)
@@ -56,7 +56,7 @@ namespace Projekat
 
                 List<Appointment> appointmentDoctorChecked = new List<Appointment>();
 
-                string[] sale = File.ReadAllLines(@"C:\Users\Korisnik\Desktop\asdas\SIMS-HCI-Projekat-main\Projekat\Projekat\Data\saleak.txt", Encoding.UTF8);
+                string[] sale = File.ReadAllLines(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\saleak.txt", Encoding.UTF8);
                 Random random = new Random();
                 List<DateTime> timeList = new List<DateTime>();
 

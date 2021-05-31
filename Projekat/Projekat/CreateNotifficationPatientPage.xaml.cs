@@ -22,7 +22,6 @@ namespace Projekat
     /// </summary>
     public partial class CreateNotifficationPatientPage : Window
     {
-
         public NotifficationController notifficationController = new NotifficationController();
         public List<string> Termini { get; set; }
         public Notification createdNotification { get; set; }

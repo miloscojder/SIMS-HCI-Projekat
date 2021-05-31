@@ -6,6 +6,20 @@
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
         Title="UpdateNotifficationPatientPage" Background="LightSkyBlue" Height="635" Width="800">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
+                        <GradientStop Color="Azure" Offset="0.2"/>
+                        <GradientStop Color="LightBlue" Offset="0.85"/>
+                        <GradientStop Color="Azure" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
     <Grid Margin="0,0,0,20">
         <TextBox x:Name="OldNotificationNameTextBox" HorizontalAlignment="Left" Margin="35,80,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Height="29" IsEnabled="False"/>
         <TextBox x:Name="OldNotificationDescTextBox" HorizontalAlignment="Left" Margin="183,91,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="598" Height="95" IsReadOnly="True" IsEnabled="False"/>
@@ -20,8 +34,8 @@
         <Label Content="Redescribe:" HorizontalAlignment="Left" Margin="65,339,0,0" VerticalAlignment="Top"/>
         <Label Content="Pick new date and time:" HorizontalAlignment="Left" Margin="65,461,0,0" VerticalAlignment="Top"/>
         <Label Content="Write how many days left: " HorizontalAlignment="Left" Margin="65,515,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="NewNotificationHourComboBox" ItemsSource="{Binding Termini}" HorizontalAlignment="Left" Margin="309,463,0,0" VerticalAlignment="Top" Width="91"/>
-        <DatePicker Name="NewNotificationDateDatePicker" HorizontalAlignment="Left" Margin="183,462,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="NewNotificationHourComboBox" ItemsSource="{Binding Termini}" HorizontalAlignment="Left" Margin="340,464,0,0" VerticalAlignment="Top" Width="91"/>
+        <DatePicker Name="NewNotificationDateDatePicker" HorizontalAlignment="Left" Margin="214,463,0,0" VerticalAlignment="Top"/>
         <Button Content="Update" HorizontalAlignment="Left" Margin="482,515,0,0" VerticalAlignment="Top" Click="UpdateButton_Click" Height="51" Width="113"/>
         <Button Content="Cancel" HorizontalAlignment="Left" Margin="632,517,0,0" VerticalAlignment="Top" Click="CancelButton_Click_1" Height="49" Width="97"/>
         <Label Content="Write timespan of repeating" HorizontalAlignment="Left" Margin="56,560,0,0" VerticalAlignment="Top"/>

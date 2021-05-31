@@ -19,12 +19,10 @@ namespace Projekat
     /// </summary>
     public partial class PatientsMedicalRecordPage : Window
     {
-        public User prenosilac = new User();
+        
         MedicalRecordController medicalRecordController = new MedicalRecordController();
         PrescriptionController prescriptionController = new PrescriptionController();
-        ReferralPatientController ReferralPatientController = new ReferralPatientController();
-        HospitalReferralsController referralsController = new HospitalReferralsController();
-
+       
         public PatientsMedicalRecordPage()
         {
             InitializeComponent();
@@ -36,22 +34,15 @@ namespace Projekat
             List<Prescription> patientsPrescriptions = new List<Prescription>();
             patientsPrescriptions = prescriptionController.GetAllPrescriptionsByPatientsUsername(PatientMainPage.prenosilac.Username);
 
-            List<ReferralPatient> referralPatients = new List<ReferralPatient>();
-            referralPatients = ReferralPatientController.GerAllReferralsByPatientsUsername(PatientMainPage.prenosilac.Username);
 
-            List<HospitalReferrals> hospitalReferrals = new List<HospitalReferrals>();
-            hospitalReferrals = referralsController.GetAllHospitalRefferalsByPatientsUsername(PatientMainPage.prenosilac.Username);
-
-            lvMedicalRecord.ItemsSource = patientsRecords;
-            lvHospitalReferrals.ItemsSource = hospitalReferrals;           
-            lvRaferrals.ItemsSource = referralPatients;
+            lvMedicalRecord.ItemsSource = patientsRecords;            
             lvPrescriptions.ItemsSource = patientsPrescriptions;
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PatientMainPage pmp = new PatientMainPage(null);
+            PatientMainPage pmp = new PatientMainPage(PatientMainPage.prenosilac);
             pmp.Show();
             this.Close();
         }
@@ -88,6 +79,13 @@ namespace Projekat
         {
             PatientProfilePage ppp = new PatientProfilePage();
             ppp.Show();
+            this.Close();
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            ReferralViewPatientPage rvpp = new ReferralViewPatientPage();
+            rvpp.Show();
             this.Close();
         }
     }

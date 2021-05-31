@@ -70,6 +70,7 @@ namespace Projekat
                 case RoolType.Patient:
                     PatientMainPage pw = new PatientMainPage(loggedUser);
                     pw.Show();
+                    this.Close();
                     break;
                 case RoolType.Secretary:
                     SecretaryWindow sw = new SecretaryWindow();
