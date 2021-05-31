@@ -22,7 +22,7 @@ namespace Projekat
     /// </summary>
     public partial class AppointmentsPage : Window
     {
-        public User posrednik = new User();
+       
         public List<DateTime> activityTime = new List<DateTime>();
         public TimeSpan timeSpanForReset = new TimeSpan(7, 0, 0, 0, 0);
         public HospitalController hospitalController = new HospitalController();
@@ -74,7 +74,7 @@ namespace Projekat
 
             if(hospitalData.activityCounter > 10)
             {
-                MessageBox.Show("Blokirani ste zbog spamovanja, javite nam se za vise informacija");
+                MessageBox.Show("You are blocked because of spaming");
                 PatientMainPage pmp = new PatientMainPage(PatientMainPage.prenosilac);
                 pmp.Show();
                 this.Close();
@@ -109,6 +109,8 @@ namespace Projekat
                     hospitalController.WriteHospitalToJason(hospitalData);
 
                     MessageBox.Show("Vas pregled je otkazan.");
+                    AppointmentsPage app = new AppointmentsPage(null);
+                    app.Show();
                     this.Close();
                 }
             }
@@ -147,7 +149,7 @@ namespace Projekat
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PatientMainPage pmp = new PatientMainPage(null);
+            PatientMainPage pmp = new PatientMainPage(PatientMainPage.prenosilac);
             pmp.Show();
             this.Close();
         }

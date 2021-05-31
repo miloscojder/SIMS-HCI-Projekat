@@ -25,13 +25,13 @@ namespace Projekat
         public List<string> Termini { get; set; }
         public Notification choosenNotification = new Notification();
         public List<Notification> notifications = new List<Notification>();
-        public User prenosilac = new User();
+   
 
-        public UpdateNotifficationPatientPage(Notification selectedNotification, User loggedUser)
+        public UpdateNotifficationPatientPage(Notification selectedNotification)
         {
             InitializeComponent();
             this.DataContext = this;
-            prenosilac = loggedUser;
+           
 
             OldNotificationNameTextBox.Text = selectedNotification.Name;
             OldNotificationDescTextBox.Text = selectedNotification.Description;
@@ -55,7 +55,7 @@ namespace Projekat
                 string[] choosenHours = hoursAndMinutes.Split(':');
                 DateTime formedDate = new DateTime(NewNotificationDateDatePicker.SelectedDate.Value.Year, NewNotificationDateDatePicker.SelectedDate.Value.Month, NewNotificationDateDatePicker.SelectedDate.Value.Day, Convert.ToInt32(choosenHours[0]), Convert.ToInt32(choosenHours[1]), 0);
 
-                choosenNotification = new Notification(NewNotificationNameTextBox.Text, NewNotificationDescTextBox.Text, formedDate, Convert.ToInt32(NewNotificationDaysTextBox.Text), choosenNotification.Id,prenosilac.Username);
+                choosenNotification = new Notification(NewNotificationNameTextBox.Text, NewNotificationDescTextBox.Text, formedDate, Convert.ToInt32(NewNotificationDaysTextBox.Text), choosenNotification.Id,PatientMainPage.prenosilac.Username);
 
                 notifficationController.DeleteNotificationById(choosenNotification.Id);
                 notifficationController.WriteNotificationsToJason(notifications);

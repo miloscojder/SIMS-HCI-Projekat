@@ -6,6 +6,20 @@
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
         Title="AcceptNewAppointmentPatient"  Background="LightSkyBlue" Height="450" Width="581">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
+                        <GradientStop Color="Azure" Offset="0.2"/>
+                        <GradientStop Color="LightBlue" Offset="0.85"/>
+                        <GradientStop Color="Azure" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
     <Grid Margin="0,0,-34,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="452*"/>

@@ -23,7 +23,6 @@ namespace Projekat
         public Doctor posrednik = new Doctor();
         public List<Doctor> doctors = new List<Doctor>();
         public List<String> doctorFeedbackList;
-        public User prenosilac = new User();
 
         public DoctorPagePatient(Doctor d)
         {
@@ -106,7 +105,7 @@ namespace Projekat
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PatientMainPage pmp = new PatientMainPage(null);
+            PatientMainPage pmp = new PatientMainPage(PatientMainPage.prenosilac);
             pmp.Show();
             this.Close();
         }
@@ -143,6 +142,13 @@ namespace Projekat
         {
             PatientProfilePage ppp = new PatientProfilePage();
             ppp.Show();
+            this.Close();
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            HospitalViewPatientPage hvpp = new HospitalViewPatientPage(null);
+            hvpp.Show();
             this.Close();
         }
     }
