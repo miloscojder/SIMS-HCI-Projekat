@@ -52,6 +52,7 @@ namespace Projekat
 
                 NotificationsPatientPage npp = new NotificationsPatientPage(createdNotification);
                 npp.Show();
+                this.Close();
             }
             catch (Exception EX)
             {
@@ -63,6 +64,7 @@ namespace Projekat
         {
             NotificationsPatientPage npp = new NotificationsPatientPage(null);
             npp.Show();
+            this.Close();
         }
     }
 }

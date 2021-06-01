@@ -30,7 +30,7 @@
             <ColumnDefinition Width="13*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Orientation="Horizontal" Background="LightSkyBlue" Margin="0,0,0,356" Grid.ColumnSpan="2">
+        <StackPanel Orientation="Horizontal" Background="LightSkyBlue" Margin="0,0,0,346" Grid.ColumnSpan="2">
 
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
                 ToolTip="Go to home page" Click="Button_Click" Width="112" >
@@ -39,7 +39,11 @@
                 </DockPanel>
             </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
-                ToolTip="See your appointments" Content="MY APPOINTMENTS" Click="Button_Click_1" Width="174" />
+                ToolTip="See your appointments" Click="Button_Click_1" Width="174" >
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\2759067651606252959-128.png" Height="63" Width="73"></Image>
+                </DockPanel>
+            </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
                 ToolTip="See your notifications"  Click="Button_Click_2" Width="157" >
                 <DockPanel>

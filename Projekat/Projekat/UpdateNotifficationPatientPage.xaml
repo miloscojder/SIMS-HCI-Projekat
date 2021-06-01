@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="UpdateNotifficationPatientPage" Background="LightSkyBlue" Height="635" Width="800">
+        Title="UpdateNotifficationPatientPage" Background="LightSkyBlue" Height="660" Width="800">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Background">
@@ -18,16 +19,61 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="Azure" />
+            <Setter Property="BorderBrush" Value="DarkBlue"></Setter>
+        </Style>
     </Window.Resources>
     <Grid Margin="0,0,0,20">
-        <TextBox x:Name="OldNotificationNameTextBox" HorizontalAlignment="Left" Margin="35,80,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Height="29" IsEnabled="False"/>
-        <TextBox x:Name="OldNotificationDescTextBox" HorizontalAlignment="Left" Margin="183,91,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="598" Height="95" IsReadOnly="True" IsEnabled="False"/>
-        <TextBox x:Name="OldNotificationDateTextBox" HorizontalAlignment="Left" Margin="35,120,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="39" IsReadOnly="True" IsEnabled="False"/>
-        <TextBox x:Name="OldNotificationDaysTextBox" HorizontalAlignment="Left" Margin="35,174,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Height="25" IsReadOnly="True" IsEnabled="False"/>
-        <TextBox x:Name="NewNotificationNameTextBox" HorizontalAlignment="Left" Margin="183,286,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="NewNotificationDescTextBox" HorizontalAlignment="Left" Margin="183,323,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="571" Height="105"/>
-        <TextBox x:Name="NewNotificationDaysTextBox" HorizontalAlignment="Left" Margin="220,517,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"/>
+        <TextBox x:Name="OldNotificationNameTextBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="35,91,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Height="29" IsEnabled="False">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="6"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="OldNotificationDescTextBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="183,91,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="598" Height="95" IsReadOnly="True" IsEnabled="False">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="6"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="OldNotificationDateTextBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="35,138,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="39" IsReadOnly="True" IsEnabled="False">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="6"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="OldNotificationDaysTextBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="35,192,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Height="25" IsReadOnly="True" IsEnabled="False">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="6"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="NewNotificationNameTextBox"  HorizontalAlignment="Left" Margin="183,286,0,0" Text="" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="6"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="NewNotificationDescTextBox" HorizontalAlignment="Left" Margin="183,323,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="571" Height="105">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="6"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="NewNotificationDaysTextBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="220,517,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="90">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="6"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
         <Label Content="Choosen notification" HorizontalAlignment="Left" Margin="289,24,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Label Content="UPDATE" HorizontalAlignment="Left" Margin="340,209,0,0" VerticalAlignment="Top" FontSize="23"/>
         <Label Content="Choose new name: " HorizontalAlignment="Left" Margin="65,282,0,0" VerticalAlignment="Top"/>
@@ -35,10 +81,16 @@
         <Label Content="Pick new date and time:" HorizontalAlignment="Left" Margin="65,461,0,0" VerticalAlignment="Top"/>
         <Label Content="Write how many days left: " HorizontalAlignment="Left" Margin="65,515,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="NewNotificationHourComboBox" ItemsSource="{Binding Termini}" HorizontalAlignment="Left" Margin="340,464,0,0" VerticalAlignment="Top" Width="91"/>
-        <DatePicker Name="NewNotificationDateDatePicker" HorizontalAlignment="Left" Margin="214,463,0,0" VerticalAlignment="Top"/>
-        <Button Content="Update" HorizontalAlignment="Left" Margin="482,515,0,0" VerticalAlignment="Top" Click="UpdateButton_Click" Height="51" Width="113"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="632,517,0,0" VerticalAlignment="Top" Click="CancelButton_Click_1" Height="49" Width="97"/>
+        <DatePicker Name="NewNotificationDateDatePicker" DisplayDateStart="{x:Static sys:DateTime.Today}" HorizontalAlignment="Left" Margin="214,463,0,0" VerticalAlignment="Top"/>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="482,524,0,0" VerticalAlignment="Top" Click="UpdateButton_Click" Height="51" Width="113"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="632,526,0,0" VerticalAlignment="Top" Click="CancelButton_Click_1" Height="49" Width="97"/>
         <Label Content="Write timespan of repeating" HorizontalAlignment="Left" Margin="56,560,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="NewNotificationDaysTextBox_Copy" HorizontalAlignment="Left" Margin="220,568,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"/>
+        <TextBox x:Name="NewNotificationDaysTextBox_Copy" TextAlignment="Center" HorizontalAlignment="Left" Margin="220,568,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="90">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="6"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
     </Grid>
 </Window>

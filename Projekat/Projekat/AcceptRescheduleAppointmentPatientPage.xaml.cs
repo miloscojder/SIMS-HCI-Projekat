@@ -28,6 +28,8 @@ namespace Projekat
             InitializeComponent();
             this.DataContext = this;
 
+            MessageBox.Show("We are sorry, but choosen doctor is not available. If you want you can schedule these appointments: ");
+
             if (priority == ScheduleAppointmentPatient.Priority.DATE)
             {
                 Appointment a = new Appointment();

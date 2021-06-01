@@ -18,7 +18,10 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="Azure" />
+            <Setter Property="BorderBrush" Value="DarkBlue"></Setter>
+        </Style>
     </Window.Resources>
     
     <Grid RenderTransformOrigin="0.349,0.65">
@@ -36,9 +39,17 @@
                 </DockPanel>
             </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
-                ToolTip="See your appointments" Content="MY APPOINTMENTS" Click="Button_Click_3" Width="174" />
+                ToolTip="See your appointments" Click="Button_Click_3" Width="174" >
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\2759067651606252959-128.png" Height="63" Width="73"></Image>
+                </DockPanel>
+            </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
-                ToolTip="See your notifications" Content="MY NOTIFICATIONS" Click="Button_Click_4" Width="157" />
+                ToolTip="See your notifications" Click="Button_Click_4" Width="157" >
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\Notification.ico" DockPanel.Dock="Top" Height="63"/>
+                </DockPanel>
+            </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
                 ToolTip="Look at your medical record" Click="Button_Click_5" Width="160">
                 <DockPanel>
@@ -75,8 +86,20 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox x:Name="HospitalRating" HorizontalAlignment="Left" Margin="231,85,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" Height="21" IsReadOnlyCaretVisible="True" IsEnabled="False" FontWeight="Bold"/>
-        <TextBox x:Name="UnesiteOpis" HorizontalAlignment="Left" Margin="157,27,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="243" Height="19" Grid.Row="1"/>
+        <TextBox x:Name="HospitalRating" TextAlignment="Center" HorizontalAlignment="Left" Margin="231,85,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" Height="21" IsReadOnlyCaretVisible="True" IsEnabled="False" FontWeight="Bold">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="UnesiteOpis" TextAlignment="Center" HorizontalAlignment="Left" Margin="157,27,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="243" Height="19" Grid.Row="1">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
         <Label Content="Rating:" HorizontalAlignment="Left" Margin="157,83,0,0" VerticalAlignment="Top"/>
         <Label Content="Write feedback" HorizontalAlignment="Left" Margin="31,20,0,0" VerticalAlignment="Top" Grid.Row="1"/>
 

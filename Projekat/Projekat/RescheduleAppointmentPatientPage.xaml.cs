@@ -41,12 +41,16 @@ namespace Projekat
             string[] doktori = File.ReadAllLines(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doktoriak.txt", Encoding.UTF8);
             Doktori = new List<string>(doktori);
 
+            OldAppointmentDate.Text = Convert.ToString(a.StartTime);
+            OldAppointmentDoctor.Text = a.doctorUsername;
+            OldAppointmentRoom.Text = a.roomName;
+
             posrednik.doctorUsername = a.doctorUsername;
             posrednik.roomName = a.roomName;
             posrednik.id = a.id;
             posrednik.StartTime = a.StartTime;
             posrednik.AppointmentType = a.AppointmentType;
-            //  System.Windows.MessageBox.Show(a.roomName + " " + a.doctorUsername);           radi dobro
+           
 
         }
 
@@ -72,10 +76,7 @@ namespace Projekat
             newChoosenDate = new DateTime(IzaberiDatum.SelectedDate.Value.Year, IzaberiDatum.SelectedDate.Value.Month, IzaberiDatum.SelectedDate.Value.Day, Convert.ToInt32(preuzeto[0]), Convert.ToInt32(preuzeto[1]), 0);
 
             string izabraniDoktor = (string)Combobox2.SelectedItem;
-
-
-            // System.Windows.MessageBox.Show(posrednik.roomName + " " + posrednik.doctorUsername);
-
+            
             AcceptRescheduleAppointmentPatientPage arapp = new AcceptRescheduleAppointmentPatientPage(posrednik, priority, newChoosenDate, izabraniDoktor);
             arapp.Show();
             this.Close();
