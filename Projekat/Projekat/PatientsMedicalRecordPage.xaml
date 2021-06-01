@@ -31,9 +31,17 @@
                 </DockPanel>
             </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
-                ToolTip="See your appointments" Content="MY APPOINTMENTS" Click="Button_Click_1" Width="174" />
+                ToolTip="See your appointments" Click="Button_Click_1" Width="174" >
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\2759067651606252959-128.png" Height="63" Width="73"></Image>
+                </DockPanel>
+            </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
-                ToolTip="See your notifications" Content="MY NOTIFICATIONS" Click="Button_Click_2" Width="157" />
+                ToolTip="See your notifications"  Click="Button_Click_2" Width="157" >
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\Notification.ico" DockPanel.Dock="Top" Height="63"/>
+                </DockPanel>
+            </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
                 ToolTip="Look at your medical record" Click="Button_Click_3" Width="160">
                 <DockPanel>

@@ -38,6 +38,7 @@ namespace Projekat
         TimeSpan timeSpan = new TimeSpan(7, 0, 0, 0, 0);
         private static int kolikoSamDatumaNasao = 0;
         public HospitalController hospitalController = new HospitalController();
+        public DateTime bindingDate = DateTime.Today;
 
         //globalni brojac
 
@@ -129,6 +130,7 @@ namespace Projekat
                     newAppointment.doctorUsername = izabraniDoktor;
                     newAppointment.StartTime = choosenDate;
 
+                    MessageBox.Show("Appointment is scheduled");
                     AppointmentsPage ap = new AppointmentsPage(newAppointment);
                     ap.Show();
                     this.Close();

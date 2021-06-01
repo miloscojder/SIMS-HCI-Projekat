@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"        
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
@@ -19,7 +20,10 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="Azure" />
+            <Setter Property="BorderBrush" Value="DarkBlue"></Setter>
+        </Style>
     </Window.Resources>
     <Grid>
         <Label Content="Create your notification" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top" FontSize="21" FontFamily="Arial Black"/>
@@ -28,11 +32,35 @@
         <Label Content="Pick starting date and time: " HorizontalAlignment="Left" Margin="29,293,0,0" VerticalAlignment="Top"/>
         <Label Content="How many days you want to recive this notification " HorizontalAlignment="Left" Margin="29,354,0,0" VerticalAlignment="Top"/>
         <Label Content="Write time spawn between notifications: " HorizontalAlignment="Left" Margin="29,394,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="NotificationNameTextBox" HorizontalAlignment="Left" Margin="225,138,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="NotificationDescriptionTextBox" HorizontalAlignment="Left" Margin="225,176,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="535" Height="79"/>
-        <TextBox x:Name="NotificationDaysLeftTextBox" HorizontalAlignment="Left" Margin="357,354,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="NotificationTimeSpawnTextBox" HorizontalAlignment="Left" Margin="355,394,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <DatePicker Name="NotifciationDateDatePicker" HorizontalAlignment="Left" Margin="255,293,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="NotificationNameTextBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="225,138,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="NotificationDescriptionTextBox" HorizontalAlignment="Left" Margin="225,176,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="535" Height="79">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="6"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="NotificationDaysLeftTextBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="355,354,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="NotificationTimeSpawnTextBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="355,394,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <DatePicker Name="NotifciationDateDatePicker" DisplayDateStart="{x:Static sys:DateTime.Today}" HorizontalAlignment="Left" Margin="255,293,0,0" VerticalAlignment="Top"/>
         <Button Content="Create notification" HorizontalAlignment="Left" Margin="259,453,0,0" VerticalAlignment="Top" Click="Button_Click" Height="33" Width="115"/>
         <Button Content="Cancel " HorizontalAlignment="Left" Margin="473,453,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="33" Width="68"/>
         <ComboBox Name="NotrificationDateComboBox" ItemsSource="{Binding Termini}" HorizontalAlignment="Left" Margin="385,295,0,0" VerticalAlignment="Top" Width="90"/>

@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
         Title="ScheduleAppointmentPatient"  Background="#FFAEE0FF" Height="450" Width="815">
@@ -26,7 +27,7 @@
             <RowDefinition Height="137*"/>
         </Grid.RowDefinitions>
         <Label Content="Choose time of appointment&#xD;&#xA;" HorizontalAlignment="Left" Margin="101,95,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <DatePicker Name="IzaberiDatum" HorizontalAlignment="Left" Margin="315,96,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <DatePicker Name="IzaberiDatum" DisplayDateStart="{x:Static sys:DateTime.Today}" HorizontalAlignment="Left" Margin="315,96,0,0" VerticalAlignment="Top" Grid.Row="1"/>
         <ComboBox Name="Combobox1" ItemsSource="{Binding Termini}" SelectedItem="{Binding SelektovanTermin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="471,95,199,286" Grid.Row="1">
         </ComboBox>
 

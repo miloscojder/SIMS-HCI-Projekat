@@ -18,10 +18,14 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="Azure" />
+            <Setter Property="BorderBrush" Value="DarkBlue"></Setter>
+        </Style>
 
     </Window.Resources>
     <Grid>
-        <StackPanel Orientation="Horizontal" Background="LightSkyBlue" Margin="0,0,0,444">
+        <StackPanel Orientation="Horizontal" Background="LightSkyBlue" Margin="0,0,0,424">
             <Button ToolTipService.InitialShowDelay="100" 
     ToolTipService.ShowDuration="100000" 
     ToolTipService.BetweenShowDelay="1000" 
@@ -31,9 +35,17 @@
                 </DockPanel>
             </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
-                ToolTip="See your appointments" Content="MY APPOINTMENTS" Click="Button_Click_1" Width="174" />
+                ToolTip="See your appointments"  Click="Button_Click_1" Width="174" >
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\2759067651606252959-128.png" Height="41" Width="54"></Image>
+                </DockPanel>
+            </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
-                ToolTip="See your notifications" Content="MY NOTIFICATIONS" Click="Button_Click_2" Width="157" />
+                ToolTip="See your notifications" Click="Button_Click_2" Width="157" >
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\Notification.ico" DockPanel.Dock="Top" Height="57" Width="51"/>
+                </DockPanel>
+            </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
                 ToolTip="Look at your medical record" Click="Button_Click_3" Width="160">
                 <DockPanel>
@@ -54,27 +66,76 @@
             </Button>
         </StackPanel>
 
-        <Label Content="Username: " HorizontalAlignment="Left" Margin="308,118,0,0" VerticalAlignment="Top"/>
-        <Label Content="Password: " HorizontalAlignment="Left" Margin="77,395,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="PatientPasswordTextBox" HorizontalAlignment="Left" Margin="192,403,0,0" Text="******" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" IsReadOnlyCaretVisible="True"/>
-        <TextBox x:Name="PatientUsernameTextBox"  HorizontalAlignment="Left" Margin="454,126,0,0" Text="AleksaKralj" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" IsReadOnlyCaretVisible="True"/>
-        <Label Content="Frst Name: " HorizontalAlignment="Left" Margin="451,199,0,0" VerticalAlignment="Top"/>
-        <Label Content="Last Name: " HorizontalAlignment="Left" Margin="451,229,0,0" VerticalAlignment="Top"/>
-        <Label Content="BirthDay: " HorizontalAlignment="Left" Margin="451,264,0,0" VerticalAlignment="Top"/>
-        <Label Content="JMBG: " HorizontalAlignment="Left" Margin="451,329,0,0" VerticalAlignment="Top"/>
-        <Label Content="e-mail: " HorizontalAlignment="Left" Margin="451,295,0,0" VerticalAlignment="Top"/>
-        <Label Content="Phone number:" HorizontalAlignment="Left" Margin="451,360,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="PatientFirstNameTextBox" HorizontalAlignment="Left" Margin="597,207,0,0" Text="Aleksa" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" IsReadOnlyCaretVisible="True"/>
-        <TextBox x:Name="PatientLastNameTextBox" HorizontalAlignment="Left" Margin="597,233,0,0" Text="Kralj" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" IsReadOnlyCaretVisible="True"/>
-        <TextBox x:Name="PatientBDayTextBox" HorizontalAlignment="Left" Margin="597,268,0,0" Text="08:11:1999" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" IsReadOnlyCaretVisible="True"/>
-        <TextBox x:Name="PatientEMailTextBox" HorizontalAlignment="Left" Margin="597,299,0,0" Text="aleksa@gmail.com" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" IsReadOnlyCaretVisible="True"/>
-        <TextBox x:Name="PatientJMBGTextBox" HorizontalAlignment="Left" Margin="597,338,0,0" Text="123123123123" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" IsReadOnlyCaretVisible="True"/>
-        <TextBox x:Name="PatientPhoneNumberTextBox" HorizontalAlignment="Left" Margin="597,364,0,0" Text="0610123123123" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" IsReadOnlyCaretVisible="True"/>
+        <Label Content="Username: " HorizontalAlignment="Left" Margin="109,399,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password: " HorizontalAlignment="Left" Margin="109,424,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="PatientPasswordTextBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="216,432,0,0" Text="123" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" IsReadOnlyCaretVisible="True">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="PatientUsernameTextBox" TextAlignment="Center"  HorizontalAlignment="Left" Margin="216,407,0,0" Text="Aca" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" IsReadOnlyCaretVisible="True">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <Label Content="Frst Name: " HorizontalAlignment="Left" Margin="439,190,0,0" VerticalAlignment="Top"/>
+        <Label Content="Last Name: " HorizontalAlignment="Left" Margin="439,220,0,0" VerticalAlignment="Top"/>
+        <Label Content="BirthDay: " HorizontalAlignment="Left" Margin="439,255,0,0" VerticalAlignment="Top"/>
+        <Label Content="JMBG: " HorizontalAlignment="Left" Margin="439,320,0,0" VerticalAlignment="Top"/>
+        <Label Content="e-mail: " HorizontalAlignment="Left" Margin="439,286,0,0" VerticalAlignment="Top"/>
+        <Label Content="Phone number:" HorizontalAlignment="Left" Margin="439,351,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="PatientFirstNameTextBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="551,198,0,0" Text="Aleksa" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" IsReadOnlyCaretVisible="True">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="PatientLastNameTextBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="551,224,0,0" Text="Kralj" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" IsReadOnlyCaretVisible="True">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="PatientBDayTextBox" TextAlignment="Center"  HorizontalAlignment="Left" Margin="551,259,0,0" Text="08:11:1999" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" IsReadOnlyCaretVisible="True">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="PatientEMailTextBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="551,290,0,0" Text="aleksa@gmail.com" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" IsReadOnlyCaretVisible="True">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="PatientJMBGTextBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="551,324,0,0" Text="123123123123" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" IsReadOnlyCaretVisible="True">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="PatientPhoneNumberTextBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="551,355,0,0" Text="0610123123123" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" IsReadOnlyCaretVisible="True">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
         <Image Margin="29,181,413,141">
             <Image.Source>
                 <BitmapImage DecodePixelWidth="300" UriSource="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Pictures\main-qimg-20df28f3b31895e56cba6dbc0515c635.jpg" />
             </Image.Source>
         </Image>
+        <Label Content="My profile" HorizontalAlignment="Left" Margin="323,95,0,0" VerticalAlignment="Top" FontSize="28" FontStyle="Normal" FontWeight="Bold"/>
 
     </Grid>
 </Window>

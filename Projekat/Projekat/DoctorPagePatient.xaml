@@ -18,7 +18,10 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="Azure" />
+            <Setter Property="BorderBrush" Value="DarkBlue"></Setter>
+        </Style>
     </Window.Resources>
     <Grid>
         <Label Content="Doctors username" HorizontalAlignment="Left" Margin="26,125,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.503,-0.696"/>
@@ -31,14 +34,62 @@
         <Label Content="Rate doctor:" HorizontalAlignment="Left" Margin="29,464,0,0" VerticalAlignment="Top"/>
         <Label Content="Write feedback about doktor:" HorizontalAlignment="Left" Margin="24,520,0,0" VerticalAlignment="Top"/>
         <Label Content="Doctors feedback" HorizontalAlignment="Left" Margin="537,107,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="DoctorsNameTextBox" HorizontalAlignment="Left" Height="26" Margin="182,125,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold"/>
-        <TextBox x:Name="DoctorsRatingTextBox" HorizontalAlignment="Left" Height="26" Margin="183,215,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold"/>
-        <TextBox x:Name="DoctorsExpTextBox" HorizontalAlignment="Left" Height="26" Margin="183,266,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold"/>
-        <TextBox x:Name="DoctorsBirthDayTextBox" HorizontalAlignment="Left" Height="48" Margin="182,389,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold"/>
-        <TextBox x:Name="DoctosPhoneNumberTextBox" HorizontalAlignment="Left" Height="26" Margin="182,345,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold"/>
-        <TextBox x:Name="DoctorsEmailTextBox" HorizontalAlignment="Left" Height="26" Margin="182,305,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold"/>
-        <TextBox x:Name="DoctrsSpecialtyTextBox" HorizontalAlignment="Left" Height="26" Margin="182,168,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold"/>
-        <TextBox x:Name="FeedbackDoctorTextBox" HorizontalAlignment="Left" Margin="210,509,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" Height="47"/>
+        <TextBox x:Name="DoctorsNameTextBox" TextAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="182,125,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="DoctorsRatingTextBox" TextAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="183,215,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="DoctorsExpTextBox" TextAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="183,266,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="DoctorsBirthDayTextBox" TextAlignment="Center" HorizontalAlignment="Left" Height="48" Margin="182,389,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="DoctosPhoneNumberTextBox" TextAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="182,345,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="DoctorsEmailTextBox" TextAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="182,305,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="DoctrsSpecialtyTextBox" TextAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="182,168,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="FeedbackDoctorTextBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="210,509,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" Height="47">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
         <Button Content="Send feedback" HorizontalAlignment="Left" Margin="438,515,0,0" VerticalAlignment="Top" Width="115" Click="PotvrdiButton_Click" Height="41" />
         <ListView x:Name="lvDoctorsFeedback" Background="LightCyan" Margin="395,147,25,122">
             <ListView.View>
