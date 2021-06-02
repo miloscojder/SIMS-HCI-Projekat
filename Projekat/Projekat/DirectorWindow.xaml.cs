@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -12,15 +13,23 @@ using System.Windows.Shapes;
 
 namespace Projekat
 {
-    /// <summary>
-    /// Interaction logic for DirectorWindow.xaml
-    /// </summary>
+
     public partial class DirectorWindow : Window
+        
     {
+        User prenosilac = new User();
+
+        public DirectorWindow(User loggedUser)
+        {
+            InitializeComponent();
+            prenosilac = loggedUser;
+        }
+
         public DirectorWindow()
         {
             InitializeComponent();
         }
+
         private void CreateRoom_Click(object sender, RoutedEventArgs e)
         {
             CreateRoom cr = new CreateRoom();
@@ -89,7 +98,7 @@ namespace Projekat
         {
             ScheduleClassicRenovation scr = new ScheduleClassicRenovation();
             scr.Show();
-            Close();
+           
         }
 
 
