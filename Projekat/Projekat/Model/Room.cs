@@ -1,8 +1,4 @@
-/***********************************************************************
- * Module:  Room.cs
- * Author:  Ana_Marija
- * Purpose: Definition of the Class Room
- ***********************************************************************/
+
 
 using System;
 
@@ -44,7 +40,7 @@ namespace Model
             set
             ;
         }
-        public Enum RoomStatus
+        public RoomStatus RoomStatus
         {
             get
             ;
