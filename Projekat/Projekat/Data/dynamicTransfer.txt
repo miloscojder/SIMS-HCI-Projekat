@@ -6,3 +6,4 @@ Extracted dynamic equipment: 5 band-aid
 Extracted dynamic equipment: 2 compress
 Extracted dynamic equipment: 4 band-aid
 Extracted dynamic equipment: 2 band-aid
+Extracted dynamic equipment: 2 needle

@@ -58,33 +58,38 @@ namespace Projekat
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
-        {              
+        {
             User loggedUser = userController.FindUserByUsernameAndPasswrod(UsernameTextBox.Text, PasswordTextBox.Text);
 
-            switch (loggedUser.Rool)
+            if (loggedUser == null)
             {
-                case RoolType.Doctor:
-                    DoctorWindow dw = new DoctorWindow(loggedUser);
-                    dw.Show();
-                    break;
-                case RoolType.Patient:
-                    PatientMainPage pw = new PatientMainPage(loggedUser);
-                    pw.Show();
-                    this.Close();
-                    break;
-                case RoolType.Secretary:
-                    SecretaryWindow sw = new SecretaryWindow();
-                    sw.Show();
-                    break;
-                case RoolType.Director:
-                    DirectorWindow dirw = new DirectorWindow();
-                    dirw.Show();
-                    break;
-                default:
-                    MessageBox.Show("Nemate nalog!");
-                    break;
-            }
 
+                MessageBox.Show("Ne postoji nalog!");
+            }
+            else
+            {
+                switch (loggedUser.Rool)
+                {
+                    case RoolType.Doctor:
+                        DoctorWindow dw = new DoctorWindow(loggedUser);
+                        dw.Show();
+                        break;
+                    case RoolType.Patient:
+                        PatientMainPage pw = new PatientMainPage(loggedUser);
+                        pw.Show();
+                        break;
+                    case RoolType.Secretary:
+                        SecretaryWindow sw = new SecretaryWindow();
+                        sw.Show();
+                        break;
+                    case RoolType.Director:
+                        DirectorWindow dirw = new DirectorWindow(loggedUser);
+                        dirw.Show();
+                        break;
+                 
+                }
+
+            }
             
         }
     }
