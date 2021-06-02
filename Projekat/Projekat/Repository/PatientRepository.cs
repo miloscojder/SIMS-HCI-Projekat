@@ -1,8 +1,4 @@
-/***********************************************************************
- * Module:  PatientFileStorage.cs
- * Author:  Ana_Marija
- * Purpose: Definition of the Class Model.PatientFileStorage
- ***********************************************************************/
+
 
 using Model;
 using System;
@@ -83,8 +79,19 @@ namespace Repository
             // TODO: implement
             return patients;
       }
-   
-     // private String FileLocation;
-       // private String jsonstring;
+
+        public Patient FindPatientByUsernameAndPassword(String username, String password)
+        {
+
+            Patient loginPatient = new Patient();
+            foreach (Patient p in patients)
+            {
+                if (username == p.Username & password == p.Password)
+                    loginPatient = p;
+            }
+            return loginPatient;
+
+        }
+
     }
 }

@@ -41,9 +41,9 @@ namespace Projekat
             String end = hours + ":" + minutes;
             end = appoin.EndTime;
             id = appoin.id;
-            room.Name = appoin.Room.Name;
+         /*   room.Name = appoin.Room.Name;
             patient.firstName = appoin.Patient.firstName;
-            patient.lastName = appoin.Patient.lastName;
+            patient.lastName = appoin.Patient.lastName;*/
         }
 
         private void Save(object sender, RoutedEventArgs e)
@@ -62,8 +62,8 @@ namespace Projekat
             TypeOfAppointment type = TypeOfAppointment.Examination;
 
 
-            Appointment a = new Appointment(id, date, start, duration, end, room, patient, type);
-            appointmentController.RescheduleDoctor(a);
+          //  Appointment a = new Appointment(id, date, start, duration, end, room, patient, type);
+          //  appointmentController.RescheduleDoctor(a);
 
             Appointments ap = new Appointments();
             ap.Show();

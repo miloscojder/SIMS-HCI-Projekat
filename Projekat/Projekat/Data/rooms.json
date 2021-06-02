@@ -4,6 +4,7 @@
     "Name": "B",
     "RoomType": "Room",
     "Floor": 2,
+    "RoomStatus": 0,
     "Detail": "Room is ready for two patients.",
     "StaticEquipments": [
       {
@@ -21,6 +22,7 @@
     "Name": "A",
     "RoomType": "Operation room",
     "Floor": 4,
+    "RoomStatus": 0,
     "Detail": "Room is ready for operation.",
     "StaticEquipments": [
       {
@@ -62,6 +64,7 @@
     "Name": "F",
     "RoomType": "Bathroom",
     "Floor": 1,
+    "RoomStatus": 0,
     "Detail": "There are 3 bathrooms.",
     "StaticEquipments": [
       {
@@ -87,6 +90,7 @@
     "Name": "C",
     "RoomType": "Operating room",
     "Floor": 4,
+    "RoomStatus": 1,
     "Detail": "Operation has started.",
     "StaticEquipments": [
       {
@@ -112,6 +116,7 @@
     "Name": "D",
     "RoomType": "Room",
     "Floor": 2,
+    "RoomStatus": 1,
     "Detail": "Room is for 15 patients",
     "StaticEquipments": [
       {

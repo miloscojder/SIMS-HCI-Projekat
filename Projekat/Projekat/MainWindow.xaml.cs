@@ -19,17 +19,19 @@ using Newtonsoft.Json;
 using Projekat.Model;
 namespace Projekat
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
 
         UserController userController = new UserController();
+        DoctorController doctorController = new DoctorController();
+        PatientController patientController = new PatientController();
+        //DirectorController directorController = new DirectorController();
+        //SecretaryController secretaryController = new SecretaryController();
         public MainWindow()
         {
             InitializeComponent();
-
+           
         }
         private void Director_Click(object sender, RoutedEventArgs e)
         {
@@ -39,8 +41,8 @@ namespace Projekat
 
       private void Doctor_Click(object sender, RoutedEventArgs e)
         {
-            User u = new User();
-            DoctorWindow doctor = new DoctorWindow(u);
+            Doctor d = new Doctor();
+            DoctorWindow doctor = new DoctorWindow(d);
             doctor.Show();
         }
       
@@ -59,7 +61,7 @@ namespace Projekat
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            User loggedUser = userController.FindUserByUsernameAndPasswrod(UsernameTextBox.Text, PasswordTextBox.Text);
+            User loggedUser = userController.FindUserByUsernameAndPasswrod(UsernameTextBox.Text, PasswordTextBox.Password);
 
             if (loggedUser == null)
             {
@@ -71,11 +73,15 @@ namespace Projekat
                 switch (loggedUser.Rool)
                 {
                     case RoolType.Doctor:
-                        DoctorWindow dw = new DoctorWindow(loggedUser);
+                        Doctor d = new Doctor();
+                        d = doctorController.FindDoctorByUsernameAndPassword(loggedUser.Username, loggedUser.Password);
+                        DoctorWindow dw = new DoctorWindow(d);
                         dw.Show();
                         break;
                     case RoolType.Patient:
-                        PatientMainPage pw = new PatientMainPage(loggedUser);
+                        Patient p = new Patient();
+                        p = patientController.FindPatientByUsernameAndPassword(loggedUser.Username, loggedUser.Password);
+                        PatientMainPage pw = new PatientMainPage(p);
                         pw.Show();
                         break;
                     case RoolType.Secretary:

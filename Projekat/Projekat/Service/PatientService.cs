@@ -1,8 +1,4 @@
-/***********************************************************************
- * Module:  PatientFileStorage.cs
- * Author:  Ana_Marija
- * Purpose: Definition of the Class Model.PatientFileStorage
- ***********************************************************************/
+
 
 using Model;
 using Repository;
@@ -13,15 +9,15 @@ namespace Service
 {
    public class PatientService
    {
-        public PatientRepository patient_repository = new PatientRepository();
+        public PatientRepository patientRepository = new PatientRepository();
       public Model.Patient GetById(int id)
       {
-         return patient_repository.GetById(id);
+         return patientRepository.GetById(id);
       }
 
         public int GenerateNewId()
         {
-            return patient_repository.GenerateNewId();
+            return patientRepository.GenerateNewId();
 
         }
 
@@ -32,21 +28,27 @@ namespace Service
       
       public void Delete(Model.Patient patient)
       {
-             
-            patient_repository.Delete(patient);
+
+            patientRepository.Delete(patient);
       }
       
       public void Save(Model.Patient newPatient)
       {
-            patient_repository.Save(newPatient);
+            patientRepository.Save(newPatient);
       }
       
       public List<Patient> GetAll()
       {
-            return patient_repository.GetAll();
+            return patientRepository.GetAll();
       }
-   
-    
-   
-   }
+
+        public Patient FindPatientByUsernameAndPassword(String username, String password)
+        {
+
+            return patientRepository.FindPatientByUsernameAndPassword(username, password);
+        }
+
+
+
+    }
 }

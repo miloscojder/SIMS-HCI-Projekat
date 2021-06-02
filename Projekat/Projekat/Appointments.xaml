@@ -49,9 +49,8 @@
                             <DataGridTextColumn Header="Time start" Width="70" Binding="{Binding TimeStart}"/>
                             <DataGridTextColumn Header="Duration" Width="70" Binding="{Binding Duration}"/>
                             <DataGridTextColumn Header="End time" Width="70" Binding="{Binding EndTime}"/>
-                            <DataGridTextColumn Header="Room" Width="70" Binding="{Binding Room.Name}"/>
-                            <DataGridTextColumn Header="Patient name" Width="100" Binding="{Binding Patient.firstName}"/>
-                            <DataGridTextColumn Header="Patient surname" Width="100" Binding="{Binding Patient.lastName}"/>
+                            <DataGridTextColumn Header="Room" Width="70" Binding="{Binding RoomName}"/>
+                            <DataGridTextColumn Header="Patient name" Width="100" Binding="{Binding PatientUsername}"/>
                             <DataGridTextColumn Header="Appointment Type" Binding="{Binding AppointmentType}"/>
                         </DataGrid.Columns>
                     </DataGrid>

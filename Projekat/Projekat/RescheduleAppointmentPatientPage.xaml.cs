@@ -42,7 +42,7 @@ namespace Projekat
             Doktori = new List<string>(doktori);
 
             OldAppointmentDate.Text = Convert.ToString(a.StartTime);
-            OldAppointmentDoctor.Text = a.doctorUsername;
+           /* OldAppointmentDoctor.Text = a.doctorUsername;
             OldAppointmentRoom.Text = a.roomName;
 
             posrednik.doctorUsername = a.doctorUsername;
@@ -50,7 +50,7 @@ namespace Projekat
             posrednik.id = a.id;
             posrednik.StartTime = a.StartTime;
             posrednik.AppointmentType = a.AppointmentType;
-           
+           */
 
         }
 

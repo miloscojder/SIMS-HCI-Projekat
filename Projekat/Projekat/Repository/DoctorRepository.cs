@@ -78,6 +78,19 @@ namespace Repository
         }
 
 
+        public Doctor FindDoctorByUsernameAndPassword(String username, String password)
+        {
+            Doctor loginDoctor = new Doctor();
+            foreach (Doctor d in doctors)
+            {
+                if (username == d.Username & password == d.Password)
+                    loginDoctor = d;
+            }
+            return loginDoctor;
+                    
+        }
+
+
         public List<Operations> GetAllOperations()
       {
          // TODO: implement

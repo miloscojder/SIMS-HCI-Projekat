@@ -25,12 +25,12 @@ namespace Projekat
     {
         NotifficationController notifficationController = new NotifficationController();
         List<Notification> notifications;
-        public static User prenosilac = new User();
+        public static Patient prenosilac = new Patient();
 
-        public PatientMainPage(User loggedUser)
+        public PatientMainPage(Patient patient)
         {
             InitializeComponent();
-           prenosilac = loggedUser;        
+            prenosilac = patient;        
 
             notifications = notifficationController.GetAllNotifications();
             notifficationController.IsItTime(notifications);           

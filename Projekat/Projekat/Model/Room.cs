@@ -44,6 +44,13 @@ namespace Model
             set
             ;
         }
+        public Enum RoomStatus
+        {
+            get
+            ;
+            set
+            ;
+        }
 
         public int Floor
         {

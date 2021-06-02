@@ -13,6 +13,7 @@ namespace Projekat
     public partial class DoctorWindow : Window
     {
         public PatientController patientController = new PatientController();
+        public static Doctor loginDoctor = new Doctor();
         
 
         public List<Patient> patients
@@ -21,9 +22,10 @@ namespace Projekat
             set;
         }
         public Anamnesis anam = new Anamnesis();
-        public DoctorWindow(User user)
+        public DoctorWindow(Doctor doctor)
         {
             InitializeComponent();
+            loginDoctor = doctor;
 
             AppointmentRepository appointmentRepository = new AppointmentRepository();
             List<Appointment> appointments = appointmentRepository.GetAll();
@@ -33,15 +35,15 @@ namespace Projekat
             List<Operations> operations = operationRepository.GetAll();
             dataGridd1.ItemsSource = operations;
 
-            Name.Content = user.firstName;
-            Surname.Content = user.lastName;
-            Id.Content = user.id;
-            jmbg.Content = user.Jmbg;
-            Date.Content = user.DateOfBirth;
-            Email.Content = user.EMail;
-            Phone.Content = user.PhoneNumber;
-            Spec.Content = user.doctor.Specialty;
-
+            Name.Content = doctor.firstName;
+            Surname.Content = doctor.lastName;
+            Id.Content = doctor.id;
+            jmbg.Content = doctor.Jmbg;
+            Date.Content = doctor.DateOfBirth;
+            Email.Content = doctor.EMail;
+            Phone.Content = doctor.PhoneNumber;
+            Spec.Content = doctor.Specialty;
+            MessageBox.Show(doctor.Username);
         }
 
 

@@ -41,7 +41,7 @@ namespace Projekat
 
                 for (int i = 0; i < 3; i++)
                 {
-                    a = new Appointment(date, doktori[i], sale[i]);   
+            //        a = new Appointment(date, doktori[i], sale[i]);   
                     a.id = random.Next(1, 1000);  
                     a.AppointmentType = TypeOfAppointment.Examination;
 
@@ -54,7 +54,7 @@ namespace Projekat
             {
                 Appointment a = new Appointment();
 
-                a.doctorUsername = doctorsUsername;
+               // a.doctorUsername = doctorsUsername;
 
                 List<Appointment> appointmentDoctorChecked = new List<Appointment>();
 
@@ -69,7 +69,7 @@ namespace Projekat
 
                 for (int i = 0; i < 3; i++)
                 {
-                    a = new Appointment(timeList[i], doctorsUsername, sale[i]);
+              //      a = new Appointment(timeList[i], doctorsUsername, sale[i]);
                     a.id = random.Next(1, 1000);
                     a.AppointmentType = TypeOfAppointment.Examination;
 
@@ -79,11 +79,11 @@ namespace Projekat
                 lvAcceptRescheduleAppointment.ItemsSource = appointmentDoctorChecked;
             }
 
-            posrednik1.doctorUsername = posred.doctorUsername;
+          /*  posrednik1.doctorUsername = posred.doctorUsername;
             posrednik1.id = posred.id;
             posrednik1.roomName = posred.roomName;
             posrednik1.StartTime = posred.StartTime;
-            posrednik1.AppointmentType = posred.AppointmentType;
+            posrednik1.AppointmentType = posred.AppointmentType;*/
         }
 
         private void AcceptRescButton_Click(object sender, RoutedEventArgs e)

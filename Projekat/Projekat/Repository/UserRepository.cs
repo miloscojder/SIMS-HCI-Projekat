@@ -65,10 +65,10 @@ namespace Repository
             return user;
         }
 
-        public User FindUserByUsernameAndPassword(String username, String passwrod)
+        public User FindUserByUsernameAndPassword(String username, String password)
         {           
             foreach(User u in users) {
-                if((username==u.Username) && (passwrod == u.Password))
+                if((username==u.Username) && (password == u.Password))
                 {
                     return u;
                 }

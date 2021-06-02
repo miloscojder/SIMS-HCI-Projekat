@@ -47,6 +47,11 @@ namespace Service
             return doctorRepository.GetDoctor(id);
         }
 
+        public Doctor FindDoctorByUsernameAndPassword(String username, String password)
+        {
+
+            return doctorRepository.FindDoctorByUsernameAndPassword(username, password);
+        }
 
 
         public List<Operations> GetAllOperations()

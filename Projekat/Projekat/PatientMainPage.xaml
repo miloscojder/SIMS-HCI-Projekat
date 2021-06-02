@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
+        
         mc:Ignorable="d"
         Title="PatientMainPage" Background="LightSkyBlue" Height="600" Width="815">
     <Window.Resources>
@@ -43,48 +44,32 @@
     ToolTipService.ShowDuration="100000" 
     ToolTipService.BetweenShowDelay="1000" 
     ToolTip="Go to home page" Click="HomePageButton_Click" Width="112">
-                <DockPanel>
-                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\iconfinder_web_Homepage_6916975.png"/>
-                </DockPanel>
+               
             </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
                 ToolTip="See your appoinemtns" Click="MyAppointmentsButton_Click" Width="174" >
-                <DockPanel>
-                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\2759067651606252959-128.png" Height="63" Width="73"></Image>
-                </DockPanel>
+                
             </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
                 ToolTip="See your notifications" Click="NotificationButton_Click_1" Width="157" >
-                <DockPanel>
-                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\Notification.ico" DockPanel.Dock="Top" Height="63"/>
-                </DockPanel>
+                
             </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
                 ToolTip="Look at your medical record" Click="MedicalRecordButton_Click" Width="160">
-                <DockPanel>
-                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\literature-256.ico"></Image>
-                </DockPanel>
+                
             </Button>
 
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
                 ToolTip="See questions and aks" Click="QandAButton_Click" Width="100">
-                <DockPanel>
-                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\question-mark-4-256.ico"></Image>
-                </DockPanel>
+                
             </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
                 ToolTip="My profile" Click="PatientProfileButton_Click" Width="99" >
-                <DockPanel>
-                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\user.png"/>
-                </DockPanel>
+                
             </Button>
         </StackPanel>
         <Label Content="OVO CE BITI NEKI STATICKI TEKST&#xD;&#xA;&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj" HorizontalAlignment="Left" Margin="92,254,0,0" VerticalAlignment="Top" Height="268" Width="325" Grid.Column="1" Grid.RowSpan="2"/>
-        <Image Width="300" Margin="84,251,8,132" Grid.RowSpan="2">
-            <Image.Source>
-                <BitmapImage DecodePixelWidth="300" UriSource="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Pictures\hospital.jpg" />
-            </Image.Source>
-        </Image>
+        
 
     </Grid>
 </Window>

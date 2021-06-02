@@ -46,6 +46,11 @@ namespace Controller
             return doctorService.GetDoctor(id);
         }
 
+        public Doctor FindDoctorByUsernameAndPassword(String username, String password) {
+
+            return doctorService.FindDoctorByUsernameAndPassword(username, password);
+        }
+
 
         public List<Appointment> GetAllAppointments()
       {
