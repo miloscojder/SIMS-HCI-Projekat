@@ -37,7 +37,8 @@ namespace Projekat
         List<DateTime> listaVremenaZakazivanja = new List<DateTime>();
         TimeSpan timeSpan = new TimeSpan(7, 0, 0, 0, 0);
         private static int kolikoSamDatumaNasao = 0;
-        public HospitalController hospitalController;
+        public HospitalController hospitalController = new HospitalController();
+        public DateTime bindingDate = DateTime.Today;
 
         //globalni brojac
 
@@ -129,7 +130,8 @@ namespace Projekat
                     newAppointment.doctorUsername = izabraniDoktor;
                     newAppointment.StartTime = choosenDate;
 
-                    AppointmentsPage ap = new AppointmentsPage(newAppointment, prenosilac);
+                    MessageBox.Show("Appointment is scheduled");
+                    AppointmentsPage ap = new AppointmentsPage(newAppointment);
                     ap.Show();
                     this.Close();
                 }
@@ -139,7 +141,7 @@ namespace Projekat
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AppointmentsPage ap = new AppointmentsPage(null, prenosilac);
+            AppointmentsPage ap = new AppointmentsPage(null);
             ap.Show();
             this.Close();
         }

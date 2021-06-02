@@ -6,20 +6,65 @@
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
         Title="NotificationsPatientPage"  Background="LightSkyBlue" Height="550" Width="815">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
+                        <GradientStop Color="Azure" Offset="0.2"/>
+                        <GradientStop Color="LightBlue" Offset="0.85"/>
+                        <GradientStop Color="Azure" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
     <Grid>
-        <StackPanel Orientation="Horizontal" Background="LightSkyBlue" Margin="0,0,0,470">
-            <Button Content="HOME PAGE" Click="Button_Click" Width="112" ></Button>
-            <Button Content="MY APPOINTMENTS" Click="Button_Click_1" Width="174" />
-            <Button Content="MY NOTIFICATIONS" Click="Button_Click_2" Width="157" />
-            <Button Content="MY MEDICAL RECORD" Click="Button_Click_3" Width="160"/>
-            <Button Content="Q and A" Click="Button_Click_4" Width="100"/>
-            <Button Content="MY PROFILE" Click="Button_Click_5" Width="99" />
+        <StackPanel Orientation="Horizontal" Background="LightSkyBlue" Margin="0,0,0,445">
+            <Button ToolTipService.InitialShowDelay="100" 
+    ToolTipService.ShowDuration="100000" 
+    ToolTipService.BetweenShowDelay="1000" 
+    ToolTip="Go to home page" Click="Button_Click" Width="112" >
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\iconfinder_web_Homepage_6916975.png"/>
+                </DockPanel>
+            </Button>
+            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
+                ToolTip="See your appointments"   Click="Button_Click_1" Width="174" >
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\2759067651606252959-128.png" Height="58" Width="59"></Image>
+                </DockPanel>
+            </Button>
+            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
+                ToolTip="See your notifications" Click="Button_Click_2" Width="157" >
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\Notification.ico" DockPanel.Dock="Top" Height="53" Width="53"/>
+                </DockPanel>
+            </Button>
+            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
+                ToolTip="Look at your medical record" Click="Button_Click_3" Width="160">
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\literature-256.ico"></Image>
+                </DockPanel>
+            </Button>
+            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
+                ToolTip="See questions and ask" Click="Button_Click_4" Width="100">
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\question-mark-4-256.ico"></Image>
+                </DockPanel>
+            </Button>
+            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
+                ToolTip="My profile" Click="Button_Click_5" Width="99">
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\user.png"/>
+                </DockPanel>
+            </Button>
         </StackPanel>
 
-        <ListView Margin="10,139,134,31" Background="LightCyan" Name="lvNotificationList">
+        <ListView Margin="80,139,64,83" Background="LightCyan" Name="lvNotificationList">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding Id}" />
                     <GridViewColumn Header="Notification name" Width="100" DisplayMemberBinding="{Binding Name}" />
                     <GridViewColumn Header="Date" Width="100" DisplayMemberBinding="{Binding Date}" />
                     <GridViewColumn Header="Description" Width="300" DisplayMemberBinding="{Binding Description}"/>
@@ -27,9 +72,9 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Create" HorizontalAlignment="Left" Margin="711,247,0,0" VerticalAlignment="Top" Click="CreateButton_Click_6" Height="32" Width="61"/>
-        <Button Content="Update" HorizontalAlignment="Left" Margin="711,301,0,0" VerticalAlignment="Top" Click="UpdateButton_Click_7" Height="32" Width="61"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="711,346,0,0" VerticalAlignment="Top" Click="DeleteButton_Click_8" Height="32" Width="61"/>
-        <Label Content="My notifications" HorizontalAlignment="Left" Margin="208,69,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Button Content="Create" HorizontalAlignment="Left" Margin="233,456,0,0" VerticalAlignment="Top" Click="CreateButton_Click_6" Height="44" Width="80"/>
+        <Button IsEnabled="{Binding SelectedItems.Count, ElementName=lvNotificationList}" Content="Update" HorizontalAlignment="Left" Margin="341,456,0,0" VerticalAlignment="Top" Click="UpdateButton_Click_7" Height="44" Width="80"/>
+        <Button IsEnabled="{Binding SelectedItems.Count, ElementName=lvNotificationList}" Content="Delete" HorizontalAlignment="Left" Margin="449,456,0,0" VerticalAlignment="Top" Click="DeleteButton_Click_8" Height="44" Width="80"/>
+        <Label Content="My notifications" HorizontalAlignment="Left" Margin="312,83,0,0" VerticalAlignment="Top" FontSize="18"/>
     </Grid>
 </Window>

@@ -3,28 +3,76 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="RescheduleAppointmentPatientPage"  Background="LightSkyBlue" Height="450" Width="815">
+        Title="RescheduleAppointmentPatientPage"  Background="LightSkyBlue" Height="600" Width="815">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
+                        <GradientStop Color="Azure" Offset="0.2"/>
+                        <GradientStop Color="LightBlue" Offset="0.85"/>
+                        <GradientStop Color="Azure" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="Azure" />
+            <Setter Property="BorderBrush" Value="DarkBlue"></Setter>
+        </Style>
+        <Style TargetType="DatePickerTextBox">
+            <Setter Property="Background" Value="AliceBlue"></Setter>
+            <Setter Property="BorderBrush" Value="AliceBlue"></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="IsEnabled" Value="True"></Setter>
+            <Setter Property="IsReadOnly" Value="False"></Setter>
+        </Style>
+        <Style TargetType="ComboBox">
+    </Style>
+    </Window.Resources>
     <Grid Margin="0,0,3.6,0">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="137*"/>
-        </Grid.RowDefinitions>
-        <Label Content="Choose time of appointment&#xD;&#xA;" HorizontalAlignment="Left" Margin="99,68.7,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <DatePicker Name="IzaberiDatum" HorizontalAlignment="Left" Margin="313,69.7,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <ComboBox Name="Combobox1" ItemsSource="{Binding Termini}" SelectedItem="{Binding SelektovanTermin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="472,69.7,199,311" Grid.Row="1">
-        </ComboBox>
 
-        <Label Content="Choose doctor&#xA;" HorizontalAlignment="Left" Margin="99,146.7,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <ComboBox Name="Combobox2" ItemsSource="{Binding Doktori}" SelectedItem="{Binding SelektovanDoktor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left" Margin="242,146.7,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
-        <Label Content="Choose priorty  &#xA;" Margin="326,212.7,375,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <RadioButton Content="Date" HorizontalAlignment="Left" Margin="269,256.7,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked" Grid.Row="1"/>
-        <RadioButton Content="Doctor" HorizontalAlignment="Left" Margin="415,256.7,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked_1" Grid.Row="1"/>
-        <Button Content="Send request" Margin="326,321.7,353,53" Click="SendRequestButton_Click" Grid.Row="1">
+        <Label Content="Pick time of appointment&#xA;" HorizontalAlignment="Left" Margin="103,274,0,0" VerticalAlignment="Top"/>
+        <DatePicker Name="IzaberiDatum" DisplayDateStart="{x:Static sys:DateTime.Today}" HorizontalAlignment="Left" Margin="308,275,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="Combobox1" ItemsSource="{Binding Termini}" SelectedItem="{Binding SelektovanTermin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="449,274,292,269"/>
 
-        </Button>
-        <Button Content="Cancel rescheduling" HorizontalAlignment="Left" Margin="658,357,0,0" Grid.Row="1" VerticalAlignment="Top" Click="Button_Click" Height="35" Width="114"/>
+        <Label Content="Choose doctor&#xA;" HorizontalAlignment="Left" Margin="163,323,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="Combobox2" ItemsSource="{Binding Doktori}" SelectedItem="{Binding SelektovanDoktor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left" Margin="308,328,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Choose priorty  &#xA;" Margin="402,378,297,0" VerticalAlignment="Top"/>
+        <RadioButton Content="Date" HorizontalAlignment="Left" Margin="345,422,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
+        <RadioButton Content="Doctor" HorizontalAlignment="Left" Margin="491,422,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked_1"/>
+        <Button Content="Send request for rescheduling" Margin="248,486,377,26" Click="SendRequestButton_Click"/>
+        <Button Content="Cancel rescheduling" HorizontalAlignment="Left" Margin="449,486,0,0" VerticalAlignment="Top" Click="Button_Click" Height="51" Width="169"/>
+        <TextBox x:Name="OldAppointmentDate" TextAlignment="Center" HorizontalAlignment="Left" Margin="588,41,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="137" IsEnabled="False" IsReadOnly="True">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="OldAppointmentDoctor" TextAlignment="Center" HorizontalAlignment="Left" Margin="588,67,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" IsEnabled="False">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="OldAppointmentRoom" TextAlignment="Center" HorizontalAlignment="Left" Margin="588,93,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" IsEnabled="False">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <Label Content="Appointment you wanted to reschedule:" HorizontalAlignment="Left" Margin="79,59,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Doctor" HorizontalAlignment="Left" Margin="498,59,0,0" VerticalAlignment="Top"/>
+        <Label Content="Room" HorizontalAlignment="Left" Margin="498,85,0,0" VerticalAlignment="Top"/>
+        <Label Content="Date" HorizontalAlignment="Left" Margin="498,33,0,0" VerticalAlignment="Top"/>
+        <Label Content="NEW APPOINTMENT:" HorizontalAlignment="Left" Margin="296,173,0,0" VerticalAlignment="Top" FontSize="27"/>
+        <Separator HorizontalAlignment="Center" Height="25" Margin="0,137,0,0" VerticalAlignment="Top" Width="811"/>
 
     </Grid>
 </Window>

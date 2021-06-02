@@ -6,25 +6,74 @@
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
         Title="HospitalViewPatientPage"  Background="LightSkyBlue" Height="550" Width="815">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
+                        <GradientStop Color="Azure" Offset="0.2"/>
+                        <GradientStop Color="LightBlue" Offset="0.85"/>
+                        <GradientStop Color="Azure" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="Azure" />
+            <Setter Property="BorderBrush" Value="DarkBlue"></Setter>
+        </Style>
+    </Window.Resources>
+    
     <Grid RenderTransformOrigin="0.349,0.65">
         <Grid.RowDefinitions>
             <RowDefinition Height="121*"/>
             <RowDefinition Height="413*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Background="LightSkyBlue" Margin="0,0,0,50">
-            <Button Content="HOME PAGE" Click="Button_Click_2" Width="112" ></Button>
-            <Button Content="MY APPOINTMENTS" Click="Button_Click_3" Width="174" />
-            <Button Content="MY NOTIFICATIONS" Click="Button_Click_4" Width="157" />
-            <Button Content="MY MEDICAL RECORD" Click="Button_Click_5" Width="160"/>
-            <Button Content="Q and A" Click="Button_Click_6" Width="100"/>
-            <Button Content="MY PROFILE" Click="Button_Click_7" Width="99" />
+            <Button ToolTipService.InitialShowDelay="100" 
+    ToolTipService.ShowDuration="100000" 
+    ToolTipService.BetweenShowDelay="1000" 
+    ToolTip="Go to home page" Click="Button_Click_2" Width="112" >
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\iconfinder_web_Homepage_6916975.png"/>
+                </DockPanel>
+            </Button>
+            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
+                ToolTip="See your appointments" Click="Button_Click_3" Width="174" >
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\2759067651606252959-128.png" Height="63" Width="73"></Image>
+                </DockPanel>
+            </Button>
+            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
+                ToolTip="See your notifications" Click="Button_Click_4" Width="157" >
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\Notification.ico" DockPanel.Dock="Top" Height="63"/>
+                </DockPanel>
+            </Button>
+            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
+                ToolTip="Look at your medical record" Click="Button_Click_5" Width="160">
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\literature-256.ico"></Image>
+                </DockPanel>
+            </Button>
+            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
+                ToolTip="See questions and ask" Click="Button_Click_6" Width="100">
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\question-mark-4-256.ico"></Image>
+                </DockPanel>
+                </Button>
+            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
+                ToolTip="My profile" Click="Button_Click_7" Width="99" >
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\user.png"/>
+                </DockPanel>
+            </Button>
         </StackPanel>
         <Label Content="BOLNICA 1: " HorizontalAlignment="Left" Margin="46,83,0,0" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="602,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1"/>
-        <ListView Margin="435,91,21,64" Background="AliceBlue" Name="lvDoctorsPatient" Grid.Row="1" >
+        <ListView Margin="458,91,49,64" Background="AliceBlue" Name="lvDoctorsPatient" Grid.Row="1" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding id}" />
                     <GridViewColumn Header="Doctors Name" Width="100" DisplayMemberBinding="{Binding Username}" />
                     <GridViewColumn Header="Specialty" Width="100" DisplayMemberBinding="{Binding Specialty}" />
                     <GridViewColumn Header="Rating" Width="100" DisplayMemberBinding="{Binding Grade}">
@@ -37,17 +86,31 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox x:Name="HospitalRating" HorizontalAlignment="Left" Margin="231,85,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" Height="21" IsReadOnlyCaretVisible="True" IsEnabled="False" FontWeight="Bold"/>
-        <TextBox x:Name="UnesiteOpis" HorizontalAlignment="Left" Margin="157,27,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="243" Height="19" Grid.Row="1"/>
-        <Label Content="Rejting:" HorizontalAlignment="Left" Margin="157,83,0,0" VerticalAlignment="Top"/>
-        <Label Content="Dodajte vase misljenje" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <TextBox x:Name="HospitalRating" TextAlignment="Center" HorizontalAlignment="Left" Margin="231,85,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" Height="21" IsReadOnlyCaretVisible="True" IsEnabled="False" FontWeight="Bold">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="UnesiteOpis" TextAlignment="Center" HorizontalAlignment="Left" Margin="157,27,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="243" Height="19" Grid.Row="1">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <Label Content="Rating:" HorizontalAlignment="Left" Margin="157,83,0,0" VerticalAlignment="Top"/>
+        <Label Content="Write feedback" HorizontalAlignment="Left" Margin="31,20,0,0" VerticalAlignment="Top" Grid.Row="1"/>
 
-        <Label Content="Ocenite" HorizontalAlignment="Left" Margin="357,83,0,0" VerticalAlignment="Top"/>
-        <Button Content="Update ocene" HorizontalAlignment="Left" Margin="539,81,0,0" VerticalAlignment="Top" Click="Button_Click" Height="29" />
-        <Button Content="Ocenite Doktora" HorizontalAlignment="Left" Margin="582,353,0,0" VerticalAlignment="Top" Click="OceniteDoktoraButton_Click" Grid.Row="1"/>
+        <Label Content="Rate:" HorizontalAlignment="Left" Margin="357,83,0,0" VerticalAlignment="Top"/>
+        <Button Content="Update rating" HorizontalAlignment="Left" Margin="539,81,0,0" VerticalAlignment="Top" Click="Button_Click" Height="29" />
 
-        <Button Content="Update Opisa" HorizontalAlignment="Left" Margin="418,27,0,0" VerticalAlignment="Top" Click="Button_Click_1" Width="78" Grid.Row="1" Height="24" />
-        <Label Content="Lista lekara ove bolnice" HorizontalAlignment="Left" Margin="561,59,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+
+        <Button IsEnabled="{Binding SelectedItems.Count, ElementName=lvDoctorsPatient}" Content="Rate doctor" HorizontalAlignment="Left" Margin="582,353,0,0" VerticalAlignment="Top" Click="OceniteDoktoraButton_Click" Grid.Row="1"/>
+
+        <Button Content="Update feedback" HorizontalAlignment="Left" Margin="418,27,0,0" VerticalAlignment="Top" Click="Button_Click_1" Width="101" Grid.Row="1" Height="24" />
+        <Label Content="List of doctors in this hospital" HorizontalAlignment="Left" Margin="539,59,0,0" VerticalAlignment="Top" Grid.Row="1"/>
         <ListView x:Name="lvHospitalFeedback" Background="LightCyan" Margin="33,91,428,64" Grid.Row="1">
             <ListView.View>
                 <GridView>
@@ -68,6 +131,6 @@
             <ComboBoxItem Content="9"/>
             <ComboBoxItem Content="10"/>
         </ComboBox>
-        <Label Content="Dosadasnja misljenja o bolnici" HorizontalAlignment="Left" Margin="128,59,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="Hospital feedbacks" HorizontalAlignment="Left" Margin="159,59,0,0" Grid.Row="1" VerticalAlignment="Top"/>
     </Grid>
 </Window>

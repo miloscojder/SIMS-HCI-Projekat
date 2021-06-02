@@ -28,13 +28,15 @@ namespace Projekat
             InitializeComponent();
             this.DataContext = this;
 
+            MessageBox.Show("We are sorry, but choosen doctor is not available. If you want you can schedule these appointments: ");
+
             if (priority == ScheduleAppointmentPatient.Priority.DATE)
             {
                 Appointment a = new Appointment();
                 List<Appointment> appointmentsDateChecked = new List<Appointment>();
            
-                string[] doktori = File.ReadAllLines(@"C:\Users\Korisnik\Desktop\asdas\SIMS-HCI-Projekat-main\Projekat\Projekat\Data\doktoriak.txt", Encoding.UTF8);
-                string[] sale = File.ReadAllLines(@"C:\Users\Korisnik\Desktop\asdas\SIMS-HCI-Projekat-main\Projekat\Projekat\Data\saleak.txt", Encoding.UTF8);
+                string[] doktori = File.ReadAllLines(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doktoriak.txt", Encoding.UTF8);
+                string[] sale = File.ReadAllLines(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\saleak.txt", Encoding.UTF8);
                 Random random = new Random();
 
                 for (int i = 0; i < 3; i++)
@@ -56,7 +58,7 @@ namespace Projekat
 
                 List<Appointment> appointmentDoctorChecked = new List<Appointment>();
 
-                string[] sale = File.ReadAllLines(@"C:\Users\Korisnik\Desktop\asdas\SIMS-HCI-Projekat-main\Projekat\Projekat\Data\saleak.txt", Encoding.UTF8);
+                string[] sale = File.ReadAllLines(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\saleak.txt", Encoding.UTF8);
                 Random random = new Random();
                 List<DateTime> timeList = new List<DateTime>();
 
@@ -101,7 +103,7 @@ namespace Projekat
                     MessageBox.Show("Vas pregled je zakazan u losem terminu.");
                     this.Close();
 
-                    AppointmentsPage a = new AppointmentsPage(null, prenosilac);
+                    AppointmentsPage a = new AppointmentsPage(null);
                     a.Show();
                     this.Close();
                 }
@@ -122,7 +124,7 @@ namespace Projekat
 
                     File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json", JsonConvert.SerializeObject(newSvi));
 
-                    AppointmentsPage a = new AppointmentsPage(app, prenosilac);
+                    AppointmentsPage a = new AppointmentsPage(app);
                     a.Show();
                     this.Close();
                 }
@@ -131,7 +133,7 @@ namespace Projekat
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AppointmentsPage ap = new AppointmentsPage(null,prenosilac);
+            AppointmentsPage ap = new AppointmentsPage(null);
             ap.Show();
             this.Close();
         }

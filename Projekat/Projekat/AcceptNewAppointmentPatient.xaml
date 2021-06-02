@@ -5,31 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="AcceptNewAppointmentPatient"  Background="LightSkyBlue" Height="450" Width="815">
-    <Grid>
+        Title="AcceptNewAppointmentPatient"  Background="LightSkyBlue" Height="450" Width="581">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
+                        <GradientStop Color="Azure" Offset="0.2"/>
+                        <GradientStop Color="LightBlue" Offset="0.85"/>
+                        <GradientStop Color="Azure" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+    <Grid Margin="0,0,-34,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="27*"/>
-            <ColumnDefinition Width="13*"/>
+            <ColumnDefinition Width="452*"/>
+            <ColumnDefinition Width="163*"/>
         </Grid.ColumnDefinitions>
 
-        <ListView Margin="10,10,193.6,163" Background="LightCyan" Name="lvAcceptAppointment" Grid.ColumnSpan="2">
+        <ListView Margin="135,87,0,86" Background="LightCyan" Name="lvAcceptAppointment">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding id}" />
                     <GridViewColumn Header="Start Time" Width="100" DisplayMemberBinding="{Binding StartTime}" />
+                    <GridViewColumn Header="Doctor name" Width="100" DisplayMemberBinding="{Binding doctorUsername}"/>
                     <GridViewColumn Header="Room name" Width="100" DisplayMemberBinding="{Binding roomName}" />
-                    <GridViewColumn Header="Doctor name" Width="100" DisplayMemberBinding="{Binding doctorUsername}">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Mail}" TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Accept" HorizontalAlignment="Left" Margin="454,351,0,0" VerticalAlignment="Top" Click="AcceptButton_Click" Height="36" Width="58"/>
-        <Button Content="Cancel" Grid.Column="1" HorizontalAlignment="Left" Margin="27,351,0,0" VerticalAlignment="Top" Click="Button_Click" Height="36" Width="58"/>
+        <Button Content="Accept appointment " HorizontalAlignment="Left" Margin="137,368,0,0" VerticalAlignment="Top" Click="AcceptButton_Click" Height="36" Width="126"/>
+        <Button Content="Cancel scheduling" HorizontalAlignment="Left" Margin="332,368,0,0" VerticalAlignment="Top" Click="Button_Click" Height="36" Width="110"/>
+        <Label Content="Some free choises for you to choose:" HorizontalAlignment="Left" Margin="172,35,0,0" VerticalAlignment="Top" FontSize="14" Height="29" Width="244"/>
 
     </Grid>
 </Window>

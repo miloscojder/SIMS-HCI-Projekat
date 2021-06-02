@@ -19,61 +19,51 @@ namespace Projekat
     /// </summary>
     public partial class PatientsMedicalRecordPage : Window
     {
-        public User prenosilac = new User();
+        
         MedicalRecordController medicalRecordController = new MedicalRecordController();
         PrescriptionController prescriptionController = new PrescriptionController();
-        ReferralPatientController ReferralPatientController = new ReferralPatientController();
-        HospitalReferralsController referralsController = new HospitalReferralsController();
-
-        public PatientsMedicalRecordPage(User loggedUser)
+       
+        public PatientsMedicalRecordPage()
         {
             InitializeComponent();
             this.DataContext = this;
 
             List<MedicalRecord> patientsRecords = new List<MedicalRecord>();
-            patientsRecords = medicalRecordController.GetAllRecordsByPatientsUsername(loggedUser.Username);
-
-            lvMedicalRecord.ItemsSource = patientsRecords;
-
+            patientsRecords = medicalRecordController.GetAllRecordsByPatientsUsername(PatientMainPage.prenosilac.Username);
+           
             List<Prescription> patientsPrescriptions = new List<Prescription>();
-            patientsPrescriptions = prescriptionController.GetAllPrescriptionsByPatientsUsername(loggedUser.Username);
+            patientsPrescriptions = prescriptionController.GetAllPrescriptionsByPatientsUsername(PatientMainPage.prenosilac.Username);
 
-            List<ReferralPatient> referralPatients = new List<ReferralPatient>();
-            referralPatients = ReferralPatientController.GerAllReferralsByPatientsUsername(loggedUser.Username);
 
-            List<HospitalReferrals> hospitalReferrals = new List<HospitalReferrals>();
-            hospitalReferrals = referralsController.GetAllHospitalRefferalsByPatientsUsername(loggedUser.Username);
-
-            lvHospitalReferrals.ItemsSource = hospitalReferrals;           
-            lvRaferrals.ItemsSource = referralPatients;
+            lvMedicalRecord.ItemsSource = patientsRecords;            
             lvPrescriptions.ItemsSource = patientsPrescriptions;
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PatientMainPage pmp = new PatientMainPage(null);
+            PatientMainPage pmp = new PatientMainPage(PatientMainPage.prenosilac);
             pmp.Show();
             this.Close();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            AppointmentsPage ap = new AppointmentsPage(null,prenosilac);
+            AppointmentsPage ap = new AppointmentsPage(null);
             ap.Show();
             this.Close();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null,null);
+            NotificationsPatientPage npp = new NotificationsPatientPage(null);
             npp.Show();
             this.Close();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage(prenosilac);
+            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage();
             pmrp.Show();
             this.Close();
         }
@@ -89,6 +79,13 @@ namespace Projekat
         {
             PatientProfilePage ppp = new PatientProfilePage();
             ppp.Show();
+            this.Close();
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            ReferralViewPatientPage rvpp = new ReferralViewPatientPage();
+            rvpp.Show();
             this.Close();
         }
     }

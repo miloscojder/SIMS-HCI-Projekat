@@ -20,7 +20,7 @@ namespace Projekat
     /// </summary>
     public partial class AcceptNewAppointmentPatient : Window
     {
-        public User prenosilac = new User();
+     
 
         public AcceptNewAppointmentPatient(ScheduleAppointmentPatient.Priority priority, DateTime choosenDate, string izabraniDoctor)
         {
@@ -90,7 +90,7 @@ namespace Projekat
             {
                 Appointment app = (Appointment)lvAcceptAppointment.SelectedItems[0];
 
-                AppointmentsPage appo = new AppointmentsPage(app,prenosilac);
+                AppointmentsPage appo = new AppointmentsPage(app);
                 appo.Show();
                 this.Close();
             }
@@ -98,7 +98,7 @@ namespace Projekat
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AppointmentsPage app = new AppointmentsPage(null,prenosilac);
+            AppointmentsPage app = new AppointmentsPage(null);
             app.Show();
             this.Close();
         }

@@ -10,6 +10,7 @@ namespace Model
         public String Id { get; set; }
         public String Description { get; set; }
         public int DaysLeft { get; set; }
+        public TimeSpan repeatingTime { get; set; }
 
         public Patient patient;
         public String patientsUsername { get; set; }

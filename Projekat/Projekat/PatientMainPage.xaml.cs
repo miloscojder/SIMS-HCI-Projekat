@@ -25,20 +25,18 @@ namespace Projekat
     {
         NotifficationController notifficationController = new NotifficationController();
         List<Notification> notifications;
-        User prenosilac = new User();
+        public static User prenosilac = new User();
 
         public PatientMainPage(User loggedUser)
         {
             InitializeComponent();
-           prenosilac = loggedUser;
-
-        //    MessageBox.Show(passenger.Username);
+           prenosilac = loggedUser;        
 
             notifications = notifficationController.GetAllNotifications();
             notifficationController.IsItTime(notifications);           
         }
        
-
+  
         private void SeeHospitalButton_Click(object sender, RoutedEventArgs e)
         {
             HospitalViewPatientPage hvpp = new HospitalViewPatientPage(null);
@@ -55,28 +53,28 @@ namespace Projekat
 
         private void NotificationButton_Click_1(object sender, RoutedEventArgs e)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null,prenosilac);
+            NotificationsPatientPage npp = new NotificationsPatientPage(null);
             npp.Show();
             this.Close();
         }
 
         private void HomePageButton_Click(object sender, RoutedEventArgs e)
         {
-            PatientMainPage pmp = new PatientMainPage(null);
+            PatientMainPage pmp = new PatientMainPage(PatientMainPage.prenosilac);
             pmp.Show();
             this.Close();
         }
 
         private void MyAppointmentsButton_Click(object sender, RoutedEventArgs e)
         {
-            AppointmentsPage ap = new AppointmentsPage(null, prenosilac);
+            AppointmentsPage ap = new AppointmentsPage(null);
             ap.Show();
             this.Close();
         }
 
         private void MedicalRecordButton_Click(object sender, RoutedEventArgs e)
         {
-            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage(prenosilac);
+            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage();
             pmrp.Show();
             this.Close();
         }
