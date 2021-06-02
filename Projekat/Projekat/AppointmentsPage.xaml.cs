@@ -48,13 +48,13 @@ namespace Projekat
         //morace da stoji u drugom sloju
         private static void SaveAppointments(List<Appointment> spisak)
         {
-            File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json", JsonConvert.SerializeObject(spisak));
+            File.WriteAllText(@"C:\Users\Ana_Marija\source\repos\SIMS\Projekat\Projekat\Data\appointments.json", JsonConvert.SerializeObject(spisak));
         }
 
         //morace da stoji u drugom sloju
         private static List<Appointment> getAppointments()
         {
-            return JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json"));
+            return JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(@"C:\Users\Ana_Marija\source\repos\SIMS\Projekat\Projekat\Data\appointments.json"));
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)

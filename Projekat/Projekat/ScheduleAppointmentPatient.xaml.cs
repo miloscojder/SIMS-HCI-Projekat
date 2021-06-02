@@ -30,7 +30,7 @@ namespace Projekat
         public User prenosilac = new User();
         public List<String> Termini { get; set; }
         public string SelektovanTermin { get; set; }
-        public List<String> Doktori { get; set; }
+        public List<Doctor> Doktori { get; set; }
         public string SelektovanDoktor { get; set; }
         public Priority priority;
         public static int counter = 0;          //ovo treba da bude globalno, da li ovo valja?
@@ -39,6 +39,7 @@ namespace Projekat
         private static int kolikoSamDatumaNasao = 0;
         public HospitalController hospitalController = new HospitalController();
         public DateTime bindingDate = DateTime.Today;
+        public DoctorController doctorController = new DoctorController();
 
         //globalni brojac
 
@@ -47,11 +48,10 @@ namespace Projekat
             InitializeComponent();
             this.DataContext = this;
 
-            string[] termini = File.ReadAllLines(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\terminiak.txt", Encoding.UTF8);
+            string[] termini = File.ReadAllLines(@"C:\Users\Ana_Marija\source\repos\SIMS\Projekat\Projekat\Data\terminiak.txt", Encoding.UTF8);
             Termini = new List<string>(termini);
 
-            string[] doktori = File.ReadAllLines(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doktoriak.txt", Encoding.UTF8);
-            Doktori = new List<string>(doktori);
+            Doktori = doctorController.GetAllDoctors();
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
@@ -106,7 +106,7 @@ namespace Projekat
 
                 string izabraniDoktor = (string)Combobox2.SelectedItem;
 
-                List<DateTime> doktoroviTermini = JsonConvert.DeserializeObject<List<DateTime>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\zauzetiDoktor.json"));
+                List<DateTime> doktoroviTermini = JsonConvert.DeserializeObject<List<DateTime>>(File.ReadAllText(@"C:\Users\Ana_Marija\source\repos\SIMS\Projekat\Projekat\Data\zauzetiDoktor.json"));
                     
                 foreach(DateTime dt in doktoroviTermini)
                 {
@@ -123,15 +123,16 @@ namespace Projekat
                 } 
                 else
                 {
-                    Appointment newAppointment = new Appointment();
+                   Appointment newAppointment = new Appointment();
                     Random rid = new Random();
                     newAppointment.id = rid.Next(1, 1000);
-                    newAppointment.roomName = "R1";
-                    newAppointment.doctorUsername = izabraniDoktor;
+                    newAppointment.RoomName = "R1";
+                    newAppointment.DoctorUsername = izabraniDoktor;
+                    newAppointment.PatientUsername = PatientMainPage.prenosilac.Username;
                     newAppointment.StartTime = choosenDate;
-
+                 
                     MessageBox.Show("Appointment is scheduled");
-                    AppointmentsPage ap = new AppointmentsPage(newAppointment);
+                   AppointmentsPage ap = new AppointmentsPage(newAppointment);
                     ap.Show();
                     this.Close();
                 }

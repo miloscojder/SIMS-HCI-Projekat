@@ -56,10 +56,10 @@ namespace Projekat
             for (int i = 0; i < appointments.Count; i++)
             {
                 Appointment app = appointments[i];
-                if (app.doctorUsername==posrednik.Username)
+               /* if (app.doctorUsername==posrednik.Username)
                 {
                     brojac++;
-                }
+                }*/
             }
 
             if(brojac<1)

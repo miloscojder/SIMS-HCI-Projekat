@@ -1,163 +1,54 @@
 [
-
-    {
-        "id": 1,
-        "Date": "21.12.2021.",
-        "StartTime": "0001-01-01T00:00:00",
-        "TimeStart": "12:00",
-        "Duration": "30",
-        "EndTime": "12:30",
-        "AppointmentType": 1,
-        "Room": {
-            "Id": 1,
-            "Name": "D",
-            "RoomType": "Examination",
-            "Floor": 1,
-            "Detail": "Examination room",
-            "StaticEquipments": null
-        },
-        "Patient": {
-            "record": null,
-            "id": 1,
-            "Username": null,
-            "Password": null,
-            "firstName": "Nikolina",
-            "lastName": "Todic",
-            "Jmbg": null,
-            "EMail": null,
-            "PhoneNumber": null,
-            "DateOfBirth": "0001-01-01T00:00:00"
-        },
-        "Anamnesis": null,
-        "roomName": null,
-        "doctorUsername": null
-    },
-    {
-        "id": 2,
-        "Date": "16.08.2021.",
-        "StartTime": "0001-01-01T00:00:00",
-        "TimeStart": "11:00",
-        "Duration": "30",
-        "EndTime": "10:30",
-        "AppointmentType": 1,
-        "Room": {
-            "Id": 0,
-            "Name": "D",
-            "RoomType": null,
-            "Floor": 0,
-            "Detail": null,
-            "StaticEquipments": null
-        },
-        "Patient": {
-            "record": null,
-            "id": 0,
-            "Username": null,
-            "Password": null,
-            "firstName": "Mirko",
-            "lastName": "Mirkovic",
-            "Jmbg": null,
-            "EMail": null,
-            "PhoneNumber": null,
-            "DateOfBirth": "0001-01-01T00:00:00"
-        },
-        "Anamnesis": null,
-        "roomName": null,
-        "doctorUsername": null
-    },
-    {
-        "id": 3,
-        "Date": "15.05.2021.",
-        "StartTime": "0001-01-01T00:00:00",
-        "TimeStart": "08:10",
-        "Duration": "40",
-        "EndTime": "08:50",
-        "AppointmentType": 1,
-        "Room": {
-            "Id": 0,
-            "Name": "B",
-            "RoomType": null,
-            "Floor": 0,
-            "Detail": null,
-            "StaticEquipments": null
-        },
-        "Patient": {
-            "record": null,
-            "id": 0,
-            "Username": null,
-            "Password": null,
-            "firstName": "Kristina",
-            "lastName": "Todic",
-            "Jmbg": null,
-            "EMail": null,
-            "PhoneNumber": null,
-            "DateOfBirth": "0001-01-01T00:00:00"
-        },
-        "Anamnesis": null,
-        "roomName": null,
-        "doctorUsername": null
-    },
-    {
-        "id": 4,
-        "Date": "18.06.2021.",
-        "StartTime": "0001-01-01T00:00:00",
-        "TimeStart": "09:00",
-        "Duration": "20",
-        "EndTime": "09:20",
-        "AppointmentType": 1,
-        "Room": {
-            "Id": 0,
-            "Name": "B",
-            "RoomType": null,
-            "Floor": 0,
-            "Detail": null,
-            "StaticEquipments": null
-        },
-        "Patient": {
-            "record": null,
-            "id": 0,
-            "Username": null,
-            "Password": null,
-            "firstName": "Pera",
-            "lastName": "Peric",
-            "Jmbg": null,
-            "EMail": null,
-            "PhoneNumber": null,
-            "DateOfBirth": "0001-01-01T00:00:00"
-        },
-        "Anamnesis": null,
-        "roomName": null,
-        "doctorUsername": null
-    },
-    {
-        "id": 5,
-        "Date": "14.05.2021",
-        "StartTime": "0001-01-01T00:00:00",
-        "TimeStart": "13:00",
-        "Duration": "20",
-        "EndTime": "13:20",
-        "AppointmentType": 1,
-        "Room": {
-            "Id": 0,
-            "Name": "B",
-            "RoomType": null,
-            "Floor": 0,
-            "Detail": null,
-            "StaticEquipments": null
-        },
-        "Patient": {
-            "record": null,
-            "id": 0,
-            "Username": null,
-            "Password": null,
-            "firstName": "Nikolina",
-            "lastName": "Todic",
-            "Jmbg": null,
-            "EMail": null,
-            "PhoneNumber": null,
-            "DateOfBirth": "0001-01-01T00:00:00"
-        },
-        "Anamnesis": null,
-        "roomName": null,
-        "doctorUsername": null
-    }
+  {
+    "id": 0,
+    "Date": null,
+    "StartTime": "0001-01-01T00:00:00",
+    "TimeStart": null,
+    "Duration": null,
+    "EndTime": null,
+    "AppointmentType": 0,
+    "Anamnesis": null,
+    "RoomName": null,
+    "DoctorUsername": null,
+    "PatientUsername": null
+  },
+  {
+    "id": 1,
+    "Date": "12.06.2021.",
+    "StartTime": "0001-01-01T00:00:00",
+    "TimeStart": "14:30",
+    "Duration": "15",
+    "EndTime": "14:45",
+    "AppointmentType": 1,
+    "Anamnesis": null,
+    "RoomName": "B",
+    "DoctorUsername": null,
+    "PatientUsername": "pera123"
+  },
+  {
+    "id": 2,
+    "Date": "13.12.2021.",
+    "StartTime": "0001-01-01T00:00:00",
+    "TimeStart": "12:00",
+    "Duration": "15",
+    "EndTime": "12:15",
+    "AppointmentType": 1,
+    "Anamnesis": null,
+    "RoomName": "C",
+    "DoctorUsername": "kris",
+    "PatientUsername": "pera123"
+  },
+  {
+    "id": 214,
+    "Date": null,
+    "StartTime": "2021-06-10T07:30:00",
+    "TimeStart": null,
+    "Duration": null,
+    "EndTime": null,
+    "AppointmentType": 0,
+    "Anamnesis": null,
+    "RoomName": "R1",
+    "DoctorUsername": "Marija Popovic",
+    "PatientUsername": "aca"
+  }
 ]

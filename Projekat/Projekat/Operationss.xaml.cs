@@ -47,8 +47,8 @@ namespace Projekat
 
         private void Back(object sender, RoutedEventArgs e)
         {
-            User u = new User();
-            DoctorWindow sc = new DoctorWindow(u);
+            Doctor d = new Doctor();
+            DoctorWindow sc = new DoctorWindow(d);
             sc.Show();
             Close();
 

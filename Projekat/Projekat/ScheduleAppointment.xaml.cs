@@ -14,12 +14,14 @@ namespace Projekat
         public AppointmentController appointmentController = new AppointmentController();
         public PatientRepository patientRepository = new PatientRepository();
         public RoomRepository roomRepository = new RoomRepository();
+        public Patient patient = new Patient();
         public ScheduleAppointment(Patient p)
         {
             InitializeComponent();
             this.DataContext = this;
             Name.Text = p.firstName;
             Surname.Text = p.lastName;
+            patient = p;
 
         }
 
@@ -37,21 +39,18 @@ namespace Projekat
             String end = hourss + ":" + minutess;
             String duration = Duration.Text;
 
-
             Room r = new Room();
             r.Name = RoomName.Text;
            
-
-
-            Patient p = new Patient();
-            p.firstName = Name.Text;
-            p.lastName = Surname.Text;
+          
+            patient.firstName = Name.Text;
+            patient.lastName = Surname.Text;
 
             app.AppointmentType = TypeOfAppointment.Examination;
             TypeOfAppointment type = app.AppointmentType;
 
-             Appointment a = new Appointment(ida, date, start, duration, end, r, p, type);
-            appointmentController.ScheduleDoctor(a);
+            Appointment a = new Appointment(ida, date, start, duration, end, r.Name, patient.Username, DoctorWindow.loginDoctor.Username, type);
+             appointmentController.ScheduleDoctor(a);
 
          
              MessageBox.Show("Appointment scheduled!");
