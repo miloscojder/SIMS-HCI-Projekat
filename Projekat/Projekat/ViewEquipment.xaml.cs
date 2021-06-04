@@ -29,10 +29,10 @@ namespace Projekat
         int id1;
         EquipmentType eqType;
         EquipmentType eqType1;
-        public ViewEquipment()
+        public ViewEquipment(int id)
         {
             InitializeComponent();
-            staticEquipment = staticEquipmentController.GetAll();
+            staticEquipment = staticEquipmentController.GetEquipmentByRoomId(id);
             dataGridStaticEquipment.ItemsSource = staticEquipment;
             dynamicEquipment = dynamicEquipmentController.GetAll();
             dataGridDynamicEquipment.ItemsSource = dynamicEquipment;
@@ -88,8 +88,7 @@ namespace Projekat
             staticEquipmentController.UpdateEquipment(stequipment);
             id = -1;
 
-            ViewEquipment ve = new ViewEquipment();
-            ve.Show();
+            
             
             
         }
@@ -104,8 +103,7 @@ namespace Projekat
             dynamicEquipmentController.UpdateEquipment(dtequipment);
             id1 = -1;
 
-            ViewEquipment ve = new ViewEquipment();
-            ve.Show();
+            
             
         }
         private void TransferDynamic_Click(object sender, RoutedEventArgs e)

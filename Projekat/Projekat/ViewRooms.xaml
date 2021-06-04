@@ -15,6 +15,7 @@
                 <DataGridTextColumn Header="Floor" Binding="{Binding Floor}"/>
                 <DataGridTextColumn Header="Detail" Binding="{Binding Detail}"/>
                 <DataGridTextColumn Header="Room type" Binding="{Binding RoomType}"/>
+                <DataGridTextColumn Header="Size of room" Binding="{Binding Size}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Back" Click="Back_Click" HorizontalAlignment="Left" Margin="45,373,0,0" VerticalAlignment="Top" Width="75"/>
