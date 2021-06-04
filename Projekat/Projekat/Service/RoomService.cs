@@ -11,14 +11,23 @@ namespace Service
    public class RoomService
    {
         public RoomRepository roomRepository = new RoomRepository();
+        public readonly AppointmentService appointmentService = new AppointmentService();
         public StaticEquipmentRepository staticRepository = new Repository.StaticEquipmentRepository();
      
 
-        public Boolean ClassicRenovation(Room room)
+        public Boolean ClassicRenovation(int roomId, DateTime renovationDate, double duration)
       {
-         // TODO: implement
-         return false;
-      }
+            Appointment appointment = new Appointment(renovationDate, duration, roomId);
+            if (appointmentService.IsRoomAvailable(appointment))
+            {
+                appointmentService.SaveRenovation(appointment);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
       
       public Boolean AdvancedRenovation(Room room)
       {

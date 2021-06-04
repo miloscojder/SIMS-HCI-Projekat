@@ -14,10 +14,9 @@ namespace Controller
    public class RoomController
    {
         public RoomService roomService = new RoomService();
-        public Boolean ClassicRenovation(Room room)
-      {
-         // TODO: implement
-         return false;
+        public Boolean ClassicRenovation(int roomId, DateTime renovationDate, double duration)
+      { 
+         return roomService.ClassicRenovation(roomId,renovationDate,duration);
       }
       
       public Boolean AdvancedRenovation(Room room)

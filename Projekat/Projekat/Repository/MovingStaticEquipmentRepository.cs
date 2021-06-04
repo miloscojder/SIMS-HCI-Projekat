@@ -51,12 +51,12 @@ namespace Projekat.Repository
             return staticEquipments;
         }
 
-        public Boolean DeleteEquipment(int id)
+        public void DeleteEquipment(int id)
         {
             int index = staticEquipments.FindIndex(obj => obj.Id == id);
             staticEquipments.RemoveAt(index);
             WriteToJson();
-            return true;
+            
         }
 
         public int GenerateNewId()
