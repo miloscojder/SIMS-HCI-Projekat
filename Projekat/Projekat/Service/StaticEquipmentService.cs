@@ -43,6 +43,10 @@ namespace Service
          return staticEquipmentRepository.DeleteEquipment(id);
       }
 
+        public List<StaticEquipment> GetEquipmentByRoomId(int id) {
+            return staticEquipmentRepository.GetEquipmentByRoomId(id);
+        }
+
 
 
         public int GenerateNewId()

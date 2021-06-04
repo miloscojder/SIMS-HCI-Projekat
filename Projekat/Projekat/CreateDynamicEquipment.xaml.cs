@@ -33,9 +33,7 @@ namespace Projekat
             DynamicEquipment dequipment = new DynamicEquipment(ind, eqname, myStatus, eqquantity);
             dynamicEquipmentController.Save(dequipment);
 
-            ViewEquipment ve = new ViewEquipment();
-            ve.Show();
-            Close();
+            
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

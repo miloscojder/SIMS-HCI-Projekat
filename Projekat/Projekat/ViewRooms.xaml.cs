@@ -54,12 +54,13 @@ namespace Projekat
         }
         private void ViewRoomEquipment_Click(object sender, RoutedEventArgs e)
         {
-           // StaticEquipment staticEquipment = (StaticEquipment)dataGridSobe.SelectedItems[0];
-           // staticEquipmentController.GetOne(staticEquipment.Id);
+            Room room = (Room)dataGridSobe.SelectedItems[0];
+            
 
-            ViewEquipment equipment = new ViewEquipment();
+            ViewEquipment equipment = new ViewEquipment(room.Id);
             equipment.Show();
-            Close();
+           
         }
+
     }
 }

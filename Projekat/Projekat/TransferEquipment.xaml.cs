@@ -65,7 +65,7 @@ namespace Projekat
             }
         private void CancelDynamic_Click(object sender, RoutedEventArgs e)
         {
-            ViewEquipment ve = new ViewEquipment();
+            ViewEquipment ve = new ViewEquipment(1);
             ve.Show();
             Close();
         }
