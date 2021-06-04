@@ -22,9 +22,9 @@ namespace Projekat
         public ScheduleClassicRenovation()
         {
             InitializeComponent();
-            RoomRepository roomRepository = new RoomRepository();
-            List<Room> rooms = roomRepository.GetAllRooms();
-            classicRenovationDataGrid.ItemsSource = rooms;
+            classicRenovationDataGrid.ItemsSource = roomController.GetAllRooms();
+
+
         }
 
         private void ViewClassicRenovation_Click(object sender, RoutedEventArgs e)
@@ -40,7 +40,9 @@ namespace Projekat
             {
                 Room room = (Room)classicRenovationDataGrid.SelectedItems[0];
                 DateTime renovationDate = SelectedDate();
-                //roomController.Renovation(room.Id, renovationDate, Double.Parse(duration.Text));
+                roomController.ClassicRenovation(room.Id, renovationDate, Double.Parse(duration.Text));
+                MessageBox.Show("Uspešno ste rezervisali renoviranje");
+                this.Close();
             }
             catch
             {

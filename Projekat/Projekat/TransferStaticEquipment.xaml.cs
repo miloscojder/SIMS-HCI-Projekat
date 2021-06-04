@@ -37,15 +37,18 @@ namespace Projekat
         private void MovingStaticEquipment()
         {
             List<MovingStaticEquipment> listOfStatic = movingStaticController.GetAll();
-            foreach (MovingStaticEquipment staticToMove in listOfStatic)
-            {
-                if (staticToMove.DateTime.Ticks <= DateTime.Now.Ticks)
-                {
-                    roomController.MoveStaticEquipment(staticToMove.StaticId, staticToMove.RoomId);
-                    movingStaticController.DeleteEquipment(staticToMove.Id);
-                }
 
-            }
+
+                foreach (MovingStaticEquipment staticToMove in listOfStatic.ToArray())
+                {
+                    if (staticToMove.DateTime.Ticks <= DateTime.Now.Ticks)
+                    {
+                        roomController.MoveStaticEquipment(staticToMove.StaticId, staticToMove.RoomId);
+                        movingStaticController.DeleteEquipment(staticToMove.Id);
+                    }
+
+                }
+            
         }
 
             private void MoveToTransfer_Click(object sender, RoutedEventArgs e)

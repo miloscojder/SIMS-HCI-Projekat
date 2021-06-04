@@ -14,6 +14,8 @@
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Room type" Binding="{Binding RoomType}"/>
                 <DataGridTextColumn Header="Floor" Binding="{Binding Floor}"/>
+                <DataGridTextColumn Header="Detail" Binding="{Binding Detail}"/>
+                <DataGridTextColumn Header="Size" Binding="{Binding Size}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Select Room" HorizontalAlignment="Left" Margin="209,254,0,0" VerticalAlignment="Top" Width="106" Height="28"/>

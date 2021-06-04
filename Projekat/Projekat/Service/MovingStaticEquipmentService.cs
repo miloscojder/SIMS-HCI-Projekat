@@ -22,10 +22,10 @@ namespace Projekat.Service
             return staticEquipmentRepository.GetAll();
         }
 
-        public Boolean DeleteEquipment(int id)
+        public void DeleteEquipment(int id)
         {
 
-            return staticEquipmentRepository.DeleteEquipment(id);
+             staticEquipmentRepository.DeleteEquipment(id);
         }
         public int GenerateNewId()
         {

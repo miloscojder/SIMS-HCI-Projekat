@@ -22,6 +22,10 @@ namespace Model
         public string DoctorUsername { get; set; }
         public string PatientUsername { get; set; }
 
+        //treba upravniku
+        public double DurationInMinutes { get; set; }
+        public int RoomId { get; set; }
+
         public Anamnesis Anamnesis { get; set; }
 
         public Appointment() { }
@@ -37,6 +41,18 @@ namespace Model
             PatientUsername = patientName;
             DoctorUsername = doctorUsername;
             AppointmentType = type;
+        }
+
+        //treba upravniku
+        public Appointment(DateTime startTime, double durationInMinutes, int roomId)
+        {
+            StartTime = startTime;
+            DurationInMinutes = durationInMinutes;
+            RoomId = roomId;
+            PatientUsername = null;
+            DoctorUsername= null;
+            AppointmentType = 0;
+
         }
 
         public Appointment(DateTime date, string DoctorsName, string room)
