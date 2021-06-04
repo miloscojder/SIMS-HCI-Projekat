@@ -14,7 +14,6 @@ namespace Projekat
     {
         public PatientController patientController = new PatientController();
         public static Doctor loginDoctor = new Doctor();
-        
 
         public List<Patient> patients
         {
@@ -28,24 +27,21 @@ namespace Projekat
             loginDoctor = doctor;
 
             AppointmentRepository appointmentRepository = new AppointmentRepository();
-            List<Appointment> appointments = appointmentRepository.GetAll();
+            List<Appointment> appointments = appointmentRepository.GetAllForUser(doctor);
             dataGridd.ItemsSource = appointments;
-
-            OperationRepository operationRepository = new OperationRepository();
-            List<Operations> operations = operationRepository.GetAll();
-            dataGridd1.ItemsSource = operations;
+            Appi.IsSelected = true;
 
             Name.Content = doctor.firstName;
             Surname.Content = doctor.lastName;
             Id.Content = doctor.id;
             jmbg.Content = doctor.Jmbg;
-            Date.Content = doctor.DateOfBirth;
+            Date.Content = doctor.DateOfBirth.ToString();
             Email.Content = doctor.EMail;
             Phone.Content = doctor.PhoneNumber;
             Spec.Content = doctor.Specialty;
-            MessageBox.Show(doctor.Username);
+           
         }
-
+        
 
 
         private void Patients(object sender, RoutedEventArgs e)
@@ -69,22 +65,7 @@ namespace Projekat
             Close();
         }
 
-        private void AppointmentClick(object sender, RoutedEventArgs e)
-        {
-            Appointments m = new Appointments();
-            m.Show();
-            Close();
-        }
-
-        private void OperationsClick(object sender, RoutedEventArgs e)
-        {
-            Operationss m = new Operationss();
-            m.Show();
-            Close();
-        }
-
-
-
+      
 
         private void LogOut(object sender, RoutedEventArgs e)
         {
@@ -100,10 +81,6 @@ namespace Projekat
             Close();
         }
 
-        private void Aprove(object sender, RoutedEventArgs e)
-        {
-
-        }
 
 
         private void SeeAll(object sender, RoutedEventArgs e)
@@ -113,10 +90,30 @@ namespace Projekat
             Close();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+       
+
+        private void Reschedule(object sender, RoutedEventArgs e)
         {
-            RequestCRUD rq = new RequestCRUD();
-            rq.Show();
+            Appointment a = (Appointment)dataGridd.SelectedItems[0];
+            ShowChangesA sc = new ShowChangesA(a);
+            sc.Show();
+            Close();
+        }
+
+        private void Schedule(object sender, RoutedEventArgs e)
+        {
+            ViewPatients sc = new ViewPatients();
+            sc.Show();
+            Close();
+        }
+
+        private void Cancel(object sender, RoutedEventArgs e)
+        {
+            Appointment a = (Appointment)dataGridd.SelectedItems[0];
+            AppointmentRepository appointmentRepository = new AppointmentRepository();
+            appointmentRepository.Cancel(a);
+            DoctorWindow d = new DoctorWindow(loginDoctor);
+            d.Show();
             Close();
         }
     }

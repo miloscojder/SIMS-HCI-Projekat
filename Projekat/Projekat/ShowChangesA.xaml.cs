@@ -10,7 +10,7 @@ namespace Projekat
     public partial class ShowChangesA : Window
     {
         public AppointmentController appointmentController = new AppointmentController();
-
+        public User u = new User();
         public List<Appointment> appointments
         {
             get;
@@ -29,21 +29,15 @@ namespace Projekat
             Date.Text = appoin.Date;
             Duration.Text = appoin.Duration;
             String hours = "";
-            String minutes = "";
+            hours = appoin.TimeStart;
             Hourss.Text = hours;
-            Minutess.Text = minutes;
-            String start = hours + ":" + minutes;
-            start = appoin.TimeStart;
             String hours1 = "";
-            String minutes1 = "";
+            hours1 = appoin.EndTime;
             Hours.Text = hours1;
-            Minutes.Text = minutes1;
-            String end = hours + ":" + minutes;
-            end = appoin.EndTime;
             id = appoin.id;
-         /*   room.Name = appoin.Room.Name;
-            patient.firstName = appoin.Patient.firstName;
-            patient.lastName = appoin.Patient.lastName;*/
+            room.Name = appoin.RoomName;
+            patient.Username = appoin.PatientUsername;
+          //  patient.lastName = appoin.Patient.lastName;
         }
 
         private void Save(object sender, RoutedEventArgs e)
@@ -52,24 +46,37 @@ namespace Projekat
             
             String date = Date.Text;
             String hours = Hours.Text;
-            String minutes = Minutes.Text;
             String hourss = Hourss.Text;
-            String minutess = Minutess.Text;
-            String end = hours + ":" + minutes;
-            String start = hourss + ":" + minutess;
+            String end = hours;
+            String start = hourss;
             String duration = Duration.Text;
 
-            TypeOfAppointment type = TypeOfAppointment.Examination;
+            string type = "Examination";
 
 
-          //  Appointment a = new Appointment(id, date, start, duration, end, room, patient, type);
-          //  appointmentController.RescheduleDoctor(a);
+           // Appointment a = new Appointment(id, date, start, duration, end, room, patient, type);
+           // appointmentController.RescheduleDoctor(a);
 
-            Appointments ap = new Appointments();
+            DoctorWindow ap = new DoctorWindow(DoctorWindow.loginDoctor);
             ap.Show();
             Close();
 
 
+        }
+
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            
+            DoctorWindow a = new DoctorWindow(DoctorWindow.loginDoctor);
+            a.Show();
+            Close();
+        }
+
+        private void LogOut(object sender, RoutedEventArgs e)
+        {
+            MainWindow m = new MainWindow();
+            m.Show();
+            Close();
         }
     }
 }

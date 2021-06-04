@@ -15,13 +15,12 @@ namespace Projekat.Model
         {
             Id = id;
             Name = name;
-            Verification = VerificationType.Waiting;
             Details = details;
             Alternative = alternative;
 
         }
 
-        public Medicines(int id, String name, String details, String alternative, String explanation, String statusType)
+        public Medicines(int id, String name, String details, String alternative, String explanation, string statusType)
         {
             Id = id;
             Name = name;
@@ -65,9 +64,8 @@ namespace Projekat.Model
             set
             ;
         }
-        public VerificationType Verification { get; set; }
 
-        public String StatusType { get; set; }
+        public string StatusType { get; set; }
 
     }
    }

@@ -46,8 +46,7 @@ namespace Projekat
 
         private void Back(object sender, RoutedEventArgs e)
         {
-            Doctor dr = new Doctor();
-            DoctorWindow d = new DoctorWindow(dr);
+            DoctorWindow d = new DoctorWindow(DoctorWindow.loginDoctor);
             d.Show();
             Close();
         }
@@ -86,22 +85,6 @@ namespace Projekat
             m.Show();
             Close();
         }
-
-        private void AppointmentClick(object sender, RoutedEventArgs e)
-        {
-            Appointments m = new Appointments();
-            m.Show();
-            Close();
-        }
-
-        private void OperationsClick(object sender, RoutedEventArgs e)
-        {
-            Operationss m = new Operationss();
-            m.Show();
-            Close();
-        }
-
-
 
 
         private void LogOut(object sender, RoutedEventArgs e)

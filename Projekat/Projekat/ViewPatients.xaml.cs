@@ -13,6 +13,7 @@ namespace Projekat
     public partial class ViewPatients : Window
     {
         public PatientController patientController = new PatientController();
+        public List<Patient> patient = new List<Patient>();
 
         public List<Patient> patients
         {
@@ -41,10 +42,7 @@ namespace Projekat
         }
         
 
-        private void Aprove(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
 
         private void SeeAll(object sender, RoutedEventArgs e)
         {
@@ -73,19 +71,7 @@ namespace Projekat
             Close();
         }
 
-        private void AppointmentClick(object sender, RoutedEventArgs e)
-        {
-            Appointments m = new Appointments();
-            m.Show();
-            Close();
-        }
-
-        private void OperationsClick(object sender, RoutedEventArgs e)
-        {
-            Operationss m = new Operationss();
-            m.Show();
-            Close();
-        }
+       
         private void LogOut(object sender, RoutedEventArgs e)
         {
             MainWindow m = new MainWindow();
@@ -140,8 +126,7 @@ namespace Projekat
 
         private void Back(object sender, RoutedEventArgs e)
         {
-            Doctor d = new Doctor();
-            DoctorWindow sc = new DoctorWindow(d);
+            DoctorWindow sc = new DoctorWindow(DoctorWindow.loginDoctor);
             sc.Show();
             Close();
 
@@ -154,15 +139,22 @@ namespace Projekat
             m.Show();
             Close();
         }
-        public void ScheduleOperation(object sender, RoutedEventArgs e)
+      
+
+        private void Search(object sender, RoutedEventArgs e)
         {
-
-            Patient p = (Patient)dataGridd.SelectedItems[0];
-            ScheduleOperation sc = new ScheduleOperation(p);
-            sc.Show();
-            Close();
-
+            String name = SearchT.Text;
+            PatientRepository patientRepository = new PatientRepository();
+            List<Patient> patients = patientRepository.GetAllName(name);
+            dataGridd.ItemsSource = patients;
+            
         }
 
+        private void Clear(object sender, RoutedEventArgs e)
+        {
+            PatientRepository patientRepository = new PatientRepository();
+            List<Patient> patients = patientRepository.GetAll();
+            dataGridd.ItemsSource = patients;
+        }
     }
 }

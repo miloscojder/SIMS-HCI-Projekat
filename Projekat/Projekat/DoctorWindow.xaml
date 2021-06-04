@@ -6,83 +6,109 @@
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
         Title="DoctorWindow" Height="450" Width="800">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,4"
+                             StartPoint="0.5,0">
+            <GradientStop Color="Beige"
+                          Offset="0" />
+            <GradientStop Color="LightCyan"
+                          Offset="0.263" />
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid>
-        <TabControl Margin="18,10,18,10" Background="AliceBlue">
-            <TabItem Header="Profile"  RenderTransformOrigin="13.591,2.146">
+        <TabControl Margin="18,33,18,10" Background="AliceBlue">
+            <TabItem Name="Profile" Header="Profile" RenderTransformOrigin="13.591,2.146" IsSelected="True">
                 <Grid Height="358">
-                    <Label Content="Doctor FirstName LastName" FontSize="18" HorizontalAlignment="Left" Margin="47,10,0,0" VerticalAlignment="Top"/>
-                    <Rectangle HorizontalAlignment="Left" Height="251" Margin="47,63,0,0" Stroke="Black" VerticalAlignment="Top" Width="258"/>
+                    <Label Content="Doctor" FontSize="18" HorizontalAlignment="Left" Margin="47,10,0,0" VerticalAlignment="Top"/>
+                    <Rectangle HorizontalAlignment="Left"  Height="251" Margin="47,63,0,0" Stroke="Black" VerticalAlignment="Top" Width="258"/>
                     <Label Content="First Name:" FontSize="12" HorizontalAlignment="Left" Margin="53,81,0,0" VerticalAlignment="Top"/>
                     <Label Content="Last Name:" FontSize="12" HorizontalAlignment="Left" Margin="53,107,0,0" VerticalAlignment="Top"/>
                     <Label Content="Personal identification:" FontSize="12" HorizontalAlignment="Left" Margin="53,138,0,0" VerticalAlignment="Top"/>
-                    <Label Content="JMBG:" FontSize="12" HorizontalAlignment="Left" Margin="56,169,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Date of birth:" FontSize="12" HorizontalAlignment="Left" Margin="56,195,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Email:" FontSize="12" HorizontalAlignment="Left" Margin="58,221,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Phone number:" FontSize="12" HorizontalAlignment="Left" Margin="56,247,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Specialization:" FontSize="12" HorizontalAlignment="Left" Margin="59,273,0,0" VerticalAlignment="Top"/>
+                    <Label Content="JMBG:" FontSize="12" HorizontalAlignment="Left" Margin="53,164,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Date of birth:" FontSize="12" HorizontalAlignment="Left" Margin="53,195,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Email address:" FontSize="12" HorizontalAlignment="Left" Margin="53,221,0,0" VerticalAlignment="Top">
+                    </Label>
+
+                    <Label Content="Phone number:" FontSize="12" HorizontalAlignment="Left" Margin="53,247,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Specialization:" FontSize="12" HorizontalAlignment="Left" Margin="53,273,0,0" VerticalAlignment="Top"/>
                     <Calendar Margin="254,60,135,75" />
                     <Label Name="Name" Content="" HorizontalAlignment="Left" Margin="190,81,0,0" VerticalAlignment="Top" Width="91" Height="26"/>
                     <Label Name="Surname" Content="" HorizontalAlignment="Left" Margin="190,107,0,0" VerticalAlignment="Top" Width="91"/>
-                    <Label Name="Id" Content="" HorizontalAlignment="Left" Margin="196,138,0,0" VerticalAlignment="Top" Width="85"/>
+                    <Label Name="Id" Content="" HorizontalAlignment="Left" Margin="190,138,0,0" VerticalAlignment="Top" Width="85"/>
                     <Label Name="jmbg" Content="" HorizontalAlignment="Left" Margin="190,0,0,0" VerticalAlignment="Center" Width="115" Height="30"/>
                     <Label Name="Date" Content="" HorizontalAlignment="Left" Margin="190,190,0,0" VerticalAlignment="Top" Width="71"/>
                     <Label Name="Email" Content="" HorizontalAlignment="Left" Margin="190,221,0,0" VerticalAlignment="Top" Width="115"/>
-                    <Label Name="Phone" Content="" HorizontalAlignment="Left" Margin="196,247,0,0" VerticalAlignment="Top" Width="120"/>
-                    <Label Name="Spec" Content="" HorizontalAlignment="Left" Margin="200,273,0,0" VerticalAlignment="Top" Width="105"/>
-                    <Button Content="Requests" HorizontalAlignment="Left" Margin="658,286,0,0" VerticalAlignment="Top" Height="43" Width="79" Click="Button_Click"/>
-
+                    <Label Name="Phone" Content="" HorizontalAlignment="Left" Margin="190,247,0,0" VerticalAlignment="Top" Width="126"/>
+                    <Label Name="Spec" Content="" HorizontalAlignment="Left" Margin="190,273,0,0" VerticalAlignment="Top" Width="109"/>
+                    <Image HorizontalAlignment="Left"
+                   Height="81"
+                   Margin="646,267,0,0"
+                   VerticalAlignment="Top"
+                   Width="108"
+                   Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\heart.png" />
+                    <Image HorizontalAlignment="Left"
+                   Height="48"
+                   Margin="155,0,0,0"
+                   VerticalAlignment="Top"
+                   Width="78"
+                   Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\dok.png" />
                 </Grid>
             </TabItem>
-            <TabItem Header="Appointment"  RenderTransformOrigin="13.591,2.146" Margin="-2,-2,-2,2">
+            <TabItem Name="Appi" Header="Appointment"  RenderTransformOrigin="13.591,2.146" Margin="-2,-2,-2,2" IsSelected="True">
                 <Grid Height="360">
-                    <Button Content="Patients" Click="Patients" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="39" Width="89"/>
-                    <Button Content="Anamnesis" Click="AnamnesisClick" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="99,10,0,0" VerticalAlignment="Top" Height="39" Width="103"/>
-                    <Button Content="Prescrptions" Click="Prescribe" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="202,10,0,0" VerticalAlignment="Top" Height="39" Width="109"/>
-                    <Button Content="Referrals" Click="ReferralP" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="311,10,0,0" VerticalAlignment="Top" Height="39" Width="91"/>
-                    <Button Content="Appointments" Click="AppointmentClick" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="402,10,0,0" VerticalAlignment="Top" Height="39" Width="125"/>
-                    <Button Content="Operations" Click="OperationsClick" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="527,10,0,0" VerticalAlignment="Top" Height="39" Width="106"/>
+                    <Button Content="Patients" Click="Patients" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="145,10,0,0" VerticalAlignment="Top" Height="39" Width="135"/>
+                    <Button Content="Anamnesis" Click="AnamnesisClick" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="280,10,0,0" VerticalAlignment="Top" Height="39" Width="131"/>
+                    <Button Content="Prescrptions" Click="Prescribe" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="411,10,0,0" VerticalAlignment="Top" Height="39" Width="123"/>
+                    <Button Content="Referrals" Click="ReferralP" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="534,10,0,0" VerticalAlignment="Top" Height="39" Width="105"/>
+                    <Button Content="Reschedule" Click="Reschedule" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="212,296,0,0" VerticalAlignment="Top" Height="39" Width="106"/>
+                    <Button Content="Cancel" Click="Cancel" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="368,296,0,0" VerticalAlignment="Top" Height="39" Width="104"/>
+                    <Button Content="Schedule" Click="Schedule" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="32,296,0,0" VerticalAlignment="Top" Height="39" Width="105"/>
 
+                    <Image HorizontalAlignment="Left"
+                   Height="81"
+                   Margin="667,275,0,0"
+                   VerticalAlignment="Top"
+                   Width="108"
+                   Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\heart.png" />
                     <DataGrid x:Name="dataGridd" ItemsSource="{Binding Appointment}" IsReadOnly="True"
-            SelectionMode="Single" AutoGenerateColumns="False" Margin="10,75,10,148">
+            SelectionMode="Single" AutoGenerateColumns="False" Margin="10,106,10,85">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" Width="40" Binding="{Binding id}"/>
                             <DataGridTextColumn Header="Date" Width="80" Binding="{Binding Date}"/>
-                            <DataGridTextColumn Header="Time start" Width="70" Binding="{Binding TimeStart}"/>
+                            <DataGridTextColumn Header="Time start" Width="90" Binding="{Binding TimeStart}"/>
                             <DataGridTextColumn Header="Duration" Width="70" Binding="{Binding Duration}"/>
-                            <DataGridTextColumn Header="End time" Width="70" Binding="{Binding EndTime}"/>
-                            <DataGridTextColumn Header="Room" Width="70" Binding="{Binding Room.Name}"/>
-                            <DataGridTextColumn Header="Patient name" Width="100" Binding="{Binding Patient.firstName}"/>
-                            <DataGridTextColumn Header="Patient surname" Width="100" Binding="{Binding Patient.lastName}"/>
-                            <DataGridTextColumn Header="Appointment Type" Binding="{Binding AppointmentType}"/>
+                            <DataGridTextColumn Header="End time" Width="90" Binding="{Binding EndTime}"/>
+                            <DataGridTextColumn Header="Room" Width="90" Binding="{Binding RoomName}"/>
+                            <DataGridTextColumn Header="Patient username" Width="130" Binding="{Binding PatientUsername}"/>
+                            <DataGridTextColumn Header="Appointment Type" Width="130" Binding="{Binding AppointmentType}"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <DataGrid x:Name="dataGridd1" ItemsSource="{Binding Operations}" IsReadOnly="True"
-            SelectionMode="Single" AutoGenerateColumns="False" Margin="10,212,10,10">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn  Width="40" Binding="{Binding Id}"/>
-                            <DataGridTextColumn  Width="80" Binding="{Binding Date}"/>
-                            <DataGridTextColumn  Width="70" Binding="{Binding TimeStart}"/>
-                            <DataGridTextColumn  Width="70" Binding="{Binding Duration}"/>
-                            <DataGridTextColumn  Width="70" Binding="{Binding EndTime}"/>
-                            <DataGridTextColumn  Width="70" Binding="{Binding Room.Name}"/>
-                            <DataGridTextColumn  Width="100" Binding="{Binding Patient.firstName}"/>
-                            <DataGridTextColumn  Width="100" Binding="{Binding Patient.lastName}"/>
-                            <DataGridTextColumn  Binding="{Binding AppointmentType}"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
+                    <Label Content="Appointments:" FontSize= "18" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top"/>
                 </Grid>
 
             </TabItem>
-            <TabItem Header="Medicine"   RenderTransformOrigin="13.591,2.146">
+            <TabItem Name="Med" Header="Medicine"   RenderTransformOrigin="13.591,2.146">
                 <Grid>
-                    <Button Content="View medicines" Click="SeeAll" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="34,39,0,0" VerticalAlignment="Top" Height="39" Width="173"/>
-
+                    <Button Content="View medicines" Click="SeeAll" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="34,294,0,0" VerticalAlignment="Top" Height="39" Width="173"/>
+                    <Image HorizontalAlignment="Left"
+                   Height="81"
+                   Margin="654,273,0,0"
+                   VerticalAlignment="Top"
+                   Width="108"
+                   Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\heart.png" />
+                    <Image HorizontalAlignment="Left"
+                   Height="251"
+                   Margin="34,27,0,0"
+                   VerticalAlignment="Top"
+                   Width="521"
+                   Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\medicine.png" />
                 </Grid>
             </TabItem>
         </TabControl>
 
-        <Button Content="Log out" Click="LogOut" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="678,57,0,0" VerticalAlignment="Top" Height="39" Width="86"/>
-
+        <Button Content="Log out" Click="LogOut" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="707,1,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
+        <Button Content="Back" Click="LogOut" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="18,0,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
+        <TextBox Name="Web" HorizontalAlignment="Left" Margin="83,1,0,0" Text="www.hospital.com/doctor/" TextWrapping="Wrap" VerticalAlignment="Top" Width="619" Height="25"/>
 
 
 

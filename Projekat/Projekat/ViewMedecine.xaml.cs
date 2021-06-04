@@ -29,14 +29,11 @@ namespace Projekat
             InitializeComponent();
 
             MedicinesRepository medicinesRepository = new MedicinesRepository();
-            List<Medicines> rooms = medicinesRepository.GetAll();
-            dataGrid.ItemsSource = rooms;
+            List<Medicines> medecines = medicinesRepository.GetAll();
+            dataGrid.ItemsSource = medecines;
             AppointmentRepository appointmentRepository = new AppointmentRepository();
             List<Appointment> appointments = appointmentRepository.GetAll();
             dataGridd.ItemsSource = appointments;
-            OperationRepository operationRepository = new OperationRepository();
-            List<Operations> operations = operationRepository.GetAll();
-            dataGridd1.ItemsSource = operations;
 
 
         }
@@ -44,7 +41,8 @@ namespace Projekat
 
         private void Back(object sender, RoutedEventArgs e)
         {
-            ViewMedicines m = new ViewMedicines();
+
+            DoctorWindow m = new DoctorWindow(DoctorWindow.loginDoctor);
             m.Show();
             Close();
 
@@ -119,19 +117,6 @@ namespace Projekat
             Close();
         }
 
-        private void AppointmentClick(object sender, RoutedEventArgs e)
-        {
-            Appointments m = new Appointments();
-            m.Show();
-            Close();
-        }
-
-        private void OperationsClick(object sender, RoutedEventArgs e)
-        {
-            Operationss m = new Operationss();
-            m.Show();
-            Close();
-        }
 
         private void ReferralP(object sender, RoutedEventArgs e)
         {
@@ -154,7 +139,26 @@ namespace Projekat
             m.Show();
             Close();
         }
-        
+
+        private void Reschedule(object sender, RoutedEventArgs e)
+        {
+            Appointment a = (Appointment)dataGridd.SelectedItems[0];
+            ShowChangesA sc = new ShowChangesA(a);
+            sc.Show();
+            Close();
+        }
+
+        private void Cancel(object sender, RoutedEventArgs e)
+        {
+            Appointment a = (Appointment)dataGridd.SelectedItems[0];
+            AppointmentRepository appointmentRepository = new AppointmentRepository();
+            appointmentRepository.Cancel(a);
+            /*User u = new User();
+            DoctorWindow d = new DoctorWindow(u);
+            d.Show();
+            Close();*/
+        }
+
 
     }
 }

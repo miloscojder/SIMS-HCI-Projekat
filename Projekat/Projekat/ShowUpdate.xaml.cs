@@ -47,9 +47,23 @@ namespace Projekat
 
             Anamnesiss ap = new Anamnesiss();
             ap.Show();
+            Close();
 
 
+        }
 
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            Anamnesiss a = new Anamnesiss();
+            a.Show();
+            Close();
+        }
+
+        private void LogOut(object sender, RoutedEventArgs e)
+        {
+            MainWindow m = new MainWindow();
+            m.Show();
+            Close();
         }
     }
 }

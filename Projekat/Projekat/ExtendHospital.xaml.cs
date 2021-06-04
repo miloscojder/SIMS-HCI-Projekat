@@ -52,5 +52,19 @@ namespace Projekat
 
 
         }
+
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            HospitalReferralss ap = new HospitalReferralss();
+            ap.Show();
+            Close();
+        }
+
+        private void LogOut(object sender, RoutedEventArgs e)
+        {
+            MainWindow m = new MainWindow();
+            m.Show();
+            Close();
+        }
     }
 }

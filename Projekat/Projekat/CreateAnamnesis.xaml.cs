@@ -40,6 +40,18 @@ namespace Projekat
             Close();
         }
 
-       
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            Anamnesiss ap = new Anamnesiss();
+            ap.Show();
+            Close();
+        }
+
+        private void LogOut(object sender, RoutedEventArgs e)
+        {
+            MainWindow ap = new MainWindow();
+            ap.Show();
+            Close();
+        }
     }
 }
