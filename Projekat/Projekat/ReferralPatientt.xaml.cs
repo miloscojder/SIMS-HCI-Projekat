@@ -16,12 +16,13 @@ namespace Projekat
         public ReferralPatientController referralPatientController = new ReferralPatientController();
         public List<String> specialties { get; set; }
         public String selekt { get; set; }
+        public Patient patient = new Patient();
         public ReferralPatientt(Patient p)
         {
             InitializeComponent();
             this.DataContext = this;
-            Name.Text = p.firstName;
-            Surname.Text = p.lastName;
+            patient.firstName = p.firstName;
+            patient.lastName = p.lastName;
 
             string[] specialtiess = File.ReadAllLines(@"C:/Users/krist/source/repos/SIMS-Projekat/Projekat/Projekat/Data/specialties.txt");
             specialties = new List<string>(specialtiess);
@@ -35,37 +36,41 @@ namespace Projekat
             int ida = referralPatientController.GenerateNewId();
             String date = Date.Text;
             String hours = Hours.Text;
-            String minutes = Minutes.Text;
             String hourss = Hourss.Text;
-            String minutess = Minutess.Text;
-            String start = hours + ":" + minutes;
-            String end = hourss + ":" + minutess;
+            String start = hours;
+            String end = hourss;
             String duration = Duration.Text;
             String expl = Explain.Text;
 
 
             Room r = new Room();
             r.Name = RoomName.Text;
-           
-
-
-            Patient p = new Patient();
-            p.firstName = Name.Text;
-            p.lastName = Surname.Text;
 
            
             string selectSpecialty = (string)Combobox1.SelectedItem;
             
 
-            ReferralPatient a = new ReferralPatient(ida, date, start, duration, end, expl, r, p, selectSpecialty);
+            ReferralPatient a = new ReferralPatient(ida, date, start, duration, end, expl, r, patient, selectSpecialty);
             referralPatientController.CreateReferral(a);
 
-         
-             MessageBox.Show("Patient referraled!");
-            this.Close();
 
             ViewReferrals ap = new ViewReferrals();
             ap.Show();
+        }
+
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            ViewReferrals v = new ViewReferrals();
+            v.Show();
+            Close();
+
+        }
+
+        private void LogOut(object sender, RoutedEventArgs e)
+        {
+            MainWindow m = new MainWindow();
+            m.Show();
+            Close();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Projekat.Controller;
+﻿using Model;
+using Projekat.Controller;
 using Projekat.Model;
 using Projekat.Repository;
 using System;
@@ -37,7 +38,7 @@ namespace Projekat
             string medicinesname = name.Text;
             string medicinesdetail = details.Text;
             string medicinesalternative = alternative.Text;
-            string status = med.StatusType;
+            String status = med.StatusType;
             string exp = null;
 
             Medicines medicin = new Medicines(id, medicinesname, medicinesdetail, medicinesalternative, exp, status);
@@ -62,7 +63,7 @@ namespace Projekat
                 Medicines medicines = (Medicines)dataGridUpdateMedicine.SelectedItems[0];
                 id = medicines.Id;
 
-
+                med.StatusType = medicines.StatusType;
 
                 name.Text = medicines.Name;
                 details.Text = medicines.Details;
@@ -75,6 +76,13 @@ namespace Projekat
             {
                 MessageBox.Show("You have to fill in all input boxes!");
             }
+        }
+
+        private void LogOut(object sender, RoutedEventArgs e)
+        {
+            MainWindow m = new MainWindow();
+            m.Show();
+            Close();
         }
     }
 }

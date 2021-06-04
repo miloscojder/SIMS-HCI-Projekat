@@ -6,9 +6,18 @@
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
         Title="ShowUpdate" Height="450" Width="800">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,4"
+                             StartPoint="0.5,0">
+            <GradientStop Color="Beige"
+                          Offset="0" />
+            <GradientStop Color="LightCyan"
+                          Offset="0.263" />
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid Height="434" VerticalAlignment="Top">
         <DataGrid x:Name="dataGrid" ItemsSource="{Binding Pregledi}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="50,30,46.6,283">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="50,50,47,263">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Width="40" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Patient name" Width="100" Binding="{Binding Patient.firstName}"/>
@@ -18,13 +27,22 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Label Content="Anamnesis:" FontSize="18" HorizontalAlignment="Left" Margin="50,232,0,0" VerticalAlignment="Top" Height="42" Width="125"/>
+        <Label Content="Anamnesis:" FontSize="18" HorizontalAlignment="Left" Margin="50,253,0,0" VerticalAlignment="Top" Height="42" Width="125"/>
 
-        <TextBox Name="Anam" HorizontalAlignment="Center" Background="LightCyan" Margin="0,253,0,0" VerticalAlignment="Top" Height="165" Width="422"/>
-        <Button Content="Save" FontSize="20" Click="Save" HorizontalAlignment="Left" Margin="652,339,0,0" VerticalAlignment="Top" Height="50" Width="125" Background="#FFB5CDE2"/>
-        <TextBox x:Name="FirstName" HorizontalAlignment="Left" Background="LightCyan" Margin="191,176,0,0" VerticalAlignment="Top" Height="41" Width="182"/>
-        <TextBox x:Name="LastName" HorizontalAlignment="Left" Background="LightCyan" Margin="400,176,0,0" VerticalAlignment="Top" Height="41" Width="182"/>
-        <Label Content="Patient" FontSize="18" HorizontalAlignment="Left" Margin="50,172,0,0" VerticalAlignment="Top" Height="42" Width="125"/>
+        <TextBox Name="Anam" HorizontalAlignment="Left"  Margin="191,253,0,0" VerticalAlignment="Top" Height="84" Width="499"/>
+        <Button Content="Save" FontSize="20" Click="Save" HorizontalAlignment="Left" Margin="50,360,0,0" VerticalAlignment="Top" Height="50" Width="125" Background="#FFB5CDE2"/>
+        <TextBox x:Name="FirstName" HorizontalAlignment="Left" Margin="191,0,0,0" VerticalAlignment="Center" Height="42" Width="182"/>
+        <TextBox x:Name="LastName" HorizontalAlignment="Left"  Margin="402,0,0,0" VerticalAlignment="Center" Height="41" Width="182"/>
+        <Label Content="Patient" FontSize="18" HorizontalAlignment="Left" Margin="50,193,0,0" VerticalAlignment="Top" Height="42" Width="125"/>
+        <Image HorizontalAlignment="Left"
+                   Height="81"
+                   Margin="709,353,0,0"
+                   VerticalAlignment="Top"
+                   Width="108"
+                   Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\heart.png" />
+        <Button Content="Log out" Click="LogOut" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="707,1,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
+        <Button Content="Back" Click="Back" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="18,0,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
+        <TextBox HorizontalAlignment="Left" Margin="83,1,0,0" Text="www.hospital.com/doktor-appointment/anamnesis/update-anamnesis/" TextWrapping="Wrap" VerticalAlignment="Top" Width="619" Height="25"/>
 
     </Grid>
 </Window>

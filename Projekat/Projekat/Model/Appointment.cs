@@ -1,4 +1,8 @@
-
+/***********************************************************************
+ * Module:  Appointment.cs
+ * Author:  kriss
+ * Purpose: Definition of the Class Appointment
+ ***********************************************************************/
 
 using System;
 
@@ -11,19 +15,18 @@ namespace Model
         public DateTime StartTime { get; set; }
         public String TimeStart { get; set; }
         public string Duration { get; set; }
-        //public Boolean Finished;
-        public String EndTime { get; set; }
+       public String EndTime { get; set; }
         public TypeOfAppointment AppointmentType { get; set; }
-        //public MedicalRecord MedicalRecord { get; set; }
+        public String type { get; set; }
+        public string RoomName { get; set; }
+        public string DoctorUsername { get; set; }
+        public string PatientUsername { get; set; }
 
-        //public Room Room { get; set; }
-       // public Patient Patient { get; set; }
-      //  public Doctor doctor { get; set; }
         public Anamnesis Anamnesis { get; set; }
 
         public Appointment() { }
 
-        public Appointment(int id,  String date, String start, string d, String end, string roomName, string patientName, string doctorUsername, TypeOfAppointment type)
+        public Appointment(int id, String date, String start, string d, String end, string roomName, string patientName, string doctorUsername, TypeOfAppointment type)
         {
             this.id = id;
             Date = date;
@@ -34,21 +37,16 @@ namespace Model
             PatientUsername = patientName;
             DoctorUsername = doctorUsername;
             AppointmentType = type;
-        } 
+        }
 
-        public Appointment(DateTime date, string doctorName, string roomName)
+        public Appointment(DateTime date, string DoctorsName, string room)
         {
            StartTime = date;
-           RoomName = roomName;
-           DoctorUsername = doctorName;
+            RoomName = room;
+            DoctorUsername = DoctorsName;
         }
 
         public Appointment(Room r, Doctor d) { }
-
-        public string RoomName { get; set; }
-        public string DoctorUsername { get; set; }
-        public string PatientUsername { get; set; }
-
 
     }
 }

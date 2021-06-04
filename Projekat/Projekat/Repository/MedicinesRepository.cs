@@ -16,11 +16,6 @@ namespace Projekat.Repository
     
         public MedicinesRepository()
         {
-            ReadJson();
-        }
-
-        public void ReadJson()
-        {
             if (!File.Exists(fileLocation))
             {
                 File.Create(fileLocation).Close();
@@ -46,13 +41,7 @@ namespace Projekat.Repository
             return medicines;
         }
 
-       /* public List<Medicines> GetByVerification(VerificationType verification)
-        {
-            ReadJson();
-            return GetAll(obj => obj.Verification == verification);
-        }*/
-
-        public List<Medicines> GetAllRejected(String status)
+        public List<Medicines> GetAllStatus(String status)
         {
           
             return medicines.FindAll(obj => obj.StatusType == status); 

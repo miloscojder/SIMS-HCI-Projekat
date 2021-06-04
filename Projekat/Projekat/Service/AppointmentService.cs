@@ -26,6 +26,11 @@ namespace Service
 
         }
 
+        public TypeOfAppointment GetTypes()
+        {
+            return appointmentRepository.GetTypes();
+        }
+
 
 
         public void RescheduleDoctor(Appointment newAppointment)
