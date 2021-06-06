@@ -52,8 +52,12 @@ namespace Controller
          // TODO: implement
          return roomService.GetAllRooms();
       }
-      
-      public Boolean UpdateRoom(Room newRoom)
+        public Room GetByName(String name)
+        {
+            return roomService.GetByName(name);
+        }
+
+        public Boolean UpdateRoom(Room newRoom)
       {
             // TODO: implement
          roomService.UpdateRoom(newRoom);
@@ -67,6 +71,17 @@ namespace Controller
             return true;
 
       }
+
+        public void AttachRooms(int roomAId, int roomBId)
+        {
+            roomService.AttachRooms(roomAId, roomBId);
+        }
+
+
+        public void DettachRooms(int roomId)
+        {
+            roomService.DettachRooms(roomId);
+        }
         public int GenerateNewId()
         {
             return roomService.GenerateNewId();
