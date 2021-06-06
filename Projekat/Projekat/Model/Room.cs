@@ -15,6 +15,7 @@ namespace Model
             RoomType = roomType;
             Floor = floor;
             Detail = detail;
+            StaticEquipments = new System.Collections.Generic.List<StaticEquipment>();
         }
 
         public Room(int id, string name, string roomType, int floor, string detail, int size) {
@@ -25,6 +26,7 @@ namespace Model
             Detail = detail;
             Size = size;
         }
+
 
 
         public int Size { get; set; }

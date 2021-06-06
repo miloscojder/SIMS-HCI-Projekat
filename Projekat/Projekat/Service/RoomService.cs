@@ -62,8 +62,13 @@ namespace Service
       {
             return roomRepository.GetRoom(id);
       }
-      
-      public List<Room> GetAllRooms()
+
+        public Room GetByName(String name)
+        {
+            return roomRepository.GetByName(name);
+        }
+
+        public List<Room> GetAllRooms()
       {
            
            return roomRepository.GetAllRooms();
@@ -80,6 +85,33 @@ namespace Service
          roomRepository.DeleteRoom(id);
          return true;
       }
+
+        public void AttachRooms(int roomAId, int roomBId)
+        {
+            Room roomA = GetRoom(roomAId);
+            Room roomB = GetRoom(roomBId);
+
+
+            ExtractEquipment(roomB, roomA);
+            roomA.Name = roomA.Name + "/" + roomB.Name;
+
+            UpdateRoom(roomA);
+            DeleteRoom(roomBId);
+        }
+
+        private void ExtractEquipment(Room fromRoom, Room toRoom)
+        {
+            foreach (StaticEquipment staticEquipment in fromRoom.StaticEquipments)
+                toRoom.StaticEquipments.Add(staticEquipment);
+        }
+
+        public void DettachRooms(int roomId)
+        {
+            Room roomA = GetRoom(roomId);
+            Room room = new Room(GenerateNewId(),roomA.Name + "-A", roomA.RoomType, roomA.Floor, roomA.Detail);
+            Save(room);
+            
+        }
 
         public int GenerateNewId()
         {

@@ -101,6 +101,15 @@ namespace Projekat
            
         }
 
+        private void ScheduleAdvanceRenovation_Click(object sender, RoutedEventArgs e)
+        {
+            AdvanceRenovation ar = new AdvanceRenovation();
+            ar.Show();
+
+        }
+
+
+
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

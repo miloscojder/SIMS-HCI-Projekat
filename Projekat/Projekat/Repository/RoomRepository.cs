@@ -50,6 +50,11 @@ namespace Repository
             return rooms.Find(obj => obj.Id == id);
         }
 
+        public Room GetByName(String name)
+        {
+            return rooms.Find(obj => obj.Name == name);
+        }
+
         public void Save(Room room)
         {
             rooms.Add(room);

@@ -1,0 +1,22 @@
+[
+
+  {
+    "Description": "bla",
+    "RoomBId": 0,
+    "Type": 1,
+    "id": 0,
+    "Date": null,
+    "StartTime": "2021-06-16T15:00:00",
+    "TimeStart": null,
+    "Duration": null,
+    "EndTime": null,
+    "AppointmentType": 0,
+    "type": "1",
+    "RoomName": null,
+    "DoctorUsername": null,
+    "PatientUsername": null,
+    "DurationInMinutes": 15.0,
+    "RoomId": 3,
+    "Anamnesis": null
+  }
+]
