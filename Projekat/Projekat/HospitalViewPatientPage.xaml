@@ -5,8 +5,84 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="HospitalViewPatientPage"  Background="LightSkyBlue" Height="550" Width="815">
+        Title="HospitalViewPatientPage" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="LightSkyBlue" Height="550" Width="815">
     <Window.Resources>
+        <Style x:Key="ComboBoxTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <Border CornerRadius="5,0,0,5"
+                            BorderThickness="1"
+                            Background="{TemplateBinding Background}"
+                                BorderBrush="Black">
+                                <ScrollViewer x:Name="PART_ContentHost"/>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type ComboBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBox}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition MaxWidth="18"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Name="PART_EditableTextBox"
+                                 Style="{StaticResource ComboBoxTextBoxStyle}"
+                                 Padding="5,0,0,0"
+                                 Height="{TemplateBinding Height}"/>
+                            <ToggleButton Grid.Column="1" Margin="0"
+                                     Height="{TemplateBinding Height}"
+                                     
+                                     Focusable="False"
+                                     IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                      ClickMode="Press">
+                                <Path Grid.Column="1"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Data="M 0 0 L 4 4 L 8 0 Z"
+                                  Fill="DodgerBlue" />
+                            </ToggleButton>
+                            <ContentPresenter Name="ContentSite"
+                                      Content="{TemplateBinding SelectionBoxItem}"
+                                      ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                      ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Left"
+                                      Margin="5,0,0,0"/>
+                            <Popup Name="Popup"
+                               Placement="Bottom"
+                               IsOpen="{TemplateBinding IsDropDownOpen}"
+                               AllowsTransparency="True" 
+                               Focusable="False"
+                               PopupAnimation="Slide">
+                                <Grid Name="DropDown"
+                                  SnapsToDevicePixels="True"                
+                                  MinWidth="{TemplateBinding ActualWidth}"
+                                  MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <Border 
+                                    x:Name="DropDownBorder"
+                                    BorderThickness="1"
+                                    CornerRadius="5"
+                                    Background="Azure"
+                                    BorderBrush="Black"/>
+                                    <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style TargetType="Button">
             <Setter Property="Background">
                 <Setter.Value>
@@ -23,7 +99,18 @@
             <Setter Property="BorderBrush" Value="DarkBlue"></Setter>
         </Style>
     </Window.Resources>
-    
+    <Window.InputBindings>
+        <KeyBinding Key="Q" Modifiers="Ctrl" Command="{Binding HomeCommand}"/>
+        <KeyBinding Key="W" Modifiers="Ctrl" Command="{Binding AppointmentCommand}"/>
+        <KeyBinding Key="E" Modifiers="Ctrl" Command="{Binding NotificationCommand}"/>
+        <KeyBinding Key="R" Modifiers="Ctrl" Command="{Binding MedicalRecordCommand}"/>
+        <KeyBinding Key="T" Modifiers="Ctrl" Command="{Binding QandACommand}"/>
+        <KeyBinding Key="Y" Modifiers="Ctrl" Command="{Binding ProfileCommand}"/>
+        <KeyBinding Key="A" Modifiers="Ctrl" Command="{Binding UpdateRatingHospitaCommand}"/>
+        <KeyBinding Key="S" Modifiers="Ctrl" Command="{Binding UpdateFeedbackHospitalCommand}"/>
+        <KeyBinding Key="K" Modifiers="Ctrl" Command="{Binding RateDoctorCommand}"/>
+        <KeyBinding Key="L" Modifiers="Ctrl" Command="{Binding SeeRatingsCommand}"/>
+    </Window.InputBindings>
     <Grid RenderTransformOrigin="0.349,0.65">
         <Grid.RowDefinitions>
             <RowDefinition Height="121*"/>
@@ -33,50 +120,51 @@
             <Button ToolTipService.InitialShowDelay="100" 
     ToolTipService.ShowDuration="100000" 
     ToolTipService.BetweenShowDelay="1000" 
-    ToolTip="Go to home page" Click="Button_Click_2" Width="112" >
+    ToolTip="Go to home page" Command="{Binding HomeCommand}" Width="112" >
                 <DockPanel>
-                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\iconfinder_web_Homepage_6916975.png"/>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\house-256.ico" Height="61" Width="61"></Image>
                 </DockPanel>
             </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
-                ToolTip="See your appointments" Click="Button_Click_3" Width="174" >
+                ToolTip="See your appointments" Command="{Binding AppointmentCommand}" Width="174" >
                 <DockPanel>
-                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\2759067651606252959-128.png" Height="63" Width="73"></Image>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\planner-256.ico" Height="61" Width="54"></Image>
                 </DockPanel>
             </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
-                ToolTip="See your notifications" Click="Button_Click_4" Width="157" >
+                ToolTip="See your notifications" Command="{Binding NotificationCommand}" Width="157" >
                 <DockPanel>
-                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\Notification.ico" DockPanel.Dock="Top" Height="63"/>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\bell-3-256.ico" Height="60" Width="56"></Image>
                 </DockPanel>
             </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
-                ToolTip="Look at your medical record" Click="Button_Click_5" Width="160">
+                ToolTip="Look at your medical record" Command="{Binding MedicalRecordCommand}" Width="160">
                 <DockPanel>
-                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\literature-256.ico"></Image>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\literature-256.ico" Height="60" Width="62"></Image>
                 </DockPanel>
             </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
-                ToolTip="See questions and ask" Click="Button_Click_6" Width="100">
+                ToolTip="See questions and ask" Command="{Binding QandACommand}" Width="100">
                 <DockPanel>
-                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\question-mark-4-256.ico"></Image>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\question-mark-256.ico" Height="63" Width="73"></Image>
                 </DockPanel>
-                </Button>
+            </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
-                ToolTip="My profile" Click="Button_Click_7" Width="99" >
+                ToolTip="My profile" Command="{Binding ProfileCommand}" Width="99" >
                 <DockPanel>
-                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\user.png"/>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\guest-256.ico" Height="61" Width="71"></Image>
                 </DockPanel>
             </Button>
         </StackPanel>
-        <Label Content="BOLNICA 1: " HorizontalAlignment="Left" Margin="46,83,0,0" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="602,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1"/>
-        <ListView Margin="458,91,49,64" Background="AliceBlue" Name="lvDoctorsPatient" Grid.Row="1" >
+        <Label Content="HOSPITAL " HorizontalAlignment="Left" Margin="32,88,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="560,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1"/>
+        <!--SelectedItem="{Binding Path=SelectedDoctor}" ItemsSource="{Binding Path=Doctors}"-->
+        <ListView Margin="458,91,34,64" Background="AliceBlue"  Name="lvDoctorsPatient" Grid.Row="1" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Doctors Name" Width="100" DisplayMemberBinding="{Binding Username}" />
                     <GridViewColumn Header="Specialty" Width="100" DisplayMemberBinding="{Binding Specialty}" />
-                    <GridViewColumn Header="Rating" Width="100" DisplayMemberBinding="{Binding Grade}">
+                    <GridViewColumn Header="Rating" Width="97" DisplayMemberBinding="{Binding Grade}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Mail}" TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
@@ -86,40 +174,44 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox x:Name="HospitalRating" TextAlignment="Center" HorizontalAlignment="Left" Margin="231,85,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" Height="21" IsReadOnlyCaretVisible="True" IsEnabled="False" FontWeight="Bold">
+        <!-- {Binding Path=HospitalRating, Mode=TwoWay}-->
+        <TextBox x:Name="HospitalRating" TextAlignment="Center" HorizontalAlignment="Left" Margin="172,90,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" Height="22" IsReadOnlyCaretVisible="True" IsEnabled="False" FontWeight="Bold">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="8"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <TextBox x:Name="UnesiteOpis" TextAlignment="Center" HorizontalAlignment="Left" Margin="157,27,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="243" Height="19" Grid.Row="1">
+        <!--{Binding Path=HospitalFeedback,Mode=TwoWay}-->
+        <TextBox x:Name="UnesiteOpis" TextAlignment="Center" HorizontalAlignment="Left" Margin="157,28,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="243" Height="19" Grid.Row="1">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="8"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <Label Content="Rating:" HorizontalAlignment="Left" Margin="157,83,0,0" VerticalAlignment="Top"/>
-        <Label Content="Write feedback" HorizontalAlignment="Left" Margin="31,20,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <Label Content="Rating:" HorizontalAlignment="Left" Margin="113,88,0,0" VerticalAlignment="Top"/>
+        <Label Content="Write feedback" HorizontalAlignment="Left" Margin="31,24,0,0" VerticalAlignment="Top" Grid.Row="1"/>
 
-        <Label Content="Rate:" HorizontalAlignment="Left" Margin="357,83,0,0" VerticalAlignment="Top"/>
-        <Button Content="Update rating" HorizontalAlignment="Left" Margin="539,81,0,0" VerticalAlignment="Top" Click="Button_Click" Height="29" />
+        <Label Content="Rate:" HorizontalAlignment="Left" Margin="288,88,0,0" VerticalAlignment="Top"/>
+        <Button Content="Update rating" HorizontalAlignment="Left" Margin="434,86,0,0" VerticalAlignment="Top" Command="{Binding UpdateRatingHospitaCommand}" Height="30" Width="101" />
+        <Button Content="See raitings" HorizontalAlignment="Left" Margin="654,354,0,0" VerticalAlignment="Top" Command="{Binding SeeRatingsCommand}" Height="29" Grid.Row="1" />
 
 
-        <Button IsEnabled="{Binding SelectedItems.Count, ElementName=lvDoctorsPatient}" Content="Rate doctor" HorizontalAlignment="Left" Margin="582,353,0,0" VerticalAlignment="Top" Click="OceniteDoktoraButton_Click" Grid.Row="1"/>
+        <Button IsEnabled="{Binding SelectedItems.Count, ElementName=lvDoctorsPatient}" Content="Rate doctor" HorizontalAlignment="Left" Margin="526,354,0,0" VerticalAlignment="Top" Command="{Binding RateDoctorCommand}" Grid.Row="1" Height="29"/>
 
-        <Button Content="Update feedback" HorizontalAlignment="Left" Margin="418,27,0,0" VerticalAlignment="Top" Click="Button_Click_1" Width="101" Grid.Row="1" Height="24" />
+        <Button x:Name="FeedbackButton" Content="Update feedback" HorizontalAlignment="Left" Margin="434,23,0,0" VerticalAlignment="Top" Command="{Binding UpdateFeedbackHospitalCommand}" Width="101" Grid.Row="1" Height="29" />
         <Label Content="List of doctors in this hospital" HorizontalAlignment="Left" Margin="539,59,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <ListView x:Name="lvHospitalFeedback" Background="LightCyan" Margin="33,91,428,64" Grid.Row="1">
+        <!--ItemsSource="{Binding Path=Feedbakcs}"-->
+        <ListView x:Name="lvHospitalFeedback"  Background="LightCyan" Margin="33,91,407,64" Grid.Row="1">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Feedback" Width="384" DisplayMemberBinding="{Binding }" />
+                    <GridViewColumn Header="Feedback" Width="344" DisplayMemberBinding="{Binding }" />
 
                 </GridView>
             </ListView.View>
         </ListView>
-        <ComboBox Name="HospitalGrades" HorizontalAlignment="Left" Margin="431,81,0,0" VerticalAlignment="Top" Width="55" Height="30">
+        <ComboBox Name="HospitalGrades" HorizontalAlignment="Left"  Margin="340,86,0,0" VerticalAlignment="Top" Width="60" Height="30" IsReadOnly="True">
             <ComboBoxItem Content="1"/>
             <ComboBoxItem Content="2"/>
             <ComboBoxItem Content="3"/>

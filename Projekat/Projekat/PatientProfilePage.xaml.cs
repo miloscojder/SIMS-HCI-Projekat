@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using Model;
+using Projekat.ViewModel;
 
 namespace Projekat
 {
@@ -14,48 +16,22 @@ namespace Projekat
         public PatientProfilePage()
         {
             InitializeComponent();
+            DataContext = new PatientProfileViewModelcs(this);
+            
+            /*
+            PatientUsernameTextBox.Text = PatientMainPage.prenosilac.Username;
+            PatientBDayTextBox.Text = Convert.ToString(PatientMainPage.prenosilac.DateOfBirth);
+            PatientEMailTextBox.Text = PatientMainPage.prenosilac.EMail;
+            PatientFirstNameTextBox.Text = PatientMainPage.prenosilac.firstName;
+            PatientJMBGTextBox.Text = PatientMainPage.prenosilac.Jmbg;
+            PatientLastNameTextBox.Text = PatientMainPage.prenosilac.lastName;
+            PatientPasswordTextBox.Text = PatientMainPage.prenosilac.Password;
+            PatientPhoneNumberTextBox.Text = PatientMainPage.prenosilac.PhoneNumber;
+            
+            */
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            PatientMainPage pmp = new PatientMainPage(PatientMainPage.prenosilac);
-            pmp.Show();
-            this.Close();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            AppointmentsPage ap = new AppointmentsPage(null);
-            ap.Show();
-            this.Close();
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null);
-            npp.Show();
-            this.Close();
-        }
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage();
-            pmrp.Show();
-            this.Close();
-        }
-
-        private void Button_Click_4(object sender, RoutedEventArgs e)
-        {
-            PatientQandAPage pqap = new PatientQandAPage();
-            pqap.Show();
-            this.Close();
-        }
-
-        private void Button_Click_5(object sender, RoutedEventArgs e)
-        {
-            PatientProfilePage ppp = new PatientProfilePage();
-            ppp.Show();
-            this.Close();
-        }
+      
+       
     }
 }

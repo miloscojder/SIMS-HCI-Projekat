@@ -5,8 +5,84 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="DoctorPagePatient"  Background="LightSkyBlue" Height="600" Width="815">
+        Title="DoctorPagePatient" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="LightSkyBlue" Height="600" Width="815">
     <Window.Resources>
+        <Style x:Key="ComboBoxTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <Border CornerRadius="5,0,0,5"
+                            BorderThickness="1"
+                            Background="{TemplateBinding Background}"
+                                BorderBrush="Black">
+                                <ScrollViewer x:Name="PART_ContentHost"/>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type ComboBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBox}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition MaxWidth="18"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Name="PART_EditableTextBox"
+                                 Style="{StaticResource ComboBoxTextBoxStyle}"
+                                 Padding="5,0,0,0"
+                                 Height="{TemplateBinding Height}"/>
+                            <ToggleButton Grid.Column="1" Margin="0"
+                                     Height="{TemplateBinding Height}"
+                                     
+                                     Focusable="False"
+                                     IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                      ClickMode="Press">
+                                <Path Grid.Column="1"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Data="M 0 0 L 4 4 L 8 0 Z"
+                                  Fill="DodgerBlue" />
+                            </ToggleButton>
+                            <ContentPresenter Name="ContentSite"
+                                      Content="{TemplateBinding SelectionBoxItem}"
+                                      ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                      ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Left"
+                                      Margin="5,0,0,0"/>
+                            <Popup Name="Popup"
+                               Placement="Bottom"
+                               IsOpen="{TemplateBinding IsDropDownOpen}"
+                               AllowsTransparency="True" 
+                               Focusable="False"
+                               PopupAnimation="Slide">
+                                <Grid Name="DropDown"
+                                  SnapsToDevicePixels="True"                
+                                  MinWidth="{TemplateBinding ActualWidth}"
+                                  MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <Border 
+                                    x:Name="DropDownBorder"
+                                    BorderThickness="1"
+                                    CornerRadius="5"
+                                    Background="Azure"
+                                    BorderBrush="Black"/>
+                                    <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style TargetType="Button">
             <Setter Property="Background">
                 <Setter.Value>
@@ -23,46 +99,54 @@
             <Setter Property="BorderBrush" Value="DarkBlue"></Setter>
         </Style>
     </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Key="Q" Modifiers="Ctrl" Command="{Binding HomeCommand}"/>
+        <KeyBinding Key="W" Modifiers="Ctrl" Command="{Binding AppointmentCommand}"/>
+        <KeyBinding Key="E" Modifiers="Ctrl" Command="{Binding NotificationCommand}"/>
+        <KeyBinding Key="R" Modifiers="Ctrl" Command="{Binding MedicalRecordCommand}"/>
+        <KeyBinding Key="T" Modifiers="Ctrl" Command="{Binding QandACommand}"/>
+        <KeyBinding Key="Y" Modifiers="Ctrl" Command="{Binding ProfileCommand}"/>
+    </Window.InputBindings>
     <Grid>
-        <Label Content="Doctors username" HorizontalAlignment="Left" Margin="26,125,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.503,-0.696"/>
-        <Label Content="Doctors specialty" HorizontalAlignment="Left" Margin="26,168,0,0" VerticalAlignment="Top"/>
-        <Label Content="Doctors e-mail" HorizontalAlignment="Left" Margin="26,305,0,0" VerticalAlignment="Top"/>
-        <Label Content="Doctors phoneNumber" HorizontalAlignment="Left" Margin="26,345,0,0" VerticalAlignment="Top"/>
-        <Label Content="Doctors date of birth" HorizontalAlignment="Left" Margin="26,397,0,0" VerticalAlignment="Top"/>
-        <Label Content="Doctors working exp:" HorizontalAlignment="Left" Margin="27,266,0,0" VerticalAlignment="Top"/>
-        <Label Content="Doctors rating" HorizontalAlignment="Left" Margin="27,215,0,0" VerticalAlignment="Top"/>
-        <Label Content="Rate doctor:" HorizontalAlignment="Left" Margin="29,464,0,0" VerticalAlignment="Top"/>
+        <Label Content="Doctors username" HorizontalAlignment="Left" Margin="44,123,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.503,-0.696"/>
+        <Label Content="Doctors specialty" HorizontalAlignment="Left" Margin="50,166,0,0" VerticalAlignment="Top"/>
+        <Label Content="Doctors e-mail" HorizontalAlignment="Left" Margin="63,303,0,0" VerticalAlignment="Top"/>
+        <Label Content="Doctors phoneNumber" HorizontalAlignment="Left" Margin="18,343,0,0" VerticalAlignment="Top"/>
+        <Label Content="Doctors date of birth" HorizontalAlignment="Left" Margin="30,395,0,0" VerticalAlignment="Top"/>
+        <Label Content="Doctors working exp:" HorizontalAlignment="Left" Margin="29,264,0,0" VerticalAlignment="Top"/>
+        <Label Content="Doctors rating" HorizontalAlignment="Left" Margin="65,213,0,0" VerticalAlignment="Top"/>
+        <Label Content="Rate doctor:" HorizontalAlignment="Left" Margin="76,462,0,0" VerticalAlignment="Top"/>
         <Label Content="Write feedback about doktor:" HorizontalAlignment="Left" Margin="24,520,0,0" VerticalAlignment="Top"/>
         <Label Content="Doctors feedback" HorizontalAlignment="Left" Margin="537,107,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="DoctorsNameTextBox" TextAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="182,125,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold">
+        <TextBox x:Name="DoctorsNameTextBox" TextAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="182,125,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="8"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <TextBox x:Name="DoctorsRatingTextBox" TextAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="183,215,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold">
+        <TextBox x:Name="DoctorsRatingTextBox" TextAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="183,215,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="8"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <TextBox x:Name="DoctorsExpTextBox" TextAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="183,266,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold">
+        <TextBox x:Name="DoctorsExpTextBox" TextAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="183,266,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="8"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <TextBox x:Name="DoctorsBirthDayTextBox" TextAlignment="Center" HorizontalAlignment="Left" Height="48" Margin="182,389,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold">
+        <TextBox x:Name="DoctorsBirthDayTextBox" TextAlignment="Center" HorizontalAlignment="Left" Height="33" Margin="183,397,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="8"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <TextBox x:Name="DoctosPhoneNumberTextBox" TextAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="182,345,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold">
+        <TextBox x:Name="DoctosPhoneNumberTextBox" TextAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="182,345,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="8"/>
@@ -76,44 +160,70 @@
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <TextBox x:Name="DoctrsSpecialtyTextBox" TextAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="182,168,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold">
+        <TextBox x:Name="DoctrsSpecialtyTextBox" TextAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="182,168,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" IsEnabled="False" IsReadOnlyCaretVisible="True" FontWeight="Bold">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="8"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <TextBox x:Name="FeedbackDoctorTextBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="210,509,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" Height="47">
+        <TextBox x:Name="FeedbackDoctorTextBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="210,509,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" Height="47">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="8"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <Button Content="Send feedback" HorizontalAlignment="Left" Margin="438,515,0,0" VerticalAlignment="Top" Width="115" Click="PotvrdiButton_Click" Height="41" />
+        <Button Content="Send feedback and rate" Command="{Binding FeedbackCommand}" HorizontalAlignment="Left" Margin="495,515,0,0" VerticalAlignment="Top" Width="136"  Height="41" />
         <ListView x:Name="lvDoctorsFeedback" Background="LightCyan" Margin="395,147,25,122">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Feedback" Width="384" DisplayMemberBinding="{Binding }" />
+                    <GridViewColumn Header="Feedback" Width="370" DisplayMemberBinding="{Binding }" />
                 </GridView>
             </ListView.View>
         </ListView>
-        <StackPanel Orientation="Horizontal" Background="LightSkyBlue" Margin="0,0,0,498">
+        <StackPanel Orientation="Horizontal" Background="LightSkyBlue" Margin="0,0,0,500">
             <Button ToolTipService.InitialShowDelay="100" 
     ToolTipService.ShowDuration="100000" 
     ToolTipService.BetweenShowDelay="1000" 
-    ToolTip="Go to home page" Content="HOME PAGE" Click="Button_Click" Width="112" ></Button>
-            <Button Content="MY APPOINTMENTS" Click="Button_Click_1" Width="174" />
-            <Button Content="MY NOTIFICATIONS" Click="Button_Click_2" Width="157" />
-            <Button Content="MY MEDICAL RECORD" Click="Button_Click_3" Width="160"/>
-            <Button Click="Button_Click_4" Width="100">
+    ToolTip="Go to home page" Command="{Binding HomeCommand}" Width="112" >
                 <DockPanel>
-                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\question-mark-4-256.ico"></Image>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\house-256.ico" Height="61" Width="61"></Image>
                 </DockPanel>
             </Button>
-            <Button Content="MY PROFILE" Click="Button_Click_5" Width="99" />
+            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
+                ToolTip="See your appointments" Command="{Binding AppointmentCommand}" Width="174" >
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\planner-256.ico" Height="61" Width="54"></Image>
+                </DockPanel>
+            </Button>
+            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
+                ToolTip="See your notifications" Command="{Binding NotificationCommand}" Width="157" >
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\bell-3-256.ico" Height="60" Width="56"></Image>
+                </DockPanel>
+            </Button>
+            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
+                ToolTip="Look at your medical record" Command="{Binding MedicalRecordCommand}" Width="160">
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\literature-256.ico" Height="60" Width="62"></Image>
+                </DockPanel>
+            </Button>
+            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
+                ToolTip="See questions and ask" Command="{Binding QandACommand}" Width="100">
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\question-mark-256.ico" Height="63" Width="73"></Image>
+                </DockPanel>
+            </Button>
+            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
+                ToolTip="My profile" Command="{Binding ProfileCommand}" Width="99" >
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\guest-256.ico" Height="61" Width="71"></Image>
+                </DockPanel>
+            </Button>
         </StackPanel>
-        <ComboBox Name="DoctorsGrades" HorizontalAlignment="Left" Margin="183,466,0,0" VerticalAlignment="Top" Width="55">
+        <ComboBox Name="DoctorsGrades" HorizontalAlignment="Left" Margin="183,466,0,0" VerticalAlignment="Top" IsReadOnly="True" Width="88">
+            <ComboBoxItem Content="1"/>
             <ComboBoxItem Content="2"/>
             <ComboBoxItem Content="3"/>
             <ComboBoxItem Content="4"/>
@@ -124,6 +234,6 @@
             <ComboBoxItem Content="9"/>
             <ComboBoxItem Content="10"/>
         </ComboBox>
-        <Button Content="Return" HorizontalAlignment="Left" Margin="667,515,0,0" VerticalAlignment="Top" Height="41" Width="115" Click="Button_Click_6" />
+        <Button Content="Return" Command="{Binding ReturnCommand}" HorizontalAlignment="Left" Margin="656,515,0,0" VerticalAlignment="Top" Height="41" Width="134"  />
     </Grid>
 </Window>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="AcceptNewAppointmentPatient"  Background="LightSkyBlue" Height="450" Width="581">
+        Title="AcceptNewAppointmentPatient" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="LightSkyBlue" Height="450" Width="581">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Background">
@@ -18,8 +18,11 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
     </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Key="X" Modifiers="Ctrl" Command="{Binding ScheduleCommand}"/>
+        <KeyBinding Key="C" Modifiers="Ctrl" Command="{Binding CancelCommand}"/>
+    </Window.InputBindings>
     <Grid Margin="0,0,-34,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="452*"/>
@@ -35,8 +38,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Accept appointment " HorizontalAlignment="Left" Margin="137,368,0,0" VerticalAlignment="Top" Click="AcceptButton_Click" Height="36" Width="126"/>
-        <Button Content="Cancel scheduling" HorizontalAlignment="Left" Margin="332,368,0,0" VerticalAlignment="Top" Click="Button_Click" Height="36" Width="110"/>
+        <Button IsEnabled="{Binding SelectedItems.Count, ElementName=lvAcceptAppointment}" Content="Accept appointment " HorizontalAlignment="Left" Margin="137,368,0,0" VerticalAlignment="Top" Command="{Binding ScheduleCommand}" Height="36" Width="126"/>
+        <Button Content="Cancel scheduling" HorizontalAlignment="Left" Margin="332,368,0,0" VerticalAlignment="Top" Command="{Binding CancelCommand}"  Height="36" Width="110"/>
         <Label Content="Some free choises for you to choose:" HorizontalAlignment="Left" Margin="172,35,0,0" VerticalAlignment="Top" FontSize="14" Height="29" Width="244"/>
 
     </Grid>

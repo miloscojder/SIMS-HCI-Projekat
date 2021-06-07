@@ -90,6 +90,15 @@ namespace Repository
                     
         }
 
+        public List<string> GetAllDoctorUsernames()
+        {
+            List<string> usernames = new List<string>();
+            foreach(Doctor d in doctors)
+            {
+                usernames.Add(d.Username);
+            }
+            return usernames;
+        }
 
         public List<Operations> GetAllOperations()
       {

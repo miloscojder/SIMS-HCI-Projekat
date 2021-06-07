@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="AcceptRescheduleAppointmentPatientPage"  Background="LightSkyBlue" Height="450" Width="581">
+        Title="AcceptRescheduleAppointmentPatientPage" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="LightSkyBlue" Height="450" Width="581">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Background">
@@ -18,25 +18,28 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
     </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Key="X" Modifiers="Ctrl" Command="{Binding RescheduleCommand}"/>
+        <KeyBinding Key="C" Modifiers="Ctrl" Command="{Binding CancelCommand}"/>
+    </Window.InputBindings>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="452*"/>
-            <ColumnDefinition Width="163*"/>
+            <ColumnDefinition Width="493*"/>
+            <ColumnDefinition Width="88*"/>
         </Grid.ColumnDefinitions>
 
-        <ListView Margin="135,87,139,86" Background="LightCyan" Name="lvAcceptRescheduleAppointment" Grid.ColumnSpan="2">
+        <ListView Margin="123,87,10,86" Background="LightCyan" Name="lvAcceptRescheduleAppointment">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Start Time" Width="100" DisplayMemberBinding="{Binding StartTime}" />
-                    <GridViewColumn Header="Doctor name" Width="100" DisplayMemberBinding="{Binding doctorUsername}"/>
-                    <GridViewColumn Header="Room name" Width="100" DisplayMemberBinding="{Binding roomName}" />
+                    <GridViewColumn Header="Start Time" Width="150" DisplayMemberBinding="{Binding StartTime}" />
+                    <GridViewColumn Header="Doctor name" Width="100" DisplayMemberBinding="{Binding DoctorUsername}"/>
+                    <GridViewColumn Header="Room name" Width="100" DisplayMemberBinding="{Binding RoomName}" />
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Accept rescheduling" HorizontalAlignment="Left" Margin="143,369,0,0" VerticalAlignment="Top" Click="AcceptRescButton_Click" Height="36" Width="117"/>
-        <Button Content="Cancel rescheduling" HorizontalAlignment="Left" Margin="309,369,0,0" VerticalAlignment="Top" Click="Button_Click" Height="36" Width="118"/>
+        <Button IsEnabled="{Binding SelectedItems.Count, ElementName=lvAcceptRescheduleAppointment}" Content="Accept rescheduling" HorizontalAlignment="Left" Margin="143,369,0,0" VerticalAlignment="Top" Command="{Binding RescheduleCommand}" Height="36" Width="117"/>
+        <Button Content="Cancel rescheduling" HorizontalAlignment="Left" Margin="335,369,0,0" VerticalAlignment="Top" Command="{Binding CancelCommand}" Height="36" Width="118"/>
         <Label Content="Some free choises for you to choose:" HorizontalAlignment="Left" Margin="172,35,0,0" VerticalAlignment="Top" FontSize="14" Height="29" Width="244"/>
     </Grid>
 </Window>

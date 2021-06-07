@@ -22,11 +22,7 @@ namespace Service
             hospitalRepository.WriteHospitalToJason(hospital);
         }
 
-        public void DeleteOutDatedActivities(List<DateTime> timesOfActivities,  TimeSpan timeSpanOfReset)
-        {
-            hospitalRepository.DeleteOutDatedActivities(timesOfActivities, timeSpanOfReset);
-        }
-
+       
 
     }
 }

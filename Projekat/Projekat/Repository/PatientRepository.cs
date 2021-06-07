@@ -11,8 +11,8 @@ namespace Repository
 {
    public class PatientRepository
    {
-        private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\List_Of_Patients.json";
-        private List<Patient> patients = new List<Patient>();
+        public readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\List_Of_Patients.json";
+        public List<Patient> patients = new List<Patient>();
 
 
         public PatientRepository()
@@ -51,13 +51,74 @@ namespace Repository
         }
 
         public Model.Patient GetById(int id)
-      {
+        {
             return patients.Find(obj => obj.id == id);
         }
       
-      public void Update(Model.Patient patient)
+
+        public List<DateTime> GetActivityTimesByPatientUsername(String username)
+        {
+            List<DateTime> activityTimes = new List<DateTime>();
+            foreach(Patient p in patients)
+            {
+                if (p.Username == username)
+                {
+                    activityTimes = p.isPatientBaned.TimeOfActivities;
+                    UpdateActivityTimes(activityTimes,p);
+                }
+            }
+            return activityTimes;
+        }
+
+        public void UpdateActivityTimes(List<DateTime> dateTimes, Patient loggedPatient)
+        {
+            TimeSpan ValidTimeActivities = new TimeSpan(7, 0, 0, 0, 0);
+
+            try
+            {
+                for (int i = 0; i < dateTimes.Count; i++)
+                {
+                    DateTime dt = dateTimes[i];
+                    if ((DateTime.Now.Date - dt.Date) > ValidTimeActivities)
+                    {
+                        dateTimes.Remove(dt);
+                        loggedPatient.isPatientBaned.ActivitiyCounter--;
+                        loggedPatient.isPatientBaned.TimeOfActivities = dateTimes;
+                        Update(loggedPatient);
+                    }
+                }
+            }
+            catch(NullReferenceException e)
+            {
+                return;
+            }
+        }    
+
+        public void AddPatientActivities(String username)
+        {
+            foreach(Patient p in patients)
+            {
+                if(p.Username==username)
+                {
+                    p.isPatientBaned.ActivitiyCounter+=1;
+                    p.isPatientBaned.TimeOfActivities.Add(DateTime.Now);
+                }
+            }
+
+            WriteToJson();
+        }
+
+      public void Update(Patient loggedPatient)
       {
-         // TODO: implement
+         foreach(Patient p in patients)
+         {
+                if(p.id == loggedPatient.id)
+                {
+                    patients.Remove(p);
+                }
+         }
+         patients.Add(loggedPatient);
+         WriteToJson();
       }
       
       public void Delete(Model.Patient patient)
@@ -75,8 +136,7 @@ namespace Repository
       }
       
       public List<Patient> GetAll()
-      {
-            // TODO: implement
+      {          
             return patients;
       }
 
@@ -90,8 +150,33 @@ namespace Repository
                     loginPatient = p;
             }
             return loginPatient;
-
         }
 
+        public void BanPatient(String username)
+        {
+            foreach (Patient p in patients)
+            {
+                if(p.Username==username)
+                {
+                    p.isPatientBaned.isBaned = true;
+                }
+            }
+            WriteToJson();
+        }
+
+        public Boolean IsPatientBanned(String username)
+        {
+            Patient storege = new Patient();
+            foreach(Patient p in patients)
+            {
+                if(p.Username == username)
+                {
+                    storege = p;
+                    
+                }                
+            }
+
+            return storege.isPatientBaned.isBaned;
+        }
     }
 }

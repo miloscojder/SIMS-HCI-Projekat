@@ -39,18 +39,7 @@ namespace Repository
             File.WriteAllText(fileLocation, json);
         }
 
-        public void DeleteOutDatedActivities(List<DateTime> timesOfActivities, TimeSpan timeSpanOfReset)
-        {
-            foreach (DateTime datum in timesOfActivities)
-            {
-                if ((DateTime.Now.Date - datum.Date) > timeSpanOfReset)
-                {
-                    timesOfActivities.Remove(datum);
-                    hospital.activityCounter--;
-                    WriteHospitalToJason(hospital);
-                }
-            }
-        }
+   
 
         public void Save(Model.MedicalRecord newMedRecord)
         {

@@ -11,7 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Model;
-
+using Controller;
 
 namespace Projekat
 {
@@ -20,31 +20,35 @@ namespace Projekat
     /// </summary>
     public partial class AcceptNewAppointmentPatient : Window
     {
-     
+
+        public AppointmentController appointmentController = new AppointmentController();
+        public RoomController roomController = new RoomController();
+        public DoctorController doctorController = new DoctorController();
+        public List<Room> Rooms { get; set; }
+        public List<Doctor> Doctors { get; set; }
 
         public AcceptNewAppointmentPatient(ScheduleAppointmentPatient.Priority priority, DateTime choosenDate, string izabraniDoctor)
         {
             InitializeComponent();
             this.DataContext = this;
+            SetCommands();
+
+            MessageBox.Show("Doctor is busy! If you want you can choose one of these available appointments.");
 
             if (priority == ScheduleAppointmentPatient.Priority.DATE)
             {
                 Appointment a = new Appointment();
-
-                a.StartTime = choosenDate;
-
+             
                 List<Appointment> appointmentsDateChecked = new List<Appointment>();
-
-               // string[] doktori = File.ReadAllLines(@"C:\Users\Korisnik\Desktop\asdas\SIMS-HCI-Projekat-main\Projekat\Projekat\Data\doktoriak.txt", Encoding.UTF8);
-                string[] sale = File.ReadAllLines(@"C:\Users\Korisnik\Desktop\asdas\SIMS-HCI-Projekat-main\Projekat\Projekat\Data\saleak.txt", Encoding.UTF8);
-                Random random = new Random(); 
-
+                List<Doctor> doctors = doctorController.GetAllDoctors();
+                List<Room> rooms = roomController.GetAllRooms();
+                
                 for (int i = 0; i < 3; i++)
-                {
-               //     a = new Appointment(choosenDate, doktori[i], sale[i]);
-                    a.id = random.Next(1, 1000);
+                {              
+                    a = new Appointment(choosenDate, Doctors[i].Username, Rooms[i].Name);
+                    a.id = appointmentController.GenerateNewId();
                     a.AppointmentType = TypeOfAppointment.Examination;
-  
+                    a.PatientUsername = PatientMainPage.prenosilac.Username;                    
                     appointmentsDateChecked.Add(a);
                 }                            
 
@@ -54,10 +58,11 @@ namespace Projekat
             {
                 Appointment a = new Appointment();
 
-                //a.doctorUsername = izabraniDoctor;
+              
 
                 List<Appointment> appointmentsDoctorChecked = new List<Appointment>();
-                string[] sale = File.ReadAllLines(@"C:\Users\Korisnik\Desktop\asdas\SIMS-HCI-Projekat-main\Projekat\Projekat\Data\saleak.txt", Encoding.UTF8);
+
+                Rooms = roomController.GetAllRooms();
                 Random random = new Random();
 
                 List<DateTime> timeList = new List<DateTime>();
@@ -69,10 +74,10 @@ namespace Projekat
 
                 for (int i = 0; i < 3; i++)
                 {
-              //      a = new Appointment(timeList[i], izabraniDoctor, sale[i]);
-                    a.id = random.Next(1, 1000);
+                    a = new Appointment(timeList[i], izabraniDoctor, Rooms[i].Name);
+                    a.id = appointmentController.GenerateNewId();
                     a.AppointmentType = TypeOfAppointment.Examination;
-
+                    a.PatientUsername = PatientMainPage.prenosilac.Username;
                     appointmentsDoctorChecked.Add(a);
                 }
 
@@ -80,7 +85,34 @@ namespace Projekat
             }
         }
 
-        private void AcceptButton_Click(object sender, RoutedEventArgs e)
+        private RelayCommand cancelCommand;
+        public RelayCommand CancelCommand
+        {
+            get { return cancelCommand; }
+            set
+            {
+                cancelCommand = value;
+            }
+        }
+
+
+        private RelayCommand scheduleCommand;
+        public RelayCommand ScheduleCommand
+        {
+            get { return scheduleCommand; }
+            set
+            {
+                scheduleCommand = value;
+            }
+        }
+
+
+        public Boolean ScheduleCanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void ScheduleExecute(object sender)
         {
             if (lvAcceptAppointment.SelectedItems.Count < 1)
             {
@@ -88,19 +120,43 @@ namespace Projekat
             }
             else
             {
-                Appointment app = (Appointment)lvAcceptAppointment.SelectedItems[0];
+                MessageBoxResult result = MessageBox.Show("Are you sure you want to schedule this notification?",
+                                          "Confirmation",
+                                          MessageBoxButton.YesNo,
+                                          MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    Appointment app = (Appointment)lvAcceptAppointment.SelectedItems[0];
+                    appointmentController.SaveAppointment(app);
 
-                AppointmentsPage appo = new AppointmentsPage(app);
-                appo.Show();
-                this.Close();
+                    MessageBox.Show("Your appointment is scheduled");
+                    AppointmentsPage appo = new AppointmentsPage();
+                    appo.Show();
+                    this.Close();
+                }               
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public Boolean CancelCanExecute(object sender)
         {
-            AppointmentsPage app = new AppointmentsPage(null);
-            app.Show();
+            return true;
+        }
+
+        public void CancelExecute(object sender)
+        {
+            SeeAppointmentListPatient salp = new SeeAppointmentListPatient();
+            salp.Show();
             this.Close();
         }
+
+        public void SetCommands()
+        {
+            ScheduleCommand = new RelayCommand(ScheduleExecute, ScheduleCanExecute);
+            CancelCommand = new RelayCommand(CancelExecute, CancelCanExecute);
+        }
+
+
+
+
     }
 }

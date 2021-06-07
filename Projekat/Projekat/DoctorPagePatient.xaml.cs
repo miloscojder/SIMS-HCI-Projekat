@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Model;
 using Newtonsoft.Json;
+using Controller;
 
 namespace Projekat
 {
@@ -20,14 +21,16 @@ namespace Projekat
     /// </summary>
     public partial class DoctorPagePatient : Window
     {      
-        public Doctor posrednik = new Doctor();
-        public List<Doctor> doctors = new List<Doctor>();
+        public Doctor posrednik = new Doctor();      
         public List<String> doctorFeedbackList;
+        public AppointmentController appointmentController = new AppointmentController();
+        public DoctorController doctorController = new DoctorController();
 
         public DoctorPagePatient(Doctor d)
         {
             InitializeComponent();
             this.DataContext = this;
+            SetCommands();
 
             posrednik = d;
 
@@ -44,112 +47,259 @@ namespace Projekat
         }
 
         private void PotvrdiButton_Click(object sender, RoutedEventArgs e)
-        {           
-            List<Appointment> appointments = new List<Appointment>();
-            appointments = JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json"));
-
-            int brojac = 0;
-            doctors = JsonConvert.DeserializeObject<List<Doctor>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doctorsak.json"));
-
-            posrednik.doctorCounter++;
+        {
             
-            for (int i = 0; i < appointments.Count; i++)
-            {
-                Appointment app = appointments[i];
-               /* if (app.doctorUsername==posrednik.Username)
-                {
-                    brojac++;
-                }*/
-            }
-
-            if(brojac<1)
-            {
-                MessageBox.Show("Ne mozete oceniti lekara, nemate ni jedan zakazan termin kod ovog lekara");
-                HospitalViewPatientPage hospViewPaitPage = new HospitalViewPatientPage(null);
-                hospViewPaitPage.Show();
-                this.Close();
-            }
-            else
-            {
-                if (posrednik.doctorCounter == 1)
-                {
-                      DoctorsRatingTextBox.Text = DoctorsGrades.Text;
-                      posrednik.doctorGradeSum += Convert.ToDouble(DoctorsGrades.Text);
-                      posrednik.Grade = Convert.ToDouble(DoctorsGrades.Text);
-                      posrednik.doctorFeedbacks.Add(FeedbackDoctorTextBox.Text);               
-                }
-                else
-                {
-                      posrednik.doctorGradeSum += Convert.ToDouble(DoctorsGrades.Text);
-                      DoctorsRatingTextBox.Text = Convert.ToString(posrednik.doctorGradeSum / posrednik.doctorCounter);
-                      posrednik.Grade = posrednik.doctorGradeSum / posrednik.doctorCounter;
-                      posrednik.doctorFeedbacks.Add(FeedbackDoctorTextBox.Text);
-                }
-
-                for (int i = 0; i < doctors.Count; i++)
-                {
-                    Doctor doc = doctors[i];
-                    if (doc.id == posrednik.id)
-                    {
-                        doctors.Remove(doc);
-                    }
-                }
-
-                File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doctorsak.json", JsonConvert.SerializeObject(doctors));
-
-                HospitalViewPatientPage hvpp = new HospitalViewPatientPage(posrednik);
-                hvpp.Show();
-                this.Close();
-            }           
+                     
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private RelayCommand returnCommand;
+        public RelayCommand ReturnCommand
+        {
+            get { return returnCommand; }
+            set
+            {
+                returnCommand = value;
+            }
+        }
+
+        private RelayCommand feedbackCommand;
+        public RelayCommand FeedbackCommand
+        {
+            get { return feedbackCommand; }
+            set
+            {
+                feedbackCommand = value;
+            }
+        }
+
+
+        private RelayCommand homeCommand;
+        public RelayCommand HomeCommand
+        {
+            get { return homeCommand; }
+            set
+            {
+                homeCommand = value;
+            }
+        }
+
+        private RelayCommand notificationCommand;
+        public RelayCommand NotificationCommand
+        {
+            get { return notificationCommand; }
+            set
+            {
+                notificationCommand = value;
+            }
+        }
+
+        private RelayCommand medicalRecordCommand;
+        public RelayCommand MedicalRecordCommand
+        {
+            get { return medicalRecordCommand; }
+            set
+            {
+                medicalRecordCommand = value;
+            }
+        }
+
+        private RelayCommand qandACommand;
+        public RelayCommand QandACommand
+        {
+            get { return qandACommand; }
+            set
+            {
+                qandACommand = value;
+            }
+        }
+
+        private RelayCommand appointmentCommand;
+        public RelayCommand AppointmentCommand
+        {
+            get { return appointmentCommand; }
+            set
+            {
+                appointmentCommand = value;
+            }
+        }
+
+        private RelayCommand profileCommand;
+        public RelayCommand ProfileCommand
+        {
+            get { return profileCommand; }
+            set
+            {
+                profileCommand = value;
+            }
+        }
+
+        public Boolean HomeCanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void HomeExecute(object sender)
         {
             PatientMainPage pmp = new PatientMainPage(PatientMainPage.prenosilac);
             pmp.Show();
             this.Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        public Boolean AppointmentsCanExecute(object sender)
         {
-            AppointmentsPage ap = new AppointmentsPage(null);
+            return true;
+        }
+
+        public void AppointmentsExecute(object sender)
+        {
+            AppointmentsPage ap = new AppointmentsPage();
             ap.Show();
             this.Close();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        public Boolean NotificationsCanExecute(object sender)
+        {
+            return false;
+        }
+
+        public void NotificationsExecute(object sender)
         {
             NotificationsPatientPage npp = new NotificationsPatientPage(null);
             npp.Show();
             this.Close();
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        public Boolean MedicalRecordCanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void MedicalRecordExecute(object sender)
         {
             PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage();
             pmrp.Show();
             this.Close();
         }
 
-        private void Button_Click_4(object sender, RoutedEventArgs e)
+        public Boolean QandACanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void QandaAExecute(object sender)
         {
             PatientQandAPage pqap = new PatientQandAPage();
             pqap.Show();
             this.Close();
         }
 
-        private void Button_Click_5(object sender, RoutedEventArgs e)
+        public Boolean ProfileCanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void ProfileExecute(object sender)
         {
             PatientProfilePage ppp = new PatientProfilePage();
             ppp.Show();
             this.Close();
         }
 
-        private void Button_Click_6(object sender, RoutedEventArgs e)
+        public Boolean FeedbackCanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void FeedbackExecute(object sender)
+        {
+            List<Appointment> appointments = appointmentController.GetAppointmentsByPatientsUsername(PatientMainPage.prenosilac.Username);
+            List<Doctor> doctors = doctorController.GetAllDoctors();
+            int brojac = doctorController.AppointmentsWithThisDoctor(appointments, posrednik);
+
+            if (brojac < 1)
+            {
+                MessageBox.Show("You can't rete this doctor, you do not have any scheduled appointment with him.");
+                HospitalViewPatientPage hospViewPaitPage = new HospitalViewPatientPage(null);
+                hospViewPaitPage.Show();
+                this.Close();
+            }
+            else
+            {
+                if ((DoctorsGrades.SelectedItem == null) | (FeedbackDoctorTextBox.Text == ""))
+                {
+                    MessageBox.Show("You must rate doctor and write feedback first.");
+                }
+                else
+                {
+                    MessageBoxResult result = MessageBox.Show("Are you sure you want to rate doctor with this grade?",
+                                    "Confirmation",
+                                    MessageBoxButton.YesNo,
+                                    MessageBoxImage.Question);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        posrednik.doctorCounter++;
+                        if (posrednik.doctorCounter == 1)
+                        {
+                            DoctorsRatingTextBox.Text = DoctorsGrades.Text;
+                            posrednik.doctorGradeSum += Convert.ToDouble(DoctorsGrades.Text);
+                            posrednik.Grade = Convert.ToDouble(DoctorsGrades.Text);
+                            posrednik.doctorFeedbacks.Add(FeedbackDoctorTextBox.Text);
+                        }
+                        else
+                        {
+                            posrednik.doctorGradeSum += Convert.ToDouble(DoctorsGrades.Text);
+                            DoctorsRatingTextBox.Text = Convert.ToString(posrednik.doctorGradeSum / posrednik.doctorCounter);
+                            posrednik.Grade = posrednik.doctorGradeSum / posrednik.doctorCounter;
+                            posrednik.doctorFeedbacks.Add(FeedbackDoctorTextBox.Text);
+                        }
+
+                        for (int i = 0; i < doctors.Count; i++)
+                        {
+                            Doctor doc = doctors[i];
+                            if (doc.id == posrednik.id)
+                            {
+                                doctors.Remove(doc);
+                            }
+                        }
+
+                        File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doctors.json", JsonConvert.SerializeObject(doctors));
+
+                        MessageBox.Show("You successfully rated doctor.");
+                        HospitalViewPatientPage hvpp = new HospitalViewPatientPage(posrednik);
+                        hvpp.Show();
+                        this.Close();
+                    }
+                }
+            }
+        }
+
+        public Boolean ReturnCanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void ReturnExecute(object sender)
         {
             HospitalViewPatientPage hvpp = new HospitalViewPatientPage(null);
             hvpp.Show();
             this.Close();
         }
+
+
+        public void SetCommands()
+        {
+            HomeCommand = new RelayCommand(HomeExecute, HomeCanExecute);
+            AppointmentCommand = new RelayCommand(AppointmentsExecute, AppointmentsCanExecute);
+            NotificationCommand = new RelayCommand(NotificationsExecute, NotificationsCanExecute);
+            MedicalRecordCommand = new RelayCommand(MedicalRecordExecute, MedicalRecordCanExecute);
+            QandACommand = new RelayCommand(QandaAExecute, QandACanExecute);
+            ProfileCommand = new RelayCommand(ProfileExecute, ProfileCanExecute);
+
+            FeedbackCommand = new RelayCommand(FeedbackExecute, FeedbackCanExecute);
+            ReturnCommand = new RelayCommand(ReturnExecute, ReturnCanExecute);
+        }
+
+
     }
 }

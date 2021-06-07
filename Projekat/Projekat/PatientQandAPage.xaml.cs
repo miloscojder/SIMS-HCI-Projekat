@@ -18,53 +18,197 @@ namespace Projekat
     /// </summary>
     public partial class PatientQandAPage : Window
     {
-        public User posrednik = new User();
+
+        public List<String> Questions { get; set; }
+        public List<String> Answers { get; set; }
 
         public PatientQandAPage()
         {
             InitializeComponent();
+            this.DataContext = this;
+            SetCommands();
+
+            Questions = new List<String> { "Question 1", "Question 2", "Question 3" };
+           
+            lvQandA.ItemsSource = Questions;
+ 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private RelayCommand questionCommand;
+        public RelayCommand QuestionCommand
+        {
+            get { return questionCommand; }
+            set
+            {
+                questionCommand = value;
+            }
+        }
+
+        private RelayCommand homeCommand;
+        public RelayCommand HomeCommand
+        {
+            get { return homeCommand; }
+            set
+            {
+                homeCommand = value;
+            }
+        }
+
+        private RelayCommand notificationCommand;
+        public RelayCommand NotificationCommand
+        {
+            get { return notificationCommand; }
+            set
+            {
+                notificationCommand = value;
+            }
+        }
+
+        private RelayCommand medicalRecordCommand;
+        public RelayCommand MedicalRecordCommand
+        {
+            get { return medicalRecordCommand; }
+            set
+            {
+                medicalRecordCommand = value;
+            }
+        }
+
+        private RelayCommand qandACommand;
+        public RelayCommand QandACommand
+        {
+            get { return qandACommand; }
+            set
+            {
+                qandACommand = value;
+            }
+        }
+
+        private RelayCommand appointmentCommand;
+        public RelayCommand AppointmentCommand
+        {
+            get { return appointmentCommand; }
+            set
+            {
+                appointmentCommand = value;
+            }
+        }
+
+        private RelayCommand profileCommand;
+        public RelayCommand ProfileCommand
+        {
+            get { return profileCommand; }
+            set
+            {
+                profileCommand = value;
+            }
+        }
+
+        public Boolean HomeCanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void HomeExecute(object sender)
         {
             PatientMainPage pmp = new PatientMainPage(PatientMainPage.prenosilac);
             pmp.Show();
             this.Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        public Boolean AppointmentsCanExecute(object sender)
         {
-            AppointmentsPage ap = new AppointmentsPage(null);
+            return true;
+        }
+
+        public void AppointmentsExecute(object sender)
+        {
+            AppointmentsPage ap = new AppointmentsPage();
             ap.Show();
             this.Close();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        public Boolean NotificationsCanExecute(object sender)
+        {
+            return false;
+        }
+
+        public void NotificationsExecute(object sender)
         {
             NotificationsPatientPage npp = new NotificationsPatientPage(null);
             npp.Show();
             this.Close();
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        public Boolean MedicalRecordCanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void MedicalRecordExecute(object sender)
         {
             PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage();
             pmrp.Show();
             this.Close();
         }
 
-        private void Button_Click_4(object sender, RoutedEventArgs e)
+        public Boolean QandACanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void QandaAExecute(object sender)
         {
             PatientQandAPage pqap = new PatientQandAPage();
             pqap.Show();
             this.Close();
         }
 
-        private void Button_Click_5(object sender, RoutedEventArgs e)
+        public Boolean ProfileCanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void ProfileExecute(object sender)
         {
             PatientProfilePage ppp = new PatientProfilePage();
             ppp.Show();
             this.Close();
         }
+
+        public Boolean AskQuestionCanExecute(Object sender)
+        {
+            return true;
+        }
+
+        public void AskQuestionExecute(Object sender)
+        {
+            Questions.Add(QuestionTextBox.Text);
+            lvQandA.ItemsSource = Questions;
+        }
+
+
+        public void SetCommands()
+        {
+            HomeCommand = new RelayCommand(HomeExecute, HomeCanExecute);
+            AppointmentCommand = new RelayCommand(AppointmentsExecute, AppointmentsCanExecute);
+            NotificationCommand = new RelayCommand(NotificationsExecute, NotificationsCanExecute);
+            MedicalRecordCommand = new RelayCommand(MedicalRecordExecute, MedicalRecordCanExecute);
+            QandACommand = new RelayCommand(QandaAExecute, QandACanExecute);
+            ProfileCommand = new RelayCommand(ProfileExecute, ProfileCanExecute);
+
+            QuestionCommand = new RelayCommand(AskQuestionExecute, AskQuestionCanExecute);
+        }
+
+
+
+
     }
+
+    
+
 }
+
+
+
+

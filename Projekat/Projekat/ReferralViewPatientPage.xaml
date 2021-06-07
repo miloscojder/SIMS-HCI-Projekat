@@ -5,9 +5,75 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="ReferralViewPatientPage" Background="LightSkyBlue" Height="493" Width="800">
+        Title="ReferralViewPatientPage" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="LightSkyBlue" Height="493" Width="800">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
+                        <GradientStop Color="Azure" Offset="0.2"/>
+                        <GradientStop Color="LightBlue" Offset="0.85"/>
+                        <GradientStop Color="Azure" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Window.InputBindings>
+        
+            <KeyBinding Key="Q" Modifiers="Ctrl" Command="{Binding HomeCommand}"/>
+            <KeyBinding Key="W" Modifiers="Ctrl" Command="{Binding AppointmentCommand}"/>
+            <KeyBinding Key="E" Modifiers="Ctrl" Command="{Binding NotificationCommand}"/>
+            <KeyBinding Key="R" Modifiers="Ctrl" Command="{Binding MedicalRecordCommand}"/>
+            <KeyBinding Key="T" Modifiers="Ctrl" Command="{Binding QandACommand}"/>
+            <KeyBinding Key="Y" Modifiers="Ctrl" Command="{Binding ProfileCommand}"/>
+            
+        </Window.InputBindings>
+    
     <Grid>
-        <ListView x:Name="lvRaferrals" Background="LightCyan" Margin="28,167,359,109">
+        <StackPanel Orientation="Horizontal" Background="LightSkyBlue" Margin="0,0,0,387" Grid.ColumnSpan="2">
+            <Button ToolTipService.InitialShowDelay="100" 
+    ToolTipService.ShowDuration="100000" 
+    ToolTipService.BetweenShowDelay="1000" 
+    ToolTip="Go to home page" Command="{Binding HomeCommand}" Width="112">
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\house-256.ico" Height="61" Width="61"></Image>
+                </DockPanel>
+            </Button>
+
+            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
+                ToolTip="See your appoinemtns" Command="{Binding AppointmentCommand}" Width="174" >
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\planner-256.ico" Height="61" Width="54"></Image>
+                </DockPanel>
+            </Button>
+            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
+                ToolTip="See your notifications"  Command="{Binding NotificationCommand}" Width="157" >
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\bell-3-256.ico" Height="60" Width="56"></Image>
+                </DockPanel>
+            </Button>
+            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
+                ToolTip="Look at your medical record" Command="{Binding MedicalRecordCommand}" Width="160">
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\literature-256.ico" Height="62" Width="62"></Image>
+                </DockPanel>
+            </Button>
+
+            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
+                ToolTip="See questions and aks" Command="{Binding QandACommand}"  Width="100">
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\question-mark-256.ico" Height="63" Width="73"></Image>
+                </DockPanel>
+            </Button>
+            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
+                ToolTip="My profile" Command="{Binding ProfileCommand}"  Width="99" >
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\guest-256.ico" Height="61" Width="71"></Image>
+                </DockPanel>
+            </Button>
+        </StackPanel>
+        <ListView x:Name="lvRaferrals" Background="LightCyan" Margin="28,207,359,69">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Date" Width="100" DisplayMemberBinding="{Binding Date}" />
@@ -18,7 +84,7 @@
             </ListView.View>
         </ListView>
 
-        <ListView x:Name="lvHospitalReferrals" Background="LightCyan" Margin="524,167,43,109">
+        <ListView x:Name="lvHospitalReferrals" Background="LightCyan" Margin="524,207,43,69">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Date" Width="100" DisplayMemberBinding="{Binding Date}" />
@@ -26,9 +92,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label Content="My referrals" HorizontalAlignment="Left" Margin="318,43,0,0" VerticalAlignment="Top" FontSize="26"/>
-        <Label Content="Hospital referrals" HorizontalAlignment="Left" Margin="591,123,0,0" VerticalAlignment="Top"/>
-        <Label Content="Referrals to specialist" HorizontalAlignment="Left" Margin="188,123,0,0" VerticalAlignment="Top"/>
-        <Button Content="Return" HorizontalAlignment="Left" Margin="373,394,0,0" Click="Button_Click" VerticalAlignment="Top" Height="33" Width="91"/>
-    </Grid>
+        <Label Content="My referrals" HorizontalAlignment="Left" Margin="318,94,0,0" VerticalAlignment="Top" FontSize="26"/>
+        <Label Content="Hospital referrals" HorizontalAlignment="Left" Margin="591,163,0,0" VerticalAlignment="Top"/>
+        <Label Content="Referrals to specialist" HorizontalAlignment="Left" Margin="188,163,0,0" VerticalAlignment="Top"/>
+        </Grid>
 </Window>

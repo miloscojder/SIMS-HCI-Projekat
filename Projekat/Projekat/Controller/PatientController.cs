@@ -20,6 +20,16 @@ namespace Controller
          return patientService.GetById(id);
       }
       
+        public List<DateTime> GetActivityTimesByPatientUsername(String username)
+        {
+            return patientService.GetActivityTimesByPatientUsername(username);
+        }
+
+        public void AddPatientActivities(String username)
+        {
+            patientService.AddPatientActivities(username);
+        }
+
       public void Update(Model.Patient patient)
       {
          // TODO: implement
@@ -49,11 +59,18 @@ namespace Controller
 
         public Patient FindPatientByUsernameAndPassword(String username, String password)
         {
-
             return patientService.FindPatientByUsernameAndPassword(username, password);
         }
 
+        public void BanPatient(String username)
+        {
+            patientService.BanPatient(username);
+        }
 
+        public Boolean IsPatientBanned(String username)
+        {
+            return patientService.IsPatientBanned(username);
+        }
 
 
    
