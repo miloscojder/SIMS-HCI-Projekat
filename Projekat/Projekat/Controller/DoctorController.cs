@@ -58,8 +58,8 @@ namespace Controller
             return doctorService.FindDoctorByUsernameAndPassword(username, password);
         }
 
-        public int AppointmentsWithThisDoctor(List<Appointment> appointments,Doctor doctor)
-        {
+ /*       public int AppointmentsWithThisDoctor(List<Appointment> appointments,Doctor doctor)
+       {
             return doctorService.AppointmentsWithThisDoctor(appointments, doctor);
         }
 
@@ -67,7 +67,7 @@ namespace Controller
         {
             return doctorService.GetAllDoctorUsernames();
         }
-
+ */
 
         public List<Appointment> GetAllAppointments()
       {

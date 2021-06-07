@@ -1,12 +1,11 @@
 [
-
   {
     "Description": "bla",
-    "RoomBId": 0,
+    "RoomBId": 3,
     "Type": 1,
     "id": 0,
     "Date": null,
-    "StartTime": "2021-06-16T15:00:00",
+    "StartTime": "2021-06-07T20:23:00",
     "TimeStart": null,
     "Duration": null,
     "EndTime": null,
