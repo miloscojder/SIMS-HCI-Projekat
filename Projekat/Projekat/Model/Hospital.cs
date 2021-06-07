@@ -14,7 +14,7 @@ namespace Model
         public List<String> hospitalFeedback { get; set; }
 
         public HospitalGrade gradesOfThisHospital { get; set; }
-        public int activityCounter { get; set; }
+    
        
 
         public Hospital() {}   

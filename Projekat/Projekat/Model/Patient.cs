@@ -13,9 +13,7 @@ namespace Model
    {
        
         public MedicalRecord record { get; set; }
-        public Boolean isBaned = false;
-        public int ActivitiyCounter;
-        public List<DateTime> TimeOfActivities;
+        public Ban isPatientBaned { get; set; }
 
         public Patient() { }
         public Patient(int id, string name, string surname, MedicalRecord mr)

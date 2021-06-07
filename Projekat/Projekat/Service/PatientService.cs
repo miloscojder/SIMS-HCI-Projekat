@@ -10,15 +10,28 @@ namespace Service
    public class PatientService
    {
         public PatientRepository patientRepository = new PatientRepository();
+        public List<Patient> patients = new List<Patient>();
+
       public Model.Patient GetById(int id)
       {
          return patientRepository.GetById(id);
       }
 
+        public List<DateTime> GetActivityTimesByPatientUsername(String username)
+        {
+            return patientRepository.GetActivityTimesByPatientUsername(username);
+        }
+
         public int GenerateNewId()
         {
             return patientRepository.GenerateNewId();
 
+        }
+
+        public void AddPatientActivities(String username)
+        {
+            patientRepository.AddPatientActivities(username);
+            
         }
 
         public void Update(Model.Patient patient)
@@ -48,7 +61,15 @@ namespace Service
             return patientRepository.FindPatientByUsernameAndPassword(username, password);
         }
 
+        public void BanPatient(String username)
+        {
+            patientRepository.BanPatient(username);
+        }
 
+        public Boolean IsPatientBanned(String username)
+        {
+            return patientRepository.IsPatientBanned(username);
+        }
 
     }
 }

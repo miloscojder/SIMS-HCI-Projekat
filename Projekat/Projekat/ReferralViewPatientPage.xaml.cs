@@ -27,6 +27,7 @@ namespace Projekat
         {
             InitializeComponent();
             this.DataContext = this;
+            SetCommands();
 
             List<ReferralPatient> referralPatients = new List<ReferralPatient>();
             referralPatients = ReferralPatientController.GerAllReferralsByPatientsUsername(PatientMainPage.prenosilac.Username);
@@ -44,5 +45,150 @@ namespace Projekat
             pmrp.Show();
             this.Close();
         }
+
+        private RelayCommand homeCommand;
+        public RelayCommand HomeCommand
+        {
+            get { return homeCommand; }
+            set
+            {
+                homeCommand = value;
+            }
+        }
+
+        private RelayCommand notificationCommand;
+        public RelayCommand NotificationCommand
+        {
+            get { return notificationCommand; }
+            set
+            {
+                notificationCommand = value;
+            }
+        }
+
+        private RelayCommand medicalRecordCommand;
+        public RelayCommand MedicalRecordCommand
+        {
+            get { return medicalRecordCommand; }
+            set
+            {
+                medicalRecordCommand = value;
+            }
+        }
+
+        private RelayCommand qandACommand;
+        public RelayCommand QandACommand
+        {
+            get { return qandACommand; }
+            set
+            {
+                qandACommand = value;
+            }
+        }
+
+        private RelayCommand appointmentCommand;
+        public RelayCommand AppointmentCommand
+        {
+            get { return appointmentCommand; }
+            set
+            {
+                appointmentCommand = value;
+            }
+        }
+
+        private RelayCommand profileCommand;
+        public RelayCommand ProfileCommand
+        {
+            get { return profileCommand; }
+            set
+            {
+                profileCommand = value;
+            }
+        }
+
+        public Boolean HomeCanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void HomeExecute(object sender)
+        {
+            PatientMainPage pmp = new PatientMainPage(PatientMainPage.prenosilac);
+            pmp.Show();
+            this.Close();
+        }
+
+        public Boolean AppointmentsCanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void AppointmentsExecute(object sender)
+        {
+            AppointmentsPage ap = new AppointmentsPage();
+            ap.Show();
+            this.Close();
+        }
+
+        public Boolean NotificationsCanExecute(object sender)
+        {
+            return false;
+        }
+
+        public void NotificationsExecute(object sender)
+        {
+            NotificationsPatientPage npp = new NotificationsPatientPage(null);
+            npp.Show();
+            this.Close();
+        }
+
+        public Boolean MedicalRecordCanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void MedicalRecordExecute(object sender)
+        {
+            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage();
+            pmrp.Show();
+            this.Close();
+        }
+
+        public Boolean QandACanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void QandaAExecute(object sender)
+        {
+            PatientQandAPage pqap = new PatientQandAPage();
+            pqap.Show();
+            this.Close();
+        }
+
+        public Boolean ProfileCanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void ProfileExecute(object sender)
+        {
+            PatientProfilePage ppp = new PatientProfilePage();
+            ppp.Show();
+            this.Close();
+        }
+
+
+        public void SetCommands()
+        {
+            HomeCommand = new RelayCommand(HomeExecute, HomeCanExecute);
+            AppointmentCommand = new RelayCommand(AppointmentsExecute, AppointmentsCanExecute);
+            NotificationCommand = new RelayCommand(NotificationsExecute, NotificationsCanExecute);
+            MedicalRecordCommand = new RelayCommand(MedicalRecordExecute, MedicalRecordCanExecute);
+            QandACommand = new RelayCommand(QandaAExecute, QandACanExecute);
+            ProfileCommand = new RelayCommand(ProfileExecute, ProfileCanExecute);
+
+        }
+
     }
 }

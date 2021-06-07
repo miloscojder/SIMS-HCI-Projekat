@@ -23,74 +23,188 @@ namespace Projekat
     /// </summary>
     public partial class PatientMainPage : Window
     {
-        NotifficationController notifficationController = new NotifficationController();
-        List<Notification> notifications;
+        public NotifficationController notifficationController = new NotifficationController();
+        public List<Notification> notifications;
         public static Patient prenosilac = new Patient();
 
         public PatientMainPage(Patient patient)
         {
             InitializeComponent();
-            prenosilac = patient;        
+            this.DataContext = this;
+            prenosilac = patient;
+            SetCommands();
 
             notifications = notifficationController.GetAllNotifications();
             notifficationController.IsItTime(notifications);           
         }
        
   
-        private void SeeHospitalButton_Click(object sender, RoutedEventArgs e)
+        private RelayCommand probaCommand;
+        public RelayCommand ProbaCommand
         {
-            HospitalViewPatientPage hvpp = new HospitalViewPatientPage(null);
-            hvpp.Show();
-            this.Close();
+            get { return probaCommand; }
+            set
+            {
+                probaCommand = value;
+            }
         }
 
-        private void PatientProfileButton_Click(object sender, RoutedEventArgs e)
+        private RelayCommand homeCommand;
+        public RelayCommand HomeCommand
         {
-            PatientProfilePage ppp = new PatientProfilePage();
-            ppp.Show();
-            this.Close();
+            get { return homeCommand; }
+            set
+            {
+                homeCommand = value;
+            }
         }
 
-        private void NotificationButton_Click_1(object sender, RoutedEventArgs e)
+        private RelayCommand notificationCommand;
+        public RelayCommand NotificationCommand
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null);
-            npp.Show();
-            this.Close();
+            get { return notificationCommand; }
+            set
+            {
+                notificationCommand = value;
+            }
         }
 
-        private void HomePageButton_Click(object sender, RoutedEventArgs e)
+        private RelayCommand medicalRecordCommand;
+        public RelayCommand MedicalRecordCommand
+        {
+            get { return medicalRecordCommand; }
+            set
+            {
+                medicalRecordCommand = value;
+            }
+        }
+
+        private RelayCommand qandACommand;
+        public RelayCommand QandACommand
+        {
+            get { return qandACommand; }
+            set
+            {
+                qandACommand = value;
+            }
+        }
+
+        private RelayCommand appointmentCommand;
+        public RelayCommand AppointmentCommand
+        {
+            get { return appointmentCommand; }
+            set
+            {
+                appointmentCommand = value;
+            }
+        }
+
+        private RelayCommand profileCommand;
+        public RelayCommand ProfileCommand
+        {
+            get { return profileCommand; }
+            set
+            {
+                profileCommand = value;
+            }
+        }
+
+
+        public Boolean HomeCanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void HomeExecute(object sender)
         {
             PatientMainPage pmp = new PatientMainPage(PatientMainPage.prenosilac);
             pmp.Show();
             this.Close();
         }
 
-        private void MyAppointmentsButton_Click(object sender, RoutedEventArgs e)
+        public Boolean AppointmentsCanExecute(object sender)
         {
-            AppointmentsPage ap = new AppointmentsPage(null);
+            return true;
+        }
+
+        public void AppointmentsExecute(object sender)
+        {
+            AppointmentsPage ap = new AppointmentsPage();
             ap.Show();
             this.Close();
         }
 
-        private void MedicalRecordButton_Click(object sender, RoutedEventArgs e)
+        public Boolean NotificationsCanExecute(object sender)
+        {
+            return false;
+        }
+
+        public void NotificationsExecute(object sender)
+        {
+            NotificationsPatientPage npp = new NotificationsPatientPage(null);
+            npp.Show();
+            this.Close();
+        }
+
+        public Boolean MedicalRecordCanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void MedicalRecordExecute(object sender)
         {
             PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage();
             pmrp.Show();
             this.Close();
         }
 
-        private void QandAButton_Click(object sender, RoutedEventArgs e)
+        public Boolean QandACanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void QandaAExecute(object sender)
         {
             PatientQandAPage pqap = new PatientQandAPage();
             pqap.Show();
             this.Close();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        public Boolean ProfileCanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void ProfileExecute(object sender)
         {
             PatientProfilePage ppp = new PatientProfilePage();
             ppp.Show();
             this.Close();
         }
+
+        public Boolean HospitalCanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void HospitalExecute(object sender)
+        {
+            HospitalViewPatientPage hvpp = new HospitalViewPatientPage(null);
+            hvpp.Show();
+            this.Close();
+        }
+
+        public void SetCommands()
+        {
+            HomeCommand = new RelayCommand(HomeExecute, HomeCanExecute);
+            AppointmentCommand = new RelayCommand(AppointmentsExecute, AppointmentsCanExecute);
+            NotificationCommand = new RelayCommand(NotificationsExecute, NotificationsCanExecute);
+            MedicalRecordCommand = new RelayCommand(MedicalRecordExecute, MedicalRecordCanExecute);
+            QandACommand = new RelayCommand(QandaAExecute, QandACanExecute);
+            ProfileCommand = new RelayCommand(ProfileExecute, ProfileCanExecute);
+
+            ProbaCommand = new RelayCommand(HospitalExecute, HospitalCanExecute);
+        }
+
     }
 }

@@ -1,0 +1,42 @@
+﻿<Window x:Class="Projekat.ChartDoctorRatings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        mc:Ignorable="d"
+        d:DesignHeight="300" d:DesignWidth="1500" d:DataContext="{d:DesignInstance local:ChartDoctorRatings}"        
+        Title="ChartDoctorRatings" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Height="450" Width="1400">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
+                        <GradientStop Color="Azure" Offset="0.2"/>
+                        <GradientStop Color="LightBlue" Offset="0.85"/>
+                        <GradientStop Color="Azure" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Key="A" Modifiers="Ctrl" Command="{Binding ReturnCommand}"/>
+    </Window.InputBindings>
+
+
+    <Grid>
+        <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Left">
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis Title="X" Labels="{Binding DoctorUsernameLabels}"></lvc:Axis>
+            </lvc:CartesianChart.AxisX>
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis Title="Y" LabelFormatter="{Binding Formatter}"></lvc:Axis>
+            </lvc:CartesianChart.AxisY>
+        </lvc:CartesianChart>
+
+        <Button Content="Return" x:Name="Return" Command="{Binding ReturnCommand}" Height="25" Margin="10,218,1316,41"/>
+
+    </Grid>
+</Window>

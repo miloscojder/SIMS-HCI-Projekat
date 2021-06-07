@@ -26,67 +26,11 @@ namespace Service
 
         }
 
-        public TypeOfAppointment GetTypes()
-        {
-            return appointmentRepository.GetTypes();
-        }
 
-        //treba upravniku
-        public Boolean IsRoomAvailable(Appointment appointment)
+        public List<Appointment> GetAppointmentsByPatientsUsername(String username)
         {
-            List<Appointment> appointments = GetAll();
-            List<Appointment> newAppointments = new List<Appointment>();
-            foreach (Appointment a in appointments)
-            {
-                if (a.RoomId == appointment.RoomId)
-                {
-                    newAppointments.Add(a);
-                }
-
-            }
-            return IsTimeSlotFree(appointment, newAppointments);
+            return appointmentRepository.GetAppointmentsByPatientsUsername(username);
         }
-        //treba upravniku
-        public bool IsTimeSlotFree(Appointment appointmentToCheck, List<Appointment> appointments)
-        {
-            DateTime appointmentToCheckEndTime = appointmentToCheck.StartTime.AddMinutes(appointmentToCheck.DurationInMinutes);
-            DateTime appointmentEndTime;
-            foreach (Appointment appointment in appointments)
-            {
-                if (appointmentToCheck.id != appointment.id)
-                {
-                    appointmentEndTime = appointment.StartTime.AddMinutes(appointment.DurationInMinutes);
-
-                    if (AreAppointmentsOverlapping(appointmentToCheck.StartTime, appointmentToCheckEndTime, appointment.StartTime, appointmentEndTime))
-                    {
-                        return false;
-                    }
-                }
-
-            }
-            return true;
-        }
-        //treba upravniku
-        private bool AreAppointmentsOverlapping(DateTime firstAppointmentStartTime, DateTime firstAppointmentEndTime, DateTime secondAppointmentStartTime, DateTime secondAppointmentEndTime)
-        {
-            if (IsDateTimeBetween(firstAppointmentStartTime, secondAppointmentStartTime, secondAppointmentEndTime) ||
-                    IsDateTimeBetween(firstAppointmentEndTime, secondAppointmentStartTime, secondAppointmentEndTime))
-            {
-                return true;
-            }
-            return false;
-        }
-        //treba upravniku
-        public bool IsDateTimeBetween(DateTime dateTimeToCheck, DateTime startTime, DateTime endTime)
-        {
-            return dateTimeToCheck.Ticks >= startTime.Ticks && dateTimeToCheck.Ticks < endTime.Ticks;
-        }
-        public void SaveRenovation(Appointment appointment)
-        {
-            appointment.id = GenerateNewId();
-            appointmentRepository.ScheduleDoctor(appointment);
-        }
-
 
 
         public void RescheduleDoctor(Appointment newAppointment)
@@ -101,6 +45,45 @@ namespace Service
             return true;
       }
       
+        public void SaveAppointment(Appointment appointment)
+        {
+            appointmentRepository.SaveAppointment(appointment);
+        }
+
+        public List<DateTime> GetDoctosBusyTimes(String doctorsUsername)
+        {
+            return appointmentRepository.GetDoctosBusyTimes(doctorsUsername);
+        }
+
+        public Boolean IsDoctorBusy(String doctorsUsername, DateTime choosenDate)
+        {
+            List<DateTime> doctorBusyDates = appointmentRepository.GetDoctosBusyTimes(doctorsUsername);
+            int counter = 0;
+
+            foreach(DateTime dt in doctorBusyDates)
+            {
+                if(dt.Date == choosenDate.Date && dt.Hour == choosenDate.Hour && dt.Minute == choosenDate.Minute)
+                {
+                    counter++;
+                }
+            }
+
+            if(counter>0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+           
+        }
+
+        public void DeleteAppointmentById(int id)
+        {
+            appointmentRepository.DeleteAppointmentById(id);
+        }
+
       public Appointment StartAppointment()
       {
          // TODO: implement

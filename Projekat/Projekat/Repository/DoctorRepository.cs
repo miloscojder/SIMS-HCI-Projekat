@@ -89,6 +89,30 @@ namespace Repository
         }
 
 
+
+        public Doctor FindDoctorByUsernameAndPassword(String username, String password)
+        {
+            Doctor loginDoctor = new Doctor();
+            foreach (Doctor d in doctors)
+            {
+                if (username == d.Username & password == d.Password)
+                    loginDoctor = d;
+            }
+            return loginDoctor;
+                    
+        }
+
+        public List<string> GetAllDoctorUsernames()
+        {
+            List<string> usernames = new List<string>();
+            foreach(Doctor d in doctors)
+            {
+                usernames.Add(d.Username);
+            }
+            return usernames;
+        }
+
+
         public List<Operations> GetAllOperations()
       {
          // TODO: implement

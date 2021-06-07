@@ -13,9 +13,9 @@ using System.Collections.Generic;
 
 namespace Service
 {
-   public class DoctorService
-   {
-        public  DoctorRepository doctorRepository = new DoctorRepository();
+    public class DoctorService
+    {
+        public DoctorRepository doctorRepository = new DoctorRepository();
 
         public int GenerateNewId()
         {
@@ -54,6 +54,24 @@ namespace Service
         }
 
 
+        public int AppointmentsWithThisDoctor(List<Appointment> appointments, Doctor doctor)
+        {
+            int brojac = 0;
+            for (int i = 0; i < appointments.Count; i++)
+            {
+                Appointment app = appointments[i];
+                if (app.DoctorUsername == doctor.Username)
+                {
+                    brojac++;
+                }
+            }
+            return brojac;
+        }
+
+        public List<string> GetAllDoctorUsernames()
+        {
+            return doctorRepository.GetAllDoctorUsernames();
+        }
 
         public List<Operations> GetAllOperations()
       {

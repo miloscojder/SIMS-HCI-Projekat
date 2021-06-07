@@ -23,10 +23,6 @@ namespace Controller
             hospitalService.WriteHospitalToJason(hospital);
         }
         
-        public void DeleteOutDatedActivities(List<DateTime> timesOfActivities,  TimeSpan timeSpanOfReset)
-        {
-            hospitalService.DeleteOutDatedActivities(timesOfActivities,  timeSpanOfReset);
-        }
-
+       
     }
 }
