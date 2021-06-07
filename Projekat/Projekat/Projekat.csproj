@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DotNetProjects.WpfToolkit.DataVisualization" Version="6.0.90" />
+    <PackageReference Include="LiveCharts" Version="0.9.7" />
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Syncfusion.Pdf.Wpf" Version="19.1.0.66" />
+    <PackageReference Include="Syncfusion.SfChart.WPF" Version="19.1.0.66" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Report\" />
     <Folder Include="View\" />
   </ItemGroup>
 

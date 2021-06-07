@@ -4,9 +4,174 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
-        mc:Ignorable="d"
-        Title="AppointmentsPage"  Background="LightSkyBlue" Height="500" Width="815">
+        xmlns:calendar="clr-namespace:Calendar"
+        xmlns:converters="clr-namespace:Converters"
+        
+    mc:Ignorable="d"
+        Title="AppointmentsPage" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="LightSkyBlue" Height="603" Width="815">
+
     <Window.Resources>
+        <converters:DateConverter1 x:Key="DateConverter1"/>
+        <converters:DayBorderColorConverter1 x:Key="DayBorderColorConverter1"/>
+        <Style TargetType="{x:Type calendar:Calendar1 }">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type calendar:Calendar1}">
+                        <Border Background="{TemplateBinding Background }"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <DockPanel>
+                                <Grid Height="30" DockPanel.Dock="Top">
+                                </Grid>
+                                <ItemsControl ItemsSource="{Binding DayNames}" DockPanel.Dock="Top">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock TextAlignment="Center" Text="{Binding}">
+                                                <TextBlock.Background>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="AliceBlue" Offset="0"/>
+                                                        <GradientStop Color="AliceBlue" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </TextBlock.Background>
+                                            </TextBlock>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Rows="1" Columns="7" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+
+                                <ItemsControl ItemsSource="{Binding Days}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border BorderBrush="Black" BorderThickness="1" Padding="0">
+                                                <Border Name="InnerBorder" BorderBrush="{Binding Path=Notes, Converter={StaticResource DayBorderColorConverter1}}" BorderThickness="2">
+                                                    <Border.Style>
+                                                        <Style TargetType="{x:Type Border}">
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding IsToday}" Value="true">
+                                                                    <Setter Property="Border.Background">
+                                                                        <Setter.Value>
+                                                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                                                <GradientStop Color="#FF1EA6C8" Offset="0"/>
+                                                                                <GradientStop Color="#FF0691B3" Offset="1"/>
+                                                                            </LinearGradientBrush>
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Border.Style>
+                                                    <DockPanel>
+                                                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" FlowDirection="RightToLeft">
+                                                            <TextBlock TextAlignment="Right" Text="{Binding Date, Converter={StaticResource DateConverter1}, ConverterParameter=DAY}" FontSize="14" Margin="5,5,5,5" >
+                                                                <TextBlock.Style>
+                                                                    <Style TargetType="{x:Type TextBlock}">
+                                                                        <Style.Triggers>
+                                                                            <DataTrigger Binding="{Binding IsTargetMonth}" Value="false">
+                                                                                <Setter Property="TextBlock.Foreground" Value="Gray"></Setter>
+                                                                            </DataTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </TextBlock.Style>
+                                                            </TextBlock>
+                                                        </StackPanel>
+                                                        <TextBox IsEnabled="{Binding Enabled}" Text="{Binding Notes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap" BorderThickness="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="{x:Null}" Foreground="White" />
+                                                    </DockPanel>
+                                                </Border>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Rows="6" Columns="7" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                            </DockPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ComboBoxTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <Border CornerRadius="5,0,0,5"
+                            BorderThickness="1"
+                            Background="{TemplateBinding Background}"
+                                BorderBrush="Black">
+                                <ScrollViewer x:Name="PART_ContentHost"/>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type ComboBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBox}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition MaxWidth="18"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Name="PART_EditableTextBox"
+                                 Style="{StaticResource ComboBoxTextBoxStyle}"
+                                 Padding="5,0,0,0"
+                                 Height="{TemplateBinding Height}"/>
+                            <ToggleButton Grid.Column="1" Margin="0"
+                                     Height="{TemplateBinding Height}"
+                                     
+                                     Focusable="False"
+                                     IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                      ClickMode="Press">
+                                <Path Grid.Column="1"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Data="M 0 0 L 4 4 L 8 0 Z"
+                                  Fill="DodgerBlue" />
+                            </ToggleButton>
+                            <ContentPresenter Name="ContentSite"
+                                      Content="{TemplateBinding SelectionBoxItem}"
+                                      ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                      ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Left"
+                                      Margin="5,0,0,0"/>
+                            <Popup Name="Popup"
+                               Placement="Bottom"
+                               IsOpen="{TemplateBinding IsDropDownOpen}"
+                               AllowsTransparency="True" 
+                               Focusable="False"
+                               PopupAnimation="Slide">
+                                <Grid Name="DropDown"
+                                  SnapsToDevicePixels="True"                
+                                  MinWidth="{TemplateBinding ActualWidth}"
+                                  MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <Border 
+                                    x:Name="DropDownBorder"
+                                    BorderThickness="1"
+                                    CornerRadius="5"
+                                    Background="Azure"
+                                    BorderBrush="Black"/>
+                                    <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style TargetType="Button">
             <Setter Property="Background">
                 <Setter.Value>
@@ -18,84 +183,78 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
     </Window.Resources>
-    <Grid>
+    <Window.InputBindings>
+        <KeyBinding Key="Q" Modifiers="Ctrl" Command="{Binding HomeCommand}"/>
+        <KeyBinding Key="W" Modifiers="Ctrl" Command="{Binding AppointmentCommand}"/>
+        <KeyBinding Key="E" Modifiers="Ctrl" Command="{Binding NotificationCommand}"/>
+        <KeyBinding Key="R" Modifiers="Ctrl" Command="{Binding MedicalRecordCommand}"/>
+        <KeyBinding Key="T" Modifiers="Ctrl" Command="{Binding QandACommand}"/>
+        <KeyBinding Key="Y" Modifiers="Ctrl" Command="{Binding ProfileCommand}"/>
+        <KeyBinding Key="A" Modifiers="Ctrl" Command="{Binding SeeAppointmentsCommand}"/>
+    </Window.InputBindings>
+    <Grid Margin="0,0,0,16">
         <Grid.RowDefinitions>
-            <RowDefinition Height="431*"/>
-            <RowDefinition Height="53*"/>
+            <RowDefinition/>
+            <RowDefinition Height="62.531"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="27*"/>
             <ColumnDefinition Width="13*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Orientation="Horizontal" Background="LightSkyBlue" Margin="0,0,0,346" Grid.ColumnSpan="2">
+        <StackPanel Orientation="Horizontal" Background="LightSkyBlue" Margin="0,0,0,420" Grid.ColumnSpan="2">
 
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
-                ToolTip="Go to home page" Click="Button_Click" Width="112" >
+                ToolTip="Go to home page" Command="{Binding HomeCommand}" Width="112" >
                 <DockPanel>
-                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\iconfinder_web_Homepage_6916975.png"/>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\house-256.ico" Height="61" Width="61"></Image>
                 </DockPanel>
             </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
-                ToolTip="See your appointments" Click="Button_Click_1" Width="174" >
+                ToolTip="See your appointments" Command="{Binding AppointmentCommand}" Width="174" >
                 <DockPanel>
-                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\2759067651606252959-128.png" Height="63" Width="73"></Image>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\planner-256.ico" Height="61" Width="54"></Image>
                 </DockPanel>
             </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
-                ToolTip="See your notifications"  Click="Button_Click_2" Width="157" >
+                ToolTip="See your notifications"  Command="{Binding NotificationCommand}" Width="157" >
                 <DockPanel>
-                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\Notification.ico" DockPanel.Dock="Top" Height="63"/>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\bell-3-256.ico" Height="60" Width="56"></Image>
                 </DockPanel>
             </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
-                ToolTip="See your medical record" Click="Button_Click_3" Width="160">
+                ToolTip="See your medical record" Command="{Binding MedicalRecordCommand}" Width="160">
                 <DockPanel>
-                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\literature-256.ico"></Image>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\literature-256.ico" Height="65" Width="70"></Image>
                 </DockPanel>
             </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
-                ToolTip="See questions and ask" Click="Button_Click_4" Width="100">
+                ToolTip="See questions and ask" Command="{Binding QandACommand}" Width="100">
                 <DockPanel>
-                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\question-mark-4-256.ico"></Image>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\question-mark-256.ico" Height="63" Width="73"></Image>
                 </DockPanel>
             </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
-                ToolTip="My profile" Click="Button_Click_5" Width="99" >
+                ToolTip="My profile" Command="{Binding ProfileCommand}" Width="99" >
                 <DockPanel>
-                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\user.png"/>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\guest-256.ico" Height="61" Width="71"></Image>
                 </DockPanel>
             </Button>
         </StackPanel>
 
-        <ListView Margin="368,160,87,59" Background="LightCyan" Name="lvAppointmentsPatient" Grid.ColumnSpan="2">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Start Time" Width="100" DisplayMemberBinding="{Binding StartTime}" />
-                    <GridViewColumn Header="Room name" Width="100" DisplayMemberBinding="{Binding RoomName}" />
-                    <GridViewColumn Header="Doctor name" Width="150" DisplayMemberBinding="{Binding DoctorUsername}">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Mail}" TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <Label Content="My Calendar" HorizontalAlignment="Left" Margin="328,94,0,0" VerticalAlignment="Top" FontSize="26" Height="50" Width="159"/>
 
-        <Button Content="Schedule" Margin="60,422,363,15" Click="AddButton_Click" Grid.RowSpan="2">
-            
-        </Button>
-        <Button IsEnabled="{Binding SelectedItems.Count, ElementName=lvAppointmentsPatient}" Content="Cancel" Margin="290,422,142,15" Click="CancButton_Click_1" Grid.RowSpan="2">
-        </Button>
-        <Button IsEnabled="{Binding SelectedItems.Count, ElementName=lvAppointmentsPatient}" Content="Reschedule" Margin="178,422,250,15" Click="RescButton_Click_2" Grid.RowSpan="2">
-        </Button>
-        <Button Content="Generate report" Grid.Column="1" HorizontalAlignment="Left" Margin="149,422,0,0" VerticalAlignment="Top" Width="106" Height="56" Grid.RowSpan="2"/>
-        <Label Content="My Appoinemtns: &#xD;&#xA;" HorizontalAlignment="Left" Margin="290,89,0,0" VerticalAlignment="Top" FontSize="22"/>
-        <Calendar HorizontalAlignment="Left" Margin="117,191,0,0" VerticalAlignment="Top"/>
-        <Label Content="Pick date" HorizontalAlignment="Left" Margin="178,160,0,0" VerticalAlignment="Top"/>
+        <calendar:Calendar1 x:Name="Calendar"  DayChanged="Calendar_DayChanged" MouseDoubleClick="Calendar_MouseDoubleClick" Margin="22,189,22,4" Grid.ColumnSpan="2" Grid.RowSpan="2">
+
+        </calendar:Calendar1>
+        <ComboBox IsReadOnly="True" Name="Month" HorizontalAlignment="Left" Margin="110,167,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox IsReadOnly="True" Name="Year" HorizontalAlignment="Left" Margin="301,167,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Command="{Binding SeeAppointmentsCommand}" Content="See All Your Appointments" HorizontalAlignment="Center" Margin="0,160,0,0" VerticalAlignment="Top" Height="37" Width="165" Grid.Column="1"/>
+        <Label Content="Month:" HorizontalAlignment="Left" Margin="49,163,0,0" VerticalAlignment="Top"/>
+        <Label Content="Year:" HorizontalAlignment="Center" Margin="0,163,0,0" VerticalAlignment="Top"/>
+
+
+
     </Grid>
 </Window>

@@ -6,8 +6,84 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="RescheduleAppointmentPatientPage"  Background="LightSkyBlue" Height="600" Width="815">
+        Title="RescheduleAppointmentPatientPage" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="LightSkyBlue" Height="600" Width="815">
     <Window.Resources>
+        <Style x:Key="ComboBoxTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <Border CornerRadius="5,0,0,5"
+                            BorderThickness="1"
+                            Background="{TemplateBinding Background}"
+                                BorderBrush="Black">
+                                <ScrollViewer x:Name="PART_ContentHost"/>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type ComboBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBox}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition MaxWidth="18"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Name="PART_EditableTextBox"
+                                 Style="{StaticResource ComboBoxTextBoxStyle}"
+                                 Padding="5,0,0,0"
+                                 Height="{TemplateBinding Height}"/>
+                            <ToggleButton Grid.Column="1" Margin="0"
+                                     Height="{TemplateBinding Height}"
+                                     
+                                     Focusable="False"
+                                     IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                      ClickMode="Press">
+                                <Path Grid.Column="1"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Data="M 0 0 L 4 4 L 8 0 Z"
+                                  Fill="DodgerBlue" />
+                            </ToggleButton>
+                            <ContentPresenter Name="ContentSite"
+                                      Content="{TemplateBinding SelectionBoxItem}"
+                                      ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                      ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Left"
+                                      Margin="5,0,0,0"/>
+                            <Popup Name="Popup"
+                               Placement="Bottom"
+                               IsOpen="{TemplateBinding IsDropDownOpen}"
+                               AllowsTransparency="True" 
+                               Focusable="False"
+                               PopupAnimation="Slide">
+                                <Grid Name="DropDown"
+                                  SnapsToDevicePixels="True"                
+                                  MinWidth="{TemplateBinding ActualWidth}"
+                                  MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <Border 
+                                    x:Name="DropDownBorder"
+                                    BorderThickness="1"
+                                    CornerRadius="5"
+                                    Background="AliceBlue"
+                                    BorderBrush="Black"/>
+                                    <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style TargetType="Button">
             <Setter Property="Background">
                 <Setter.Value>
@@ -30,22 +106,26 @@
             <Setter Property="IsEnabled" Value="True"></Setter>
             <Setter Property="IsReadOnly" Value="False"></Setter>
         </Style>
-        <Style TargetType="ComboBox">
-    </Style>
+
     </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Key="X" Modifiers="Ctrl" Command="{Binding RequestCommand}"/>
+        <KeyBinding Key="C" Modifiers="Ctrl" Command="{Binding CancelCommand}"/>
+    </Window.InputBindings>
+
     <Grid Margin="0,0,3.6,0">
 
-        <Label Content="Pick time of appointment&#xA;" HorizontalAlignment="Left" Margin="103,274,0,0" VerticalAlignment="Top"/>
-        <DatePicker Name="IzaberiDatum" DisplayDateStart="{x:Static sys:DateTime.Today}" HorizontalAlignment="Left" Margin="308,275,0,0" VerticalAlignment="Top"/>
-        <ComboBox Name="Combobox1" ItemsSource="{Binding Termini}" SelectedItem="{Binding SelektovanTermin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="449,274,292,269"/>
+        <Label Content="Pick time of appointment&#xA;" HorizontalAlignment="Left" Margin="134,0,0,0" VerticalAlignment="Center"/>
+        <DatePicker Name="IzaberiDatum" DisplayDateStart="{x:Static sys:DateTime.Today}" HorizontalAlignment="Left" Margin="326,262,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="Combobox1" IsReadOnly="True" ItemsSource="{Binding Termini}" SelectedItem="{Binding SelektovanTermin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="462,262,278,280"/>
 
-        <Label Content="Choose doctor&#xA;" HorizontalAlignment="Left" Margin="163,323,0,0" VerticalAlignment="Top"/>
-        <ComboBox Name="Combobox2" ItemsSource="{Binding Doktori}" SelectedItem="{Binding SelektovanDoktor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left" Margin="308,328,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Choose priorty  &#xA;" Margin="402,378,297,0" VerticalAlignment="Top"/>
-        <RadioButton Content="Date" HorizontalAlignment="Left" Margin="345,422,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
-        <RadioButton Content="Doctor" HorizontalAlignment="Left" Margin="491,422,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked_1"/>
-        <Button Content="Send request for rescheduling" Margin="248,486,377,26" Click="SendRequestButton_Click"/>
-        <Button Content="Cancel rescheduling" HorizontalAlignment="Left" Margin="449,486,0,0" VerticalAlignment="Top" Click="Button_Click" Height="51" Width="169"/>
+        <Label Content="Choose doctor&#xA;" HorizontalAlignment="Left" Margin="194,320,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="Combobox2" IsReadOnly="True" ItemsSource="{Binding Doktori}" SelectedItem="{Binding SelektovanDoktor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left" Margin="327,323,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Choose priorty  &#xA;" Margin="384,381,315,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="DateRadioButton" Content="Date" HorizontalAlignment="Left" Margin="327,425,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
+        <RadioButton x:Name="DoctorRadioButton" Content="Doctor" HorizontalAlignment="Left" Margin="473,425,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked_1"/>
+        <Button Content="Send request for rescheduling" Margin="230,489,395,23" Command="{Binding RequestCommand}"/>
+        <Button Content="Cancel rescheduling" HorizontalAlignment="Left" Margin="431,489,0,0" VerticalAlignment="Top" Command="{Binding CancelCommand}" Height="51" Width="169"/>
         <TextBox x:Name="OldAppointmentDate" TextAlignment="Center" HorizontalAlignment="Left" Margin="588,41,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="137" IsEnabled="False" IsReadOnly="True">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">

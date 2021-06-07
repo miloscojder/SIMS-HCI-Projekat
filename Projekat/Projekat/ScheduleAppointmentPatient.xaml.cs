@@ -24,22 +24,19 @@ namespace Projekat
   
 
     public partial class ScheduleAppointmentPatient : Window
-    {
-        
+    {       
         public enum Priority { DATE, DOCTOR }
-        public User prenosilac = new User();
         public List<String> Termini { get; set; }
         public string SelektovanTermin { get; set; }
-        public List<Doctor> Doktori { get; set; }
+        
         public string SelektovanDoktor { get; set; }
-        public Priority priority;
-        public static int counter = 0;          //ovo treba da bude globalno, da li ovo valja?
-        List<DateTime> listaVremenaZakazivanja = new List<DateTime>();
-        TimeSpan timeSpan = new TimeSpan(7, 0, 0, 0, 0);
-        private static int kolikoSamDatumaNasao = 0;
-        public HospitalController hospitalController = new HospitalController();
-        public DateTime bindingDate = DateTime.Today;
+        public Priority priority;      
+        
+
         public DoctorController doctorController = new DoctorController();
+        public AppointmentController appointmentController = new AppointmentController();
+        public PatientController patientController = new PatientController();
+        public List<string> doctorUsernames { get; set; }
 
         //globalni brojac
 
@@ -47,11 +44,13 @@ namespace Projekat
         {
             InitializeComponent();
             this.DataContext = this;
+            SetCommands();
 
-            string[] termini = File.ReadAllLines(@"C:\Users\Ana_Marija\source\repos\SIMS\Projekat\Projekat\Data\terminiak.txt", Encoding.UTF8);
+            string[] termini = File.ReadAllLines(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\terminiak.txt", Encoding.UTF8);
             Termini = new List<string>(termini);
 
-            Doktori = doctorController.GetAllDoctors();
+            doctorUsernames = doctorController.GetAllDoctorUsernames();
+      
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
@@ -64,87 +63,109 @@ namespace Projekat
             priority = Priority.DOCTOR;
         }
 
-        private void SendRequestClick(object sender, RoutedEventArgs e)
+        private RelayCommand cancelCommand;
+        public RelayCommand CancelCommand
         {
-
-            Hospital hospitalData = new Hospital();
-            hospitalData = hospitalController.GetAllHospitalsData();
-
-            //atni spam zastita? proveriti ovo malo
-            foreach (DateTime datum in listaVremenaZakazivanja)
+            get { return cancelCommand; }
+            set
             {
-                if ((DateTime.Now.Date - datum.Date) > timeSpan)    
-                {
-                    listaVremenaZakazivanja.Remove(datum);
-                    hospitalData.activityCounter--;                                                              
-                }    
-            }        
-            
-            if(hospitalData.activityCounter > 10)                             
-            {
-                MessageBox.Show("Blokirani ste zbog spamovanja, javite nam se za vise informacija");
-                //window close        
-                MainWindow mw = new MainWindow();
-                mw.Show();
-                this.Close();
-            } 
-            else 
-            {
-                hospitalData.activityCounter++;
-                hospitalController.WriteHospitalToJason(hospitalData);
-
-                
-                listaVremenaZakazivanja.Add(DateTime.Now);
-
-                DateTime choosenDate = new DateTime();
-
-                String nesto = (string)Combobox1.SelectedItem;
-                string[] preuzeto = nesto.Split(':');
-
-                choosenDate = (DateTime)IzaberiDatum.SelectedDate;
-                choosenDate = new DateTime(IzaberiDatum.SelectedDate.Value.Year, IzaberiDatum.SelectedDate.Value.Month, IzaberiDatum.SelectedDate.Value.Day, Convert.ToInt32(preuzeto[0]), Convert.ToInt32(preuzeto[1]), 0);
-
-                string izabraniDoktor = (string)Combobox2.SelectedItem;
-
-                List<DateTime> doktoroviTermini = JsonConvert.DeserializeObject<List<DateTime>>(File.ReadAllText(@"C:\Users\Ana_Marija\source\repos\SIMS\Projekat\Projekat\Data\zauzetiDoktor.json"));
-                    
-                foreach(DateTime dt in doktoroviTermini)
-                {
-                    if(dt.Date == choosenDate.Date && dt.Hour == choosenDate.Hour && dt.Minute == choosenDate.Minute) {
-                    kolikoSamDatumaNasao++;
-                    }
-                }
-                
-                if(kolikoSamDatumaNasao>=1)
-                {
-                   AcceptNewAppointmentPatient anap = new AcceptNewAppointmentPatient(/*a,*/ priority, choosenDate, izabraniDoktor);
-                   anap.Show();
-                    this.Close();
-                } 
-                else
-                {
-                   Appointment newAppointment = new Appointment();
-                    Random rid = new Random();
-                    newAppointment.id = rid.Next(1, 1000);
-                    newAppointment.RoomName = "R1";
-                    newAppointment.DoctorUsername = izabraniDoktor;
-                    newAppointment.PatientUsername = PatientMainPage.prenosilac.Username;
-                    newAppointment.StartTime = choosenDate;
-                 
-                    MessageBox.Show("Appointment is scheduled");
-                   AppointmentsPage ap = new AppointmentsPage(newAppointment);
-                    ap.Show();
-                    this.Close();
-                }
-              
+                cancelCommand = value;
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private RelayCommand sendRequestCommand;
+        public RelayCommand SendRequestCommand
         {
-            AppointmentsPage ap = new AppointmentsPage(null);
+            get { return sendRequestCommand; }
+            set
+            {
+                sendRequestCommand = value;
+            }
+        }
+
+
+        public Boolean SendRequestCanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void SendRequestExecute(object sender)
+        {
+            if ((IzaberiDatum.SelectedDate == null) | (Combobox1.SelectedItem == null) | (Combobox2.SelectedItem == null) | ((DoctorRadioButton.IsChecked == false) && (DateRadioButton.IsChecked == false)))
+            {
+                MessageBox.Show("You must pick doctor, date and choose priority");
+            }
+            else
+            {
+                if (PatientMainPage.prenosilac.isPatientBaned.ActivitiyCounter > 10)
+                {
+                    MessageBox.Show("You are blocked because of spaming, call us for more informatitons");
+                    MainWindow mw = new MainWindow();
+                    mw.Show();
+                    this.Close();
+                }
+                else
+                {
+                   
+                    String nesto = (string)Combobox1.SelectedItem;
+                    string[] preuzeto = nesto.Split(':');
+                    string izabraniDoktor = (string)Combobox2.SelectedItem;
+
+                    DateTime choosenDate = new DateTime(IzaberiDatum.SelectedDate.Value.Year, IzaberiDatum.SelectedDate.Value.Month, IzaberiDatum.SelectedDate.Value.Day, Convert.ToInt32(preuzeto[0]), Convert.ToInt32(preuzeto[1]), 0);
+                    Boolean canISchedule = appointmentController.IsDoctorBusy(izabraniDoktor, choosenDate);
+
+                    if (canISchedule == false)
+                    {
+                        patientController.AddPatientActivities(PatientMainPage.prenosilac.Username);
+                        AcceptNewAppointmentPatient anap = new AcceptNewAppointmentPatient(priority, choosenDate, izabraniDoktor);
+                        anap.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBoxResult result = MessageBox.Show("Your doctor is ready! Are you sure you want to schedule this appointment?",
+                                           "Confirmation",
+                                           MessageBoxButton.YesNo,
+                                           MessageBoxImage.Question);
+                        if (result == MessageBoxResult.Yes)
+                        {
+                            patientController.AddPatientActivities(PatientMainPage.prenosilac.Username);
+
+                            int ida = appointmentController.GenerateNewId();
+                            Appointment newAppointment = new Appointment(ida, choosenDate, TypeOfAppointment.Examination, "R1", PatientMainPage.prenosilac.Username, izabraniDoktor);
+
+                            appointmentController.SaveAppointment(newAppointment);
+
+                            MessageBox.Show("Appointment is scheduled");
+                            AppointmentsPage ap = new AppointmentsPage();
+                            ap.Show();
+                            this.Close();
+                        }
+
+                    }
+
+                }
+            }
+        }
+
+        public Boolean CancelCanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void CancelExecute(object sender)
+        {
+            AppointmentsPage ap = new AppointmentsPage();
             ap.Show();
             this.Close();
         }
+
+        public void SetCommands()
+        {
+            SendRequestCommand = new RelayCommand(SendRequestExecute, SendRequestCanExecute);
+            CancelCommand = new RelayCommand(CancelExecute, CancelCanExecute);
+        }
+
     }
 }

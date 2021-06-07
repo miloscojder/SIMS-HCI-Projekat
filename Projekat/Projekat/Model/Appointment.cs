@@ -30,7 +30,18 @@ namespace Model
 
         public Appointment() { }
 
-        public Appointment(int id, String date, String start, string d, String end, string roomName, string patientName, string doctorUsername, TypeOfAppointment type)
+
+        public Appointment(int id, DateTime date, TypeOfAppointment appType, String roomName, String patientUsername, String docotrUsername)
+        {
+            this.id = id;
+            this.StartTime = date;
+            this.AppointmentType = appType;
+            this.RoomName = roomName;
+            this.PatientUsername = patientUsername;
+            this.DoctorUsername = docotrUsername;
+        }
+
+        public Appointment(int id,  String date, String start, string d, String end, string roomName, string patientName, string doctorUsername, TypeOfAppointment type)
         {
             this.id = id;
             Date = date;

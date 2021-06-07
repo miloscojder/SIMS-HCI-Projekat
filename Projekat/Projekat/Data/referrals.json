@@ -17,10 +17,12 @@
         "Patient": {
             "record": null,
             "id": 0,
-            "Username": null,
+
+            "Username": "aca",
+
             "Password": null,
-            "firstName": "Kristina",
-            "lastName": "Todic",
+            "firstName": "Aleksa",
+            "lastName": "Kralj",
             "Jmbg": null,
             "EMail": null,
             "PhoneNumber": null,
@@ -48,7 +50,7 @@
         "Patient": {
             "record": null,
             "id": 0,
-            "Username": null,
+            "Username": "aca",
             "Password": null,
             "firstName": "Nikolina",
             "lastName": "Todic",

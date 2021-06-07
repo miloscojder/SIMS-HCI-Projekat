@@ -14,6 +14,9 @@ using Model;
 using Newtonsoft.Json;
 using Projekat.Model;
 using Controller;
+using Projekat;
+using Converters;
+using System.Linq;
 
 namespace Projekat
 {
@@ -22,171 +25,296 @@ namespace Projekat
     /// </summary>
     public partial class AppointmentsPage : Window
     {
-       
         public List<DateTime> activityTime = new List<DateTime>();
         public TimeSpan timeSpanForReset = new TimeSpan(7, 0, 0, 0, 0);
-        public HospitalController hospitalController = new HospitalController();
+        public PatientController patientController = new PatientController();
+        public AppointmentController appointmentController = new AppointmentController();
+        public TimeSpan appointedRescheduleTimeLimit = new TimeSpan(1, 0, 0, 0, 0);
+        public List<string> months;
 
-        public AppointmentsPage(Appointment a)
+        public AppointmentsPage()
         {
             InitializeComponent();
             this.DataContext = this;
 
-            List<Appointment> spisak = new List<Appointment>();
-            spisak = getAppointments();
+            months = new List<string> { "January", "February", "March", "April", "May", "June", "July", "Avgust", "September", "October", "November", "December" };
+            Month.ItemsSource = months;
 
-            if (a != null)
+            for (int i = -10; i < 10; i++)
             {
-                spisak.Add(a);
+                Year.Items.Add(DateTime.Today.AddYears(i).Year);
             }
 
-            lvAppointmentsPatient.ItemsSource = spisak;
+            Month.SelectedItem = months.FirstOrDefault(w => w == DateTime.Today.ToString("MMMM"));
+            Year.SelectedItem = DateTime.Today.Year;
 
-            SaveAppointments(spisak);
+            Month.SelectionChanged += (o, e) => RefreshCalendar();
+            Year.SelectionChanged += (o, e) => RefreshCalendar();
+
+            List<Appointment> spisak = appointmentController.GetAppointmentsByPatientsUsername(PatientMainPage.prenosilac.Username);
+           
+            SetCommands();
+
+            //for calendar binidnig
+            int pomeraj = GetPomeraj();                       
+            BindAppointments(months, spisak, pomeraj);
         }
 
-        //morace da stoji u drugom sloju
-        private static void SaveAppointments(List<Appointment> spisak)
+        public int GetPomeraj()
         {
-            File.WriteAllText(@"C:\Users\Ana_Marija\source\repos\SIMS\Projekat\Projekat\Data\appointments.json", JsonConvert.SerializeObject(spisak));
+            int i = 0;
+            int monthCounter = getMonthIndex(Month.SelectedItem, months);
+            while (Calendar.Days[i].Date.Month != monthCounter)
+            {
+                i++;                
+            }
+            return i;
         }
 
-        //morace da stoji u drugom sloju
-        private static List<Appointment> getAppointments()
+
+        public void BindAppointments(List<string> months, List<Appointment> spisak, int pomeraj)
+        {           
+            for (int i = 0; i < spisak.Count; i++)
+            {
+                Appointment a = spisak[i];
+                int monthIndexNumber = getMonthIndex(Month.SelectedItem, months);
+                int year = Convert.ToInt32(Year.SelectedItem);
+                if ((a.StartTime.Month == monthIndexNumber) && (a.StartTime.Year==year))
+                {
+                    Calendar.Days[a.StartTime.Day + pomeraj-1].Notes = "Appointment: " + a.DoctorUsername;
+                }
+            }
+        }
+
+        public int getMonthIndex(object selectedItem, List<string> months)
         {
-            return JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(@"C:\Users\Ana_Marija\source\repos\SIMS\Projekat\Projekat\Data\appointments.json"));
+            for (int i = 0; i < 12; i++)
+            {
+                if (selectedItem == months[i])
+                {
+                    return i+1;
+                }
+            }
+            return -1;
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+
+        private void RefreshCalendar()
+        {
+            if (Year.SelectedItem == null) return;
+            if (Month.SelectedItem == null) return;
+
+            int year = (int)Year.SelectedItem;
+            int month = Month.SelectedIndex+1;
+
+            DateTime targetDate = new DateTime(year, month, 1);
+
+            Calendar.BuildCalendar(targetDate);
+            List<Appointment> spisak = appointmentController.GetAppointmentsByPatientsUsername(PatientMainPage.prenosilac.Username);
+            int pomeraj = GetPomeraj();
+            BindAppointments(months, spisak,pomeraj);        
+        }
+
+
+        private RelayCommand seeAppointmentsCommand;
+        public RelayCommand SeeAppointmentsCommand
+        {
+            get { return seeAppointmentsCommand; }
+            set
+            {
+                seeAppointmentsCommand = value;
+            }
+        }
+
+        private RelayCommand homeCommand;
+        public RelayCommand HomeCommand
+        {
+            get { return homeCommand; }
+            set
+            {
+                homeCommand = value;
+            }
+        }
+
+        private RelayCommand notificationCommand;
+        public RelayCommand NotificationCommand
+        {
+            get { return notificationCommand; }
+            set
+            {
+                notificationCommand = value;
+            }
+        }
+
+        private RelayCommand medicalRecordCommand;
+        public RelayCommand MedicalRecordCommand
+        {
+            get { return medicalRecordCommand; }
+            set
+            {
+                medicalRecordCommand = value;
+            }
+        }
+
+        private RelayCommand qandACommand;
+        public RelayCommand QandACommand
+        {
+            get { return qandACommand; }
+            set
+            {
+                qandACommand = value;
+            }
+        }
+
+        private RelayCommand appointmentCommand;
+        public RelayCommand AppointmentCommand
+        {
+            get { return appointmentCommand; }
+            set
+            {
+                appointmentCommand = value;
+            }
+        }
+
+        private RelayCommand profileCommand;
+        public RelayCommand ProfileCommand
+        {
+            get { return profileCommand; }
+            set
+            {
+                profileCommand = value;
+            }
+        }
+
+        public Boolean ScheduleCanExecute(Object sender)
+        {            
+            return true;           
+        }
+
+        public void ScheduleExecute(Object sender)
         {
             ScheduleAppointmentPatient sap = new ScheduleAppointmentPatient();
             sap.Show();
             this.Close();
         }
 
-        private void CancButton_Click_1(object sender, RoutedEventArgs e)
+    
+        public Boolean HomeCanExecute(object sender)
         {
-
-            Hospital hospitalData = new Hospital();
-            hospitalData = hospitalController.GetAllHospitalsData();
-
-            hospitalController.DeleteOutDatedActivities(activityTime,  timeSpanForReset);        // u ovo cu morati da ukljucim pacijenta
-
-            if(hospitalData.activityCounter > 10)
-            {
-                MessageBox.Show("You are blocked because of spaming");
-                PatientMainPage pmp = new PatientMainPage(PatientMainPage.prenosilac);
-                pmp.Show();
-                this.Close();
-            }
-            else
-            {
-               
-                if (lvAppointmentsPatient.SelectedItems.Count < 1)
-                {
-                    MessageBox.Show("You must choose at least one appointment.");
-                }
-                else
-                {
-                    hospitalData.activityCounter++;
-                    Appointment ac = (Appointment)lvAppointmentsPatient.SelectedItems[0];
-
-                    List<Appointment> svi = new List<Appointment>();
-                    List<Appointment> newSvi = new List<Appointment>();
-
-                    svi = JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json"));
-
-                    foreach (Appointment a in svi)
-                    {
-                        if (a.id != ac.id)
-                        {
-                            newSvi.Add(a);
-                        }
-                    }
-
-                    File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json", JsonConvert.SerializeObject(newSvi));
-
-                    hospitalController.WriteHospitalToJason(hospitalData);
-
-                    MessageBox.Show("Vas pregled je otkazan.");
-                    AppointmentsPage app = new AppointmentsPage(null);
-                    app.Show();
-                    this.Close();
-                }
-            }
-
+            return true;
         }
 
-        private void RescButton_Click_2(object sender, RoutedEventArgs e)
-        {
-
-            if (lvAppointmentsPatient.SelectedItems.Count < 1)
-            {
-                MessageBox.Show("You must select at least 1 appointment.");
-            }
-            else
-            {
-                Appointment ach = (Appointment)lvAppointmentsPatient.SelectedItems[0];
-
-                TimeSpan timeSpan = new TimeSpan(1, 0, 0, 0, 0);
-
-                if (ach.StartTime.Date - DateTime.Now.Date <= timeSpan)
-                {
-                    MessageBox.Show("Ne mozete promeniti ovaj termin.");
-
-                    AppointmentsPage ap = new AppointmentsPage(null);
-                    ap.Show();
-                    this.Close();
-                }
-                else
-                {
-                    RescheduleAppointmentPatientPage rapp = new RescheduleAppointmentPatientPage(ach);
-                    rapp.Show();
-                    this.Close();
-                }
-            }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void HomeExecute(object sender)
         {
             PatientMainPage pmp = new PatientMainPage(PatientMainPage.prenosilac);
             pmp.Show();
             this.Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        public Boolean AppointmentsCanExecute(object sender)
         {
-            AppointmentsPage ap = new AppointmentsPage(null);
+            return true;
+        }
+
+        public void AppointmentsExecute(object sender)
+        {
+            AppointmentsPage ap = new AppointmentsPage();
             ap.Show();
             this.Close();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        public Boolean NotificationsCanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void NotificationsExecute(object sender)
         {
             NotificationsPatientPage npp = new NotificationsPatientPage(null);
             npp.Show();
             this.Close();
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        public Boolean MedicalRecordCanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void MedicalRecordExecute(object sender)
         {
             PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage();
             pmrp.Show();
             this.Close();
         }
 
-        private void Button_Click_4(object sender, RoutedEventArgs e)
+        public Boolean QandACanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void QandaAExecute(object sender)
         {
             PatientQandAPage pqap = new PatientQandAPage();
             pqap.Show();
             this.Close();
         }
 
-        private void Button_Click_5(object sender, RoutedEventArgs e)
+        public Boolean ProfileCanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void ProfileExecute(object sender)
         {
             PatientProfilePage ppp = new PatientProfilePage();
             ppp.Show();
             this.Close();
         }
+
+        public Boolean HospitalCanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void HospitalExecute(object sender)
+        {
+            HospitalViewPatientPage hvpp = new HospitalViewPatientPage(null);
+            hvpp.Show();
+            this.Close();
+        }
+
+        public Boolean SeeAppointmentsCanExecute(Object sender)
+        {
+            return true;
+        }
+
+        public void SeeAppointmentsExecute(Object sender)
+        {
+            SeeAppointmentListPatient salp = new SeeAppointmentListPatient();
+            salp.Show();
+            this.Close();
+        }
+
+        public void SetCommands()
+        {
+            HomeCommand = new RelayCommand(HomeExecute, HomeCanExecute);
+            AppointmentCommand = new RelayCommand(AppointmentsExecute, AppointmentsCanExecute);
+            NotificationCommand = new RelayCommand(NotificationsExecute, NotificationsCanExecute);
+            MedicalRecordCommand = new RelayCommand(MedicalRecordExecute, MedicalRecordCanExecute);
+            QandACommand = new RelayCommand(QandaAExecute, QandACanExecute);
+            ProfileCommand = new RelayCommand(ProfileExecute, ProfileCanExecute);
+            SeeAppointmentsCommand = new RelayCommand(SeeAppointmentsExecute, SeeAppointmentsCanExecute);
+        }
+
+        private void Calendar_DayChanged(object sender, Calendar.DayChangedEventArgs e)
+        {
+
+        }
+
+        private void Calendar_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+        }
+
+       
     }
 }

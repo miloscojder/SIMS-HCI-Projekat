@@ -3,10 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Projekat"
-        
+        xmlns:local="clr-namespace:Projekat"               
         mc:Ignorable="d"
-        Title="PatientMainPage" Background="LightSkyBlue" Height="600" Width="815">
+        Title="PatientMainPage" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="LightSkyBlue" Height="600" Width="815">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Background">
@@ -23,8 +22,19 @@
         <Style TargetType="Label">
             <Setter Property="FontStyle" Value="Normal" />
         </Style>
-            
+
     </Window.Resources>
+
+    <Window.InputBindings>
+        <KeyBinding Key="A" Modifiers="Ctrl" Command="{Binding ProbaCommand}" />
+        <KeyBinding Key="Q" Modifiers="Ctrl" Command="{Binding HomeCommand}"/>
+        <KeyBinding Key="W" Modifiers="Ctrl" Command="{Binding AppointmentCommand}"/>
+        <KeyBinding Key="E" Modifiers="Ctrl" Command="{Binding NotificationCommand}"/>
+        <KeyBinding Key="R" Modifiers="Ctrl" Command="{Binding MedicalRecordCommand}"/>
+        <KeyBinding Key="T" Modifiers="Ctrl" Command="{Binding QandACommand}"/>
+        <KeyBinding Key="Y" Modifiers="Ctrl" Command="{Binding ProfileCommand}"/>
+    </Window.InputBindings>
+
     <Grid Margin="0,0,0,-16">
         <Grid.RowDefinitions>
             <RowDefinition Height="13*"/>
@@ -37,39 +47,59 @@
         <Grid.Style>
             <Style/>
         </Grid.Style>
-        <Button Content="See Hospitals info" HorizontalAlignment="Left" Margin="135,92,0,0" VerticalAlignment="Top" Click="SeeHospitalButton_Click" Height="46" Width="166" Grid.Row="1"  />
-        <Label Content="Welcome!" HorizontalAlignment="Left" Margin="338,134,0,0" VerticalAlignment="Top" FontSize="36" Height="61" Grid.ColumnSpan="2"/>
+
+        <Button Content="See Hospitals info" Command="{Binding ProbaCommand}" HorizontalAlignment="Left" Margin="136,62,0,0" VerticalAlignment="Top"  Height="46" Width="166" Grid.Row="1">
+
+        </Button>
+
+
+
+
+        <Label Content="Welcome!" HorizontalAlignment="Left" Margin="339,104,0,0" VerticalAlignment="Top" FontSize="36" Height="61" Grid.ColumnSpan="2"/>
         <StackPanel Orientation="Horizontal" Background="LightSkyBlue" Margin="0,0,0,307" Grid.ColumnSpan="2">
             <Button ToolTipService.InitialShowDelay="100" 
     ToolTipService.ShowDuration="100000" 
     ToolTipService.BetweenShowDelay="1000" 
-    ToolTip="Go to home page" Click="HomePageButton_Click" Width="112">
-               
-            </Button>
-            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
-                ToolTip="See your appoinemtns" Click="MyAppointmentsButton_Click" Width="174" >
-                
-            </Button>
-            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
-                ToolTip="See your notifications" Click="NotificationButton_Click_1" Width="157" >
-                
-            </Button>
-            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
-                ToolTip="Look at your medical record" Click="MedicalRecordButton_Click" Width="160">
-                
+    ToolTip="Go to home page" Command="{Binding HomeCommand}" Width="112">
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\house-256.ico" Height="61" Width="61"></Image>
+                </DockPanel>
             </Button>
 
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
-                ToolTip="See questions and aks" Click="QandAButton_Click" Width="100">
-                
+                ToolTip="See your appoinemtns" Command="{Binding AppointmentCommand}" Width="174" >
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\planner-256.ico" Height="61" Width="54"></Image>
+                </DockPanel>
             </Button>
             <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
-                ToolTip="My profile" Click="PatientProfileButton_Click" Width="99" >
-                
+                ToolTip="See your notifications"  Command="{Binding NotificationCommand}" Width="157" >
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\bell-3-256.ico" Height="60" Width="56"></Image>
+                </DockPanel>
+            </Button>
+            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
+                ToolTip="Look at your medical record" Command="{Binding MedicalRecordCommand}" Width="160">
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\literature-256.ico" Height="62" Width="62"></Image>
+                </DockPanel>
+            </Button>
+
+            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
+                ToolTip="See questions and aks" Command="{Binding QandACommand}"  Width="100">
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\question-mark-256.ico" Height="63" Width="73"></Image>
+                </DockPanel>
+            </Button>
+            <Button ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="100000" ToolTipService.BetweenShowDelay="1000" 
+                ToolTip="My profile" Command="{Binding ProfileCommand}"  Width="99" >
+                <DockPanel>
+                    <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Icons\guest-256.ico" Height="61" Width="71"></Image>
+                </DockPanel>
             </Button>
         </StackPanel>
-        <Label Content="OVO CE BITI NEKI STATICKI TEKST&#xD;&#xA;&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj&#xD;&#xA;safoasdjfalkwjflakwejglawkgjlakrjglsdkfj" HorizontalAlignment="Left" Margin="92,254,0,0" VerticalAlignment="Top" Height="268" Width="325" Grid.Column="1" Grid.RowSpan="2"/>
-        
+        <Label Content="Welcome to our Hospital and Health Care Center program!&#xD;&#xA; Our site holds a wealth of information about &#xA;the services and programs we offer for our regional &#xA;community as well as general health news, a provider &#xA;listing and career opportunities. &#xA; I believe we have an outstanding staff – physicians, &#xA;clinical and support personnel – whose ultimate goal is &#xA;to provide you with the best care possible in a respectful &#xA;and compassionate manner. &#xA;We are continually looking for new ways to be better at &#xA;what we do. Please don't hesitate to let us know what &#xA;we can do to make your visit to our Hospital and &#xA;Health Care Center more comfortable. &#xA;As a fundamental component of our mission statement, &#xA;we allow ourselves to be guided by the needs of those &#xA;we serve. As needs change, we will change. &#xA; Again, thank you for allowing us to serve you during &#xA;what is most likely a very vulnerable time in your life. &#xA;I appreciate the significant trust you place in us!" HorizontalAlignment="Center" Margin="0,193,0,0" VerticalAlignment="Top" Height="316" Width="325" Grid.Column="1" Grid.RowSpan="2"/>
+        <Image Source="C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Resources\Pictures\hospital.jpg" Margin="75,202,29,177" Grid.RowSpan="2" />
 
     </Grid>
 </Window>

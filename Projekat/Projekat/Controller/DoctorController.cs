@@ -19,7 +19,6 @@ namespace Controller
         public int GenerateNewId()
         {
             return doctorService.GenerateNewId();
-
         }
 
         public Doctor FindDoctorByUsernameAndPassword(String username, String password)
@@ -51,6 +50,22 @@ namespace Controller
         public Doctor GetDoctor(int id)
         {
             return doctorService.GetDoctor(id);
+        }
+
+
+        public Doctor FindDoctorByUsernameAndPassword(String username, String password) {
+
+            return doctorService.FindDoctorByUsernameAndPassword(username, password);
+        }
+
+        public int AppointmentsWithThisDoctor(List<Appointment> appointments,Doctor doctor)
+        {
+            return doctorService.AppointmentsWithThisDoctor(appointments, doctor);
+        }
+
+        public List<string> GetAllDoctorUsernames()
+        {
+            return doctorService.GetAllDoctorUsernames();
         }
 
 

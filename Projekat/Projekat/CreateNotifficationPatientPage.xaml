@@ -7,8 +7,84 @@
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="CreateNotifficationPatientPage" Background="LightSkyBlue" Height="550" Width="800">
+        Title="CreateNotifficationPatientPage" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="LightSkyBlue" Height="550" Width="800">
     <Window.Resources>
+        <Style x:Key="ComboBoxTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <Border CornerRadius="5,0,0,5"
+                            BorderThickness="1"
+                            Background="{TemplateBinding Background}"
+                                BorderBrush="Black">
+                                <ScrollViewer x:Name="PART_ContentHost"/>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type ComboBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBox}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition MaxWidth="18"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Name="PART_EditableTextBox"
+                                 Style="{StaticResource ComboBoxTextBoxStyle}"
+                                 Padding="5,0,0,0"
+                                 Height="{TemplateBinding Height}"/>
+                            <ToggleButton Grid.Column="1" Margin="0"
+                                     Height="{TemplateBinding Height}"
+                                     
+                                     Focusable="False"
+                                     IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                      ClickMode="Press">
+                                <Path Grid.Column="1"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Data="M 0 0 L 4 4 L 8 0 Z"
+                                  Fill="DodgerBlue" />
+                            </ToggleButton>
+                            <ContentPresenter Name="ContentSite"
+                                      Content="{TemplateBinding SelectionBoxItem}"
+                                      ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                      ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Left"
+                                      Margin="5,0,0,0"/>
+                            <Popup Name="Popup"
+                               Placement="Bottom"
+                               IsOpen="{TemplateBinding IsDropDownOpen}"
+                               AllowsTransparency="True" 
+                               Focusable="False"
+                               PopupAnimation="Slide">
+                                <Grid Name="DropDown"
+                                  SnapsToDevicePixels="True"                
+                                  MinWidth="{TemplateBinding ActualWidth}"
+                                  MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <Border 
+                                    x:Name="DropDownBorder"
+                                    BorderThickness="1"
+                                    CornerRadius="5"
+                                    Background="Azure"
+                                    BorderBrush="Black"/>
+                                    <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style TargetType="Button">
             <Setter Property="Background">
                 <Setter.Value>
@@ -25,6 +101,10 @@
             <Setter Property="BorderBrush" Value="DarkBlue"></Setter>
         </Style>
     </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Key="X" Modifiers="Ctrl" Command="{Binding CreateCommand}"/>
+        <KeyBinding Key="C" Modifiers="Ctrl" Command="{Binding CancelCommand}"/>
+    </Window.InputBindings>
     <Grid>
         <Label Content="Create your notification" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top" FontSize="21" FontFamily="Arial Black"/>
         <Label Content="Write notifications name: " HorizontalAlignment="Left" Margin="29,136,0,0" VerticalAlignment="Top"/>
@@ -32,37 +112,37 @@
         <Label Content="Pick starting date and time: " HorizontalAlignment="Left" Margin="29,293,0,0" VerticalAlignment="Top"/>
         <Label Content="How many days you want to recive this notification " HorizontalAlignment="Left" Margin="29,354,0,0" VerticalAlignment="Top"/>
         <Label Content="Write time spawn between notifications: " HorizontalAlignment="Left" Margin="29,394,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="NotificationNameTextBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="225,138,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+        <TextBox x:Name="NotificationNameTextBox"  TextAlignment="Center" HorizontalAlignment="Left" Margin="226,138,0,0" Text="{Binding Path=Name, Mode=TwoWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="8"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <TextBox x:Name="NotificationDescriptionTextBox" HorizontalAlignment="Left" Margin="225,176,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="535" Height="79">
+        <TextBox x:Name="NotificationDescriptionTextBox" HorizontalAlignment="Left" Margin="225,176,0,0" Text="{Binding Path=Description, Mode=TwoWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="535" Height="79">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="6"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <TextBox x:Name="NotificationDaysLeftTextBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="355,354,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+        <TextBox x:Name="NotificationDaysLeftTextBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="355,354,0,0" Text="{Binding Path=DaysLeft,Mode=TwoWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="8"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <TextBox x:Name="NotificationTimeSpawnTextBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="355,394,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+        <TextBox x:Name="NotificationTimeSpawnTextBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="355,394,0,0" Text="{Binding Path=RepeatingTime, Mode=TwoWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="8"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <DatePicker Name="NotifciationDateDatePicker" DisplayDateStart="{x:Static sys:DateTime.Today}" HorizontalAlignment="Left" Margin="255,293,0,0" VerticalAlignment="Top"/>
-        <Button Content="Create notification" HorizontalAlignment="Left" Margin="259,453,0,0" VerticalAlignment="Top" Click="Button_Click" Height="33" Width="115"/>
-        <Button Content="Cancel " HorizontalAlignment="Left" Margin="473,453,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="33" Width="68"/>
-        <ComboBox Name="NotrificationDateComboBox" ItemsSource="{Binding Termini}" HorizontalAlignment="Left" Margin="385,295,0,0" VerticalAlignment="Top" Width="90"/>
+        <DatePicker Name="NotifciationDateDatePicker" SelectedDate="{Binding Path=Date, Mode=TwoWay}" DisplayDateStart="{x:Static sys:DateTime.Today}" HorizontalAlignment="Left" Margin="255,293,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="CreateNotificationButton" Content="Create notification" HorizontalAlignment="Left" Margin="259,453,0,0" VerticalAlignment="Top" Command="{Binding CreateCommand}" Height="33" Width="115"/>
+        <Button Content="Cancel " HorizontalAlignment="Left" Margin="473,453,0,0" VerticalAlignment="Top" Command="{Binding CancelCommand}" Height="33" Width="68"/>
+        <ComboBox IsReadOnly="True" Name="NotrificationDateComboBox" SelectedItem="{Binding Hour}" ItemsSource="{Binding Termini}" HorizontalAlignment="Left" Margin="385,295,0,0" VerticalAlignment="Top" Width="90"/>
     </Grid>
 </Window>

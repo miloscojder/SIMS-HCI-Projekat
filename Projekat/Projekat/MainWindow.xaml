@@ -5,26 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Window.Background>
-        <LinearGradientBrush EndPoint="0.5,4"
-                             StartPoint="0.5,0">
-            <GradientStop Color="Beige"
-                          Offset="0" />
-            <GradientStop Color="LightCyan"
-                          Offset="0.263" />
-        </LinearGradientBrush>
-    </Window.Background>
+
+        Title="MainWindow" Background="AliceBlue" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Height="450" Width="800">
+
     <Grid>
         <TextBox HorizontalAlignment="Center" Margin="0,182,0,0" Text="" Name="UsernameTextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Height="35"/>
         <PasswordBox HorizontalAlignment="Center"  Name="PasswordTextBox" VerticalAlignment="Top" Width="170" Height="35" Margin="0,263,0,0"/>
         <Button Content="Login" HorizontalAlignment="Center" Click="Button_Click_1" Margin="0,353,0,0" VerticalAlignment="Top" Height="24" Width="62"/>
         <Label Content="Username" HorizontalAlignment="Center" Margin="0,151,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Password" HorizontalAlignment="Center" Margin="0,232,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Button IsEnabled="False" Content="Director" HorizontalAlignment="Left" Margin="59,35,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="Director_Click"/>
-        <Button Content="Secretary" HorizontalAlignment="Left" Margin="59,109,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="Button_Click"/>
-        <Button Content="Doctor" Click="Doctor_Click" HorizontalAlignment="Left" Margin="59,181,0,0" VerticalAlignment="Top" Width="150" Height="40"/>
-        <Button Content="Request" Click="Request_Click" HorizontalAlignment="Left" Margin="59,334,0,0" VerticalAlignment="Top" Width="150" Height="40"/>
+        
         <Label Content="LOG IN" HorizontalAlignment="Center" Margin="0,55,0,0" VerticalAlignment="Top" Width="120" FontSize="30" FontStyle="Normal" FontWeight="Bold"/>
     </Grid>
 </Window>

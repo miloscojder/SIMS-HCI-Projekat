@@ -40,8 +40,34 @@ namespace Controller
             return true;
       }
       
-     
-      
+     public List<Appointment> GetAppointmentsByPatientsUsername(String username)
+        {
+            return appointmentService.GetAppointmentsByPatientsUsername(username);
+        }
+
+
+        public void SaveAppointment(Appointment appointment)
+        {
+            appointmentService.SaveAppointment(appointment);
+        }
+
+
+        public List<DateTime> GetDoctosBusyTimes(String doctorsUsername)
+        {
+            return appointmentService.GetDoctosBusyTimes(doctorsUsername);
+        }
+
+
+        public Boolean IsDoctorBusy(String doctorsUsername, DateTime choosenDate)
+        {
+            return appointmentService.IsDoctorBusy(doctorsUsername,choosenDate);
+        }
+
+        public void DeleteAppointmentById(int id)
+        {
+            appointmentService.DeleteAppointmentById(id);
+        }
+
       public Appointment ScedulePatient(DateTime timeStart, DateTime endTime, Model.Doctor doctor, Model.Room room, String id)
       {
          // TODO: implement

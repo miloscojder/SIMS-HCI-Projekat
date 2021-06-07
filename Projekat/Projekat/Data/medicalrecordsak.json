@@ -10,7 +10,7 @@
       "patient": null
     },
     "doctorsName": "Doktor kon",
-    "patientsUsername": "Aca"
+    "patientsUsername": "aca"
   },
   {
     "RecordNumber": 1,
@@ -23,7 +23,7 @@
       "patient": null
      },
       "doctorsName": "Doktor kon",
-      "patientsUsername": "Aca"
+      "patientsUsername": "aca"
     },
   {
     "RecordNumber": 2,
@@ -32,11 +32,11 @@
     "timeOfAppointment": "2021-01-19T15:45:00",
     "anamnesis": {
       "anamnesy": "Pacijent se dasfasfasfasobro oseca, nalazi nisu dobri.",
-      "id":2,
+      "id": 2,
       "patient": null
     },
     "doctorsName": "Nada Macura",
-    "patientsUsername": "Keba"
+    "patientsUsername": "pera123"
   },
   {
     "RecordNumber": 3,
@@ -49,7 +49,7 @@
       "patient": null
     },
     "doctorsName": "Nada Macura",
-    "patientsUsername": "Keba"
+    "patientsUsername": "pera123"
   },
   {
     "RecordNumber": 4,
@@ -62,6 +62,6 @@
       "patient": null
     },
     "doctorsName": "Doktor macak",
-    "patientsUsername": "Aca"
+    "patientsUsername": "aca"
   }
 ]

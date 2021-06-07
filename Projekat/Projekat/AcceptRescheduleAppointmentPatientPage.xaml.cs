@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Model;
 using Newtonsoft.Json;
+using Controller;
 
 namespace Projekat
 {
@@ -20,31 +21,35 @@ namespace Projekat
     /// </summary>
     public partial class AcceptRescheduleAppointmentPatientPage : Window
     {
-        Appointment posrednik1 = new Appointment();
-        public User prenosilac = new User();
+        public Appointment posrednik1 = new Appointment();          
+        public AppointmentController appointmentController = new AppointmentController();
+        public List<Room> Rooms { get; set; }
+        public List<Doctor> Doctors { get; set; }
+        public DoctorController doctorController = new DoctorController();
+        public RoomController roomController = new RoomController();
 
         public AcceptRescheduleAppointmentPatientPage(Appointment posred, ScheduleAppointmentPatient.Priority priority, DateTime date, String doctorsUsername)
         {
             InitializeComponent();
             this.DataContext = this;
-
-            MessageBox.Show("We are sorry, but choosen doctor is not available. If you want you can schedule these appointments: ");
+            SetCommands();
 
             if (priority == ScheduleAppointmentPatient.Priority.DATE)
             {
                 Appointment a = new Appointment();
                 List<Appointment> appointmentsDateChecked = new List<Appointment>();
-           
-                string[] doktori = File.ReadAllLines(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doktoriak.txt", Encoding.UTF8);
-                string[] sale = File.ReadAllLines(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\saleak.txt", Encoding.UTF8);
-                Random random = new Random();
+
+                Doctors = doctorController.GetAllDoctors();
+                Rooms = roomController.GetAllRooms();
+
+               
 
                 for (int i = 0; i < 3; i++)
                 {
-            //        a = new Appointment(date, doktori[i], sale[i]);   
-                    a.id = random.Next(1, 1000);  
+                    a = new Appointment(date, Doctors[i].Username, Rooms[i].Name);
+                    a.id = posred.id;  
                     a.AppointmentType = TypeOfAppointment.Examination;
-
+                    a.PatientUsername = PatientMainPage.prenosilac.Username;
                     appointmentsDateChecked.Add(a);
                 }
 
@@ -54,12 +59,10 @@ namespace Projekat
             {
                 Appointment a = new Appointment();
 
-               // a.doctorUsername = doctorsUsername;
-
                 List<Appointment> appointmentDoctorChecked = new List<Appointment>();
 
-                string[] sale = File.ReadAllLines(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\saleak.txt", Encoding.UTF8);
-                Random random = new Random();
+                Rooms = roomController.GetAllRooms();
+                
                 List<DateTime> timeList = new List<DateTime>();
 
                 for (int i = 0; i < 3; i++)
@@ -69,28 +72,52 @@ namespace Projekat
 
                 for (int i = 0; i < 3; i++)
                 {
-              //      a = new Appointment(timeList[i], doctorsUsername, sale[i]);
-                    a.id = random.Next(1, 1000);
+                    a = new Appointment(timeList[i], doctorsUsername, Rooms[i].Name);
+                    a.id = posred.id;
                     a.AppointmentType = TypeOfAppointment.Examination;
-
+                    a.PatientUsername = PatientMainPage.prenosilac.Username;
                     appointmentDoctorChecked.Add(a);
                 }
 
                 lvAcceptRescheduleAppointment.ItemsSource = appointmentDoctorChecked;
             }
 
-          /*  posrednik1.doctorUsername = posred.doctorUsername;
-            posrednik1.id = posred.id;
-            posrednik1.roomName = posred.roomName;
-            posrednik1.StartTime = posred.StartTime;
-            posrednik1.AppointmentType = posred.AppointmentType;*/
+            posrednik1 = posred;
         }
 
-        private void AcceptRescButton_Click(object sender, RoutedEventArgs e)
+ 
+        private RelayCommand cancelCommand;
+        public RelayCommand CancelCommand
+        {
+            get { return cancelCommand; }
+            set
+            {
+                cancelCommand = value;
+            }
+        }
+
+
+        private RelayCommand rescheduleCommand;
+        public RelayCommand RescheduleCommand
+        {
+            get { return rescheduleCommand; }
+            set
+            {
+                rescheduleCommand = value;
+            }
+        }
+
+
+        public Boolean RescheduleCanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void RescheduleExecute(object sender)
         {
             if (lvAcceptRescheduleAppointment.SelectedItems.Count < 1)
             {
-                MessageBox.Show("You must choose at leas one appointment");
+                MessageBox.Show("You must choose at least one appointment");
             }
             else
             {
@@ -100,42 +127,53 @@ namespace Projekat
 
                 if (((app.StartTime.Date - posrednik1.StartTime.Date) >= timeSpan) || (posrednik1.StartTime > app.StartTime))
                 {
-                    MessageBox.Show("Vas pregled je zakazan u losem terminu.");
+                    MessageBox.Show("Your appointment must be schaduled only 2 days after appointment you choose to modify.");
                     this.Close();
 
-                    AppointmentsPage a = new AppointmentsPage(null);
+                    AppointmentsPage a = new AppointmentsPage();
                     a.Show();
                     this.Close();
                 }
                 else
                 {
-                    List<Appointment> svi = new List<Appointment>();
-                    List<Appointment> newSvi = new List<Appointment>();
-
-                    svi = JsonConvert.DeserializeObject<List<Appointment>>(File.ReadAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json"));
-
-                    foreach (Appointment appo in svi)
+                    MessageBoxResult result = MessageBox.Show("Are you sure you want to modify this notification?",
+                                        "Confirmation",
+                                        MessageBoxButton.YesNo,
+                                        MessageBoxImage.Question);
+                    if (result == MessageBoxResult.Yes)
                     {
-                        if (appo.id != posrednik1.id)
-                        {
-                            newSvi.Add(appo);
-                        }
+                        appointmentController.DeleteAppointmentById(posrednik1.id);
+                        appointmentController.SaveAppointment(app);
+
+                        AppointmentsPage ap = new AppointmentsPage();
+                        ap.Show();
+                        this.Close();
                     }
 
-                    File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\appointmentsak.json", JsonConvert.SerializeObject(newSvi));
 
-                    AppointmentsPage a = new AppointmentsPage(app);
-                    a.Show();
-                    this.Close();
                 }
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public Boolean CancelCanExecute(object sender)
         {
-            AppointmentsPage ap = new AppointmentsPage(null);
+            return true;
+        }
+
+        public void CancelExecute(object sender)
+        {
+            AppointmentsPage ap = new AppointmentsPage();
             ap.Show();
             this.Close();
         }
+
+        public void SetCommands()
+        {
+            RescheduleCommand = new RelayCommand(RescheduleExecute, RescheduleCanExecute);
+            CancelCommand = new RelayCommand(CancelExecute, CancelCanExecute);
+        }
+
+
+
     }
 }

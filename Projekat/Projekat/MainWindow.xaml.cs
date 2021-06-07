@@ -25,7 +25,7 @@ namespace Projekat
 
         UserController userController = new UserController();
         DoctorController doctorController = new DoctorController();
-        PatientController patientController = new PatientController();
+        public PatientController patientController = new PatientController();
         //DirectorController directorController = new DirectorController();
         //SecretaryController secretaryController = new SecretaryController();
         public MainWindow()
@@ -79,10 +79,20 @@ namespace Projekat
                         dw.Show();
                         break;
                     case RoolType.Patient:
-                        Patient p = new Patient();
-                        p = patientController.FindPatientByUsernameAndPassword(loggedUser.Username, loggedUser.Password);
-                        PatientMainPage pw = new PatientMainPage(p);
-                        pw.Show();
+                        Patient p = patientController.FindPatientByUsernameAndPassword(loggedUser.Username, loggedUser.Password);                      
+                        if (patientController.IsPatientBanned(p.Username))
+                        {
+                            MessageBox.Show("You can't log on, you are banned. Call us for more informations");
+                            MainWindow mw = new MainWindow();
+                            mw.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            PatientMainPage pw = new PatientMainPage(p);
+                            pw.Show();
+                            this.Close();
+                        }
                         break;
                     case RoolType.Secretary:
                         SecretaryWindow sw = new SecretaryWindow();

@@ -14,7 +14,9 @@
         "Patient": {
             "record": null,
             "id": 0,
-            "Username": null,
+
+            "Username": "aca",
+
             "Password": null,
             "firstName": "Mirko",
             "lastName": "Mirkovic",
