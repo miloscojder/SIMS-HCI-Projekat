@@ -17,14 +17,18 @@
         "Patient": {
             "record": null,
             "id": 0,
+
             "Username": "aca",
+
             "Password": null,
             "firstName": "Aleksa",
             "lastName": "Kralj",
             "Jmbg": null,
             "EMail": null,
             "PhoneNumber": null,
-            "DateOfBirth": "0001-01-01T00:00:00"
+            "DateOfBirth": "0001-01-01T00:00:00",
+            "doctor": null,
+            "Rool": 0
         },
         "EndTime": "12:40",
         "Doc": "Internist"
@@ -53,7 +57,9 @@
             "Jmbg": null,
             "EMail": null,
             "PhoneNumber": null,
-            "DateOfBirth": "0001-01-01T00:00:00"
+            "DateOfBirth": "0001-01-01T00:00:00",
+            "doctor": null,
+            "Rool": 0
         },
         "EndTime": "12:30",
         "Doc": "Dermatologist"

@@ -40,6 +40,7 @@ namespace Projekat
                 Appointment a = new Appointment();
              
                 List<Appointment> appointmentsDateChecked = new List<Appointment>();
+
                 List<Doctor> doctors = doctorController.GetAllDoctors();
                 List<Room> rooms = roomController.GetAllRooms();
                 
@@ -47,6 +48,7 @@ namespace Projekat
                 {              
                     a = new Appointment(choosenDate, Doctors[i].Username, Rooms[i].Name);
                     a.id = appointmentController.GenerateNewId();
+
                     a.AppointmentType = TypeOfAppointment.Examination;
                     a.PatientUsername = PatientMainPage.prenosilac.Username;                    
                     appointmentsDateChecked.Add(a);
@@ -58,7 +60,7 @@ namespace Projekat
             {
                 Appointment a = new Appointment();
 
-              
+
 
                 List<Appointment> appointmentsDoctorChecked = new List<Appointment>();
 

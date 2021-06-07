@@ -83,7 +83,7 @@ namespace Projekat
         }
         private void ViewEquipment_Click(object sender, RoutedEventArgs e)
         {
-            ViewEquipment ve = new ViewEquipment();
+            ViewEquipment ve = new ViewEquipment(1);
             ve.Show();
             
         }
@@ -100,6 +100,15 @@ namespace Projekat
             scr.Show();
            
         }
+
+        private void ScheduleAdvanceRenovation_Click(object sender, RoutedEventArgs e)
+        {
+            AdvanceRenovation ar = new AdvanceRenovation();
+            ar.Show();
+
+        }
+
+
 
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

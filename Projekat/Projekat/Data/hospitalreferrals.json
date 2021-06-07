@@ -14,15 +14,73 @@
         "Patient": {
             "record": null,
             "id": 0,
+
             "Username": "aca",
+
             "Password": null,
             "firstName": "Mirko",
             "lastName": "Mirkovic",
             "Jmbg": null,
             "EMail": null,
             "PhoneNumber": null,
-            "DateOfBirth": "0001-01-01T00:00:00"
+            "DateOfBirth": "0001-01-01T00:00:00",
+            "doctor": null,
+            "Rool": 0
         },
         "EndDate": "30.05.2021."
+    },
+    {
+        "Id": 2,
+        "Date": "25.05.2021.",
+        "Room": {
+            "Id": 0,
+            "Name": "C",
+            "RoomType": null,
+            "Floor": 0,
+            "Detail": null,
+            "StaticEquipments": null
+        },
+        "Patient": {
+            "record": null,
+            "id": 0,
+            "Username": null,
+            "Password": null,
+            "firstName": "Pera",
+            "lastName": "Peric",
+            "Jmbg": null,
+            "EMail": null,
+            "PhoneNumber": null,
+            "DateOfBirth": "0001-01-01T00:00:00",
+            "doctor": null,
+            "Rool": 0
+        },
+        "EndDate": "01.06.2021."
+    },
+    {
+        "Id": 3,
+        "Date": "12.06.2021",
+        "Room": {
+            "Id": 0,
+            "Name": "C",
+            "RoomType": null,
+            "Floor": 0,
+            "Detail": null,
+            "StaticEquipments": null
+        },
+        "Patient": {
+            "record": null,
+            "id": 0,
+            "Username": null,
+            "Password": null,
+            "firstName": "Nikolina",
+            "lastName": "Todic",
+            "Jmbg": null,
+            "EMail": null,
+            "PhoneNumber": null,
+            "DateOfBirth": "0001-01-01T00:00:00",
+            "doctor": null,
+            "Rool": 0
+        },
+        "EndDate": "15.06.2021"
     }
 ]

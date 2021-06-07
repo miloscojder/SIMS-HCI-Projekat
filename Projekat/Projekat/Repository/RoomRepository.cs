@@ -18,11 +18,7 @@ namespace Repository
         private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\rooms.json";
         private List<Room> rooms = new List<Room>();
 
-      public Boolean ClassicRenovation(Room room)
-      {
-         
-         return false;
-      }
+
         public RoomRepository()
         {
             if (!File.Exists(fileLocation))
@@ -52,6 +48,11 @@ namespace Repository
         public Room GetRoom(int id)
         {
             return rooms.Find(obj => obj.Id == id);
+        }
+
+        public Room GetByName(String name)
+        {
+            return rooms.Find(obj => obj.Name == name);
         }
 
         public void Save(Room room)

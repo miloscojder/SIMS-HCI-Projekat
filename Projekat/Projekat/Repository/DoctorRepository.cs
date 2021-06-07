@@ -34,6 +34,17 @@ namespace Repository
             }
         }
 
+        public Doctor FindDoctorByUsernameAndPassword(String username, String password)
+        {
+            Doctor loginDoctor = new Doctor();
+            foreach (Doctor d in doctors)
+            {
+                if (username == d.Username & password == d.Password)
+                    loginDoctor = d;
+            }
+            return loginDoctor;
+
+        }
         public void WriteToJson()
         {
             string json = JsonConvert.SerializeObject(doctors);
@@ -78,6 +89,7 @@ namespace Repository
         }
 
 
+
         public Doctor FindDoctorByUsernameAndPassword(String username, String password)
         {
             Doctor loginDoctor = new Doctor();
@@ -99,6 +111,7 @@ namespace Repository
             }
             return usernames;
         }
+
 
         public List<Operations> GetAllOperations()
       {

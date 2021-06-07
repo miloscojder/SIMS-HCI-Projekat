@@ -1,1 +1,58 @@
-[{"Id":1,"Name":"brufen 500mg","Details":"Pomaze pri spustanju temperature. Sastojci: paracetamol","Alternative":"Paracetamol","Explanation":null,"Accepted":false},{"Id":2,"Name":"fervex","Details":"Pomaze kod prehlada. Sastojci: paracetamol","Alternative":"coldrex","Explanation":null,"Accepted":false},{"Id":3,"Name":"coldrex","Details":"Koristi se kod prehlade.","Alternative":"fervex","Explanation":null,"Accepted":false}]
+[
+  {
+    "Id": 1,
+    "Name": "brufen",
+    "Details": "Pomaze pri smanjivanju temperature. Sastojci: paracetamol",
+    "Alternative": "Paracetamol",
+    "Explanation": null,
+    "StatusType": "Waiting"
+  },
+  {
+    "Id": 2,
+    "Name": "fervex",
+    "Details": "Pomaze kod prehlada. Sastojci: paracetamol",
+    "Alternative": "coldrex",
+    "Explanation": "Los u kombinaciji sa drugim lekovima.",
+    "StatusType": "Rejected"
+  },
+  {
+    "Id": 3,
+    "Name": "diclofen 300mg",
+    "Details": "Pomaze kod glavobolja. Sastojci: paracetamol",
+    "Alternative": "cafetin",
+    "Explanation": null,
+    "StatusType": "Accepted"
+  },
+  {
+    "Id": 4,
+    "Name": "cafetin",
+    "Details": "Pomaze kod glavobolja. Sastojci: paracetamol",
+    "Alternative": "diclofen",
+    "Explanation": null,
+    "StatusType": "Accepted"
+  },
+  {
+    "Id": 5,
+    "Name": "posakonazol 500mg",
+    "Details": "Antifugalni lek. Koristi se za gljivicne infekcije. Sastojci: glukoza, posakonazol",
+    "Alternative": "noxafil",
+    "Explanation": null,
+    "StatusType": "Waiting"
+  },
+  {
+    "Id": 6,
+    "Name": "rapten K",
+    "Details": "Pomaze pri menstrualnim bolovima. Sastojci: brufen",
+    "Alternative": "cafetin menstrual",
+    "Explanation": null,
+    "StatusType": "Accepted"
+  },
+  {
+    "Id": 7,
+    "Name": "paracetamol",
+    "Details": "Analgetik, pomaze pri bolovima.",
+    "Alternative": "brufen",
+    "Explanation": null,
+    "StatusType": "Accepted"
+  }
+]

@@ -34,9 +34,7 @@ namespace Projekat
             StaticEquipment sequipment = new StaticEquipment(ind, eqname,toRoomId,myStatus, eqquantity);
             staticEquipmentController.Save(sequipment);
 
-            ViewEquipment ve = new ViewEquipment();
-            ve.Show();
-            Close();
+            
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

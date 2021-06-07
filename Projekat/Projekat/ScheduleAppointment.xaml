@@ -7,33 +7,56 @@
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
         Title="ScheduleAppointment" Height="450" Width="800">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,4"
+                             StartPoint="0.5,0">
+            <GradientStop Color="Beige"
+                          Offset="0" />
+            <GradientStop Color="LightCyan"
+                          Offset="0.263" />
+        </LinearGradientBrush>
+    </Window.Background>
+
     <Grid>
-        <Label Content="Appointment date" HorizontalAlignment="Left" Margin="60,52,0,0" VerticalAlignment="Top" Height="26"/>
-        <Label Content="Time start" HorizontalAlignment="Left" Margin="63,113,0,0" VerticalAlignment="Top" Height="27"/>
-        <Label Content="Hours:" HorizontalAlignment="Left" Margin="135,151,0,0" VerticalAlignment="Top" Height="27" RenderTransformOrigin="-0.749,0.04"/>
-        <TextBox x:Name="Hours" HorizontalAlignment="Left" Margin="226,158,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Height="18"/>
+        <DataGrid x:Name="dataGrid1" ItemsSource="{Binding StaticEquipment}" IsReadOnly="True"
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="400,42,44,0" Height="215" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="40" Header="Id" Binding="{Binding Id}"/>
+                <DataGridTextColumn Width="80" Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Width="80" Header="Type" Binding="{Binding Type}"/>
+                <DataGridTextColumn Width="80" Header="Quantity" Binding="{Binding Quantity}"/>
+                <DataGridTextColumn Width="80" Header="Room" Binding="{Binding room.Name}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Appointment date" FontSize="17" HorizontalAlignment="Left" Margin="30,39,0,0" VerticalAlignment="Top" Height="39" Width="151"/>
+        <Label Content="Time start" FontSize="17" HorizontalAlignment="Left" Margin="28,80,0,0" VerticalAlignment="Top" Height="35"/>
+        <TextBox x:Name="Hours" HorizontalAlignment="Left" Margin="30,115,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="111" Height="31"/>
 
-        <Label Content="Minutes:" HorizontalAlignment="Left" Margin="135,190,0,0" VerticalAlignment="Top" Height="27" RenderTransformOrigin="-0.749,0.04"/>
-        <TextBox x:Name="Minutes" HorizontalAlignment="Left" Margin="226,194,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Height="18"/>
+        <Label Content="Duration(in minutes)" FontSize="17" HorizontalAlignment="Left" Margin="30,177,0,0" VerticalAlignment="Top" Height="40"/>
+        <TextBox x:Name="Duration" HorizontalAlignment="Left" Margin="224,185,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" Height="24"/>
 
-        <Label Content="Duration(in minutes)" HorizontalAlignment="Left" Margin="372,122,0,0" VerticalAlignment="Top" Height="28"/>
-        <TextBox x:Name="Duration" HorizontalAlignment="Left" Margin="372,167,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="19"/>
+        <Button Content="Schedule" FontSize="20" Click="Schedule" HorizontalAlignment="Left" Margin="336,364,0,0" VerticalAlignment="Top" Height="42" Width="92" Background="#FFB5CDE2"/>
+        <TextBox x:Name="Date" HorizontalAlignment="Left" Margin="192,41,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="35"/>
+        <Label Content="Time end" FontSize="17" HorizontalAlignment="Left" Margin="207,81,0,0" VerticalAlignment="Top" Height="44"/>
+        <TextBox x:Name="Hourss" HorizontalAlignment="Left" Margin="192,115,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="29"/>
+        <Label Content="Room name:" FontSize="17" HorizontalAlignment="Center" Margin="0,281,0,0" VerticalAlignment="Top" Height="28" RenderTransformOrigin="18.845,0.68" Width="128"/>
+        <TextBox x:Name="RoomName" HorizontalAlignment="Left" Margin="469,283,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="66" Height="41" RenderTransformOrigin="1.418,3.59"/>
+        <Button Content="Select" FontSize="17" Click="Select" HorizontalAlignment="Left" Margin="664,267,0,0" VerticalAlignment="Top" Height="28" Width="92" Background="#FFB5CDE2"/>
 
-        <Button Content="Schedule" Click="Schedule" HorizontalAlignment="Left" Margin="630,345,0,0" VerticalAlignment="Top" Height="42" Width="92" Background="#FFB5CDE2"/>
-        <TextBox x:Name="Date" HorizontalAlignment="Left" Margin="226,60,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18"/>
-        <Label Content="Time end" HorizontalAlignment="Left" Margin="60,245,0,0" VerticalAlignment="Top" Height="27"/>
-        <Label Content="Hours:" HorizontalAlignment="Left" Margin="135,292,0,0" VerticalAlignment="Top" Height="27" RenderTransformOrigin="-0.749,0.04"/>
-        <TextBox x:Name="Hourss" HorizontalAlignment="Left" Margin="226,296,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Height="18"/>
-        <Label Content="Minutes:" HorizontalAlignment="Left" Margin="135,340,0,0" VerticalAlignment="Top" Height="26" RenderTransformOrigin="-0.749,0.04"/>
-        <TextBox x:Name="Minutess" HorizontalAlignment="Left" Margin="226,353,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Height="18"/>
-        <Label Content="Patient:" HorizontalAlignment="Left" Margin="630,52,0,0" VerticalAlignment="Top" Height="28" RenderTransformOrigin="18.845,0.68" Width="62"/>
-        <Label Content="Room name:" HorizontalAlignment="Left" Margin="618,241,0,0" VerticalAlignment="Top" Height="28" RenderTransformOrigin="18.845,0.68" Width="86"/>
-        <TextBox x:Name="RoomName" HorizontalAlignment="Left" Margin="602,285,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20"/>
-        <TextBox x:Name="Name" HorizontalAlignment="Left" Margin="601,116,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20"/>
-        <TextBox x:Name="Surname" HorizontalAlignment="Left" Margin="601,183,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20"/>
-        <Label Content="Name:" HorizontalAlignment="Left" Margin="563,69,0,0" VerticalAlignment="Top" Height="28" RenderTransformOrigin="18.845,0.68" Width="62"/>
-        <Label Content="Surname" HorizontalAlignment="Left" Margin="563,139,0,0" VerticalAlignment="Top" Height="28" RenderTransformOrigin="18.845,0.68" Width="62"/>
+        <Image HorizontalAlignment="Left"
+                   Height="81"
+                   Margin="709,353,0,0"
+                   VerticalAlignment="Top"
+                   Width="108"
+                   Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\heart.png" />
+
+        <Button Content="Log out" Click="LogOut" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="707,1,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
+        <Button Content="Back" Click="Back" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="18,0,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
+        <TextBox HorizontalAlignment="Left" Margin="83,1,0,0" Text="www.hospital.com/doktor-appointment/operations/schedule-operation/" TextWrapping="Wrap" VerticalAlignment="Top" Width="619" Height="25"/>
+        <ComboBox Name="Type" ItemsSource="{Binding types}" SelectedItem="{Binding selekt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="30,295,0,0" VerticalAlignment="Top" Width="172" Height="41"/>
+        <Label Content="Type of appointment:" FontSize="17" HorizontalAlignment="Left" Margin="28,257,0,0" VerticalAlignment="Top" Height="38" Width="186"/>
 
 
     </Grid>
+
 </Window>

@@ -48,6 +48,18 @@ namespace Projekat
             Close();
         }
 
-        
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            ViewMedecine m = new ViewMedecine();
+            m.Show();
+            Close();
+        }
+
+        private void LogOut(object sender, RoutedEventArgs e)
+        {
+            MainWindow m = new MainWindow();
+            m.Show();
+            Close();
+        }
     }
 }

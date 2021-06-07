@@ -22,10 +22,10 @@ namespace Projekat.Controller
             return staticEquipmentService.GetAll();
         }
 
-        public Boolean DeleteEquipment(int id)
+        public void DeleteEquipment(int id)
         {
             // TODO: implement
-            return staticEquipmentService.DeleteEquipment(id);
+             staticEquipmentService.DeleteEquipment(id);
         }
 
         public int GenerateNewId()

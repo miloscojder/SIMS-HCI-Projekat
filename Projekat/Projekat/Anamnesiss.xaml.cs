@@ -31,6 +31,8 @@ namespace Projekat
             AnamnesisRepository anamnesisRepository = new AnamnesisRepository();
             List<Anamnesis> anamneses = anamnesisRepository.GetAll();
             dataGrid.ItemsSource = anamneses;
+            Appi.IsSelected =  true;
+            Web.Text = "www.hospital.com / doktor - appointment / anamnesis /";
         }
 
        
@@ -48,8 +50,7 @@ namespace Projekat
 
         private void Back(object sender, RoutedEventArgs e)
         {
-            Doctor d = new Doctor();
-            DoctorWindow sc = new DoctorWindow(d);
+            DoctorWindow sc = new DoctorWindow(DoctorWindow.loginDoctor);
             sc.Show();
             Close();
 
@@ -58,10 +59,7 @@ namespace Projekat
 
 
 
-        private void Aprove(object sender, RoutedEventArgs e)
-        {
-
-        }
+       
 
         private void SeeAll(object sender, RoutedEventArgs e)
         {
@@ -96,22 +94,6 @@ namespace Projekat
             m.Show();
             Close();
         }
-
-        private void AppointmentClick(object sender, RoutedEventArgs e)
-        {
-            Appointments m = new Appointments();
-            m.Show();
-            Close();
-        }
-
-        private void OperationsClick(object sender, RoutedEventArgs e)
-        {
-            Operationss m = new Operationss();
-            m.Show();
-            Close();
-        }
-
-
 
 
         private void LogOut(object sender, RoutedEventArgs e)

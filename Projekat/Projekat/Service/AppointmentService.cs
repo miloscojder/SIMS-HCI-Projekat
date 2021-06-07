@@ -26,10 +26,12 @@ namespace Service
 
         }
 
+
         public List<Appointment> GetAppointmentsByPatientsUsername(String username)
         {
             return appointmentRepository.GetAppointmentsByPatientsUsername(username);
         }
+
 
         public void RescheduleDoctor(Appointment newAppointment)
       {

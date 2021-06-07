@@ -132,16 +132,12 @@ namespace Repository
          return null;
       }
       
-      public void ReschedulePatient(DateTime tImeStart, DateTime timeEnd, Model.Doctor doctor, Model.Room room, String id)
-      {
-         // TODO: implement
-      }
-      
-      public Appointment DatePriority(DateTime date)
-      {
-         // TODO: implement
-         return null;
-      }
+      public TypeOfAppointment GetTypes()
+        {
+           // TypeOfAppointment type = appointments.FindIndex(obj => obj.AppointmentType.ToString() = tip);
+        
+            return types;
+        }
       
       public Appointment DoctorPriority(Model.Doctor parameter1)
       {
@@ -155,7 +151,13 @@ namespace Repository
       {
          return appointments;
       }
-      
+
+        public List<Appointment> GetAllForUser(Doctor doctor)
+        {
+            return appointments.FindAll(obj => obj.DoctorUsername == doctor.Username); 
+       
+        }
+
 
 
         public List<Doctor> GetAllDoctors()
@@ -176,6 +178,7 @@ namespace Repository
       }
 
       
+
 
    }
 }

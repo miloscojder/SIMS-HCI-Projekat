@@ -28,7 +28,7 @@ namespace Projekat
             InitializeComponent();
             String status = "Rejected";
             MedicinesRepository medicinesRepository = new MedicinesRepository();
-            List<Medicines> med = medicinesRepository.GetAllRejected(status);
+            List<Medicines> med = medicinesRepository.GetAllStatus(status);
             dataGrid.ItemsSource = med;
             
 
@@ -38,8 +38,7 @@ namespace Projekat
 
         private void Back(object sender, RoutedEventArgs e)
         {
-            Doctor d = new Doctor();
-            DoctorWindow sc = new DoctorWindow(d);
+            ViewMedecine sc = new ViewMedecine();
             sc.Show();
             Close();
 

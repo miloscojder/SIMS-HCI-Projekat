@@ -24,6 +24,11 @@ namespace Controller
             return appointmentService.GenerateNewId();
 
         }
+
+        public TypeOfAppointment GetTypes()
+        {
+            return appointmentService.GetTypes();
+        }
         public void RescheduleDoctor(Appointment newAppointment)
       {
             appointmentService.RescheduleDoctor(newAppointment);

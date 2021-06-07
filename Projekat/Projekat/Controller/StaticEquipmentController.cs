@@ -42,8 +42,13 @@ namespace Controller
          // TODO: implement
          return staticEquipmentService.DeleteEquipment(id);
       }
-      
-      public StaticEquipment CreateEquipment2()
+
+        public List<StaticEquipment> GetEquipmentByRoomId(int id)
+        {
+            return staticEquipmentService.GetEquipmentByRoomId(id);
+        }
+
+        public StaticEquipment CreateEquipment2()
       {
          // TODO: implement
          return null;

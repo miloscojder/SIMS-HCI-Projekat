@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
+
         Title="MainWindow" Background="AliceBlue" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Height="450" Width="800">
+
     <Grid>
         <TextBox HorizontalAlignment="Center" Margin="0,182,0,0" Text="" Name="UsernameTextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Height="35"/>
         <PasswordBox HorizontalAlignment="Center"  Name="PasswordTextBox" VerticalAlignment="Top" Width="170" Height="35" Margin="0,263,0,0"/>

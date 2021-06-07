@@ -31,6 +31,12 @@ namespace Repository
             }
         }
 
+        public List<Patient> GetAllName(string name)
+        {
+            return patients.FindAll(obj => (obj.firstName == name || obj.lastName == name || obj.Username == name));
+
+        }
+
         public void WriteToJson()
         {
             string json = JsonConvert.SerializeObject(patients);

@@ -66,8 +66,13 @@ namespace Repository
             WriteToJson();
             return true;
         }
-      
-      public StaticEquipment CreateEquipment()
+
+        public List<StaticEquipment> GetEquipmentByRoomId(int id)
+        {
+            return staticEquipments.FindAll(obj => obj.RoomId == id);
+        }
+
+        public StaticEquipment CreateEquipment()
       {
          
          return null;
