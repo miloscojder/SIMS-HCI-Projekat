@@ -65,8 +65,13 @@ public Doctor FindDoctorByUsernameAndPassword(String username, String password) 
         }
 
 
+ /*       public int AppointmentsWithThisDoctor(List<Appointment> appointments,Doctor doctor)
+       {
+=======
+
         public int AppointmentsWithThisDoctor(List<Appointment> appointments,Doctor doctor)
         {
+
             return doctorService.AppointmentsWithThisDoctor(appointments, doctor);
         }
 
@@ -74,7 +79,7 @@ public Doctor FindDoctorByUsernameAndPassword(String username, String password) 
         {
             return doctorService.GetAllDoctorUsernames();
         }
-
+ */
 
         public List<Appointment> GetAllAppointments()
       {
