@@ -53,13 +53,25 @@ namespace Controller
         }
 
 
-        public Doctor FindDoctorByUsernameAndPassword(String username, String password) {
+
+ /*       public Doctor FindDoctorByUsernameAndPassword(String username, String password) {
+
+            return doctorService.FindDoctorByUsernameAndPassword(username, password);
+        }*/
+
+public Doctor FindDoctorByUsernameAndPassword(String username, String password) {
 
             return doctorService.FindDoctorByUsernameAndPassword(username, password);
         }
 
+
  /*       public int AppointmentsWithThisDoctor(List<Appointment> appointments,Doctor doctor)
        {
+=======
+
+        public int AppointmentsWithThisDoctor(List<Appointment> appointments,Doctor doctor)
+        {
+
             return doctorService.AppointmentsWithThisDoctor(appointments, doctor);
         }
 
