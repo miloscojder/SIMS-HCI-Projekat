@@ -81,12 +81,12 @@ namespace Repository
          return null;
       }
       
-      public TypeOfAppointment GetTypes()
+ /*     public TypeOfAppointment GetTypes()
         {
            // TypeOfAppointment type = appointments.FindIndex(obj => obj.AppointmentType.ToString() = tip);
         
             return types;
-        }
+        }*/
       
       public Appointment DoctorPriority(Model.Doctor parameter1)
       {

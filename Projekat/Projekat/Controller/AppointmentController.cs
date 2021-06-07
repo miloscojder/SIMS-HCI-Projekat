@@ -25,10 +25,10 @@ namespace Controller
 
         }
 
-        public TypeOfAppointment GetTypes()
+ /*       public TypeOfAppointment GetTypes()
         {
             return appointmentService.GetTypes();
-        }
+        }*/
         public void RescheduleDoctor(Appointment newAppointment)
       {
             appointmentService.RescheduleDoctor(newAppointment);
