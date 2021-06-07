@@ -26,11 +26,10 @@ namespace Service
 
         }
 
-
-        public List<Appointment> GetAppointmentsByPatientsUsername(String username)
+ /*       public TypeOfAppointment GetTypes()
         {
-            return appointmentRepository.GetAppointmentsByPatientsUsername(username);
-        }
+            return appointmentRepository.GetTypes();
+        }*/
 
         //treba upravniku
         public Boolean IsRoomAvailable(Appointment appointment)
