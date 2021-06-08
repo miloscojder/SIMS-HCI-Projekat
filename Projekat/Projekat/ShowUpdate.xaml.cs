@@ -7,12 +7,14 @@ using System.Windows;
 using Controller;
 using Repository;
 
+using System.Windows.Media;
+
 namespace Projekat
 {
   
     public partial class ShowUpdate : Window
     {
-        public AnamnesisController anamnesisController = new AnamnesisController();
+        public AnamnesisRepository anamnesisController = new AnamnesisRepository();
 
 
         public List<Anamnesis> anamnesses
@@ -22,12 +24,12 @@ namespace Projekat
         }
         int id;
 
-        public ShowUpdate(Anamnesis  an)
+        public ShowUpdate(Anamnesis an)
         {
             InitializeComponent();
 
             AnamnesisRepository anamnesisRepository = new AnamnesisRepository();
-            List<Anamnesis> anamnesses = anamnesisRepository.GetAll();
+           // List<Anamnesis> anamnesses = anamnesisRepository.GetAll();
             dataGrid.ItemsSource = anamnesses;
             Anam.Text = an.Anamnesy;
             FirstName.Text = an.Patient.firstName;
@@ -35,6 +37,11 @@ namespace Projekat
             id = an.Id;
         }
 
+        public void doThings(string param)
+        {
+            Ana.Background = new SolidColorBrush(Color.FromRgb(32, 64, 128));
+            Title = param;
+        }
         private void Save(object sender, RoutedEventArgs e)
         {
             String anam = Anam.Text;
@@ -42,8 +49,8 @@ namespace Projekat
             p.firstName = FirstName.Text;
             p.lastName = LastName.Text;
 
-            Anamnesis an = new Anamnesis(id, anam, p);
-            anamnesisController.UpdateAnamnesis(an);
+            //Anamnesis an = new Anamnesis(id, anam, p);
+            //anamnesisController.UpdateAnamnesis(an);
 
             Anamnesiss ap = new Anamnesiss();
             ap.Show();
@@ -59,11 +66,6 @@ namespace Projekat
             Close();
         }
 
-        private void LogOut(object sender, RoutedEventArgs e)
-        {
-            MainWindow m = new MainWindow();
-            m.Show();
-            Close();
-        }
+     
     }
 }

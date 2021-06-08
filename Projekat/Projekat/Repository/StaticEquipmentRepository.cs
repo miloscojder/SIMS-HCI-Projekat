@@ -40,8 +40,12 @@ namespace Repository
             staticEquipments.Add(newEquipment);
             WriteToJson();
         }
-      
-      public StaticEquipment GetOne(int id)
+
+        public List<StaticEquipment> GetAllBedrooms()
+        {
+            return staticEquipments.FindAll(obj => obj.Name == "bed");
+        }
+        public StaticEquipment GetOne(int id)
       {
             return staticEquipments.Find(obj => obj.Id == id);
         }

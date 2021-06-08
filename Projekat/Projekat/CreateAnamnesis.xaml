@@ -5,6 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
        
         xmlns:local="clr-namespace:Projekat"
+         xmlns:data="clr-namespace:Model"
+        
+             
         mc:Ignorable="d"
         Title="CreateAnamnesis" Height="450" Width="800">
     <Window.Background>
@@ -16,24 +19,41 @@
                           Offset="0.263" />
         </LinearGradientBrush>
     </Window.Background>
+    
     <Grid>
-        <Label Content="Anamnesis" FontSize="16" HorizontalAlignment="Left" Margin="58,158,0,0" VerticalAlignment="Top" Height="36"/>
+        <Button Name="CreateA" Background="AliceBlue" BorderThickness="0" FontSize="18" HorizontalAlignment="Left" Margin="350,362,0,0" VerticalAlignment="Top" Height="43" Width="46">
+            <Image HorizontalAlignment="Left"
+                   Height="37"
+                   VerticalAlignment="Top"
+                   Width="68"
+                   Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\info.png" />
+            
+            
 
-        <Button Content="Create" FontSize="20" Click="Create" HorizontalAlignment="Left" Margin="332,351,0,0" VerticalAlignment="Top" Height="42" Width="109" Background="#FFB5CDE2"/>
-        <TextBox x:Name="Anamnesis"  HorizontalAlignment="Left" Margin="198,158,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="486" Height="158"/>
-        <Label Content="Patient:" FontSize="16" HorizontalAlignment="Left" Margin="58,80,0,0" VerticalAlignment="Top" Height="36"/>
-        <TextBox x:Name="FirstName" FontSize="16"  HorizontalAlignment="Left" Margin="198,78,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Height="38" />
-        <TextBox x:Name="LastName" FontSize="16"  HorizontalAlignment="Left" Margin="374,78,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="176" Height="38"/>
+        </Button>
+
+
+        <Label Content="Anamnesis" FontSize="18" HorizontalAlignment="Left" Margin="65,176,0,0" VerticalAlignment="Top" Height="36"/>
+
+        <Button Content="Create"  FontSize="20" Click="Create" HorizontalAlignment="Left" Margin="198,362,0,0" VerticalAlignment="Top" Height="42" Width="138" Background="#FFB5CDE2">
+        </Button>
+            <TextBox Name="Anamneza"   HorizontalAlignment="Left" FontSize="18" Margin="198,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="486" Height="158"/>
+
+        <Label Content="Patient:" FontSize="18" HorizontalAlignment="Left" Margin="60,97,0,0" VerticalAlignment="Top" Width="138" Height="42"/>
+        <Label Content="Creating anamnesis:" FontSize="20" HorizontalAlignment="Left" Margin="58,33,0,0" VerticalAlignment="Top" Width="206" Height="42"/>
+        <TextBox x:Name="FirstName" FontSize="18"  HorizontalAlignment="Left" Margin="198,99,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Height="38" />
+        <TextBox x:Name="LastName" FontSize="18"  HorizontalAlignment="Left" Margin="441,99,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="176" Height="38"/>
         <Image HorizontalAlignment="Left"
                    Height="81"
                    Margin="693,343,0,0"
                    VerticalAlignment="Top"
                    Width="108"
                    Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\heart.png" />
-        
-        <Button Content="Log out" Click="LogOut" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="707,1,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
+
+        <Button Content="Log out" Click="LogOut" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="714,36,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
         <Button Content="Back" Click="Back" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="18,0,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
         <TextBox HorizontalAlignment="Left" Margin="83,1,0,0" Text="www.hospital.com/doktor-appointment/anamnesis/create/" TextWrapping="Wrap" VerticalAlignment="Top" Width="619" Height="25"/>
+        <TextBlock Name="er" HorizontalAlignment="Left" Foreground="Red" Margin="198,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="486"/>
 
 
     </Grid>

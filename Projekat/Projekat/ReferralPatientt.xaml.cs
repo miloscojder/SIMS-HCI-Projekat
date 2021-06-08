@@ -66,11 +66,6 @@ namespace Projekat
 
         }
 
-        private void LogOut(object sender, RoutedEventArgs e)
-        {
-            MainWindow m = new MainWindow();
-            m.Show();
-            Close();
-        }
+        
     }
 }

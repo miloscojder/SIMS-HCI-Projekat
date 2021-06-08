@@ -17,20 +17,21 @@
     </Window.Background>
     <Grid Margin="0,0,0,-113">
         <DataGrid x:Name="dataGrid" ItemsSource="{Binding Medicines}" IsReadOnly="True"
-            SelectionMode="Single" AutoGenerateColumns="False" Margin="10,29,33,0" Height="222" VerticalAlignment="Top">
+            SelectionMode="Single" AutoGenerateColumns="False" Margin="76,77,76,0" Height="222" VerticalAlignment="Top">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Width="100" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Explanation  for rejecting" Width="650" Binding="{Binding Explanation}"/>
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Back" Click="Back"  FontSize="18" Margin="43,342,647,0" VerticalAlignment="Top" Height="44" Background="#FFB5CDE2"/>
+        <Button Content="Back" Click="Back"  FontSize="18" Margin="76,342,586,0" VerticalAlignment="Top" Width="138" Height="42" Background="#FFB5CDE2"/>
+        <Label Content="Rejected medicines" FontSize="20" HorizontalAlignment="Left" Margin="76,10,0,0" VerticalAlignment="Top"/>
 
         <Image HorizontalAlignment="Left"
-                   Height="81"
-                   Margin="686,342,0,0"
+                   Height="82"
+                   Margin="672,322,0,0"
                    VerticalAlignment="Top"
                    Width="108"
-                   Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\heart.png" />
+                   Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\heart.png" RenderTransformOrigin="0.397,0.407" />
     </Grid>
 </Window>

@@ -2,6 +2,7 @@
 using Projekat.Controller;
 using Projekat.Model;
 using Projekat.Repository;
+
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -32,6 +33,11 @@ namespace Projekat
             
         }
 
+        public void doThings(string param)
+        {
+            Up.Background = new SolidColorBrush(Color.FromRgb(32, 64, 128));
+            Title = param;
+        }
         private void UpdateMedicines_Click(object sender, RoutedEventArgs e)
         {
 
@@ -78,11 +84,6 @@ namespace Projekat
             }
         }
 
-        private void LogOut(object sender, RoutedEventArgs e)
-        {
-            MainWindow m = new MainWindow();
-            m.Show();
-            Close();
-        }
+      
     }
 }

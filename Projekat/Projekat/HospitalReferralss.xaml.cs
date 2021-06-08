@@ -26,6 +26,7 @@ namespace Projekat
             get;
             set;
         }
+
         public HospitalReferralss()
         {
             InitializeComponent();
@@ -33,7 +34,21 @@ namespace Projekat
             HospitalReferralsRepository hospitalReferralsRepository = new HospitalReferralsRepository();
            List<HospitalReferrals> referals = hospitalReferralsRepository.GetAll();
             dataGriid.ItemsSource = referals;
-           
+            Name.Content = DoctorWindow.loginDoctor.firstName;
+            Surname.Content = DoctorWindow.loginDoctor.lastName;
+            Id.Content = DoctorWindow.loginDoctor.id;
+            jmbg.Content = DoctorWindow.loginDoctor.Jmbg;
+            Date.Content = DoctorWindow.loginDoctor.DateOfBirth;
+            Email.Content = DoctorWindow.loginDoctor.EMail;
+            Phone.Content = DoctorWindow.loginDoctor.PhoneNumber;
+            Spec.Content = DoctorWindow.loginDoctor.Specialty;
+
+
+        }
+        public void doThings(string param)
+        {
+            Hospital.Background = new SolidColorBrush(Color.FromRgb(32, 64, 128));
+            Title = param;
         }
 
         private void Extend(object sender, RoutedEventArgs e)
@@ -43,6 +58,8 @@ namespace Projekat
             d.Show();
             Close();
         }
+      
+
 
         private void Back(object sender, RoutedEventArgs e)
         {
