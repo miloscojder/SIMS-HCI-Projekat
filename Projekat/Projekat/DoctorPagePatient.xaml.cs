@@ -41,15 +41,9 @@ namespace Projekat
             DoctorsBirthDayTextBox.Text = Convert.ToString(d.DateOfBirth);
             DoctrsSpecialtyTextBox.Text = d.Specialty;
             DoctosPhoneNumberTextBox.Text = d.PhoneNumber;
-            doctorFeedbackList = d.doctorFeedbacks;       
+            doctorFeedbackList = d.CalculateRating.doctorFeedbacks;       
             
-            lvDoctorsFeedback.ItemsSource = d.doctorFeedbacks; 
-        }
-
-        private void PotvrdiButton_Click(object sender, RoutedEventArgs e)
-        {
-            
-                     
+            lvDoctorsFeedback.ItemsSource = d.CalculateRating.doctorFeedbacks; 
         }
 
 
@@ -165,7 +159,7 @@ namespace Projekat
 
         public void NotificationsExecute(object sender)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null);
+            NotificationsPatientPage npp = new NotificationsPatientPage();
             npp.Show();
             this.Close();
         }
@@ -213,65 +207,67 @@ namespace Projekat
 
         public void FeedbackExecute(object sender)
         {
+            
+            #region variables
             List<Appointment> appointments = appointmentController.GetAppointmentsByPatientsUsername(PatientMainPage.prenosilac.Username);
             List<Doctor> doctors = doctorController.GetAllDoctors();
-            int brojac = doctorController.AppointmentsWithThisDoctor(appointments, posrednik);
+            int numberOfAppointmentsWithThisDoctor = doctorController.AppointmentsWithThisDoctor(appointments, posrednik);
+            bool BoxesAreEmpty = ((DoctorsGrades.SelectedItem == null) | (FeedbackDoctorTextBox.Text == ""));
+            bool IKnowDoctor = (numberOfAppointmentsWithThisDoctor > 1);
+            #endregion
 
-            if (brojac < 1)
+            if (IKnowDoctor && BoxesAreEmpty)
             {
-                MessageBox.Show("You can't rete this doctor, you do not have any scheduled appointment with him.");
-                HospitalViewPatientPage hospViewPaitPage = new HospitalViewPatientPage(null);
-                hospViewPaitPage.Show();
-                this.Close();
+                MessageBox.Show("You must rate doctor and write feedback first.");
+            }
+            else if(IKnowDoctor && !BoxesAreEmpty)
+            {
+                MessageBoxResult result = MessageBox.Show("Are you sure you want to rate doctor with this grade?","Confirmation",MessageBoxButton.YesNo,MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    CalculateGrade();
+                    doctorController.DeleteDoctorById(posrednik.id);
+                    doctorController.AddDoctor(posrednik);
+
+                    MessageBox.Show("You successfully rated doctor.");
+                    HospitalViewPatientPage hvpp = new HospitalViewPatientPage();
+                    hvpp.Show();
+                    this.Close();
+                }
             }
             else
             {
-                if ((DoctorsGrades.SelectedItem == null) | (FeedbackDoctorTextBox.Text == ""))
-                {
-                    MessageBox.Show("You must rate doctor and write feedback first.");
-                }
-                else
-                {
-                    MessageBoxResult result = MessageBox.Show("Are you sure you want to rate doctor with this grade?",
-                                    "Confirmation",
-                                    MessageBoxButton.YesNo,
-                                    MessageBoxImage.Question);
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        posrednik.doctorCounter++;
-                        if (posrednik.doctorCounter == 1)
-                        {
-                            DoctorsRatingTextBox.Text = DoctorsGrades.Text;
-                            posrednik.doctorGradeSum += Convert.ToDouble(DoctorsGrades.Text);
-                            posrednik.Grade = Convert.ToDouble(DoctorsGrades.Text);
-                            posrednik.doctorFeedbacks.Add(FeedbackDoctorTextBox.Text);
-                        }
-                        else
-                        {
-                            posrednik.doctorGradeSum += Convert.ToDouble(DoctorsGrades.Text);
-                            DoctorsRatingTextBox.Text = Convert.ToString(posrednik.doctorGradeSum / posrednik.doctorCounter);
-                            posrednik.Grade = posrednik.doctorGradeSum / posrednik.doctorCounter;
-                            posrednik.doctorFeedbacks.Add(FeedbackDoctorTextBox.Text);
-                        }
-
-                        for (int i = 0; i < doctors.Count; i++)
-                        {
-                            Doctor doc = doctors[i];
-                            if (doc.id == posrednik.id)
-                            {
-                                doctors.Remove(doc);
-                            }
-                        }
-
-                        File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doctors.json", JsonConvert.SerializeObject(doctors));
-
-                        MessageBox.Show("You successfully rated doctor.");
-                        HospitalViewPatientPage hvpp = new HospitalViewPatientPage(posrednik);
-                        hvpp.Show();
-                        this.Close();
-                    }
-                }
+                MessageBox.Show("You can't rete this doctor, you do not have any scheduled appointment with him.");
+                HospitalViewPatientPage hospViewPaitPage = new HospitalViewPatientPage();
+                hospViewPaitPage.Show();
+                this.Close();
             }
+        
+        }
+
+        private void CalculateGrade()
+        {
+            posrednik.CalculateRating.doctorCounter++;
+            if (posrednik.CalculateRating.doctorCounter == 1)
+            {
+                DoctorsRatingTextBox.Text = DoctorsGrades.Text;
+                posrednik.CalculateRating.doctorGradeSum += Convert.ToDouble(DoctorsGrades.Text);
+                posrednik.Grade = Convert.ToDouble(DoctorsGrades.Text);
+                posrednik.CalculateRating.doctorFeedbacks.Add(FeedbackDoctorTextBox.Text);
+            }
+            else
+            {
+                posrednik.CalculateRating.doctorGradeSum += Convert.ToDouble(DoctorsGrades.Text);
+                DoctorsRatingTextBox.Text = Convert.ToString(posrednik.CalculateRating.doctorGradeSum / posrednik.CalculateRating.doctorCounter);
+                posrednik.Grade = posrednik.CalculateRating.doctorGradeSum / posrednik.CalculateRating.doctorCounter;
+                posrednik.CalculateRating.doctorFeedbacks.Add(FeedbackDoctorTextBox.Text);
+            }
+
+        }
+
+        private bool BoxesAreEmpty()
+        {
+            return (DoctorsGrades.SelectedItem == null) | (FeedbackDoctorTextBox.Text == "");
         }
 
         public Boolean ReturnCanExecute(object sender)
@@ -281,7 +277,7 @@ namespace Projekat
 
         public void ReturnExecute(object sender)
         {
-            HospitalViewPatientPage hvpp = new HospitalViewPatientPage(null);
+            HospitalViewPatientPage hvpp = new HospitalViewPatientPage();
             hvpp.Show();
             this.Close();
         }
@@ -295,7 +291,6 @@ namespace Projekat
             MedicalRecordCommand = new RelayCommand(MedicalRecordExecute, MedicalRecordCanExecute);
             QandACommand = new RelayCommand(QandaAExecute, QandACanExecute);
             ProfileCommand = new RelayCommand(ProfileExecute, ProfileCanExecute);
-
             FeedbackCommand = new RelayCommand(FeedbackExecute, FeedbackCanExecute);
             ReturnCommand = new RelayCommand(ReturnExecute, ReturnCanExecute);
         }

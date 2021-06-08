@@ -135,7 +135,7 @@ namespace Projekat
 
         public void NotificationsExecute(object sender)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null);
+            NotificationsPatientPage npp = new NotificationsPatientPage();
             npp.Show();
             this.Close();
         }

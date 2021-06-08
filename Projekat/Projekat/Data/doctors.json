@@ -1,1 +1,174 @@
-[{"Salary":0.0,"VacationTime":"00:00:00","WorkingHours":"00:00:00","WorkingExperince":0,"Specialty":"General","Free":false,"Grade":0.0,"doctorCounter":0.0,"doctorGradeSum":0.0,"doctorFeedback":null,"doctorFeedbacks":[],"id":1,"Username":"kris","Password":"123","firstName":"Kristina","lastName":"Miletic","Jmbg":"1221999805043","EMail":"kristina@gmail.com","PhoneNumber":"0691118180","DateOfBirth":"0001-01-01T00:00:00","Rool":0},{"Salary":0.0,"VacationTime":"00:00:00","WorkingHours":"00:00:00","WorkingExperince":0,"Specialty":"Internist","Free":false,"Grade":8.0,"doctorCounter":1.0,"doctorGradeSum":8.0,"doctorFeedback":null,"doctorFeedbacks":[],"id":2,"Username":"Miki","Password":"555","firstName":"Miroslav","lastName":"Jokic","Jmbg":"2304987800503","EMail":"mikica@gmail.com","PhoneNumber":"0644432851","DateOfBirth":"1987-04-23T17:34:56","Rool":0},{"Salary":0.0,"VacationTime":"00:00:00","WorkingHours":"00:00:00","WorkingExperince":0,"Specialty":"Internist","Free":false,"Grade":10.0,"doctorCounter":1.0,"doctorGradeSum":10.0,"doctorFeedback":null,"doctorFeedbacks":[],"id":3,"Username":"Doctor macak","Password":null,"firstName":"Stanoje","lastName":"Stanojlovic","Jmbg":null,"EMail":null,"PhoneNumber":null,"DateOfBirth":"0001-01-01T00:00:00","Rool":0},{"Salary":0.0,"VacationTime":"00:00:00","WorkingHours":"00:00:00","WorkingExperince":0,"Specialty":"General","Free":false,"Grade":7.0,"doctorCounter":1.0,"doctorGradeSum":7.0,"doctorFeedback":null,"doctorFeedbacks":[],"id":5,"Username":"Marija","Password":null,"firstName":"Marija","lastName":"Popovic","Jmbg":null,"EMail":null,"PhoneNumber":null,"DateOfBirth":"0001-01-01T00:00:00","Rool":0},{"Salary":0.0,"VacationTime":"00:00:00","WorkingHours":"00:00:00","WorkingExperince":0,"Specialty":"Dermatologist","Free":false,"Grade":4.0,"doctorCounter":1.0,"doctorGradeSum":4.0,"doctorFeedback":null,"doctorFeedbacks":["ddddddd"],"id":4,"Username":"Doktor1","Password":null,"firstName":"Radovan","lastName":"Kosic","Jmbg":null,"EMail":null,"PhoneNumber":null,"DateOfBirth":"0001-01-01T00:00:00","Rool":0},{"Salary":0.0,"VacationTime":"00:00:00","WorkingHours":"00:00:00","WorkingExperince":0,"Specialty":"Cardiologist","Free":false,"Grade":9.0,"doctorCounter":6.0,"doctorGradeSum":54.0,"doctorFeedback":null,"doctorFeedbacks":["aaaaaaaaaaaaaa","LEGEDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","daaaaa","Good doctor","aaaa","dddaaaa"],"id":7,"Username":"Sinan","Password":null,"firstName":"Sinan","lastName":"Sakic","Jmbg":null,"EMail":null,"PhoneNumber":null,"DateOfBirth":"0001-01-01T00:00:00","Rool":0}]
+[
+  {
+    "Salary": 0.0,
+    "VacationTime": "00:00:00",
+    "WorkingHours": "00:00:00",
+    "WorkingExperince": 0,
+    "Specialty": "General",
+    "Free": false,
+    "Grade": 0.0,
+    "CalculateRating": {
+      "doctorCounter": 0.0,
+      "doctorGradeSum": 0.0,
+
+      "doctorFeedbacks": [
+      ]
+    },
+    
+    "id": 1,
+    "Username": "kris",
+    "Password": "123",
+    "firstName": "Kristina",
+    "lastName": "Miletic",
+    "Jmbg": "1221999805043",
+    "EMail": "kristina@gmail.com",
+    "PhoneNumber": "0691118180",
+    "DateOfBirth": "0001-01-01T00:00:00",
+    "Rool": 0
+  },
+  {
+    "Salary": 0.0,
+    "VacationTime": "00:00:00",
+    "WorkingHours": "00:00:00",
+    "WorkingExperince": 0,
+    "Specialty": "Internist",
+    "Free": false,
+    "Grade": 8.0,
+
+    "CalculateRating": {
+
+      "doctorCounter": 1.0,
+      "doctorGradeSum": 8.0,
+
+      "doctorFeedbacks": [
+      ]
+    },
+      "id": 2,
+      "Username": "Miki",
+      "Password": "555",
+      "firstName": "Miroslav",
+      "lastName": "Jokic",
+      "Jmbg": "2304987800503",
+      "EMail": "mikica@gmail.com",
+      "PhoneNumber": "0644432851",
+      "DateOfBirth": "1987-04-23T17:34:56",
+      "Rool": 0
+    },
+  {
+    "Salary": 0.0,
+    "VacationTime": "00:00:00",
+    "WorkingHours": "00:00:00",
+    "WorkingExperince": 0,
+    "Specialty": "Internist",
+    "Free": false,
+    "Grade": 10.0,
+    "CalculateRating": {
+
+      "doctorCounter": 1.0,
+      "doctorGradeSum": 10.0,
+
+      "doctorFeedbacks": [
+      ]
+    },
+      
+      "id": 3,
+      "Username": "Doctor macak",
+      "Password": null,
+      "firstName": "Stanoje",
+      "lastName": "Stanojlovic",
+      "Jmbg": null,
+      "EMail": null,
+      "PhoneNumber": null,
+      "DateOfBirth": "0001-01-01T00:00:00",
+      "Rool": 0
+    },
+  {
+    "Salary": 0.0,
+    "VacationTime": "00:00:00",
+    "WorkingHours": "00:00:00",
+    "WorkingExperince": 0,
+    "Specialty": "Dermatologist",
+    "Free": false,
+    "Grade": 4.0,
+
+    "CalculateRating": {
+      "doctorCounter": 1.0,
+      "doctorGradeSum": 4.0,
+      "doctorFeedbacks": [
+        "ddddddd"
+      ]
+    },
+    "id": 4,
+    "Username": "Doktor1",
+    "Password": null,
+    "firstName": "Radovan",
+    "lastName": "Kosic",
+    "Jmbg": null,
+    "EMail": null,
+    "PhoneNumber": null,
+    "DateOfBirth": "0001-01-01T00:00:00",
+    "Rool": 0
+  },
+  {
+    "Salary": 0.0,
+    "VacationTime": "00:00:00",
+    "WorkingHours": "00:00:00",
+    "WorkingExperince": 0,
+    "Specialty": "Cardiologist",
+    "Free": false,
+    "Grade": 9.0,
+
+    "CalculateRating": {
+      "doctorCounter": 6.0,
+      "doctorGradeSum": 54.0,
+
+      "doctorFeedbacks": [
+        "aaaaaaaaaaaaaa",
+        "LEGEDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "daaaaa",
+        "Good doctor",
+        "aaaa",
+        "dddaaaa"
+      ]
+    },
+    "id": 7,
+    "Username": "Sinan",
+    "Password": null,
+    "firstName": "Sinan",
+    "lastName": "Sakic",
+    "Jmbg": null,
+    "EMail": null,
+    "PhoneNumber": null,
+    "DateOfBirth": "0001-01-01T00:00:00",
+    "Rool": 0
+  },
+  {
+    "Salary": 0.0,
+    "VacationTime": "00:00:00",
+    "WorkingHours": "00:00:00",
+    "WorkingExperince": 0,
+    "Specialty": "General",
+    "Free": false,
+    "Grade": 8.0,
+
+    "CalculateRating": {
+      "doctorCounter": 3.0,
+      "doctorGradeSum": 24.0,
+
+      "doctorFeedbacks": [
+        "2sdasdsda",
+        "dvsddscdscsd"
+      ]
+    },
+    "id": 5,
+    "Username": "Marija",
+    "Password": null,
+    "firstName": "Marija",
+    "lastName": "Popovic",
+    "Jmbg": null,
+    "EMail": null,
+    "PhoneNumber": null,
+    "DateOfBirth": "0001-01-01T00:00:00",
+    "Rool": 0
+  }
+]

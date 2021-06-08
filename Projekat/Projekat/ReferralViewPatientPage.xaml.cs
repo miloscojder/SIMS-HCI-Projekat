@@ -29,23 +29,15 @@ namespace Projekat
             this.DataContext = this;
             SetCommands();
 
-            List<ReferralPatient> referralPatients = new List<ReferralPatient>();
-            referralPatients = ReferralPatientController.GerAllReferralsByPatientsUsername(PatientMainPage.prenosilac.Username);
-
-            List<HospitalReferrals> hospitalReferrals = new List<HospitalReferrals>();
-            hospitalReferrals = referralsController.GetAllHospitalRefferalsByPatientsUsername(PatientMainPage.prenosilac.Username);
+            
+            List<ReferralPatient>  referralPatients = ReferralPatientController.GerAllReferralsByPatientsUsername(PatientMainPage.prenosilac.Username);          
+            List<HospitalReferrals> hospitalReferrals = referralsController.GetAllHospitalRefferalsByPatientsUsername(PatientMainPage.prenosilac.Username);
 
             lvHospitalReferrals.ItemsSource = hospitalReferrals;
             lvRaferrals.ItemsSource = referralPatients;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            PatientsMedicalRecordPage pmrp = new PatientsMedicalRecordPage();
-            pmrp.Show();
-            this.Close();
-        }
-
+        #region commandVariables
         private RelayCommand homeCommand;
         public RelayCommand HomeCommand
         {
@@ -105,7 +97,10 @@ namespace Projekat
                 profileCommand = value;
             }
         }
+        #endregion
 
+
+        #region commandFunctions
         public Boolean HomeCanExecute(object sender)
         {
             return true;
@@ -137,7 +132,7 @@ namespace Projekat
 
         public void NotificationsExecute(object sender)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null);
+            NotificationsPatientPage npp = new NotificationsPatientPage();
             npp.Show();
             this.Close();
         }
@@ -177,7 +172,7 @@ namespace Projekat
             ppp.Show();
             this.Close();
         }
-
+        #endregion
 
         public void SetCommands()
         {

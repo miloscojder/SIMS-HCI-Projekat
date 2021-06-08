@@ -29,7 +29,7 @@ namespace Projekat
         public DoctorController doctorController = new DoctorController();
         public AppointmentController appointmentController = new AppointmentController();
 
-        public HospitalViewPatientPage(Doctor doktor)
+        public HospitalViewPatientPage()
         {
             InitializeComponent();
             this.DataContext = this; //new HospitalViewPatientViewModel(doktor,this);
@@ -44,18 +44,8 @@ namespace Projekat
 
             List<Doctor> doktori = doctorController.GetAllDoctors();
             lvDoctorsPatient.ItemsSource = doktori;
-
-            if (doktor != null)
-            {
-                doktori.Add(doktor);
-            }
-
-
-            File.WriteAllText(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\doctors.json", JsonConvert.SerializeObject(doktori));
-
+           
         }
-
-
 
         private RelayCommand seeRatingsCommand;
         public RelayCommand SeeRatingsCommand
@@ -190,7 +180,7 @@ namespace Projekat
 
         public void NotificationsExecute(object sender)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null);
+            NotificationsPatientPage npp = new NotificationsPatientPage();
             npp.Show();
             this.Close();
         }
@@ -238,18 +228,21 @@ namespace Projekat
 
         public void UpdateRatingHospitalExecute(Object sender)
         {
-            Hospital hospitalData = new Hospital();
-            hospitalData = hospitalController.GetAllHospitalsData();
-
+            #region variables
+            Hospital hospitalData = hospitalController.GetAllHospitalsData();
             List<Appointment> patientsAppointments = appointmentController.GetAppointmentsByPatientsUsername(PatientMainPage.prenosilac.Username);
+            bool patientDontHaveAppointments = patientsAppointments == null;
+            bool hospitalRatingNotSelected = HospitalGrades.SelectedItem == null;
+            #endregion
 
-            if (patientsAppointments == null)
+            if (patientDontHaveAppointments)
             {
                 MessageBox.Show("You can't rate hospita, you do not have any appointments.");
                 this.Close();
             }
 
-            if (HospitalGrades.SelectedItem == null)
+            
+            if (hospitalRatingNotSelected)
             {
                 MessageBox.Show("You must rate hospital first");
             }
@@ -261,25 +254,15 @@ namespace Projekat
                                        MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
-                    hospitalData.gradesOfThisHospital.hospitalGradeCounter++;
-                    if (hospitalData.gradesOfThisHospital.hospitalGradeCounter == 1)
-                    {
-                        HospitalRating.Text = HospitalGrades.Text;
-                        hospitalData.gradesOfThisHospital.hospitalGradeSum += Convert.ToDouble(HospitalGrades.Text);
-                        hospitalData.gradesOfThisHospital.hospitalFinalGrade = Convert.ToDouble(HospitalGrades.Text);
-                    }
-                    else
-                    {
-                        hospitalData.gradesOfThisHospital.hospitalGradeSum += Convert.ToDouble(HospitalGrades.Text);
-                        HospitalRating.Text = Convert.ToString(hospitalData.gradesOfThisHospital.hospitalGradeSum / hospitalData.gradesOfThisHospital.hospitalGradeCounter);
-                        hospitalData.gradesOfThisHospital.hospitalFinalGrade = hospitalData.gradesOfThisHospital.hospitalGradeSum / hospitalData.gradesOfThisHospital.hospitalGradeCounter;
-                    }
+                    CalculateHospitalData(hospitalData);
 
                     hospitalController.WriteHospitalToJason(hospitalData);
                 }
 
             }
         }
+
+      
 
         public Boolean UpdateFeedbackHospitalCanEcexute(Object sender)
         {
@@ -323,10 +306,17 @@ namespace Projekat
 
         public void RateDoctroExecute(Object sender)
         {
-            Doctor doctor = (Doctor)lvDoctorsPatient.SelectedItems[0];
-            DoctorPagePatient dpp = new DoctorPagePatient(doctor);
-            dpp.Show();
-            this.Close();
+            try
+            {
+                Doctor doctor = (Doctor)lvDoctorsPatient.SelectedItems[0];
+                DoctorPagePatient dpp = new DoctorPagePatient(doctor);
+                dpp.Show();
+                this.Close();
+            }
+            catch(IndexOutOfRangeException ex)
+            {
+                MessageBox.Show("You must select at least one doctor");
+            }
         }
 
         public Boolean SeeRatingsCanExecute(Object sender)
@@ -355,6 +345,24 @@ namespace Projekat
             RateDoctorCommand = new RelayCommand(RateDoctroExecute, RateDoctorCanExecute);
             SeeRatingsCommand = new RelayCommand(SeeRatingsExecute, SeeRatingsCanExecute);
 
+        }
+
+
+        private void CalculateHospitalData(Hospital hospitalData)
+        {
+            hospitalData.gradesOfThisHospital.hospitalGradeCounter++;
+            if (hospitalData.gradesOfThisHospital.hospitalGradeCounter == 1)
+            {
+                HospitalRating.Text = HospitalGrades.Text;
+                hospitalData.gradesOfThisHospital.hospitalGradeSum += Convert.ToDouble(HospitalGrades.Text);
+                hospitalData.gradesOfThisHospital.hospitalFinalGrade = Convert.ToDouble(HospitalGrades.Text);
+            }
+            else
+            {
+                hospitalData.gradesOfThisHospital.hospitalGradeSum += Convert.ToDouble(HospitalGrades.Text);
+                HospitalRating.Text = Convert.ToString(hospitalData.gradesOfThisHospital.hospitalGradeSum / hospitalData.gradesOfThisHospital.hospitalGradeCounter);
+                hospitalData.gradesOfThisHospital.hospitalFinalGrade = hospitalData.gradesOfThisHospital.hospitalGradeSum / hospitalData.gradesOfThisHospital.hospitalGradeCounter;
+            }
         }
     }
 }

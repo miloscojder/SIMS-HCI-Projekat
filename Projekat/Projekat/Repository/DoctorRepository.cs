@@ -34,7 +34,7 @@ namespace Repository
             }
         }
 
-  /*      public Doctor FindDoctorByUsernameAndPassword(String username, String password)
+       public Doctor FindDoctorByUsernameAndPassword(String username, String password)
         {
             Doctor loginDoctor = new Doctor();
             foreach (Doctor d in doctors)
@@ -44,7 +44,7 @@ namespace Repository
             }
             return loginDoctor;
 
-        }*/
+        }
         public void WriteToJson()
         {
             string json = JsonConvert.SerializeObject(doctors);
@@ -88,7 +88,18 @@ namespace Repository
             return doctors.Find(obj => obj.id == id);
         }
 
-
+        public void DeleteDoctorById(int id)
+        {
+            for (int i = 0; i < doctors.Count; i++)
+            {
+                Doctor d = doctors[i];
+                if (d.id == id)
+                {
+                    doctors.Remove(d);
+                }
+            }
+            WriteToJson();
+        }
 
     /*    public Doctor FindDoctorByUsernameAndPassword(String username, String password)
         {

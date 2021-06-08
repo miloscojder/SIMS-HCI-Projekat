@@ -54,11 +54,12 @@ namespace Controller
 
 
 
+        public void DeleteDoctorById(int id)
+        {
+            doctorService.DeleteDoctorById(id);
+        }
 
 
- /*       public int AppointmentsWithThisDoctor(List<Appointment> appointments,Doctor doctor)
-       {
-=======
 
         public int AppointmentsWithThisDoctor(List<Appointment> appointments,Doctor doctor)
        {
@@ -69,7 +70,6 @@ namespace Controller
         {
             return doctorService.GetAllDoctorUsernames();
         }
- */
 
         public List<Appointment> GetAllAppointments()
       {

@@ -31,9 +31,9 @@ namespace Projekat
 
             List<Appointment> patientsAppointments = appointmentController.GetAppointmentsByPatientsUsername(PatientMainPage.prenosilac.Username);
             lvAppointmentsPatient.ItemsSource = patientsAppointments;
-
         }
 
+        #region commandVariables
         private RelayCommand reportCommand;
         public RelayCommand ReportCommand
         {
@@ -145,9 +145,13 @@ namespace Projekat
             }
         }
 
+        #endregion
+
+
+        #region commandFunctions
         public Boolean ReturnCanExecute(Object sender)
         {
-            return true;
+            return false;
         }
 
         public void ReturnExecute(Object sender)
@@ -184,6 +188,7 @@ namespace Projekat
 
         public Boolean RescheduleCanExecute(Object sender)
         {
+            
             if (lvAppointmentsPatient.SelectedItems.Count < 1)
             {
                 MessageBox.Show("You must select at least one appointment");
@@ -197,29 +202,25 @@ namespace Projekat
 
         public void RescheduleExecute(Object sender)
         {
-            try
-            {
-                Appointment ach = (Appointment)lvAppointmentsPatient.SelectedItems[0];
+          
+            Appointment ach = (Appointment)lvAppointmentsPatient.SelectedItems[0];
 
-                if (ach.StartTime.Date - DateTime.Now.Date <= appointedRescheduleTimeLimit)
-                {
-                    MessageBox.Show("You can not reschedule this appointment.");
-
-                    SeeAppointmentListPatient salp = new SeeAppointmentListPatient();
-                    salp.Show();
-                    this.Close();
-                }
-                else
-                {
-                    RescheduleAppointmentPatientPage rapp = new RescheduleAppointmentPatientPage(ach);
-                    rapp.Show();
-                    this.Close();
-                }
-            }
-            catch (IndexOutOfRangeException ex)
+            if (ach.StartTime.Date - DateTime.Now.Date <= appointedRescheduleTimeLimit)
             {
-                MessageBox.Show("You must select at least one appointment.");
+                MessageBox.Show("You can not reschedule this appointment.");
+
+                SeeAppointmentListPatient salp = new SeeAppointmentListPatient();
+                salp.Show();
+                this.Close();
+
             }
+
+            else
+            {
+                RescheduleAppointmentPatientPage rapp = new RescheduleAppointmentPatientPage(ach);
+                rapp.Show();
+            }
+           
         }
      
         public Boolean CancelCanExecute(Object sender)
@@ -235,7 +236,7 @@ namespace Projekat
             }
             else if (lvAppointmentsPatient.SelectedItems.Count < 1)
             {
-                MessageBox.Show("You must select at least one appointment for rescheduling.");
+                MessageBox.Show("You must select at least one appointment for cancelnig.");
                 return false;
             }
             else
@@ -289,7 +290,7 @@ namespace Projekat
 
         public void NotificationsExecute(object sender)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null);
+            NotificationsPatientPage npp = new NotificationsPatientPage();
             npp.Show();
             this.Close();
         }
@@ -330,7 +331,7 @@ namespace Projekat
             this.Close();
         }
 
-       
+        #endregion
 
         public void SetCommands()
         {
@@ -347,6 +348,8 @@ namespace Projekat
 
             ReturnCommand = new RelayCommand(ReturnExecute, ReturnCanExecute);
             ReportCommand = new RelayCommand(ReportExecute, ReportCanExecute);
+
+           
         }
     }
 }

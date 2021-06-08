@@ -9,7 +9,7 @@ namespace Projekat.ViewModel
 {
     public class PatientsMedicalRecordViewModel : ViewModel
     {
-
+        #region variables
         private ObservableCollection<MedicalRecord> _medicalRecord;
         public ObservableCollection<MedicalRecord> MedicalRecord { get => _medicalRecord; set => _medicalRecord = value; }
         public MedicalRecordController MedicalRecordController { get; set; }
@@ -17,6 +17,7 @@ namespace Projekat.ViewModel
         public ObservableCollection<Prescription> Prescriptions { get => _prescription; set => _prescription = value; }
         public PrescriptionController PrescriptionController { get; set; }
         public static PatientsMedicalRecordPage PatientsMedicalRecordPage { get; set; }
+        #endregion
 
         public PatientsMedicalRecordViewModel(PatientsMedicalRecordPage patientsMedicalRecordPage)
         {
@@ -29,6 +30,7 @@ namespace Projekat.ViewModel
             SetCommands();
         }
 
+        #region commandInitializing
         private RelayCommand referralCommand;
         public RelayCommand ReferralCommand
         {
@@ -98,7 +100,9 @@ namespace Projekat.ViewModel
                 profileCommand = value;
             }
         }
+        #endregion
 
+        #region commandFunctions
         public Boolean ReferralCanExecute(Object sender)
         {
             return true;
@@ -145,7 +149,7 @@ namespace Projekat.ViewModel
 
         public void NotificationsExecute(object sender)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null);
+            NotificationsPatientPage npp = new NotificationsPatientPage();
             npp.Show();
             
             PatientsMedicalRecordPage.Close();
@@ -189,7 +193,7 @@ namespace Projekat.ViewModel
             
             PatientsMedicalRecordPage.Close();
         }
-
+        #endregion
 
         public void SetCommands()
         {
