@@ -16,28 +16,37 @@ using System.Windows.Shapes;
 namespace Projekat
 {
     /// <summary>
-    /// Interaction logic for UpdateMedicine.xaml
+    /// Interaction logic for DirectorCorectingRejectingMedicine.xaml
     /// </summary>
-    public partial class UpdateMedicine : Window
+    public partial class DirectorCorectingRejectingMedicine : Window
     {
+
         private MedicinesController medicinesController = new MedicinesController();
+        private Medicines medi = new Medicines();
         int id;
-        public UpdateMedicine()
+
+        public DirectorCorectingRejectingMedicine()
         {
             InitializeComponent();
+            InitializeComponent();
+            String status = "Rejected";
             MedicinesRepository medicinesRepository = new MedicinesRepository();
-            List<Medicines> medicines = medicinesRepository.GetAll();
-            dataGridUpdateMedicine.ItemsSource = medicines;
+            List<Medicines> med = medicinesRepository.GetAllStatus(status);
+            dataGrid.ItemsSource = med;
+
+
         }
 
-        private void UpdateMedicines_Click(object sender, RoutedEventArgs e)
+        private void UpdateMedicine_Click(object sender, RoutedEventArgs e)
         {
 
             string medicinesname = name.Text;
             string medicinesdetail = details.Text;
             string medicinesalternative = alternative.Text;
-            
-            Medicines medicines = new Medicines(id, medicinesname, medicinesdetail, medicinesalternative);
+            string statustype = statusType.Text;
+            string explanations = explanation.Text;
+
+            Medicines medicines = new Medicines(id, medicinesname, medicinesdetail, medicinesalternative,explanations, statustype);
             medicinesController.UpdateMedicines(medicines);
             id = -1;
 
@@ -45,18 +54,21 @@ namespace Projekat
             vr.Show();
             Close();
         }
-        private void CancelMedicines_Click(object sender, RoutedEventArgs e)
+
+        private void Back(object sender, RoutedEventArgs e)
         {
-            DirectorWindow dr = new DirectorWindow();
-            dr.Show();
+            ViewMedecine sc = new ViewMedecine();
+            sc.Show();
             Close();
+
+
         }
 
         private void SelectMedicines_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                Medicines medicines = (Medicines)dataGridUpdateMedicine.SelectedItems[0];
+                Medicines medicines = (Medicines)dataGrid.SelectedItems[0];
                 id = medicines.Id;
 
 
@@ -64,6 +76,7 @@ namespace Projekat
                 name.Text = medicines.Name;
                 details.Text = medicines.Details;
                 alternative.Text = medicines.Alternative;
+                statusType.Text = "Waiting";
 
 
             }
@@ -71,6 +84,9 @@ namespace Projekat
             {
                 MessageBox.Show("You have to fill in all input boxes!");
             }
+
+
+
         }
     }
 }

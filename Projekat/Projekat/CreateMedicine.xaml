@@ -16,5 +16,9 @@
         <TextBox x:Name="details" HorizontalAlignment="Left" Height="35" Margin="145,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202"/>
         <TextBox x:Name="alternative"  HorizontalAlignment="Left" Height="35" Margin="145,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202"/>
         <Button Content="Cancel" Click="Cancel_Click" HorizontalAlignment="Left" Margin="278,349,0,0" VerticalAlignment="Top" Width="130" Height="30"/>
+        <TextBox x:Name="status"  HorizontalAlignment="Left" Height="35" Margin="145,277,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202"/>
+        <Label FontSize="15" Content="Status:" HorizontalAlignment="Left" Margin="29,280,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.48,3.147"/>
+        <TextBox x:Name="explanation"  HorizontalAlignment="Left" Height="35" Margin="145,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202"/>
+        <Label FontSize="15" Content="Explanation:" HorizontalAlignment="Left" Margin="29,222,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

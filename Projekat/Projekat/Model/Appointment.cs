@@ -17,7 +17,7 @@ namespace Model
         public string Duration { get; set; }
        public String EndTime { get; set; }
         public TypeOfAppointment AppointmentType { get; set; }
-        public String type { get; set; }
+ 
         public string RoomName { get; set; }
         public string DoctorUsername { get; set; }
         public string PatientUsername { get; set; }

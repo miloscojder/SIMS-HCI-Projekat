@@ -33,8 +33,10 @@ namespace Repository
 
             }
         }
+
       public Doctor FindDoctorByUsernameAndPassword(String username, String password)
       {
+
             Doctor loginDoctor = new Doctor();
             foreach (Doctor d in doctors)
             {
@@ -43,7 +45,10 @@ namespace Repository
             }
             return loginDoctor;
 
-      }
+
+        }
+
+
 
         public void WriteToJson()
         {

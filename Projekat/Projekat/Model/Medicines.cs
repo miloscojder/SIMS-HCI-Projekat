@@ -11,7 +11,7 @@ namespace Projekat.Model
 
         public Medicines() { }
 
-        public Medicines(int id, String name, String details, String alternative)
+   public Medicines(int id, String name, String details, String alternative)
         {
             Id = id;
             Name = name;
@@ -27,9 +27,10 @@ namespace Projekat.Model
             Details = details;
             Alternative = alternative;
             Explanation = explanation;
-            this.StatusType = statusType;
+            StatusType = statusType;
 
         }
+
 
         public int Id { get; set; }
 
