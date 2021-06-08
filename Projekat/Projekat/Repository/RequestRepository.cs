@@ -73,8 +73,15 @@ namespace Repository
       
       public Boolean DeleteRequest(int id)
       {
-            return false;
-      }
+            int index = requestss.FindIndex(obj => obj.Id == id);
+            if (index == -1)
+            {
+                return false;
+            }
+            requestss.RemoveAt(index);
+            WriteToJson();
+            return true;
+        }
       
       public void Save(Model.Request newRequest)
       {
@@ -86,6 +93,18 @@ namespace Repository
          return requestss;
       }
 
+        public void updateList(int id, Request r)
+        {
+            int index = requestss.FindIndex(obj => obj.Id == id);
+            requestss[index] = r;
+            WriteToJson();
+        }
+        public Request GetRequestById(int id)
+        {
+            int index = requestss.FindIndex(obj => obj.Id == id);
+            return requestss[index];
+
+        }
         public Boolean AcceptingRequest(int id, Model.StatusType newStatus, String explanation)
         {
             int index = requestss.FindIndex(obj => obj.Id == id);
