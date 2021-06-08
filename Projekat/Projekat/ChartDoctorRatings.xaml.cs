@@ -24,11 +24,15 @@ namespace Projekat
     {
 
         public DoctorController doctorController = new DoctorController();
+        public SeriesCollection SeriesCollection { get; set; }
+        public string[] DoctorUsernameLabels { get; set; }
+        public Func<double, string> Formatter { get; set; }
 
 
         public ChartDoctorRatings()
         {
             InitializeComponent();
+            this.DataContext = this;
             SetCommand();
 
             List<string> usernames = new List<string>();
@@ -42,31 +46,26 @@ namespace Projekat
             }
             
             SeriesCollection = new SeriesCollection();
+            ChartValues<double> ratings = new ChartValues<double>();
 
-            ChartValues<double> nesto = new ChartValues<double>();
             for(int i =0; i<grades.Count; i++)
             {
-                nesto.Add(grades[i]);
+                ratings.Add(grades[i]);
             }
 
-            SeriesCollection.Add(new ColumnSeries { Title = "Rating", Values = nesto });
+            SeriesCollection.Add(new ColumnSeries { Title = "Rating", Values = ratings });
 
             DoctorUsernameLabels = new string[doctors.Count];
+
             for(int i =0; i<doctors.Count; i++)
             {
                 DoctorUsernameLabels[i] = usernames[i];
             }
 
-            Formatter = value => value.ToString("N");
-
-            this.DataContext = this;
+            Formatter = value => value.ToString("N");          
         }
 
-        public SeriesCollection SeriesCollection { get; set; }
-        public string[] DoctorUsernameLabels { get; set; }
-        
-
-        public Func<double, string> Formatter { get; set; }
+     
 
         private RelayCommand returnCommand;
         public RelayCommand ReturnCommand
@@ -85,7 +84,7 @@ namespace Projekat
 
         public void ReturnExecute(object sender)
         {
-            HospitalViewPatientPage hvpp = new HospitalViewPatientPage(null);
+            HospitalViewPatientPage hvpp = new HospitalViewPatientPage();
             hvpp.Show();
             this.Close();
         }

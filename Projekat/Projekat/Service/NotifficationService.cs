@@ -26,24 +26,28 @@ namespace Service
         public List<Notification> GetAllNotiffications()
         {
             notifficationRepository.notifications = notifficationRepository.getAllNotifications();
+            DeleteOutOfBoundsNotifications(notifficationRepository.notifications);
             return notifficationRepository.notifications;
         }
 
-        public void WriteNotificationsToJason(List<Notification> newNotifications)
+        public void WriteNotificationsToJason()
         {
             notifficationRepository.WriteNotificationsToJason();
         }
 
-        public void IsItTime(List<Notification> notifications)
+        public void IsItTime()
         {
+            List<Notification> notifications = notifficationRepository.getAllNotifications();
             foreach (Notification notification in notifications)
             {
-                if ((DateTime.Now.Date.Date == notification.Date.Date) && (DateTime.Now.Hour >= notification.Date.Hour) && (DateTime.Now.Minute == notification.Date.Minute))
+                if (ItIsTime(notification))
                 {
                     StartWrittingNotiffications(notification);
                 }
             }
         }
+
+       
 
         public void StartWrittingNotiffications(Notification notification)
         {
@@ -72,6 +76,7 @@ namespace Service
                     notifications.Remove(notification);
                 }
             }
+            notifficationRepository.WriteNotificationsToJason();
         }
 
         public void ShouldIAdd(Notification newNotification, List<Notification> notifications)
@@ -112,5 +117,16 @@ namespace Service
         {
             notifficationRepository.DeleteNotificationById(notifciationId);
         }
+
+        public void SaveNotification(Notification newNotification)
+        {
+            notifficationRepository.SaveNotification(newNotification);
+        }
+
+        private static bool ItIsTime(Notification notification)
+        {
+            return (DateTime.Now.Date.Date == notification.Date.Date) && (DateTime.Now.Hour >= notification.Date.Hour) && (DateTime.Now.Minute == notification.Date.Minute);
+        }
+
     }
 }

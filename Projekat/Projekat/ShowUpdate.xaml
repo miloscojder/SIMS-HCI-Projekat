@@ -27,6 +27,21 @@
             </DataGrid.Columns>
         </DataGrid>
 
+        <Button Name="Ana" Background="AliceBlue" BorderThickness="0" FontSize="18" HorizontalAlignment="Left" Margin="180,363,0,0" VerticalAlignment="Top" Height="43" Width="46">
+            <Image HorizontalAlignment="Left"
+                   Height="37"
+                   VerticalAlignment="Top"
+                   Width="68"
+                   Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\info.png" />
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Background="Beige" Margin="5" FontSize="15" TextWrapping="Wrap" MaxWidth="100">
+                    Patient is already chossen, so is anamnesis. You can now change text for anamnesis selected patient. Press the save button to update it. 
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+
+        </Button>
         <Label Content="Anamnesis:" FontSize="18" HorizontalAlignment="Left" Margin="50,253,0,0" VerticalAlignment="Top" Height="42" Width="125"/>
 
         <TextBox Name="Anam" HorizontalAlignment="Left"  Margin="191,253,0,0" VerticalAlignment="Top" Height="84" Width="499"/>
@@ -40,7 +55,6 @@
                    VerticalAlignment="Top"
                    Width="108"
                    Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\heart.png" />
-        <Button Content="Log out" Click="LogOut" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="707,1,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
         <Button Content="Back" Click="Back" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="18,0,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
         <TextBox HorizontalAlignment="Left" Margin="83,1,0,0" Text="www.hospital.com/doktor-appointment/anamnesis/update-anamnesis/" TextWrapping="Wrap" VerticalAlignment="Top" Width="619" Height="25"/>
 

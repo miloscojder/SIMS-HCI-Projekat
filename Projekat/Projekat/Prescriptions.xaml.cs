@@ -23,6 +23,15 @@ namespace Projekat
             PrescriptionRepository prescriptionRepository = new PrescriptionRepository();
             List<Prescription> prescriptions = prescriptionRepository.GetAll();
             dataGrid.ItemsSource = prescriptions;
+
+            Name.Content = DoctorWindow.loginDoctor.firstName;
+            Surname.Content = DoctorWindow.loginDoctor.lastName;
+            Id.Content = DoctorWindow.loginDoctor.id;
+            jmbg.Content = DoctorWindow.loginDoctor.Jmbg;
+            Date.Content = DoctorWindow.loginDoctor.DateOfBirth.ToString();
+            Email.Content = DoctorWindow.loginDoctor.EMail;
+            Phone.Content = DoctorWindow.loginDoctor.PhoneNumber;
+            Spec.Content = DoctorWindow.loginDoctor.Specialty;
         }
 
         private void Back(object sender, RoutedEventArgs e)

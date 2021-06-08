@@ -16,7 +16,7 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid Margin="0,0,0,-108">
-        <TabControl Margin="18,48,18,126" Background="AliceBlue">
+        <TabControl Margin="18,31,18,126" Background="AliceBlue">
             <TabItem Header="Profile"  RenderTransformOrigin="13.591,2.146">
                 <Grid Height="358">
                     <Grid.ColumnDefinitions>
@@ -58,11 +58,11 @@
             </TabItem>
             <TabItem Header="Appointment" IsSelected="True" RenderTransformOrigin="13.591,2.146" Height="22" Margin="-2,-2,-2,0" VerticalAlignment="Top">
                 <Grid Height="392">
-                    <Button Content="Patients" Click="Patients" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="145,10,0,0" VerticalAlignment="Top" Height="39" Width="135"/>
-                    <Button Content="Anamnesis" Click="AnamnesisClick" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="280,10,0,0" VerticalAlignment="Top" Height="39" Width="131"/>
-                    <Button Content="Prescrptions" Click="Prescribe" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="411,10,0,0" VerticalAlignment="Top" Height="39" Width="123"/>
-                    <Button Content="Referrals" Click="ReferralP" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="534,10,0,0" VerticalAlignment="Top" Height="39" Width="105"/>
-                     <DataGrid x:Name="dataGriid" ItemsSource="{Binding ReferralPatient}" IsReadOnly="True"
+                    <Button Content="Patients" Click="Patients" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="73,10,0,0" VerticalAlignment="Top" Height="42" Width="138"/>
+                    <Button Content="Anamnesis" Click="AnamnesisClick" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="211,10,0,0" VerticalAlignment="Top" Height="42" Width="138"/>
+                    <Button Content="Prescrptions" Click="Prescribe" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="349,10,0,0" VerticalAlignment="Top" Height="42" Width="138"/>
+                    <Button Content="Referrals" Click="ReferralP" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="487,10,0,0" VerticalAlignment="Top" Height="42" Width="138"/>
+                    <DataGrid x:Name="dataGriid" ItemsSource="{Binding ReferralPatient}" IsReadOnly="True"
                   SelectionMode="Single" AutoGenerateColumns="False" Margin="10,75,10,139">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" Width="30" Binding="{Binding Id}"/>
@@ -77,13 +77,13 @@
                             <DataGridTextColumn Header="Doctor specialist" Width="100" Binding="{Binding Doc}"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Content="Referral" Click="ReferalPatient"  FontSize="18" Margin="296,274,340,0" VerticalAlignment="Top" Height="39" Background="#FFB5CDE2"/>
+                    <Button Content="Referral" Click="ReferalPatient"  FontSize="18" Margin="296,274,324,0" VerticalAlignment="Top" Height="42" Width="138" Background="#FFB5CDE2"/>
                     <Image HorizontalAlignment="Left"
                    Height="81"
-                   Margin="667,258,0,0"
+                   Margin="653,258,0,0"
                    VerticalAlignment="Top"
                    Width="108"
-                   Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\heart.png" />
+                   Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\heart.png" RenderTransformOrigin="0.388,0.48" />
                 </Grid>
 
             </TabItem>
@@ -106,7 +106,13 @@
             </TabItem>
         </TabControl>
 
-        <Button Content="Log out" Click="LogOut" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="707,1,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
+        <Button Content="     Log out" Click="LogOut" BorderThickness="0" Background="AliceBlue" FontSize="13" HorizontalAlignment="Left" Margin="677,72,0,0" VerticalAlignment="Top" Height="25" Width="85"/>
+        <Image HorizontalAlignment="Left"
+            Height="25"
+            Margin="677,72,0,0"
+            VerticalAlignment="Top"
+            Width="60"
+            Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\exit.png" />
         <Button Content="Back" Click="Back" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="18,0,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
         <TextBox HorizontalAlignment="Left" Margin="83,1,0,0" Text="www.hospital.com/doktor-appointment/referrals/doctor-referrals/" TextWrapping="Wrap" VerticalAlignment="Top" Width="619" Height="25"/>
 

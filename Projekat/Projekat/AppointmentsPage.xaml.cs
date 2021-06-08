@@ -186,17 +186,7 @@ namespace Projekat
             }
         }
 
-        public Boolean ScheduleCanExecute(Object sender)
-        {            
-            return true;           
-        }
-
-        public void ScheduleExecute(Object sender)
-        {
-            ScheduleAppointmentPatient sap = new ScheduleAppointmentPatient();
-            sap.Show();
-            this.Close();
-        }
+    
 
     
         public Boolean HomeCanExecute(object sender)
@@ -230,7 +220,7 @@ namespace Projekat
 
         public void NotificationsExecute(object sender)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null);
+            NotificationsPatientPage npp = new NotificationsPatientPage();
             npp.Show();
             this.Close();
         }
@@ -278,14 +268,14 @@ namespace Projekat
 
         public void HospitalExecute(object sender)
         {
-            HospitalViewPatientPage hvpp = new HospitalViewPatientPage(null);
+            HospitalViewPatientPage hvpp = new HospitalViewPatientPage();
             hvpp.Show();
             this.Close();
         }
 
         public Boolean SeeAppointmentsCanExecute(Object sender)
         {
-            return true;
+            return (bool)(sender = true);
         }
 
         public void SeeAppointmentsExecute(Object sender)

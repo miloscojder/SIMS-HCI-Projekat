@@ -11,10 +11,10 @@ namespace Projekat.ViewModel
 {
     public class CreateNotificationPatientViewModel : ViewModel
     {
-        public NotifficationController NotifficationController { get; set; }
+        public NotifficationController NotifficationController = new NotifficationController();
         private ObservableCollection<string> _termini;
         public ObservableCollection<string> Termini { get => _termini; set => _termini = value; }
-        public Notification createdNotification { get; set; }
+        public TimeSpan nullTimeSpan = new TimeSpan(0, 0, 0, 0, 0);
 
         private string _name;
         private DateTime _date = DateTime.Today.Date;
@@ -22,7 +22,7 @@ namespace Projekat.ViewModel
         private string _id;
         private string _description;
         private int _daysLeft;
-        private string _repeatingTime;
+        private TimeSpan _repeatingTime;
         private string _patientsUsername;
 
         public string Name { get { return _name; } set { _name = value; } }
@@ -31,7 +31,7 @@ namespace Projekat.ViewModel
         public string Id { get { return _id; } set { _id = value; } }
         public string Description { get { return _description; } set { _description = value; } }
         public int DaysLeft { get { return _daysLeft; } set { _daysLeft = value; } }
-        public string RepeatingTime { get { return _repeatingTime; } set { _repeatingTime = value; } }
+        public TimeSpan RepeatingTime { get { return _repeatingTime; } set { _repeatingTime = value; } }
         public string PatientsUsername { get { return _patientsUsername; } set { _patientsUsername = value; } }
         public static CreateNotifficationPatientPage CreateNotifficationPatientPage { get; set; }
 
@@ -71,26 +71,30 @@ namespace Projekat.ViewModel
         public void CreateExecute(object sender)
         {
 
-            if ((Name == "") | (Description == "") | (Date == null) | (Hour == null) | (DaysLeft == 0) | (RepeatingTime == ""))
+            if (DataImputsAreBad())
             {
                 MessageBox.Show("You must fill all data.");
             }
             else
             {
-                string hoursAndMinutes =  Hour;
+                string hoursAndMinutes = Hour;
                 string[] choosenHours = hoursAndMinutes.Split(':');
                 DateTime choosenDate = new DateTime(Date.Year, Date.Month, Date.Day, Convert.ToInt32(choosenHours[0]), Convert.ToInt32(choosenHours[1]), 0);
                 Random random = new Random();
 
-                createdNotification = new Notification(Name, Description, choosenDate, DaysLeft, Convert.ToString(random.Next(1, 10000)), PatientMainPage.prenosilac.Username);
+                Notification createdNotification = new Notification(Name, Description, choosenDate, DaysLeft, Convert.ToString(random.Next(1, 10000)), PatientMainPage.prenosilac.Username, RepeatingTime);
+                NotifficationController.SaveNotification(createdNotification);
 
-                //save here notification
-
-
-                NotificationsPatientPage npp = new NotificationsPatientPage(createdNotification);
+                MessageBox.Show("You successfully created notification.");
+                NotificationsPatientPage npp = new NotificationsPatientPage();
                 npp.Show();
                 CreateNotifficationPatientPage.Close();
             }
+        }
+
+        private bool DataImputsAreBad()
+        {
+            return (Name == "") | (Description == "") | (Date == null) | (Hour == null) | (DaysLeft == 0) | (RepeatingTime < nullTimeSpan);
         }
 
         public Boolean CancelCanExecute(object sender)
@@ -100,7 +104,7 @@ namespace Projekat.ViewModel
 
         public void CancelExecute(object sender)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null);
+            NotificationsPatientPage npp = new NotificationsPatientPage();
             npp.Show();
             CreateNotifficationPatientPage.Close();
         }

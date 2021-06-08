@@ -18,21 +18,22 @@
     </Window.Background>
     <Grid>
         <Label Content="Appointment date" FontSize="17" HorizontalAlignment="Left" Margin="34,86,0,0" VerticalAlignment="Top" Height="38"/>
+        <Label Content="Referral patient" FontSize="20" HorizontalAlignment="Left" Margin="34,43,0,0" VerticalAlignment="Top" Height="38"/>
         <Label Content="Time start" FontSize="17" HorizontalAlignment="Left" Margin="34,143,0,0" VerticalAlignment="Top" Height="44"/>
-        <TextBox x:Name="Hours"  HorizontalAlignment="Left" Margin="223,143,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" Height="31"/>
+        <TextBox x:Name="Hours"  HorizontalAlignment="Left" Margin="201,143,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="30"/>
 
         <Label Content="Duration(in minutes)" FontSize="17" HorizontalAlignment="Left" Margin="34,0,0,0" VerticalAlignment="Center" Height="42"/>
-        <TextBox x:Name="Duration"  HorizontalAlignment="Left" Margin="247,0,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Width="74" Height="33" RenderTransformOrigin="0.626,0.545"/>
+        <TextBox x:Name="Duration"  HorizontalAlignment="Left" Margin="201,196,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="30" RenderTransformOrigin="0.626,0.545"/>
 
-        <Button Content="Referral" FontSize="20" Click="Referral" HorizontalAlignment="Left" Margin="346,342,0,0" VerticalAlignment="Top" Height="42" Width="92" Background="#FFB5CDE2"/>
-        <TextBox x:Name="Date"  HorizontalAlignment="Left" Margin="201,97,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="28"/>
-        <Label Content="Time end" FontSize="17" HorizontalAlignment="Left" Margin="34,264,0,0" VerticalAlignment="Top" Height="29"/>
-        <TextBox x:Name="Hourss"  HorizontalAlignment="Left" Margin="238,264,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" Height="32"/>
+        <Button Content="Referral" FontSize="20" Click="Referral" HorizontalAlignment="Left" Margin="350,342,0,0" VerticalAlignment="Top" Height="42" Width="138" Background="#FFB5CDE2"/>
+        <TextBox x:Name="Date"  HorizontalAlignment="Left" Margin="201,97,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="30"/>
+        <Label Content="Time end" FontSize="17" HorizontalAlignment="Left" Margin="34,264,0,0" VerticalAlignment="Top" Height="30"/>
+        <TextBox x:Name="Hourss"  HorizontalAlignment="Left" Margin="201,262,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="30"/>
         <Label Content="Room name:" FontSize="17" HorizontalAlignment="Left" Margin="558,264,0,0" VerticalAlignment="Top" Height="28" RenderTransformOrigin="18.845,0.68" Width="104"/>
-        <TextBox x:Name="RoomName"  HorizontalAlignment="Left" Margin="679,264,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Height="28"/>
-        <Label Content="Doctors specialty:" FontSize="17" HorizontalAlignment="Left" Margin="608,91,0,0" VerticalAlignment="Top" Height="39"/>
-        <ComboBox x:Name="Combobox1" ItemsSource="{Binding specialties}" SelectedItem="{Binding selekt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="589,150,31,242"/>
-        <Label Content="Explanation:" FontSize="17" HorizontalAlignment="Center" Margin="0,91,0,0" VerticalAlignment="Top" Height="28"/>
+        <TextBox x:Name="RoomName"  HorizontalAlignment="Left" Margin="679,264,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Height="30"/>
+        <Label Content="Doctors specialty:" FontSize="17" HorizontalAlignment="Left" Margin="608,86,0,0" VerticalAlignment="Top" Height="39"/>
+        <ComboBox x:Name="Combobox1" ItemsSource="{Binding specialties}" SelectedItem="{Binding selekt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="608,150,31,242"/>
+        <Label Content="Explanation:" FontSize="17" HorizontalAlignment="Center" Margin="0,86,0,0" VerticalAlignment="Top" Height="38"/>
         <TextBox x:Name="Explain" HorizontalAlignment="Left" Margin="350,143,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Height="135"/>
 
         <Image HorizontalAlignment="Left"
@@ -41,7 +42,6 @@
                    VerticalAlignment="Top"
                    Width="108"
                    Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\heart.png" />
-        <Button Content="Log out" Click="LogOut" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="707,1,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
         <Button Content="Back" Click="Back" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="18,0,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
         <TextBox HorizontalAlignment="Left" Margin="83,1,0,0" Text="www.hospital.com/doktor-appointment/referrals/doctor-referral/referral/" TextWrapping="Wrap" VerticalAlignment="Top" Width="619" Height="25"/>
 

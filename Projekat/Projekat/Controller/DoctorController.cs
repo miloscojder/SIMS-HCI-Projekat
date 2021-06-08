@@ -54,6 +54,13 @@ namespace Controller
 
 
 
+        public void DeleteDoctorById(int id)
+        {
+            doctorService.DeleteDoctorById(id);
+        }
+
+
+
         public int AppointmentsWithThisDoctor(List<Appointment> appointments,Doctor doctor)
        {
             return doctorService.AppointmentsWithThisDoctor(appointments, doctor);

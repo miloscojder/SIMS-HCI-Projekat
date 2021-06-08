@@ -15,16 +15,17 @@ namespace Model
         public Room Room { get; set; }
         public Patient Patient { get; set; }
         public String EndDate { get; set; }
-
+        public StaticEquipment staticEquipment { get; set; }
         public HospitalReferrals() { }
 
-        public HospitalReferrals(int id,String date, String end, Room r, Patient p) 
+        public HospitalReferrals(int id,String date, String end, Room r, Patient p, StaticEquipment statiks) 
         {
             this.Id = id;
             Date = date;
             EndDate = end;
             Room = r;
             Patient = p;
+            staticEquipment = statiks;
         }
 
     }

@@ -31,9 +31,9 @@ namespace Repository
             }
         }
 
-        public List<Patient> GetAllName(string name)
+        public List<Patient> GetAllName(string name, string surname)
         {
-            return patients.FindAll(obj => (obj.firstName == name || obj.lastName == name || obj.Username == name));
+            return patients.FindAll(obj => (obj.firstName == name || obj.lastName == surname));
 
         }
 

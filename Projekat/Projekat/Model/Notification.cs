@@ -16,14 +16,15 @@ namespace Model
         public String patientsUsername { get; set; }
 
         public Notification() { }
-        public Notification(String Name, String Description, DateTime Date, int DaysLeft, String Id, String username)
+        public Notification(String Name, String Description, DateTime Date, int DaysLeft, String Id, String username, TimeSpan repeatingTime)
         {
             this.Name = Name;
             this.Description = Description;
             this.Date = Date;
             this.DaysLeft = DaysLeft;
             this.Id = Id;
-            patientsUsername = username;
+            this.patientsUsername = username;
+            this.repeatingTime = repeatingTime;
         }
         
         public System.Collections.ArrayList doctor;

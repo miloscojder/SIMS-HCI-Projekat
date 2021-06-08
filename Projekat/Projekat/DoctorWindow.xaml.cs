@@ -3,8 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media;
 using Controller;
 using Model;
+
 using Repository;
 
 namespace Projekat
@@ -14,20 +17,16 @@ namespace Projekat
     {
         public PatientController patientController = new PatientController();
         public static Doctor loginDoctor = new Doctor();
+        
 
-        public List<Patient> patients
-        {
-            get;
-            set;
-        }
-        public Anamnesis anam = new Anamnesis();
+
         public DoctorWindow(Doctor doctor)
         {
             InitializeComponent();
             loginDoctor = doctor;
 
             AppointmentRepository appointmentRepository = new AppointmentRepository();
-            List<Appointment> appointments = appointmentRepository.GetAllForUser(doctor);
+            List<Appointment> appointments = appointmentRepository.GetAllAppointmentsForDoctorUser(doctor);
             dataGridd.ItemsSource = appointments;
             Appi.IsSelected = true;
 
@@ -42,6 +41,7 @@ namespace Projekat
            
         }
         
+       
 
 
         private void Patients(object sender, RoutedEventArgs e)
@@ -89,8 +89,6 @@ namespace Projekat
             m.Show();
             Close();
         }
-
-       
 
         private void Reschedule(object sender, RoutedEventArgs e)
         {

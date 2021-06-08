@@ -4,13 +4,15 @@ using System.Collections.Generic;
 using System.Windows;
 using Controller;
 using Repository;
+using System.Windows.Media;
+
 namespace Projekat
 {
   
     public partial class ExtendHospital : Window
     {
         public HospitalReferralsController hospitalReferralsController = new HospitalReferralsController();
-
+        public StaticEquipment staticEquipment = new StaticEquipment();
         public List<Appointment> appointments
         {
             get;
@@ -32,8 +34,14 @@ namespace Projekat
             room.Name = hos.Room.Name;
             patient.firstName = hos.Patient.firstName;
             patient.lastName = hos.Patient.lastName;
+            staticEquipment = hos.staticEquipment;
         }
 
+        public void doThings(string param)
+        {
+            ExtendH.Background = new SolidColorBrush(Color.FromRgb(32, 64, 128));
+            Title = param;
+        }
         private void Save(object sender, RoutedEventArgs e)
         {
         
@@ -43,7 +51,7 @@ namespace Projekat
             String end = EndDate.Text;
 
 
-            HospitalReferrals a = new HospitalReferrals(id, date, end, room, patient);
+            HospitalReferrals a = new HospitalReferrals(id, date, end, room, patient, staticEquipment);
             hospitalReferralsController.Update(a);
 
             HospitalReferralss ap = new HospitalReferralss();

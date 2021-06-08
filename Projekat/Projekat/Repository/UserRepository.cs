@@ -57,6 +57,7 @@ namespace Repository
                 return 1;
             }
         }
+
         public User ReadUser(int id)
         {
             User user = new User();

@@ -22,67 +22,34 @@ namespace Projekat
     public partial class AcceptRescheduleAppointmentPatientPage : Window
     {
         public Appointment posrednik1 = new Appointment();          
-        public AppointmentController appointmentController = new AppointmentController();
-        public List<Room> Rooms { get; set; }
-        public List<Doctor> Doctors { get; set; }
+        public AppointmentController appointmentController = new AppointmentController();     
         public DoctorController doctorController = new DoctorController();
         public RoomController roomController = new RoomController();
+        public TimeSpan timeSpan = new TimeSpan(2, 0, 0, 0, 0);
+        public List<Appointment> appointmentsFreeTermin = new List<Appointment>();
 
         public AcceptRescheduleAppointmentPatientPage(Appointment posred, ScheduleAppointmentPatient.Priority priority, DateTime date, String doctorsUsername)
         {
             InitializeComponent();
             this.DataContext = this;
             SetCommands();
+            posrednik1 = posred;
 
-            if (priority == ScheduleAppointmentPatient.Priority.DATE)
+            List<Doctor> Doctors = doctorController.GetAllDoctors();
+            List<Room> Rooms = roomController.GetAllRooms();
+            bool priorityIsDate = priority == ScheduleAppointmentPatient.Priority.DATE;
+
+            if (priorityIsDate)
             {
-                Appointment a = new Appointment();
-                List<Appointment> appointmentsDateChecked = new List<Appointment>();
-
-                Doctors = doctorController.GetAllDoctors();
-                Rooms = roomController.GetAllRooms();
-
-               
-
-                for (int i = 0; i < 3; i++)
-                {
-                    a = new Appointment(date, Doctors[i].Username, Rooms[i].Name);
-                    a.id = posred.id;  
-                    a.AppointmentType = TypeOfAppointment.Examination;
-                    a.PatientUsername = PatientMainPage.prenosilac.Username;
-                    appointmentsDateChecked.Add(a);
-                }
-
-                lvAcceptRescheduleAppointment.ItemsSource = appointmentsDateChecked;
+                appointmentsFreeTermin = appointmentController.AddFreeTerminsDayPriority(date, Rooms, Doctors, PatientMainPage.prenosilac.Username);
+                lvAcceptRescheduleAppointment.ItemsSource = appointmentsFreeTermin;
             }
             else
             {
-                Appointment a = new Appointment();
-
-                List<Appointment> appointmentDoctorChecked = new List<Appointment>();
-
-                Rooms = roomController.GetAllRooms();
-                
-                List<DateTime> timeList = new List<DateTime>();
-
-                for (int i = 0; i < 3; i++)
-                {
-                    timeList.Add(date.AddHours(i));
-                }
-
-                for (int i = 0; i < 3; i++)
-                {
-                    a = new Appointment(timeList[i], doctorsUsername, Rooms[i].Name);
-                    a.id = posred.id;
-                    a.AppointmentType = TypeOfAppointment.Examination;
-                    a.PatientUsername = PatientMainPage.prenosilac.Username;
-                    appointmentDoctorChecked.Add(a);
-                }
-
-                lvAcceptRescheduleAppointment.ItemsSource = appointmentDoctorChecked;
-            }
-
-            posrednik1 = posred;
+                List<DateTime> timeList = GetFreeHours(date);
+                appointmentsFreeTermin = appointmentController.AddFreeTerminDoctorPriority(timeList, Rooms, doctorsUsername, PatientMainPage.prenosilac.Username);
+                lvAcceptRescheduleAppointment.ItemsSource = appointmentsFreeTermin;
+            }            
         }
 
  
@@ -122,10 +89,8 @@ namespace Projekat
             else
             {
                 Appointment app = (Appointment)lvAcceptRescheduleAppointment.SelectedItems[0];
-
-                TimeSpan timeSpan = new TimeSpan(2, 0, 0, 0, 0);
-
-                if (((app.StartTime.Date - posrednik1.StartTime.Date) >= timeSpan) || (posrednik1.StartTime > app.StartTime))
+                bool dayTooFarInFuture = IsAppointmentTooFar(app);
+                if (dayTooFarInFuture)
                 {
                     MessageBox.Show("Your appointment must be schaduled only 2 days after appointment you choose to modify.");
                     this.Close();
@@ -149,8 +114,6 @@ namespace Projekat
                         ap.Show();
                         this.Close();
                     }
-
-
                 }
             }
         }
@@ -173,7 +136,19 @@ namespace Projekat
             CancelCommand = new RelayCommand(CancelExecute, CancelCanExecute);
         }
 
+        public List<DateTime> GetFreeHours(DateTime date)
+        {
+            List<DateTime> dateTimes = new List<DateTime>();
+            for (int i = 0; i < 3; i++)
+            {
+                dateTimes.Add(date.AddHours(i));
+            }
+            return dateTimes;
+        }
 
-
+        private bool IsAppointmentTooFar(Appointment app)
+        {
+            return ((app.StartTime.Date - posrednik1.StartTime.Date) >= timeSpan) || (posrednik1.StartTime > app.StartTime);
+        }
     }
 }

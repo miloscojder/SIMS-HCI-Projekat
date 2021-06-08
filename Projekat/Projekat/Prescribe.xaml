@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
        
         xmlns:local="clr-namespace:Projekat"
+        xmlns:data="clr-namespace:Model"
+        
         mc:Ignorable="d"
-        Title="Prescribe" Height="450" Width="800">
+        Title="Prescribe" Height="450" Width="800" d:HelpProvider.HelpKey="Forma">
+
+
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,4"
                              StartPoint="0.5,0">
@@ -16,40 +20,66 @@
                           Offset="0.263" />
         </LinearGradientBrush>
     </Window.Background>
-    <Grid>
-        <DataGrid x:Name="dataGrid" ItemsSource="{Binding Medicine}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="32,63,565,168">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Medicine" Width="200" Binding="{Binding Name}"/>
+    <Grid HorizontalAlignment="Right" Width="800">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
-            </DataGrid.Columns>
-        </DataGrid>
-        <Label Content="Amount" FontSize="18" HorizontalAlignment="Left" Margin="366,232,0,0" VerticalAlignment="Top" Height="48" Width="84"/>
-        <TextBox Name="Quantity" FontSize="18"  HorizontalAlignment="Left" Margin="280,236,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Height="36"/>
-        <Label Content="Prescription:" FontSize="18" HorizontalAlignment="Left" Margin="509,59,0,0" VerticalAlignment="Top" Height="48" Width="120"/>
-        <TextBox Name="Prescription" FontSize="18"  HorizontalAlignment="Left" Margin="509,102,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="241" Height="118"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="800" />
+        </Grid.ColumnDefinitions>
 
-        <Button Content="Prescribe" FontSize="20" Click="PrescribeMedicine" HorizontalAlignment="Left" Margin="509,331,0,0" VerticalAlignment="Top" Height="52" Width="131" Background="#FFB5CDE2"/>
-        <TextBox x:Name="Medicine" HorizontalAlignment="Left" Margin="280,102,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Height="30"/>
-        <TextBox x:Name="Allergic" FontSize="18"  HorizontalAlignment="Left" Margin="114,336,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="179" Height="42"/>
-        <Label Content="Allergen:" FontSize="18" HorizontalAlignment="Left" Margin="29,333,0,0" VerticalAlignment="Top" Height="48" RenderTransformOrigin="0.625,1.157"/>
+
+
+        <Label Content="Amount" FontSize="18" HorizontalAlignment="Left" Margin="371,0,0,0" VerticalAlignment="Center" Height="48" Width="84"/>
+        <TextBox Name="Quantity" FontSize="18"  HorizontalAlignment="Left" Margin="283,201,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Height="36"/>
+        <Label Content="Prescription:" FontSize="18" HorizontalAlignment="Left" Margin="484,59,0,0" VerticalAlignment="Top" Height="48" Width="120"/>
+        <TextBox Name="Prescription" FontSize="18"  HorizontalAlignment="Left" Margin="484,112,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="241" Height="118"  RenderTransformOrigin="0.517,1.079"/>
+        <Button Name="Pres" Background="AliceBlue" BorderThickness="0" FontSize="18" HorizontalAlignment="Left" Margin="644,285,0,0" VerticalAlignment="Top" Height="43" Width="46"/>
+        <Button Content="Prescribe" FontSize="20" Click="PrescribeMedicine" HorizontalAlignment="Left" Margin="494,279,0,0" VerticalAlignment="Top" Height="52" Width="131" Background="#FFB5CDE2"/>
+
+        <TextBox x:Name="Allergic" FontSize="15"  HorizontalAlignment="Left" Margin="127,328,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="138" Height="42"/>
+        <Label Content="Allergen:" FontSize="18" HorizontalAlignment="Left" Margin="18,328,0,0" VerticalAlignment="Top" Height="48" RenderTransformOrigin="0.625,1.157" Width="80"/>
         <Image HorizontalAlignment="Left"
                    Height="81"
-                   Margin="709,351,0,0"
+                   Margin="702,328,0,0"
                    VerticalAlignment="Top"
                    Width="108"
                    Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\heart.png" />
-        <Button Content="Log out" Click="LogOut" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="707,1,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
         <Button Content="Back" Click="Back" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="18,0,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
         <TextBox HorizontalAlignment="Left" Margin="83,1,0,0" Text="www.hospital.com/doktor-appointment/prescription/prescribe/" TextWrapping="Wrap" VerticalAlignment="Top" Width="619" Height="25"/>
-        <TextBox x:Name="Instruction" FontSize="18"  HorizontalAlignment="Left" Margin="280,161,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Height="36"/>
-        <Label Content="Per day" FontSize="18" HorizontalAlignment="Left" Margin="360,155,0,0" VerticalAlignment="Top" Height="48" Width="83"/>
-        <Button Content="View" Click="View" HorizontalAlignment="Left" Margin="685,236,0,0" VerticalAlignment="Top" Height="30" Width="65"/>
-        <Button Content="Select" Click="Select" HorizontalAlignment="Left" Margin="32,281,0,0" VerticalAlignment="Top" Height="30" Width="65"/>
-        <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Height="214" Margin="270,82,0,0" VerticalAlignment="Top" Width="180">
-            <Border BorderThickness="0,1,0,0" BorderBrush="Black" HorizontalAlignment="Center" Height="21" Margin="0,57,0,0" VerticalAlignment="Top" Width="180"/>
+        <TextBox x:Name="Instruction" FontSize="18"  HorizontalAlignment="Left" Margin="280,136,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Height="36"/>
+        <Label Content="Per day" FontSize="18" HorizontalAlignment="Left" Margin="366,136,0,0" VerticalAlignment="Top" Height="48" Width="83"/>
+        <Button Name="ViewP" Background="AliceBlue" BorderThickness="0" Click="View" HorizontalAlignment="Left" Margin="678,236,0,0" VerticalAlignment="Top" Height="41" Width="47">
+            <Image HorizontalAlignment="Left"
+                   Height="32"
+                   VerticalAlignment="Top"
+                   Width="38"
+                   Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\prescription.png" RenderTransformOrigin="5.809,0.118" />
+
+        </Button>
+        <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Height="207" Margin="275,59,0,0" VerticalAlignment="Top" Width="180">
+            <TextBox Name="MedicineName" TextWrapping="Wrap" Margin="9,9,70,162"/>
         </Border>
 
+        <Image HorizontalAlignment="Left"
+                   Height="85"
+                   VerticalAlignment="Top"
+                   Width="50"
+                   Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\error.png" Margin="392,64,0,0" />
+
+
+        <DataGrid x:Name="dataGrid" ItemsSource="{Binding Medicines}" IsReadOnly="True"
+            SelectionMode="Single" AutoGenerateColumns="False" Margin="18,48,535,0" Height="222" VerticalAlignment="Top">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Name" Width="100" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Details" Width="160" Binding="{Binding Details}"/>
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Select" FontSize="16" Click="Select" HorizontalAlignment="Left" Margin="18,278,0,0" VerticalAlignment="Top" Height="27" Width="80" Background="#FFB5CDE2"/>
 
     </Grid>
 </Window>

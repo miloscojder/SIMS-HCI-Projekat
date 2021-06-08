@@ -6,6 +6,7 @@ using Projekat.Model;
 using Projekat.Repository;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows.Media;
 
 namespace Projekat
 {
@@ -48,6 +49,13 @@ namespace Projekat
             Close();
         }
 
+        public void doThings(string param)
+        {
+            rej.Background = new SolidColorBrush(Color.FromRgb(32, 64, 128));
+            Title = param;
+        }
+
+
         private void Back(object sender, RoutedEventArgs e)
         {
             ViewMedecine m = new ViewMedecine();
@@ -55,11 +63,6 @@ namespace Projekat
             Close();
         }
 
-        private void LogOut(object sender, RoutedEventArgs e)
-        {
-            MainWindow m = new MainWindow();
-            m.Show();
-            Close();
-        }
+       
     }
 }

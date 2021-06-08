@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using Controller;
 using Projekat.Model;
 using Projekat.Repository;
+using System.Collections.ObjectModel;
+
 
 namespace Projekat
 {
@@ -22,8 +24,11 @@ namespace Projekat
     public partial class Prescribe : Window
     {
         public PrescriptionController prescriptionController = new PrescriptionController();
-        Patient pe = new Patient();
-        public MedicalRecord md;
+        public Patient pe = new Patient();
+        Point startPoint = new Point();
+
+      
+
         public Prescribe(Patient p)
         {
             InitializeComponent();
@@ -32,45 +37,52 @@ namespace Projekat
             MedicinesRepository medicinesRepository = new MedicinesRepository();
             List<Medicines> medicines = medicinesRepository.GetAllStatus(status);
             dataGrid.ItemsSource = medicines;
-            pe.firstName = p.firstName;
-            pe.lastName = p.lastName;
+            pe = p;
             Allergic.Text = p.record.Allergen;
+
+           
         }
 
+
+        
         private void PrescribeMedicine(object sender, RoutedEventArgs e)
         {
-            //Prescription pr = new Prescription();
-           // Patient pe = new Patient();
-            MedicalRecord medicalRecord = new MedicalRecord();
-            int ida = prescriptionController.GenerateNewId();
-            String med = Medicine.Text;
-            //mmm.Allergen = Allergic.Text;
-            medicalRecord.Allergen = Allergic.Text;
-            String q = Quantity.Text;
-            String ins = q + "x" + Instruction.Text + " pill per day";
            
             
+            int ida = prescriptionController.GenerateNewId();
+            Medicines liste = (Medicines)dataGrid.SelectedItems[0];            
+            pe.record.Allergen = Allergic.Text;
+            string qq = Quantity.Text;
+            String q = Quantity.Text + "box";
+            String ins = Quantity.Text + "x" + Instruction.Text + " pill per day";
 
-            if (med == medicalRecord.Allergen)
+
+
+            if (liste.Name == pe.record.Allergen)
             {
                 MessageBox.Show("YOU ENTERED PATIENTS ALLERGEN!");
                 
-            } else
-            {
 
+            }
+            
+           
+            else {
+               
 
-                Prescription a = new Prescription(ida, med, q, ins, pe);
+                Prescription a = new Prescription(ida, liste.Name, q, ins, pe);
                 prescriptionController.CreatePrescription(a);
 
 
                 MessageBox.Show("Medicine prescribed!");
-                
+
 
                 Prescriptions ap = new Prescriptions();
                 ap.Show();
                 Close();
-            }
 
+
+
+            }
         }
 
         private void Back(object sender, RoutedEventArgs e)
@@ -80,24 +92,24 @@ namespace Projekat
             Close();
 
         }
-
-        private void LogOut(object sender, RoutedEventArgs e)
+        private void Select(object sender, RoutedEventArgs e)
         {
-            MainWindow m = new MainWindow();
-            m.Show();
-            Close();
 
+            Medicines s = (Medicines)dataGrid.SelectedItems[0];
+
+            MedicineName.Text = s.Name;
+           
         }
+
+
 
         private void View(object sender, RoutedEventArgs e)
         {
-            Prescription.Text = "Patient: " + pe.firstName.ToString() + " " + pe.lastName.ToString() + "\n" + "Medicine: " + Medicine.Text + "\n" + "Instruction: " + Quantity.Text + " box " + Instruction.Text + " pill per day";
+           
+            Prescription.Text = "Patient: " + pe.firstName.ToString() + " " + pe.lastName.ToString() + "\n" + "Medicine: " + MedicineName.Text + "\n" + "Instruction: " + Quantity.Text + " box " + Instruction.Text + " pill per day";
         }
 
-        private void Select(object sender, RoutedEventArgs e)
-        {
-            Medicines m = (Medicines)dataGrid.SelectedItems[0];
-            Medicine.Text = m.Name;
-        }
+        
+      
     }
 }

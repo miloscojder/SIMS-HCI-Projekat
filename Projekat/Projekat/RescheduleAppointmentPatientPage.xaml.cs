@@ -23,14 +23,10 @@ namespace Projekat
 
         //public enum Priority { DATE, DOCTOR }
    
-        public List<String> Termini { get; set; }
-        public string SelektovanTermin { get; set; }        
-        public string SelektovanDoktor { get; set; }
+        public List<String> Termini { get; set; }       
         public ScheduleAppointmentPatient.Priority priority;
-        public DoctorController doctorController = new DoctorController();
-        public List<Doctor> Doktori { get; set; }
-
-        Appointment posrednik = new Appointment();
+        public DoctorController doctorController = new DoctorController();    
+        public Appointment posrednik = new Appointment();
 
         public RescheduleAppointmentPatientPage(Appointment a)
         {
@@ -40,17 +36,13 @@ namespace Projekat
             string[] termini = File.ReadAllLines(@"C:\Projekat Sims\SIMS-HCI-Projekat\Projekat\Projekat\Data\terminiak.txt", Encoding.UTF8);
             Termini = new List<string>(termini);
 
-            Doktori = doctorController.GetAllDoctors();
+            List<Doctor> Doktori = doctorController.GetAllDoctors();
 
             OldAppointmentDate.Text = Convert.ToString(a.StartTime);
             OldAppointmentDoctor.Text = a.DoctorUsername;
             OldAppointmentRoom.Text = a.RoomName;
 
-            posrednik.DoctorUsername = a.DoctorUsername;
-            posrednik.RoomName = a.RoomName;
-            posrednik.id = a.id;
-            posrednik.StartTime = a.StartTime;
-            posrednik.AppointmentType = a.AppointmentType;
+            posrednik = a;
 
             SetCommands();
         }
@@ -65,7 +57,7 @@ namespace Projekat
             priority = ScheduleAppointmentPatient.Priority.DOCTOR;
         }
 
-
+        #region commandVariables
         private RelayCommand cancelCommand;
         public RelayCommand CancelCommand
         {
@@ -86,8 +78,9 @@ namespace Projekat
                 requestCommand = value;
             }
         }
+        #endregion
 
-
+        #region commandFunctions
         public Boolean RequestCanExecute(object sender)
         {
             return true;
@@ -95,21 +88,16 @@ namespace Projekat
 
         public void RequestExecute(object sender)
         {
-            if ((IzaberiDatum.SelectedDate == null) | (Combobox1.SelectedItem == null) | (Combobox2.SelectedItem == null) | ((DateRadioButton.IsChecked == false) && (DoctorRadioButton.IsChecked == false)))
+            if (DataIsNotFilled())
             {
                 MessageBox.Show("You must pick date, doctor and choose priotity.");
             }
             else
-            {
-
-                DateTime newChoosenDate = new DateTime();
-
+            {               
                 String nesto = (string)Combobox1.SelectedItem;
                 string[] preuzeto = nesto.Split(':');
 
-                newChoosenDate = (DateTime)IzaberiDatum.SelectedDate;
-                newChoosenDate = new DateTime(IzaberiDatum.SelectedDate.Value.Year, IzaberiDatum.SelectedDate.Value.Month, IzaberiDatum.SelectedDate.Value.Day, Convert.ToInt32(preuzeto[0]), Convert.ToInt32(preuzeto[1]), 0);
-
+                DateTime newChoosenDate = new DateTime(IzaberiDatum.SelectedDate.Value.Year, IzaberiDatum.SelectedDate.Value.Month, IzaberiDatum.SelectedDate.Value.Day, Convert.ToInt32(preuzeto[0]), Convert.ToInt32(preuzeto[1]), 0);
                 string izabraniDoktor = (string)Combobox2.SelectedItem;
 
                 AcceptRescheduleAppointmentPatientPage arapp = new AcceptRescheduleAppointmentPatientPage(posrednik, priority, newChoosenDate, izabraniDoktor);
@@ -129,11 +117,18 @@ namespace Projekat
             ap.Show();
             this.Close();
         }
+        #endregion
 
+           
         public void SetCommands()
         {
             RequestCommand = new RelayCommand(RequestExecute, RequestCanExecute);
             CancelCommand = new RelayCommand(CancelExecute, CancelCanExecute);
+        }
+
+        private bool DataIsNotFilled()
+        {
+            return (IzaberiDatum.SelectedDate == null) | (Combobox1.SelectedItem == null) | (Combobox2.SelectedItem == null) | ((DateRadioButton.IsChecked == false) && (DoctorRadioButton.IsChecked == false));
         }
 
     }

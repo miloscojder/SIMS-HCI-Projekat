@@ -1,22 +1,22 @@
 [
-    
     {
         "Id": 1,
         "Date": "15.05.2021.",
         "Room": {
+            "Size": 0,
             "Id": 0,
             "Name": "C",
             "RoomType": null,
+            "RoomStatus": 0,
             "Floor": 0,
             "Detail": null,
             "StaticEquipments": null
         },
         "Patient": {
             "record": null,
+            "isPatientBaned": null,
             "id": 0,
-
             "Username": "aca",
-
             "Password": null,
             "firstName": "Mirko",
             "lastName": "Mirkovic",
@@ -24,24 +24,27 @@
             "EMail": null,
             "PhoneNumber": null,
             "DateOfBirth": "0001-01-01T00:00:00",
-            "doctor": null,
             "Rool": 0
         },
-        "EndDate": "30.05.2021."
+        "EndDate": "30.05.2021.",
+        "staticEquipment": null
     },
     {
         "Id": 2,
         "Date": "25.05.2021.",
         "Room": {
+            "Size": 0,
             "Id": 0,
             "Name": "C",
             "RoomType": null,
+            "RoomStatus": 0,
             "Floor": 0,
             "Detail": null,
             "StaticEquipments": null
         },
         "Patient": {
             "record": null,
+            "isPatientBaned": null,
             "id": 0,
             "Username": null,
             "Password": null,
@@ -51,24 +54,27 @@
             "EMail": null,
             "PhoneNumber": null,
             "DateOfBirth": "0001-01-01T00:00:00",
-            "doctor": null,
             "Rool": 0
         },
-        "EndDate": "01.06.2021."
+        "EndDate": "01.06.2021.",
+        "staticEquipment": null
     },
     {
         "Id": 3,
         "Date": "12.06.2021",
         "Room": {
+            "Size": 0,
             "Id": 0,
             "Name": "C",
             "RoomType": null,
+            "RoomStatus": 0,
             "Floor": 0,
             "Detail": null,
             "StaticEquipments": null
         },
         "Patient": {
             "record": null,
+            "isPatientBaned": null,
             "id": 0,
             "Username": null,
             "Password": null,
@@ -78,9 +84,181 @@
             "EMail": null,
             "PhoneNumber": null,
             "DateOfBirth": "0001-01-01T00:00:00",
-            "doctor": null,
             "Rool": 0
         },
-        "EndDate": "15.06.2021"
+        "EndDate": "15.06.2021",
+        "staticEquipment": null
+    },
+    {
+        "Id": 4,
+        "Date": "12.06.2021",
+        "Room": {
+            "Size": 0,
+            "Id": 0,
+            "Name": "K",
+            "RoomType": null,
+            "RoomStatus": 0,
+            "Floor": 0,
+            "Detail": null,
+            "StaticEquipments": null
+        },
+        "Patient": {
+            "record": null,
+            "isPatientBaned": null,
+            "id": 0,
+            "Username": null,
+            "Password": null,
+            "firstName": "Anamarija",
+            "lastName": "Popovic",
+            "Jmbg": null,
+            "EMail": null,
+            "PhoneNumber": null,
+            "DateOfBirth": "0001-01-01T00:00:00",
+            "Rool": 0
+        },
+        "EndDate": "15.06.2021",
+        "staticEquipment": null
+    },
+    {
+        "Id": 5,
+        "Date": "05.06.2021.",
+        "Room": {
+            "Size": 0,
+            "Id": 0,
+            "Name": "K",
+            "RoomType": null,
+            "RoomStatus": 0,
+            "Floor": 0,
+            "Detail": null,
+            "StaticEquipments": null
+        },
+        "Patient": {
+            "record": null,
+            "isPatientBaned": null,
+            "id": 0,
+            "Username": null,
+            "Password": null,
+            "firstName": "Mirko",
+            "lastName": "Mirkovic",
+            "Jmbg": null,
+            "EMail": null,
+            "PhoneNumber": null,
+            "DateOfBirth": "0001-01-01T00:00:00",
+            "Rool": 0
+        },
+        "EndDate": "15.06.2021.",
+        "staticEquipment": {
+            "Id": 7,
+            "Name": "bed",
+            "Type": 0,
+            "Quantity": 5,
+            "RoomId": 5,
+            "room": {
+                "Size": 0,
+                "Id": 6,
+                "Name": "K",
+                "RoomType": "Room",
+                "RoomStatus": 0,
+                "Floor": 4,
+                "Detail": "Room is ready for five patients.",
+                "StaticEquipments": null
+            },
+            "AvailableBeds": 4
+        }
+    },
+    {
+        "Id": 6,
+        "Date": "07.06.2021.",
+        "Room": {
+            "Size": 0,
+            "Id": 0,
+            "Name": "K",
+            "RoomType": null,
+            "RoomStatus": 0,
+            "Floor": 0,
+            "Detail": null,
+            "StaticEquipments": null
+        },
+        "Patient": {
+            "record": null,
+            "isPatientBaned": null,
+            "id": 0,
+            "Username": null,
+            "Password": null,
+            "firstName": "Mirko",
+            "lastName": "Mirkovic",
+            "Jmbg": null,
+            "EMail": null,
+            "PhoneNumber": null,
+            "DateOfBirth": "0001-01-01T00:00:00",
+            "Rool": 0
+        },
+        "EndDate": "24.06.2021.",
+        "staticEquipment": {
+            "Id": 7,
+            "Name": "bed",
+            "Type": 0,
+            "Quantity": 5,
+            "RoomId": 5,
+            "room": {
+                "Size": 0,
+                "Id": 6,
+                "Name": "K",
+                "RoomType": "Room",
+                "RoomStatus": 0,
+                "Floor": 4,
+                "Detail": "Room is ready for five patients.",
+                "StaticEquipments": null
+            },
+            "AvailableBeds": 3
+        }
+    },
+    {
+        "Id": 7,
+        "Date": "04.06.2021.",
+        "Room": {
+            "Size": 0,
+            "Id": 0,
+            "Name": "P",
+            "RoomType": null,
+            "RoomStatus": 0,
+            "Floor": 0,
+            "Detail": null,
+            "StaticEquipments": null
+        },
+        "Patient": {
+            "record": null,
+            "isPatientBaned": null,
+            "id": 0,
+            "Username": null,
+            "Password": null,
+            "firstName": "Anamarija",
+            "lastName": "Popovic",
+            "Jmbg": null,
+            "EMail": null,
+            "PhoneNumber": null,
+            "DateOfBirth": "0001-01-01T00:00:00",
+            "Rool": 0
+        },
+        "EndDate": "18.06.2021.",
+        "staticEquipment": {
+            "Id": 8,
+            "Name": "bed",
+            "Type": 0,
+            "Quantity": 5,
+            "RoomId": 5,
+            "room": {
+                "Size": 0,
+                "Id": 7,
+                "Name": "P",
+                "RoomType": "Room",
+                "RoomStatus": 0,
+                "Floor": 4,
+                "Detail": "Room is ready for five patients.",
+                "StaticEquipments": null
+            },
+            "AvailableBeds": 4
+        }
+    
     }
 ]

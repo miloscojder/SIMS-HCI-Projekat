@@ -193,7 +193,7 @@ namespace Projekat.ViewModel
 
         public void NotificationsExecute(object sender)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null);
+            NotificationsPatientPage npp = new NotificationsPatientPage();
             npp.Show();
             HospitalViewPatientPage.Close();
         }

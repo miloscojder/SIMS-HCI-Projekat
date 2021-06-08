@@ -21,22 +21,18 @@ namespace Projekat
     /// </summary>
     public partial class NotificationsPatientPage : Window
     {
-        public List<Notification> thisPatientsNotifications;
+  
         public NotifficationController notifficationController = new NotifficationController();
         public List<Notification> allNotifications;
 
-        public NotificationsPatientPage(Notification newNotification)  
+        public NotificationsPatientPage()  
         {
             InitializeComponent();
             this.DataContext = this;
             SetCommands();
 
             allNotifications = notifficationController.GetAllNotifications();
-            notifficationController.DeleteOutOfBoundsNotifications(allNotifications);   
-            notifficationController.ShouldIAdd(newNotification, allNotifications);     
-            notifficationController.WriteNotificationsToJason(allNotifications);
-
-            thisPatientsNotifications = notifficationController.FindNotificationsByPatientUsername(PatientMainPage.prenosilac.Username);
+            List<Notification> thisPatientsNotifications = notifficationController.FindNotificationsByPatientUsername(PatientMainPage.prenosilac.Username);
             lvNotificationList.ItemsSource = thisPatientsNotifications;
         }
        
@@ -161,7 +157,7 @@ namespace Projekat
 
         public void NotificationsExecute(object sender)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null);
+            NotificationsPatientPage npp = new NotificationsPatientPage();
             npp.Show();
             this.Close();
         }
@@ -202,18 +198,7 @@ namespace Projekat
             this.Close();
         }
 
-        public Boolean HospitalCanExecute(object sender)
-        {
-            return true;
-        }
-
-        public void HospitalExecute(object sender)
-        {
-            HospitalViewPatientPage hvpp = new HospitalViewPatientPage(null);
-            hvpp.Show();
-            this.Close();
-        }
-
+      
         public Boolean CreateNotificationCanExecute(Object sender)
         {
             return true;
@@ -264,7 +249,7 @@ namespace Projekat
             List<Notification> allNotifications = notifficationController.GetAllNotifications();
 
             notifficationController.DeleteNotificationById(selectedNotification.Id);
-            notifficationController.WriteNotificationsToJason(allNotifications);
+            notifficationController.WriteNotificationsToJason();
 
             MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this notification?",
                                           "Confirmation",

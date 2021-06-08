@@ -32,10 +32,17 @@ namespace Projekat
             List<Medicines> medecines = medicinesRepository.GetAll();
             dataGrid.ItemsSource = medecines;
             AppointmentRepository appointmentRepository = new AppointmentRepository();
-            List<Appointment> appointments = appointmentRepository.GetAll();
+            List<Appointment> appointments = appointmentRepository.GetAllAppointmentsForDoctorUser(DoctorWindow.loginDoctor);
             dataGridd.ItemsSource = appointments;
 
-
+            Name.Content = DoctorWindow.loginDoctor.firstName;
+            Surname.Content = DoctorWindow.loginDoctor.lastName;
+            Id.Content = DoctorWindow.loginDoctor.id;
+            jmbg.Content = DoctorWindow.loginDoctor.Jmbg;
+            Date.Content = DoctorWindow.loginDoctor.DateOfBirth.ToString();
+            Email.Content = DoctorWindow.loginDoctor.EMail;
+            Phone.Content = DoctorWindow.loginDoctor.PhoneNumber;
+            Spec.Content = DoctorWindow.loginDoctor.Specialty;
         }
 
 

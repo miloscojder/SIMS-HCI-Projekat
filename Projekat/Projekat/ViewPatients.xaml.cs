@@ -7,6 +7,8 @@ using System.Windows;
 using Controller;
 using Repository;
 
+using System.Windows.Media;
+
 namespace Projekat
 {
 
@@ -14,13 +16,14 @@ namespace Projekat
     {
         public PatientController patientController = new PatientController();
         public List<Patient> patient = new List<Patient>();
+        public static Patient patientNew = new Patient();
 
         public List<Patient> patients
         {
             get;
             set;
         }
-        public Anamnesis anam = new Anamnesis();
+       
         public ViewPatients()
         {
             InitializeComponent();
@@ -28,13 +31,27 @@ namespace Projekat
             PatientRepository patientRepository = new PatientRepository();
            List<Patient> patients = patientRepository.GetAll();
             dataGridd.ItemsSource = patients;
+            Name.Content = DoctorWindow.loginDoctor.firstName;
+            Surname.Content = DoctorWindow.loginDoctor.lastName;
+            Id.Content = DoctorWindow.loginDoctor.id;
+            jmbg.Content = DoctorWindow.loginDoctor.Jmbg;
+            Date.Content = DoctorWindow.loginDoctor.DateOfBirth;
+            Email.Content = DoctorWindow.loginDoctor.EMail;
+            Phone.Content = DoctorWindow.loginDoctor.PhoneNumber;
+            Spec.Content = DoctorWindow.loginDoctor.Specialty;
+        }
+
+        public void doThings(string param)
+        {
+            HelpPatient.Background = new SolidColorBrush(Color.FromRgb(32, 64, 128));
+            Title = param;
         }
 
         public void GiveAnamnesis(object sender, RoutedEventArgs e)
         {
 
-            Patient p = (Patient)dataGridd.SelectedItems[0];
-            CreateAnamnesis sc = new CreateAnamnesis(p);
+            patientNew = (Patient)dataGridd.SelectedItems[0];
+            CreateAnamnesis sc = new CreateAnamnesis(patientNew);
             sc.Show();
             Close();
 
@@ -82,9 +99,8 @@ namespace Projekat
 
         private void PrescribeMedicine(object sender, RoutedEventArgs e)
         {
-
-            Patient p = (Patient)dataGridd.SelectedItems[0];
-            Prescribe sc = new Prescribe(p);
+            patientNew = (Patient)dataGridd.SelectedItems[0];
+            Prescribe sc = new Prescribe(patientNew);
             sc.Show();
             Close();
 
@@ -94,8 +110,8 @@ namespace Projekat
         private void ReferralPatient(object sender, RoutedEventArgs e)
         {
 
-            Patient p = (Patient)dataGridd.SelectedItems[0];
-            ReferralPatientt sc = new ReferralPatientt(p);
+            patientNew = (Patient)dataGridd.SelectedItems[0];
+            ReferralPatientt sc = new ReferralPatientt(patientNew);
             sc.Show();
             Close();
 
@@ -105,8 +121,8 @@ namespace Projekat
         private void ReferralHospital(object sender, RoutedEventArgs e)
         {
 
-            Patient p = (Patient)dataGridd.SelectedItems[0];
-            ReferralPatientHospital sc = new ReferralPatientHospital(p);
+            patientNew = (Patient)dataGridd.SelectedItems[0];
+            ReferralPatientHospital sc = new ReferralPatientHospital(patientNew);
             sc.Show();
             Close();
 
@@ -117,8 +133,8 @@ namespace Projekat
         public void ScheduleAppointment(object sender, RoutedEventArgs e)
         {
 
-            Patient p = (Patient)dataGridd.SelectedItems[0];
-            ScheduleAppointment sc = new ScheduleAppointment(p);
+            patientNew = (Patient)dataGridd.SelectedItems[0];
+            ScheduleAppointment sc = new ScheduleAppointment(patientNew);
             sc.Show();
             Close();
 
@@ -144,8 +160,9 @@ namespace Projekat
         private void Search(object sender, RoutedEventArgs e)
         {
             String name = SearchT.Text;
+            String surname = SearchTe.Text;
             PatientRepository patientRepository = new PatientRepository();
-            List<Patient> patients = patientRepository.GetAllName(name);
+            List<Patient> patients = patientRepository.GetAllName(name, surname);
             dataGridd.ItemsSource = patients;
             
         }
