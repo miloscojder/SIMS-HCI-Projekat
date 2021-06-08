@@ -52,7 +52,7 @@ namespace Service
         public void StartWrittingNotiffications(Notification notification)
         {
             MessageBox.Show("Today you have notiffication: " + notification.Name + ": " + notification.Description);
-            notification.Date.AddDays(1);             
+            notification.Date = notification.Date.AddMinutes(Convert.ToDouble(notification.repeatingTime));
             notification.DaysLeft--;
 
             CheckHowMuchDaysLeft(notification);
@@ -60,6 +60,7 @@ namespace Service
 
         public void CheckHowMuchDaysLeft(Notification notification)
         {
+            
             if (notification.DaysLeft < 0)
             {
                 notifficationRepository.DeleteNotificationById(notification.Id);

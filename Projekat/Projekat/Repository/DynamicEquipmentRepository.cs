@@ -1,6 +1,7 @@
 
 using Model;
 using Newtonsoft.Json;
+using Projekat.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +9,7 @@ using System.Linq;
 
 namespace Repository
 {
-   public class DynamicEquipmentRepository
+   public class DynamicEquipmentRepository : IEquipment<DynamicEquipment>
    {
         private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\dynamicEquipment.json";
         private readonly string _spisakDinamickeOpreme = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\dynamicTransfer.txt";
@@ -40,19 +41,6 @@ namespace Repository
             File.WriteAllText(fileLocation, json);
         }
 
-      
-      public void Save(DynamicEquipment newEquipment)
-      {
-            
-            dynamicEquipments.Add(newEquipment);
-            WriteToJson();
-        }
-      
-      public List<DynamicEquipment> GetAll()
-      {
-           
-            return dynamicEquipments;
-        }
       
       public Boolean UpdateEquipment(DynamicEquipment dynamicEquipment)
       {
@@ -93,6 +81,20 @@ namespace Repository
             }
         }
 
+        public void SaveEquipment(DynamicEquipment instance)
+        {
+            dynamicEquipments.Add(instance);
+            WriteToJson();
+        }
 
+        public DynamicEquipment GetOneEquipment(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<DynamicEquipment> GetAllEquipment()
+        {
+            return dynamicEquipments;
+        }
     }
 }
