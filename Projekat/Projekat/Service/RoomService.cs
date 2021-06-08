@@ -108,7 +108,7 @@ namespace Service
         public void DettachRooms(int roomId)
         {
             Room roomA = GetRoom(roomId);
-            Room room = new Room(GenerateNewId(),roomA.Name + "-A", roomA.RoomType, roomA.Floor, roomA.Detail);
+            Room room = new Room(GenerateNewId(),roomA.Name + "-" + roomA.Name + "1", roomA.RoomType, roomA.Floor, roomA.Detail);
             Save(room);
             
         }

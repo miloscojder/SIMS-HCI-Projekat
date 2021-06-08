@@ -161,8 +161,13 @@ namespace Service
          // TODO: implement
          return null;
       }
-      
-      public Appointment DoctorPriority(Model.Doctor parameter1)
+
+        public List<Appointment> GetAppointmentsByPatientsUsername(String username)
+        {
+            return appointmentRepository.GetAppointmentsByPatientsUsername(username);
+        }
+
+        public Appointment DoctorPriority(Model.Doctor parameter1)
       {
          // TODO: implement
          return null;

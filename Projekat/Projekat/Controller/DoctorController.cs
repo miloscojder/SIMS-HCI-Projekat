@@ -56,9 +56,6 @@ namespace Controller
 
 
 
- /*       public int AppointmentsWithThisDoctor(List<Appointment> appointments,Doctor doctor)
-       {
-=======
 
         public int AppointmentsWithThisDoctor(List<Appointment> appointments,Doctor doctor)
        {
@@ -69,7 +66,7 @@ namespace Controller
         {
             return doctorService.GetAllDoctorUsernames();
         }
- */
+
 
         public List<Appointment> GetAllAppointments()
       {

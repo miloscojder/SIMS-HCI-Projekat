@@ -42,7 +42,7 @@ namespace Projekat.Service
                 appointmentService.SaveRenovation(appointment1);
                 appointmentService.SaveRenovation(appointment2);
                 RenovationAppointment renovation = new RenovationAppointment(GenerateNewId(), dateTime, duration, roomAId, roomBId, "bla", 0);
-                renovation.type = "1";
+                //renovation.type = "1";
                 Save(renovation);
             }
         }
@@ -53,7 +53,7 @@ namespace Projekat.Service
             {
                 appointmentService.SaveRenovation(appointment1);
                 RenovationAppointment renovation = new RenovationAppointment(GenerateNewId(), dateTime, duration, roomId, 0, "bla", 1);
-                renovation.type = "1";
+                //renovation.type = "1";
                 Save(renovation);
             }
 
