@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="Patients" Height="490" Width="800">
+        Title="Patients" Height="450" Width="800">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,4"
                              StartPoint="0.5,0">
@@ -15,12 +15,18 @@
                           Offset="0.263" />
         </LinearGradientBrush>
     </Window.Background>
-    <Grid Margin="0,0,0,21" Height="413" VerticalAlignment="Bottom">
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="0*"/>
-        </Grid.RowDefinitions>
-        <TabControl Margin="18,0,18,0" Background="AliceBlue" Height="475" VerticalAlignment="Top" Grid.RowSpan="2">
+    <Grid Margin="0,28,0,0" Height="385" VerticalAlignment="Top">
+
+
+        <TabControl Margin="18,31,18,0" Background="AliceBlue" Height="392" VerticalAlignment="Top" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5">
+            <TabControl.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0.236"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.905"/>
+                </TransformGroup>
+            </TabControl.RenderTransform>
             <TabItem Header="Profile"  RenderTransformOrigin="13.591,2.146">
                 <Grid Height="358">
                     <Grid.ColumnDefinitions>
@@ -61,11 +67,11 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Appointment" IsSelected="True" RenderTransformOrigin="13.591,2.146" Height="22" Margin="-2,-2,-2,0" VerticalAlignment="Top">
-                <Grid Height="434">
-                    <Button Content="Patients" Click="Patients" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="145,10,0,0" VerticalAlignment="Top" Height="39" Width="135"/>
-                    <Button Content="Anamnesis" Click="AnamnesisClick" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="280,10,0,0" VerticalAlignment="Top" Height="39" Width="131"/>
-                    <Button Content="Prescrptions" Click="Prescribe" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="411,10,0,0" VerticalAlignment="Top" Height="39" Width="123"/>
-                    <Button Content="Referrals" Click="ReferralP" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="534,10,0,0" VerticalAlignment="Top" Height="39" Width="105"/>
+                <Grid Height="383">
+                    <Button Content="Patients" Click="Patients" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="73,10,0,0" VerticalAlignment="Top" Height="42" Width="138"/>
+                    <Button Content="Anamnesis" Click="AnamnesisClick" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="211,10,0,0" VerticalAlignment="Top" Height="42" Width="138"/>
+                    <Button Content="Prescrptions" Click="Prescribe" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="349,10,0,0" VerticalAlignment="Top" Height="42" Width="138"/>
+                    <Button Content="Referrals" Click="ReferralP" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="487,10,0,0" VerticalAlignment="Top" Height="42" Width="138"/>
                     <DataGrid x:Name="dataGridd" ItemsSource="{Binding Patient}" IsReadOnly="True"
                   SelectionMode="Single" AutoGenerateColumns="False" Margin="32,130,314,90">
                         <DataGrid.Columns>
@@ -76,21 +82,47 @@
 
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Content="Give anamnesis" FontStyle="Italic" FontWeight="Light" FontSize="19" Click="GiveAnamnesis" HorizontalAlignment="Left" Margin="492,130,0,0" VerticalAlignment="Top" Height="47" Width="216" Background="AliceBlue" BorderBrush="AliceBlue"/>
-                    <Button Content="Prescribe medicine" FontStyle="Italic" FontWeight="Light" FontSize="19" Click="PrescribeMedicine" HorizontalAlignment="Left" Margin="492,96,0,0" VerticalAlignment="Top" Height="39" Width="216" Background="AliceBlue" BorderBrush="AliceBlue"/>
-                    <Button Content="Schedule appointment" FontStyle="Italic" FontWeight="Light" FontSize="19" Click="ScheduleAppointment" HorizontalAlignment="Left" Margin="492,173,0,0" VerticalAlignment="Top" Height="54" Width="216" Background="AliceBlue" BorderBrush="AliceBlue"/>
-                    <Button Content="Referral patient" FontStyle="Italic" FontWeight="Light" FontSize="19" Click="ReferralPatient" HorizontalAlignment="Left" Margin="525,227,0,0" VerticalAlignment="Top" Height="36" Width="152" Background="AliceBlue" BorderBrush="AliceBlue"/>
-                    <Button Content="Hospital treatment" FontStyle="Italic" FontWeight="Light" FontSize="19" Click="ReferralHospital" HorizontalAlignment="Left" Margin="512,268,0,0" VerticalAlignment="Top" Height="36" Width="178" Background="AliceBlue" BorderBrush="AliceBlue"/>
+                    <Button Name="HelpPatient" Background="AliceBlue" BorderThickness="0" FontSize="18" HorizontalAlignment="Left" Margin="590,276,0,0" VerticalAlignment="Top" Height="43" Width="46">
+                        <Image HorizontalAlignment="Left"
+                   Height="37"
+                   VerticalAlignment="Top"
+                   Width="68"
+                   Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\info.png" />
+                        <Button.ToolTip>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Margin="5" Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\selektpatient.png"></Image>
+                                <TextBlock Background="Beige" Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Select a patient and then press a button depending on what action you want to do, if you want to prescribe medicine to a selected patient press prescribe medicine etc.
+                                </TextBlock>
+                            </StackPanel>
+                        </Button.ToolTip>
+
+                    </Button>
+                    <Button Content="Give anamnesis" FontStyle="Italic" FontWeight="Light" FontSize="19" Click="GiveAnamnesis" HorizontalAlignment="Left" Margin="497,120,0,0" VerticalAlignment="Top" Height="37" Width="216" Background="AliceBlue" BorderBrush="AliceBlue"/>
+                    <Button Content="Prescribe medicine" FontStyle="Italic" FontWeight="Light" FontSize="19" Click="PrescribeMedicine" HorizontalAlignment="Left" Margin="498,78,0,0" VerticalAlignment="Top" Height="47" Width="216" Background="AliceBlue" BorderBrush="AliceBlue"/>
+                    <Button Content="Schedule appointment" FontStyle="Italic" FontWeight="Light" FontSize="19" Click="ScheduleAppointment" HorizontalAlignment="Left" Margin="498,156,0,0" VerticalAlignment="Top" Height="39" Width="216" Background="AliceBlue" BorderBrush="AliceBlue"/>
+                    <Button Content="Referral patient" FontStyle="Italic" FontWeight="Light" FontSize="19" Click="ReferralPatient" HorizontalAlignment="Left" Margin="534,195,0,0" VerticalAlignment="Top" Height="36" Width="152" Background="AliceBlue" BorderBrush="AliceBlue"/>
+                    <Button Content="Hospital treatment" FontStyle="Italic" FontWeight="Light" FontSize="19" Click="ReferralHospital" HorizontalAlignment="Left" Margin="516,229,0,0" VerticalAlignment="Top" Height="37" Width="178" Background="AliceBlue" BorderBrush="AliceBlue"/>
                     <Image HorizontalAlignment="Left"
                    Height="81"
-                   Margin="667,304,0,0"
+                   Margin="648,250,0,0"
                    VerticalAlignment="Top"
                    Width="108"
                    Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\heart.png" />
-                    <Label Content="Find patient" HorizontalAlignment="Left" Margin="32,70,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="SearchT" HorizontalAlignment="Left" Margin="36,96,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Height="18"/>
-                    <Button Content="Search" Click="Search" HorizontalAlignment="Left" Margin="256,90,0,0" VerticalAlignment="Top" Height="24" Width="55"/>
-                    <Button Content="Clear" Click="Clear" HorizontalAlignment="Left" Margin="324,90,0,0" VerticalAlignment="Top" Height="24" Width="55"/>
+                    <Label Content="Find patient via name:" HorizontalAlignment="Left" Margin="32,70,0,0" VerticalAlignment="Top"/>
+                    <Label Content="via surname:" HorizontalAlignment="Left" Margin="160,70,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="SearchT" HorizontalAlignment="Left" Margin="32,96,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26"/>
+                    <TextBox x:Name="SearchTe" HorizontalAlignment="Left" Margin="160,96,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26"/>
+                    <Button BorderThickness="0" Background="AliceBlue" Click="Search" Content="Search"  HorizontalAlignment="Left" Margin="282,96,0,0" VerticalAlignment="Top" Height="24" Width="102">
+                    </Button>
+                    <Image HorizontalAlignment="Left"
+                        Height="24"
+                         VerticalAlignment="Top"
+                         Width="48"
+                        Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\search.png" Margin="285,94,0,0" />
+
+
+                    <Button Content="Clear" Click="Clear" Background="AliceBlue" BorderThickness="0" HorizontalAlignment="Left" Margin="389,96,0,0" VerticalAlignment="Top" Height="24" Width="55"/>
 
                 </Grid>
 
@@ -115,9 +147,15 @@
             </TabItem>
         </TabControl>
 
-        <Button Content="Log out" Click="LogOut" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="722,-30,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
-        <Button Content="Back" Click="Back" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="18,-30,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
-        <TextBox HorizontalAlignment="Center" Margin="0,-30,0,0" Text="www.hospital.com/doktor-medicine/view-medicines/" TextWrapping="Wrap" VerticalAlignment="Top" Width="620" Height="25"/>
+        <Button Content="     Log out" Click="LogOut" BorderThickness="0" Background="AliceBlue" FontSize="13" HorizontalAlignment="Left" Margin="677,72,0,0" VerticalAlignment="Top" Height="25" Width="85"/>
+        <Image HorizontalAlignment="Left"
+            Height="25"
+            Margin="677,72,0,0"
+            VerticalAlignment="Top"
+            Width="60"
+            Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\exit.png" />
+        <Button Content="Back" Click="Back" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="18,1,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
+        <TextBox HorizontalAlignment="Center" Margin="0,1,0,0" Text="www.hospital.com/doktor-medicine/view-medicines/" TextWrapping="Wrap" VerticalAlignment="Top" Width="620" Height="25"/>
 
 
     </Grid>

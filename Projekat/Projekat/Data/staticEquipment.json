@@ -1,120 +1,146 @@
 [
-  {
-    "Id": 1,
-    "Name": "bad",
-    "Type": 0,
-    "Quantity": 22,
-    "RoomId": 3,
-    "room": {
-      "Size": 0,
-      "Id": 1,
-      "Name": "B",
-      "RoomType": "Room",
-      "RoomStatus": 0,
-      "Floor": 2,
-      "Detail": "Room is ready for two patients.",
-      "StaticEquipments": null
+    {
+        "Id": 1,
+        "Name": "bed",
+        "Type": 0,
+        "Quantity": 2,
+        "RoomId": 3,
+        "room": {
+            "Size": 0,
+            "Id": 1,
+            "Name": "B",
+            "RoomType": "Room",
+            "RoomStatus": 0,
+            "Floor": 2,
+            "Detail": "Room is ready for two patients.",
+            "StaticEquipments": null
+        },
+        "AvailableBeds": 0
+    },
+    {
+        "Id": 2,
+        "Name": "table",
+        "Type": 0,
+        "Quantity": 10,
+        "RoomId": 1,
+        "room": {
+            "Size": 0,
+            "Id": 2,
+            "Name": "A",
+            "RoomType": "Room",
+            "RoomStatus": 0,
+            "Floor": 4,
+            "Detail": "Room is ready for five patients.",
+            "StaticEquipments": null
+        },
+        "AvailableBeds": 0
+    },
+    {
+        "Id": 3,
+        "Name": "apparatus",
+        "Type": 0,
+        "Quantity": 20,
+        "RoomId": 2,
+        "room": {
+            "Size": 0,
+            "Id": 3,
+            "Name": "F",
+            "RoomType": "Bathroom",
+            "RoomStatus": 0,
+            "Floor": 1,
+            "Detail": "There are 3 bathrooms.",
+            "StaticEquipments": null
+        },
+        "AvailableBeds": 0
+    },
+    {
+        "Id": 4,
+        "Name": "bed",
+        "Type": 0,
+        "Quantity": 2,
+        "RoomId": 4,
+        "room": {
+            "Size": 0,
+            "Id": 4,
+            "Name": "C",
+            "RoomType": "Operating room",
+            "RoomStatus": 0,
+            "Floor": 4,
+            "Detail": "Operation has started.",
+            "StaticEquipments": null
+        },
+        "AvailableBeds": 0
+    },
+    {
+        "Id": 5,
+        "Name": "drawer",
+        "Type": 0,
+        "Quantity": 15,
+        "RoomId": 3,
+        "room": {
+            "Size": 0,
+            "Id": 2,
+            "Name": "A",
+            "RoomType": "Operation room",
+            "RoomStatus": 0,
+            "Floor": 4,
+            "Detail": "Room is ready for operation.",
+            "StaticEquipments": null
+        },
+        "AvailableBeds": 15
+    },
+    {
+        "Id": 6,
+        "Name": "operating table",
+        "Type": 0,
+        "Quantity": 30,
+        "RoomId": 2,
+        "room": {
+            "Size": 0,
+            "Id": 4,
+            "Name": "G",
+            "RoomType": "Operating room",
+            "RoomStatus": 0,
+            "Floor": 4,
+            "Detail": "Operation has started.",
+            "StaticEquipments": null
+        },
+        "AvailableBeds": 30
+    },
+    {
+        "Id": 7,
+        "Name": "bed",
+        "Type": 0,
+        "Quantity": 5,
+        "RoomId": 5,
+        "room": {
+            "Size": 0,
+            "Id": 6,
+            "Name": "K",
+            "RoomType": "Room",
+            "RoomStatus": 0,
+            "Floor": 4,
+            "Detail": "Room is ready for five patients.",
+            "StaticEquipments": null
+        },
+        "AvailableBeds": 4
+    },
+    {
+        "Id": 8,
+        "Name": "bed",
+        "Type": 0,
+        "Quantity": 5,
+        "RoomId": 5,
+        "room": {
+            "Size": 0,
+            "Id": 7,
+            "Name": "P",
+            "RoomType": "Room",
+            "RoomStatus": 0,
+            "Floor": 4,
+            "Detail": "Room is ready for five patients.",
+            "StaticEquipments": null
+        },
+        "AvailableBeds": 4
     }
-  },
-  {
-    "Id": 2,
-    "Name": "table",
-    "Type": 0,
-    "Quantity": 10,
-    "RoomId": 1,
-    "room": {
-      "Size": 0,
-      "Id": 2,
-      "Name": "A",
-      "RoomType": "Room",
-      "RoomStatus": 0,
-      "Floor": 4,
-      "Detail": "Room is ready for five patients.",
-      "StaticEquipments": null
-    }
-  },
-  {
-    "Id": 3,
-    "Name": "apparatus",
-    "Type": 0,
-    "Quantity": 20,
-    "RoomId": 2,
-    "room": {
-      "Size": 0,
-      "Id": 3,
-      "Name": "F",
-      "RoomType": "Bathroom",
-      "RoomStatus": 0,
-      "Floor": 1,
-      "Detail": "There are 3 bathrooms.",
-      "StaticEquipments": null
-    }
-  },
-  {
-    "Id": 4,
-    "Name": "bed",
-    "Type": 0,
-    "Quantity": 30,
-    "RoomId": 4,
-    "room": {
-      "Size": 0,
-      "Id": 4,
-      "Name": "C",
-      "RoomType": "Operating room",
-      "RoomStatus": 0,
-      "Floor": 4,
-      "Detail": "Operation has started.",
-      "StaticEquipments": null
-    }
-  },
-  {
-    "Id": 5,
-    "Name": "drawer",
-    "Type": 0,
-    "Quantity": 15,
-    "RoomId": 3,
-    "room": {
-      "Size": 0,
-      "Id": 2,
-      "Name": "A",
-      "RoomType": "Operation room",
-      "RoomStatus": 0,
-      "Floor": 4,
-      "Detail": "Room is ready for operation.",
-      "StaticEquipments": null
-    }
-  },
-  {
-    "Id": 6,
-    "Name": "operating table",
-    "Type": 0,
-    "Quantity": 30,
-    "RoomId": 2,
-    "room": {
-      "Size": 0,
-      "Id": 4,
-      "Name": "G",
-      "RoomType": "Operating room",
-      "RoomStatus": 0,
-      "Floor": 4,
-      "Detail": "Operation has started.",
-      "StaticEquipments": null
-    }
-  },
-  {
-    "Id": 7,
-    "Name": "bed",
-    "Type": 0,
-    "Quantity": 22,
-    "RoomId": 5,
-    "room": null
-  },
-  {
-    "Id": 8,
-    "Name": "bed",
-    "Type": 0,
-    "Quantity": 20,
-    "RoomId": 5,
-    "room": null
-  }
 ]

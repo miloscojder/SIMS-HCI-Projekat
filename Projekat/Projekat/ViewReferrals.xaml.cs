@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Controller;
 using Repository;
 
+
 namespace Projekat
 {
 
@@ -26,6 +27,7 @@ namespace Projekat
             get;
             set;
         }
+
         public ViewReferrals()
         {
             InitializeComponent();
@@ -34,14 +36,15 @@ namespace Projekat
            List<ReferralPatient> referal = referralPatientRepository.GetAll();
             dataGriid.ItemsSource = referal;
 
-          /*  Name.Content = user.firstName;
-            Surname.Content = user.lastName;
-            Id.Content = user.id;
-            jmbg.Content = user.Jmbg;
-            Date.Content = user.DateOfBirth;
-            Email.Content = user.EMail;
-            Phone.Content = user.PhoneNumber;
-            Spec.Content = user.doctor.Specialty; */
+
+            Name.Content = DoctorWindow.loginDoctor.firstName;
+            Surname.Content = DoctorWindow.loginDoctor.lastName;
+            Id.Content = DoctorWindow.loginDoctor.id;
+            jmbg.Content = DoctorWindow.loginDoctor.Jmbg;
+            Date.Content = DoctorWindow.loginDoctor.DateOfBirth;
+            Email.Content = DoctorWindow.loginDoctor.EMail;
+            Phone.Content = DoctorWindow.loginDoctor.PhoneNumber;
+            Spec.Content = DoctorWindow.loginDoctor.Specialty;
 
         }
 

@@ -23,8 +23,9 @@ namespace Projekat
         public AppointmentController appointmentController = new AppointmentController();
         public StaticEquipmentController staticEquipmentController = new StaticEquipmentController();
         public Appointment ap = new Appointment();
-        public Patient patient = new Patient();
-        public Room room = new Room();
+        public String patient;
+        public List<String> Termini { get; set; }
+        public string SelektovanTermin { get; set; }
         public List<String> types { get; set; }
         public String selekt { get; set; }
         public ScheduleAppointment(Patient p)
@@ -35,7 +36,10 @@ namespace Projekat
             List<StaticEquipment> staticEquipments = staticEquipmentRepository.GetAll();
             dataGrid1.ItemsSource = staticEquipments;
 
-            patient = p;
+            patient = p.Username;
+
+            string[] termini = File.ReadAllLines(@"C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Data\terminiak.txt", Encoding.UTF8);
+            Termini = new List<string>(termini);
 
             string[] typess = File.ReadAllLines(@"C:/Users/krist/source/repos/SIMS-Projekat/Projekat/Projekat/Data/apptype.txt");
             types = new List<String>(typess) ;
@@ -47,21 +51,18 @@ namespace Projekat
                 StaticEquipment s = (StaticEquipment)dataGrid1.SelectedItems[0];
 
             RoomName.Text = s.room.Name;
-            room = s.room;
         }
 
         private void Schedule(object sender, RoutedEventArgs e)
         {
-
+            DateTime choosenDate = new DateTime();
 
             int ida = appointmentController.GenerateNewId();
-            String date = Date.Text;
-            String hours = Hours.Text;
-            String hourss = Hourss.Text;
-            String start = hours;
-            String end = hourss;
+           
             String duration = Duration.Text;
-
+            
+            String selektTermin = (String)Termin.SelectedItem;
+            string[] preuzeto = selektTermin.Split(':');
             String selectType = (String)Type.SelectedItem;
 
             if(selectType == TypeOfAppointment.Examination.ToString())
@@ -71,13 +72,16 @@ namespace Projekat
             {
                 ap.AppointmentType = TypeOfAppointment.Operation;
             }
-            
-            
-            Appointment o = new Appointment(ida, date, start, duration, end, room.Name, patient.Username, DoctorWindow.loginDoctor.Username, ap.AppointmentType);
+
+            choosenDate = (DateTime)IzaberiDatum.SelectedDate;
+            choosenDate = new DateTime(IzaberiDatum.SelectedDate.Value.Year, IzaberiDatum.SelectedDate.Value.Month, IzaberiDatum.SelectedDate.Value.Day, Convert.ToInt32(preuzeto[0]), Convert.ToInt32(preuzeto[1]), 0);
+
+
+            Appointment o = new Appointment(ida, choosenDate, duration, ap.AppointmentType, RoomName.Text, patient , DoctorWindow.loginDoctor.Username);
             appointmentController.ScheduleDoctor(o);
 
             MessageBox.Show("Appointment scheduled!");
-            this.Close();
+            
 
             DoctorWindow app = new DoctorWindow(DoctorWindow.loginDoctor);
             app.Show();
@@ -86,6 +90,13 @@ namespace Projekat
            
         }
 
+        
+
+        public void doThings(string param)
+        {
+            Appoi.Background = new SolidColorBrush(Color.FromRgb(32, 64, 128));
+            Title = param;
+        }
         private void Back(object sender, RoutedEventArgs e)
         {
             DoctorWindow app = new DoctorWindow(DoctorWindow.loginDoctor);
@@ -93,11 +104,6 @@ namespace Projekat
             Close();
         }
 
-        private void LogOut(object sender, RoutedEventArgs e)
-        {
-            MainWindow m = new MainWindow();
-            m.Show();
-            Close();
-        }
+       
     }
 }

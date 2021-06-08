@@ -152,7 +152,7 @@ namespace Repository
          return appointments;
       }
 
-        public List<Appointment> GetAllForUser(Doctor doctor)
+        public List<Appointment> GetAllAppointmentsForDoctorUser(Doctor doctor)
         {
             return appointments.FindAll(obj => obj.DoctorUsername == doctor.Username); 
        
