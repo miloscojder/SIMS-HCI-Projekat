@@ -340,40 +340,70 @@ namespace Projekat
 
         private void StatusBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBoxItem selectedItem = (ComboBoxItem) StatusBox.SelectedItem;
+            filterRequestByStatus();
+
+        }
+
+        public void filterRequestByStatus()
+        {
+            if (!IsLoaded) return;
+            ComboBoxItem selectedItem = (ComboBoxItem)StatusBox.SelectedItem;
             string selectedStatus = selectedItem.Content.ToString();
-            if (selectedStatus.Equals("Select status"))
+            string selectedDoctor = DoctorBox.SelectedItem.ToString();
+
+            if (selectedDoctor.Equals("Select doctor") && selectedStatus.Equals("Select status"))
             {
-                searchStatus = selectedStatus;
-                if (searchDoctor.Equals("Select Doctor"))
+                //nije odabrana ni jedna opcija
+                requestss = requestToShow;
+            }
+            else if (selectedDoctor.Equals("Select doctor"))
+            {
+                //filter samo po statusu
+                switch (selectedStatus)
                 {
-                    requestss = requestToShow;
+                    case "Waiting":
+                        {
+                            requestss = filterRequestsStatus(requestToShow, StatusType.Waiting);
+                            break;
+                        }
+                    case "Accepted":
+                        {
+                            requestss = filterRequestsStatus(requestToShow, StatusType.Accepted);
+                            break;
+                        }
+                    case "Rejected":
+                        {
+                            requestss = filterRequestsStatus(requestToShow, StatusType.Rejected);
+                            break;
+                        }
                 }
             }
-            else if (selectedStatus.Equals("Waiting"))
+            else if (selectedStatus.Equals("Select status"))
             {
-                if (searchDoctor.Equals("Select Doctor")) requestss = filterRequestsStatus(requestToShow, StatusType.Waiting);
-                else { 
-                    requestss = filterRequestsStatus(requestss, StatusType.Waiting);
-                    searchStatus = "";
-                }
+                //filter po doktorima
+                requestss = filterRequestsDoctor(requestToShow, selectedDoctor);
             }
-            else if (selectedStatus.Equals("Accepted"))
+            else
             {
-                if (searchDoctor.Equals("Select Doctor")) requestss = filterRequestsStatus(requestToShow, StatusType.Accepted);
-                else
+                //filter po oba
+                List<Request> temp = filterRequestsDoctor(requestToShow, selectedDoctor);
+                switch (selectedStatus)
                 {
-                    requestss = filterRequestsStatus(requestss, StatusType.Accepted);
-                    searchStatus = "";
-                }
-            }
-            else if (selectedStatus.Equals("Rejected"))
-            {
-                if (searchDoctor.Equals("Select Doctor")) requestss = filterRequestsStatus(requestToShow, StatusType.Rejected);
-                else
-                {
-                    requestss = filterRequestsStatus(requestss, StatusType.Rejected);
-                    searchStatus = "";
+                    case "Waiting":
+                        {
+                            requestss = filterRequestsStatus(temp, StatusType.Waiting);
+                            break;
+                        }
+                    case "Accepted":
+                        {
+                            requestss = filterRequestsStatus(temp, StatusType.Accepted);
+                            break;
+                        }
+                    case "Rejected":
+                        {
+                            requestss = filterRequestsStatus(temp, StatusType.Rejected);
+                            break;
+                        }
                 }
             }
 
@@ -384,25 +414,72 @@ namespace Projekat
 
         private void DoctorBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           
+            filterRequestByDoctor();
+        }
+
+        public void filterRequestByDoctor()
+        {
+            ComboBoxItem selectedItem = (ComboBoxItem)StatusBox.SelectedItem;
+            string selectedStatus = selectedItem.Content.ToString();
             string selectedDoctor = DoctorBox.SelectedItem.ToString();
 
-            if (selectedDoctor.Equals("Select doctor"))
+
+
+            if (selectedDoctor.Equals("Select doctor") && selectedStatus.Equals("Select status"))
             {
-                searchDoctor = "Select doctor";
-                if (searchStatus.Equals("Select status"))
+                //nije odabrana ni jedna opcija
+                requestss = requestToShow;
+            }
+            else if (selectedDoctor.Equals("Select doctor"))
+            {
+                //filter samo po statusu
+                switch (selectedStatus)
                 {
-                    searchDoctor = selectedDoctor;
-                    requestss = requestToShow;
+                    case "Waiting":
+                        {
+                            requestss = filterRequestsStatus(requestToShow, StatusType.Waiting);
+                            break;
+                        }
+                    case "Accepted":
+                        {
+                            requestss = filterRequestsStatus(requestToShow, StatusType.Accepted);
+                            break;
+                        }
+                    case "Rejected":
+                        {
+                            requestss = filterRequestsStatus(requestToShow, StatusType.Rejected);
+                            break;
+                        }
                 }
             }
-            else {
-                searchDoctor = "";
+            else if (selectedStatus.Equals("Select status"))
+            {
+                //filter po doktorima
                 requestss = filterRequestsDoctor(requestToShow, selectedDoctor);
             }
-
-
-
+            else
+            {
+                //filter po oba
+                List<Request> temp = filterRequestsDoctor(requestToShow, selectedDoctor);
+                switch (selectedStatus)
+                {
+                    case "Waiting":
+                        {
+                            requestss = filterRequestsStatus(temp, StatusType.Waiting);
+                            break;
+                        }
+                    case "Accepted":
+                        {
+                            requestss = filterRequestsStatus(temp, StatusType.Accepted);
+                            break;
+                        }
+                    case "Rejected":
+                        {
+                            requestss = filterRequestsStatus(temp, StatusType.Rejected);
+                            break;
+                        }
+                }
+            }
 
             requestsDataGrid.ItemsSource = requestss;
         }
