@@ -250,7 +250,7 @@ namespace Projekat
             patientController.AddPatientActivities(PatientMainPage.prenosilac.Username);
             Appointment ac = (Appointment)lvAppointmentsPatient.SelectedItems[0];
 
-            appointmentController.DeleteAppointmentById(ac.id);
+            appointmentController.CancelAppointment(ac);
 
             MessageBox.Show("Your appointment is canceled.");
             AppointmentsPage app = new AppointmentsPage();
