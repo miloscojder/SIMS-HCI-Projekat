@@ -1,18 +1,13 @@
-/***********************************************************************
- * Module:  StatusType.cs
- * Author:  cojder
- * Purpose: Definition of the Class StatusType
- ***********************************************************************/
-
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Model
 {
-   public enum StatusType
-   {
-      Waiting,
-      Accepted,
-      Rejected
-   
-   }
+    public enum StatusType
+    {
+        Waiting,
+        Accepted,
+        Rejected
+    }
 }
