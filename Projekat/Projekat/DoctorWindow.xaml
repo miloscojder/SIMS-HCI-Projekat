@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="DoctorWindow" Height="450" Width="800">
+        Title="DoctorWindow" Height="450" Width="800" d:HelpProvider.HelpKey="Forma">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,4"
                              StartPoint="0.5,0">
@@ -15,8 +15,9 @@
                           Offset="0.263" />
         </LinearGradientBrush>
     </Window.Background>
+    
     <Grid>
-        <TabControl Margin="18,33,18,10" Background="AliceBlue">
+        <TabControl Margin="18,31,18,10" Background="AliceBlue">
             <TabItem Name="Profile" Header="Profile" RenderTransformOrigin="13.591,2.146" IsSelected="True">
                 <Grid Height="358">
                     <Label Content="Doctor" FontSize="18" HorizontalAlignment="Left" Margin="47,10,0,0" VerticalAlignment="Top"/>
@@ -28,6 +29,7 @@
                     <Label Content="Date of birth:" FontSize="12" HorizontalAlignment="Left" Margin="53,195,0,0" VerticalAlignment="Top"/>
                     <Label Content="Email address:" FontSize="12" HorizontalAlignment="Left" Margin="53,221,0,0" VerticalAlignment="Top">
                     </Label>
+
 
                     <Label Content="Phone number:" FontSize="12" HorizontalAlignment="Left" Margin="53,247,0,0" VerticalAlignment="Top"/>
                     <Label Content="Specialization:" FontSize="12" HorizontalAlignment="Left" Margin="53,273,0,0" VerticalAlignment="Top"/>
@@ -51,18 +53,18 @@
                    Margin="155,0,0,0"
                    VerticalAlignment="Top"
                    Width="78"
-                   Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\dok.png" />
+                   Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\doctor.png" />
                 </Grid>
             </TabItem>
             <TabItem Name="Appi" Header="Appointment"  RenderTransformOrigin="13.591,2.146" Margin="-2,-2,-2,2" IsSelected="True">
                 <Grid Height="360">
-                    <Button Content="Patients" Click="Patients" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="145,10,0,0" VerticalAlignment="Top" Height="39" Width="135"/>
-                    <Button Content="Anamnesis" Click="AnamnesisClick" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="280,10,0,0" VerticalAlignment="Top" Height="39" Width="131"/>
-                    <Button Content="Prescrptions" Click="Prescribe" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="411,10,0,0" VerticalAlignment="Top" Height="39" Width="123"/>
-                    <Button Content="Referrals" Click="ReferralP" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="534,10,0,0" VerticalAlignment="Top" Height="39" Width="105"/>
-                    <Button Content="Reschedule" Click="Reschedule" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="212,296,0,0" VerticalAlignment="Top" Height="39" Width="106"/>
-                    <Button Content="Cancel" Click="Cancel" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="368,296,0,0" VerticalAlignment="Top" Height="39" Width="104"/>
-                    <Button Content="Schedule" Click="Schedule" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="32,296,0,0" VerticalAlignment="Top" Height="39" Width="105"/>
+                    <Button Content="Patients" Click="Patients" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="73,10,0,0" VerticalAlignment="Top" Height="42" Width="138"/>
+                    <Button Content="Anamnesis" Click="AnamnesisClick" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="211,10,0,0" VerticalAlignment="Top" Height="42" Width="138"/>
+                    <Button Content="Prescrptions" Click="Prescribe" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="349,10,0,0" VerticalAlignment="Top" Height="42" Width="138"/>
+                    <Button Content="Referrals" Click="ReferralP" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="487,10,0,0" VerticalAlignment="Top" Height="42" Width="138"/>
+                    <Button Content="Reschedule" Click="Reschedule" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="280,296,0,0" VerticalAlignment="Top" Height="42" Width="138"/>
+                    <Button Content="Cancel" Click="Cancel" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="487,296,0,0" VerticalAlignment="Top" Height="42" Width="138"/>
+                    <Button Content="Schedule" Click="Schedule" Background="LightSteelBlue" FontSize="18" HorizontalAlignment="Left" Margin="73,296,0,0" VerticalAlignment="Top" Height="42" Width="138"/>
 
                     <Image HorizontalAlignment="Left"
                    Height="81"
@@ -71,19 +73,18 @@
                    Width="108"
                    Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\heart.png" />
                     <DataGrid x:Name="dataGridd" ItemsSource="{Binding Appointment}" IsReadOnly="True"
-            SelectionMode="Single" AutoGenerateColumns="False" Margin="10,106,10,85">
+            SelectionMode="Single" AutoGenerateColumns="False" Margin="37,106,37,85">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" Width="40" Binding="{Binding id}"/>
-                            <DataGridTextColumn Header="Date" Width="80" Binding="{Binding Date}"/>
-                            <DataGridTextColumn Header="Time start" Width="90" Binding="{Binding TimeStart}"/>
+                            <DataGridTextColumn Header="Time start" Width="170" Binding="{Binding StartTime}"/>
                             <DataGridTextColumn Header="Duration" Width="70" Binding="{Binding Duration}"/>
-                            <DataGridTextColumn Header="End time" Width="90" Binding="{Binding EndTime}"/>
-                            <DataGridTextColumn Header="Room" Width="90" Binding="{Binding RoomName}"/>
-                            <DataGridTextColumn Header="Patient username" Width="130" Binding="{Binding PatientUsername}"/>
-                            <DataGridTextColumn Header="Appointment Type" Width="130" Binding="{Binding AppointmentType}"/>
+                            <DataGridTextColumn Header="Room" Width="70" Binding="{Binding RoomName}"/>
+                            <DataGridTextColumn Header="Patient name" Width="100" Binding="{Binding PatientUsername}"/>
+                            
+                            <DataGridTextColumn Header="Appointment Type" Width="150" Binding="{Binding AppointmentType}"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Label Content="Appointments:" FontSize= "18" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Appointments:" FontSize= "18" HorizontalAlignment="Left" Margin="37,67,0,0" VerticalAlignment="Top"/>
                 </Grid>
 
             </TabItem>
@@ -106,11 +107,16 @@
             </TabItem>
         </TabControl>
 
-        <Button Content="Log out" Click="LogOut" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="707,1,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
-        <Button Content="Back" Click="LogOut" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="18,0,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
+        <Button Content="Back" Click="LogOut" BorderThickness="0" FontSize="13" HorizontalAlignment="Left" Margin="18,0,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
         <TextBox Name="Web" HorizontalAlignment="Left" Margin="83,1,0,0" Text="www.hospital.com/doctor/" TextWrapping="Wrap" VerticalAlignment="Top" Width="619" Height="25"/>
-
-
+        <Button Content="     Log out" Click="LogOut" BorderThickness="0" Background="AliceBlue" FontSize="13" HorizontalAlignment="Left" Margin="677,72,0,0" VerticalAlignment="Top" Height="25" Width="85"/>
+        <Image HorizontalAlignment="Left"
+            Height="25"
+            Margin="677,72,0,0"
+            VerticalAlignment="Top"
+            Width="60"
+            Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\exit.png" />
+        
 
 
 

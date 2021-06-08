@@ -17,32 +17,46 @@
     </Window.Background>
     <Grid>
         <DataGrid x:Name="dataGridUpdateMedicine" ItemsSource="{Binding Medicines}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="35,56,360,0" Height="199" VerticalAlignment="Top">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="37,87,358,0" Height="199" VerticalAlignment="Top">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Medicine Id" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Details" Binding="{Binding Details}"/>
-                <DataGridTextColumn Header="Alternative" Binding="{Binding Alternative}"/>
-                <DataGridTextColumn Header="Status" Binding="{Binding StatusType}"/>
+                <DataGridTextColumn Header="Id" Width="40" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Name" Width="90" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Details" Width="90" Binding="{Binding Details}"/>
+                <DataGridTextColumn Header="Alternative" Width="90" Binding="{Binding Alternative}"/>
+                <DataGridTextColumn Header="Status" Width="70" Binding="{Binding StatusType}"/>
 
             </DataGrid.Columns>
         </DataGrid>
-        <Label FontSize="15" Content="Name:" HorizontalAlignment="Left" Margin="466,84,0,0" VerticalAlignment="Top" Width="67"/>
-        <Label FontSize="15" Content="Details:" HorizontalAlignment="Left" Margin="464,130,0,0" VerticalAlignment="Top" Width="67" RenderTransformOrigin="0.519,-0.914"/>
-        <Label FontSize="15" Content="Alternative:" HorizontalAlignment="Left" Margin="457,187,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.411,-1.074"/>
-        <TextBox x:Name="name" HorizontalAlignment="Left" Height="35" Margin="561,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202"/>
-        <TextBox x:Name="details" HorizontalAlignment="Left" Height="35" Margin="561,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202"/>
-        <TextBox x:Name="alternative" HorizontalAlignment="Left" Height="35" Margin="561,187,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202"/>
-        <Button Content="Update" FontSize="17" Click="UpdateMedicines_Click" HorizontalAlignment="Left" Margin="633,279,0,0" VerticalAlignment="Top" Width="130" Height="30" RenderTransformOrigin="-0.669,0.63"/>
-        <Button Content="Select" FontSize="17" Click="SelectMedicines_Click" HorizontalAlignment="Left" Margin="310,286,0,0" VerticalAlignment="Top"  Width="130" Height="30"/>
+
+        <Button Name="Up" Background="AliceBlue" BorderThickness="0" FontSize="18" HorizontalAlignment="Left" Margin="580,279,0,0" VerticalAlignment="Top" Height="43" Width="46">
+            <Image HorizontalAlignment="Left"
+                   Height="37"
+                   VerticalAlignment="Top"
+                   Width="68"
+                   Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\info.png" />
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Background="Beige" Margin="5" FontSize="15" TextWrapping="Wrap" MaxWidth="100">
+                        Select a medicine you want to update and press the select button, that way you will allready have writen everything about thid medicine and now you can easily change it.    
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+
+        </Button>
+        <Label FontSize="15" Content="Name:" HorizontalAlignment="Left" Margin="500,87,0,0" VerticalAlignment="Top" Width="67"/>
+        <Label FontSize="15" Content="Details:" HorizontalAlignment="Left" Margin="500,144,0,0" VerticalAlignment="Top" Width="67" RenderTransformOrigin="0.519,-0.914"/>
+        <Label FontSize="15" Content="Alternative:" HorizontalAlignment="Left" Margin="500,204,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.411,-1.074"/>
+        <TextBox x:Name="name" HorizontalAlignment="Left" Height="35" Margin="629,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138"/>
+        <TextBox x:Name="details" HorizontalAlignment="Left" Height="35" Margin="629,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138"/>
+        <TextBox x:Name="alternative" HorizontalAlignment="Left" Height="35" Margin="629,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138"/>
+        <Button Content="Update" FontSize="17" Click="UpdateMedicines_Click" HorizontalAlignment="Left" Margin="629,279,0,0" VerticalAlignment="Top" Width="138" Height="42" RenderTransformOrigin="-0.669,0.63"/>
+        <Button Content="Select" FontSize="17" Click="SelectMedicines_Click" HorizontalAlignment="Left" Margin="342,291,0,0" VerticalAlignment="Top"  Width="100" Height="30"/>
         <Image HorizontalAlignment="Left"
                    Height="81"
                    Margin="709,353,0,0"
                    VerticalAlignment="Top"
                    Width="108"
                    Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\heart.png" />
-
-        <Button Content="Log out" Click="LogOut" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="707,1,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
         <Button Content="Back" Click="CancelMedicines_Click" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="18,0,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
         <TextBox HorizontalAlignment="Left" Margin="83,1,0,0" Text="www.hospital.com/doktor-medicine/update-medicine/" TextWrapping="Wrap" VerticalAlignment="Top" Width="619" Height="25"/>
 

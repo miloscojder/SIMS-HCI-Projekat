@@ -6,6 +6,8 @@ using Repository;
 using System.Windows;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows.Media;
+using Service;
 
 namespace Projekat
 {
@@ -14,15 +16,18 @@ namespace Projekat
     {
         
         public HospitalReferralsController hospitalReferralsController = new HospitalReferralsController();
-        public StaticEquipmentController staticEquipmentController = new StaticEquipmentController();
+        //    public StaticEquipmentController staticEquipmentController = new StaticEquipmentController();
+        StaticEquipmentRepository staticEquipmentRepository = new StaticEquipmentRepository();
+        public StaticEquipment staticEquipment = new StaticEquipment();
+
         public Patient patient = new Patient();
         public ReferralPatientHospital(Patient p)
         {
             InitializeComponent();
             this.DataContext = this;
 
-            StaticEquipmentRepository staticEquipmentRepository = new StaticEquipmentRepository();
-            List<StaticEquipment> staticEquipments = staticEquipmentRepository.GetAll();
+            
+            List<StaticEquipment> staticEquipments = staticEquipmentRepository.GetAllBedrooms();
             dataGrid1.ItemsSource = staticEquipments;
 
             patient.firstName = p.firstName;
@@ -31,12 +36,13 @@ namespace Projekat
 
         }
 
+        
+
         private void Select(object sender, RoutedEventArgs e)
         {
 
-            StaticEquipment s = (StaticEquipment)dataGrid1.SelectedItems[0];
-
-            RoomName.Text = s.room.Name;
+            staticEquipment = (StaticEquipment)dataGrid1.SelectedItems[0];
+            RoomName.Text = staticEquipment.room.Name;
         }
 
         private void Referral(object sender, RoutedEventArgs e)
@@ -49,22 +55,34 @@ namespace Projekat
 
             Room r = new Room();
             r.Name = RoomName.Text;
-           
-       
-            HospitalReferrals a = new HospitalReferrals(ida, date, end, r, patient);
-            hospitalReferralsController.CreateReferral(a);
+
+            
+              
+                if (staticEquipment.AvailableBeds == 0)
+                {
+                    MessageBox.Show("Room is full!");
+                }
+                else
+                {
+                    staticEquipment.AvailableBeds = staticEquipment.AvailableBeds - 1;
+                staticEquipmentRepository.UpdateEquipment(staticEquipment);
+
+                HospitalReferrals a = new HospitalReferrals(ida, date, end, r, patient, staticEquipment);
+                hospitalReferralsController.CreateReferral(a);
 
 
-            HospitalReferralss ap = new HospitalReferralss();
-            ap.Show();
+
+                HospitalReferralss ap = new HospitalReferralss();
+                ap.Show();
+            }
+
+            
+
+
+            
         }
 
-        private void LogOut(object sender, RoutedEventArgs e)
-        {
-            MainWindow m = new MainWindow();
-            m.Show();
-            Close();
-        }
+     
 
         private void Back(object sender, RoutedEventArgs e)
         {

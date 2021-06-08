@@ -33,7 +33,11 @@ namespace Projekat
             string medicinesname = name.Text;
             string medicinesdetails = details.Text;
             string medicinesalternative = alternative.Text;
-            Medicines medicines = new Medicines(ind, medicinesname, medicinesdetails, medicinesalternative);
+            string exp = explanation.Text;
+            string stat = status.Text;
+            stat = "Waiting";
+
+            Medicines medicines = new Medicines(ind, medicinesname, medicinesdetails, medicinesalternative, exp, stat);
             medicinesController.Save(medicines);
 
             ViewMedicines vm = new ViewMedicines();

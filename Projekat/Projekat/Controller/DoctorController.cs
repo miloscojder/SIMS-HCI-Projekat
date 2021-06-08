@@ -71,6 +71,7 @@ namespace Controller
             return doctorService.GetAllDoctorUsernames();
         }
 
+
         public List<Appointment> GetAllAppointments()
       {
          // TODO: implement

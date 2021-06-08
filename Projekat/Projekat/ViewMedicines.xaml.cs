@@ -35,7 +35,7 @@ namespace Projekat
             MedicinesRepository medicinesRepository = new MedicinesRepository();
             List<Medicines> medicines = medicinesRepository.GetAll();
             dataGridMedicines.ItemsSource = medicines;
-            dataGridRejectedMedicines.ItemsSource = medicines;
+
 
         }
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -43,6 +43,13 @@ namespace Projekat
             DirectorWindow director = new DirectorWindow();
             director.Show();
             Close();
+        }
+
+        private void Reject_Click(object sender, RoutedEventArgs e)
+        {
+            DirectorCorectingRejectingMedicine dcrm = new DirectorCorectingRejectingMedicine();
+            dcrm.Show();
+            
         }
 
         private void DeleteMedicine_Click(object sender, RoutedEventArgs e)
@@ -58,7 +65,7 @@ namespace Projekat
             }
         }
 
-        private void RejectedMedShow_Click(object sender, RoutedEventArgs e)
+ /*       private void RejectedMedShow_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -76,9 +83,9 @@ namespace Projekat
             {
                 MessageBox.Show("You have to fill in all input boxes!");
             }
-        }
+        }*/
 
-        private void Reject_Medicine_Click(object sender, RoutedEventArgs e)
+ /*       private void Reject_Medicine_Click(object sender, RoutedEventArgs e)
         {
             int id = medicinesController.GenerateNewId();
             string medicineName = name.Text;
@@ -87,8 +94,8 @@ namespace Projekat
             Medicines newMedicine = new Medicines(id, medicineName, medicineDetails, medicineAlternative);
             medicinesController.UpdateMedicines(newMedicine);
             id = -1;
-        }
-        private void New_Medicine_Click(object sender, RoutedEventArgs e)
+        }*/
+ /*       private void New_Medicine_Click(object sender, RoutedEventArgs e)
         {
             int id = medicinesController.GenerateNewId();
             string medicineName = name.Text;
@@ -104,7 +111,7 @@ namespace Projekat
             catch
             {
                 MessageBox.Show("You have to fill in all input boxes!");
-            }
+            }*/
         }
     }
-}
+

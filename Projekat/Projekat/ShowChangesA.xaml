@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Projekat"
+        xmlns:local="clr-namespace:Projekat" xmlns:model="clr-namespace:Model" 
         mc:Ignorable="d"
         Title="ShowChangesA" Height="458" Width="800">
     <Window.Background>
@@ -17,40 +17,50 @@
     </Window.Background>
     <Grid Height="434" VerticalAlignment="Top">
         <DataGrid x:Name="dataGrid" ItemsSource="{Binding Appointment}" IsReadOnly="True"
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="55,48,42,264">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="30,72,50,240">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Width="40" Binding="{Binding id}"/>
-                <DataGridTextColumn Header="Date" Width="80" Binding="{Binding Date}"/>
-                <DataGridTextColumn Header="Time start" Width="70" Binding="{Binding TimeStart}"/>
-                <DataGridTextColumn Header="Duration" Width="70" Binding="{Binding Duration}"/>
-                <DataGridTextColumn Header="End time" Width="70" Binding="{Binding EndTime}"/>
-                <DataGridTextColumn Header="Room" Width="50" Binding="{Binding Room.Name}"/>
-                <DataGridTextColumn Header="Patient name" Width="100" Binding="{Binding Patient.firstName}"/>
-                <DataGridTextColumn Header="Patient surname" Width="100" Binding="{Binding Patient.lastName}"/>
+                <DataGridTextColumn Header="Time start" Width="170" Binding="{Binding StartTime}"/>
+                <DataGridTextColumn Header="Duration" Width="80" Binding="{Binding Duration}"/>
+                <DataGridTextColumn Header="Room" Width="80" Binding="{Binding RoomName}"/>
+                <DataGridTextColumn Header="Patient name" Width="100" Binding="{Binding patient.firstName}"/>
+                <DataGridTextColumn Header="Patient surname" Width="100" Binding="{Binding patient.lastName}"/>
+                <DataGridTextColumn Header="Type of Appointment" Width="150" Binding="{Binding AppointmentType}"/>
             </DataGrid.Columns>
         </DataGrid>
 
-        <Label Content="Appointment Date:" FontSize="18" HorizontalAlignment="Left" Margin="50,216,0,0" VerticalAlignment="Top" Height="42"/>
+        <Button Name="Resch" Background="AliceBlue" BorderThickness="0" FontSize="18" HorizontalAlignment="Left" Margin="180,350,0,0" VerticalAlignment="Top" Height="43" Width="46">
+            <Image HorizontalAlignment="Left"
+                   Height="37"
+                   VerticalAlignment="Top"
+                   Width="68"
+                   Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\info.png" />
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Background="Beige" Margin="5" FontSize="15" TextWrapping="Wrap" MaxWidth="100">
+                   Select a new date for appointemnt or a new time start or new duration of appointment.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
 
-        <TextBox Name="Date" HorizontalAlignment="Left" Margin="256,216,0,0" VerticalAlignment="Top" Height="42" Width="138"/>
-        <Label Content="Time end:" FontSize="18" HorizontalAlignment="Left" Margin="440,283,0,0" VerticalAlignment="Top" Height="42"/>
-        <TextBox Name="Hours" HorizontalAlignment="Left" Margin="561,283,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" Height="36"/>
+        </Button>
 
-        <Label Content="Duration(in minutes)" FontSize="18" HorizontalAlignment="Left" Margin="50,283,0,0" VerticalAlignment="Top" Height="41" Width="194"/>
-        <TextBox Name="Duration" HorizontalAlignment="Left" Margin="256,281,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="119" Height="45"/>
-        <Button Content="Save" FontSize="20" Click="Save" HorizontalAlignment="Left" Margin="50,352,0,0" VerticalAlignment="Top" Height="50" Width="125" Background="#FFB5CDE2"/>
-        <Label Content="Time start:" FontSize="18" HorizontalAlignment="Left" Margin="435,220,0,0" VerticalAlignment="Top" Height="42"/>
-        <TextBox x:Name="Hourss" HorizontalAlignment="Left" Margin="561,222,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" Height="38"/>
+        <Label Content="Appointment Date:" FontSize="18" HorizontalAlignment="Left" Margin="30,213,0,0" VerticalAlignment="Top" Height="42"/>
+
+        <Label Content="Duration(in minutes)" FontSize="18" HorizontalAlignment="Left" Margin="30,278,0,0" VerticalAlignment="Top" Height="41" Width="194"/>
+        <TextBox Name="Duration" HorizontalAlignment="Left" Margin="256,281,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="138" Height="42"/>
+        <Button Content="Save" FontSize="20" Click="Save" HorizontalAlignment="Left" Margin="30,350,0,0" VerticalAlignment="Top" Height="42" Width="138" Background="#FFB5CDE2"/>
+        <Label Content="Time start:" FontSize="18" HorizontalAlignment="Left" Margin="481,217,0,0" VerticalAlignment="Top" Height="42"/>
         <Image HorizontalAlignment="Left"
                    Height="81"
-                   Margin="713,360,0,0"
+                   Margin="709,352,0,0"
                    VerticalAlignment="Top"
                    Width="108"
                    Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\heart.png" />
-
-        <Button Content="Log out" Click="LogOut" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="707,1,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
         <Button Content="Back" Click="Back" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="18,0,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
         <TextBox HorizontalAlignment="Left" Margin="83,1,0,0" Text="www.hospital.com/doktor-appointment/appointments/reschedule-appointment/" TextWrapping="Wrap" VerticalAlignment="Top" Width="619" Height="25"/>
+        <ComboBox Name="Termini" Background="Beige" ItemsSource="{Binding Terminii}" SelectedItem="{Binding SelektovanTermin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="614,221,50,183"/>
+        <DatePicker x:Name="IzaberiDatum" FontSize="16" HorizontalAlignment="Left" Margin="256,217,0,0" VerticalAlignment="Top" Height="30" Width="138"/>
 
     </Grid>
 </Window>

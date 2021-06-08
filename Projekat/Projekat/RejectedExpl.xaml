@@ -17,8 +17,22 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid>
+        <Button Name="rej" Background="AliceBlue" BorderThickness="0" FontSize="18" HorizontalAlignment="Left" Margin="630,330,0,0" VerticalAlignment="Top" Height="43" Width="46">
+            <Image HorizontalAlignment="Left"
+                   Height="37"
+                   VerticalAlignment="Top"
+                   Width="68"
+                   Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\info.png" />
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Background="Beige" Margin="5" FontSize="15" TextWrapping="Wrap" MaxWidth="100">
+                     Write an explanation why are you rejecting medicine after selecting a medicine you want to reject.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
 
-        <Button Content="Save changes" FontSize="20" Click="SaveChanges" HorizontalAlignment="Left" Margin="648,200,0,0" VerticalAlignment="Top" Height="42" Width="142" Background="#FFB5CDE2"/>
+        </Button>
+        <Button Content="Save changes" FontSize="20" Click="SaveChanges" HorizontalAlignment="Left" Margin="629,200,0,0" VerticalAlignment="Top" Height="42" Width="138" Background="#FFB5CDE2"/>
         <TextBox x:Name="Rejection" FontSize="18"  HorizontalAlignment="Left" Margin="35,298,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="577" Height="93"/>
         <Label Content="Explanation for rejection:" FontSize="18" HorizontalAlignment="Left" Margin="35,259,0,0" VerticalAlignment="Top" Width="244"/>
         <DataGrid x:Name="dataGrid" ItemsSource="{Binding Medicines}" IsReadOnly="True"
@@ -33,14 +47,14 @@
         </DataGrid>
         <Image HorizontalAlignment="Left"
                    Height="82"
-                   Margin="709,344,0,0"
+                   Margin="685,342,0,0"
                    VerticalAlignment="Top"
                    Width="108"
                    Source="C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Icons\heart.png" />
-
-        <Button Content="Log out" Click="LogOut" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="707,1,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
         <Button Content="Back" Click="Back" Background="LightSteelBlue" FontSize="13" HorizontalAlignment="Left" Margin="18,0,0,0" VerticalAlignment="Top" Height="25" Width="60"/>
         <TextBox HorizontalAlignment="Left" Margin="83,1,0,0" Text="www.hospital.com/doktor-medicine/rejecting/" TextWrapping="Wrap" VerticalAlignment="Top" Width="619" Height="25"/>
+        <Label Content="Rejecting" FontSize="22" HorizontalAlignment="Left" Margin="663,55,0,0" VerticalAlignment="Top" Width="104" Height="52"/>
+        <Label Content="medicine" FontSize="22" HorizontalAlignment="Left" Margin="664,107,0,0" VerticalAlignment="Top" Width="103" Height="36"/>
 
 
 

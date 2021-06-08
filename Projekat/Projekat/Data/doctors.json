@@ -7,6 +7,7 @@
     "Specialty": "General",
     "Free": false,
     "Grade": 0.0,
+
     "CalculateRating": {
       "doctorCounter": 0.0,
       "doctorGradeSum": 0.0,
@@ -15,6 +16,7 @@
       ]
     },
     
+
     "id": 1,
     "Username": "kris",
     "Password": "123",
@@ -35,6 +37,7 @@
     "Free": false,
     "Grade": 8.0,
 
+
     "CalculateRating": {
 
       "doctorCounter": 1.0,
@@ -54,6 +57,7 @@
       "DateOfBirth": "1987-04-23T17:34:56",
       "Rool": 0
     },
+
   {
     "Salary": 0.0,
     "VacationTime": "00:00:00",
@@ -62,6 +66,7 @@
     "Specialty": "Internist",
     "Free": false,
     "Grade": 10.0,
+
     "CalculateRating": {
 
       "doctorCounter": 1.0,
@@ -82,11 +87,13 @@
       "DateOfBirth": "0001-01-01T00:00:00",
       "Rool": 0
     },
+
   {
     "Salary": 0.0,
     "VacationTime": "00:00:00",
     "WorkingHours": "00:00:00",
     "WorkingExperince": 0,
+
     "Specialty": "Dermatologist",
     "Free": false,
     "Grade": 4.0,
@@ -103,6 +110,7 @@
     "Password": null,
     "firstName": "Radovan",
     "lastName": "Kosic",
+
     "Jmbg": null,
     "EMail": null,
     "PhoneNumber": null,
@@ -114,6 +122,7 @@
     "VacationTime": "00:00:00",
     "WorkingHours": "00:00:00",
     "WorkingExperince": 0,
+
     "Specialty": "Cardiologist",
     "Free": false,
     "Grade": 9.0,
@@ -136,6 +145,7 @@
     "Password": null,
     "firstName": "Sinan",
     "lastName": "Sakic",
+
     "Jmbg": null,
     "EMail": null,
     "PhoneNumber": null,
@@ -147,6 +157,7 @@
     "VacationTime": "00:00:00",
     "WorkingHours": "00:00:00",
     "WorkingExperince": 0,
+
     "Specialty": "General",
     "Free": false,
     "Grade": 8.0,
@@ -165,6 +176,7 @@
     "Password": null,
     "firstName": "Marija",
     "lastName": "Popovic",
+
     "Jmbg": null,
     "EMail": null,
     "PhoneNumber": null,

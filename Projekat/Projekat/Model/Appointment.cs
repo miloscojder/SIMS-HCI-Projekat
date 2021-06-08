@@ -17,7 +17,7 @@ namespace Model
         public string Duration { get; set; }
        public String EndTime { get; set; }
         public TypeOfAppointment AppointmentType { get; set; }
-        public String type { get; set; }
+ 
         public string RoomName { get; set; }
         public string DoctorUsername { get; set; }
         public string PatientUsername { get; set; }
@@ -31,10 +31,22 @@ namespace Model
         public Appointment() { }
 
 
+        public Appointment(int id, DateTime date, string duration, TypeOfAppointment appType, String roomName, String patientUsername, String docotrUsername)
+        {
+            this.id = id;
+            this.StartTime = date;
+            Duration = duration;
+            this.AppointmentType = appType;
+            this.RoomName = roomName;
+            this.PatientUsername = patientUsername;
+            this.DoctorUsername = docotrUsername;
+        }
+
         public Appointment(int id, DateTime date, TypeOfAppointment appType, String roomName, String patientUsername, String docotrUsername)
         {
             this.id = id;
             this.StartTime = date;
+        
             this.AppointmentType = appType;
             this.RoomName = roomName;
             this.PatientUsername = patientUsername;

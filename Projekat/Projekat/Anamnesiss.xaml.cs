@@ -33,6 +33,15 @@ namespace Projekat
             dataGrid.ItemsSource = anamneses;
             Appi.IsSelected =  true;
             Web.Text = "www.hospital.com / doktor - appointment / anamnesis /";
+
+            Name.Content = DoctorWindow.loginDoctor.firstName;
+            Surname.Content = DoctorWindow.loginDoctor.lastName;
+            Id.Content = DoctorWindow.loginDoctor.id;
+            jmbg.Content = DoctorWindow.loginDoctor.Jmbg;
+            Date.Content = DoctorWindow.loginDoctor.DateOfBirth.ToString();
+            Email.Content = DoctorWindow.loginDoctor.EMail;
+            Phone.Content = DoctorWindow.loginDoctor.PhoneNumber;
+            Spec.Content = DoctorWindow.loginDoctor.Specialty;
         }
 
        
