@@ -32,14 +32,14 @@ namespace Service
         public void Save(DynamicEquipment newEquipment)
       {
             
-            dynamicEquipmentRepository.Save(newEquipment);
+            dynamicEquipmentRepository.SaveEquipment(newEquipment);
             
       }
       
       public List<DynamicEquipment> GetAll()
       {
          
-         return dynamicEquipmentRepository.GetAll();
+         return dynamicEquipmentRepository.GetAllEquipment();
       }
       
       public Boolean UpdateEquipment(DynamicEquipment dynamicEquipment)

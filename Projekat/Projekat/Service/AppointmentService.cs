@@ -221,13 +221,6 @@ namespace Service
             return appointmentRepository.GetAppointment(id);
       }
 
-        public List<Appointment> GetAppointmentsByPatientsUsername(String username)
-        {
-            return appointmentRepository.GetAppointmentsByPatientsUsername(username);
-        }
-    
-
-
 
 
     }
