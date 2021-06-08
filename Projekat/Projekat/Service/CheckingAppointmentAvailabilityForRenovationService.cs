@@ -62,7 +62,7 @@ namespace Service
         public void SaveRenovation(Appointment appointment)
         {
             appointment.id = appointmentRepository.GenerateNewId();
-            appointmentRepository.ScheduleDoctor(appointment);
+            appointmentRepository.ScheduleAppointment(appointment);
         }
     }
 }

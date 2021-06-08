@@ -19,7 +19,7 @@ namespace Controller
         public DoctorsBusynessService doctorBusynessService = new DoctorsBusynessService();
         public OrganisingDoctorAppointmentsService organisingDoctorAppointmentsService = new OrganisingDoctorAppointmentsService();
         public OrganisingPatientAppointmentsService organisingPatientAppointmentService = new OrganisingPatientAppointmentsService();
-        public void ScheduleDoctor(Appointment newAppointment)
+        
 
         public void ScheduleAppointemnt(Appointment newAppointment)
 
@@ -70,11 +70,7 @@ namespace Controller
             return organisingDoctorAppointmentsService.GetAllAppointmentsForDoctorUser(doctor);
 
         }
-        public void DeleteAppointmentById(int id)
-        {
-            appointmentService.DeleteAppointmentById(id);
-        }
-
+    
 
         public List<Appointment> AddFreeTerminsDayPriority(DateTime choosenDate, List<Room> rooms, List<Doctor> doctors, String patientsUsername) 
         {
