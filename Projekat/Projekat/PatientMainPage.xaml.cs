@@ -24,7 +24,7 @@ namespace Projekat
     public partial class PatientMainPage : Window
     {
         public NotifficationController notifficationController = new NotifficationController();
-        public List<Notification> notifications;
+  //      public List<Notification> notifications;
         public static Patient prenosilac = new Patient();
 
         public PatientMainPage(Patient patient)
@@ -34,8 +34,8 @@ namespace Projekat
             prenosilac = patient;
             SetCommands();
 
-            notifications = notifficationController.GetAllNotifications();
-            notifficationController.IsItTime(notifications);           
+       
+            notifficationController.IsItTime();           
         }
        
   
@@ -136,12 +136,12 @@ namespace Projekat
 
         public Boolean NotificationsCanExecute(object sender)
         {
-            return false;
+            return true;
         }
 
         public void NotificationsExecute(object sender)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null);
+            NotificationsPatientPage npp = new NotificationsPatientPage();
             npp.Show();
             this.Close();
         }
@@ -189,7 +189,7 @@ namespace Projekat
 
         public void HospitalExecute(object sender)
         {
-            HospitalViewPatientPage hvpp = new HospitalViewPatientPage(null);
+            HospitalViewPatientPage hvpp = new HospitalViewPatientPage();
             hvpp.Show();
             this.Close();
         }

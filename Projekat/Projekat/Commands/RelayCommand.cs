@@ -9,26 +9,33 @@ namespace Projekat
 {
     public class RelayCommand : ICommand
     {
-        Action<object> executeMethod;
-        public Func<object, bool> canexecuteMethod;
+        private Action<object> execute;
+        private Func<object, bool> canExecute;
 
-        public RelayCommand(Action<object> executeMethod, Func<object, bool> canexecuteMethod)
+        public RelayCommand(Action<object> executeMethod, Func<object,bool> canexecuteMethod = null)
         {
-            this.executeMethod = executeMethod;
-            this.canexecuteMethod = canexecuteMethod;
+          
+            this.execute = executeMethod;
+            this.canExecute = canexecuteMethod;
+
         }
 
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
 
 
         public bool CanExecute(object parameter)
         {
             return true;
+   //         return this.canExecute == null || this.canExecute(parameter);
         }
 
         public void Execute(object parameter)
         {
-            executeMethod(parameter);
+            this.execute(parameter);
         }
     }
 }

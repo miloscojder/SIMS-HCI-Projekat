@@ -45,39 +45,8 @@ namespace Projekat
             Termini = new List<string>(termini);
         }
 
-        private void UpdateButton_Click(object sender, RoutedEventArgs e)
-        {
-
-            try
-            {
-                notifications = notifficationController.GetAllNotifications();
-
-                string hoursAndMinutes = (String)NewNotificationHourComboBox.SelectedItem;
-                string[] choosenHours = hoursAndMinutes.Split(':');
-                DateTime formedDate = new DateTime(NewNotificationDateDatePicker.SelectedDate.Value.Year, NewNotificationDateDatePicker.SelectedDate.Value.Month, NewNotificationDateDatePicker.SelectedDate.Value.Day, Convert.ToInt32(choosenHours[0]), Convert.ToInt32(choosenHours[1]), 0);
-
-                choosenNotification = new Notification(NewNotificationNameTextBox.Text, NewNotificationDescTextBox.Text, formedDate, Convert.ToInt32(NewNotificationDaysTextBox.Text), choosenNotification.Id,PatientMainPage.prenosilac.Username);
-
-                notifficationController.DeleteNotificationById(choosenNotification.Id);
-                notifficationController.WriteNotificationsToJason(notifications);
-               
-                NotificationsPatientPage npp = new NotificationsPatientPage(choosenNotification);
-                npp.Show();
-                this.Close();
-            }
-            catch(Exception ex)
-            {
-                notifficationController.IsDateChoosenCorectlly(choosenNotification.Date.Date);
-            }
-            
-        }
-
-        private void CancelButton_Click_1(object sender, RoutedEventArgs e)
-        {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null);
-            npp.Show();
-            this.Close();
-        }
+      
+  
 
         private RelayCommand cancelCommand;
         public RelayCommand CancelCommand
@@ -108,22 +77,21 @@ namespace Projekat
 
         public void UpdateExecute(object sender)
         {
-            if ((NewNotificationNameTextBox.Text == "") | (NewNotificationDescTextBox.Text == "") | (NewNotificationDateDatePicker.SelectedDate == null) | (NewNotificationHourComboBox.SelectedItem == null) | (NewNotificationDaysTextBox.Text == "") | (NewNotificationDaysTextBox_Copy.Text == ""))
+            if (DataNotFilled())
             {
                 MessageBox.Show("You must fill all data.");
             }
             else
-            {
-                notifications = notifficationController.GetAllNotifications();
-
+            {              
                 string hoursAndMinutes = (String)NewNotificationHourComboBox.SelectedItem;
                 string[] choosenHours = hoursAndMinutes.Split(':');
                 DateTime formedDate = new DateTime(NewNotificationDateDatePicker.SelectedDate.Value.Year, NewNotificationDateDatePicker.SelectedDate.Value.Month, NewNotificationDateDatePicker.SelectedDate.Value.Day, Convert.ToInt32(choosenHours[0]), Convert.ToInt32(choosenHours[1]), 0);
+                TimeSpan newTimeSpan = new TimeSpan(0, Convert.ToInt32(NewNotificationDaysTextBox_Copy.Text), 0);
 
-                choosenNotification = new Notification(NewNotificationNameTextBox.Text, NewNotificationDescTextBox.Text, formedDate, Convert.ToInt32(NewNotificationDaysTextBox.Text), choosenNotification.Id, PatientMainPage.prenosilac.Username);
+                choosenNotification = new Notification(NewNotificationNameTextBox.Text, NewNotificationDescTextBox.Text, formedDate, Convert.ToInt32(NewNotificationDaysTextBox.Text), choosenNotification.Id, PatientMainPage.prenosilac.Username, newTimeSpan);
 
                 notifficationController.DeleteNotificationById(choosenNotification.Id);
-                notifficationController.WriteNotificationsToJason(notifications);
+                notifficationController.SaveNotification(choosenNotification);
 
                 MessageBoxResult result = MessageBox.Show("Are you sure you want to modify this notification?",
                                          "Confirmation",
@@ -132,12 +100,12 @@ namespace Projekat
                 if (result == MessageBoxResult.Yes)
                 {
                     MessageBox.Show("Your notification has been changed.");
-                    NotificationsPatientPage npp = new NotificationsPatientPage(choosenNotification);
+                    NotificationsPatientPage npp = new NotificationsPatientPage();
                     npp.Show();
                     this.Close();
                 }
 
-               
+
             }
         }
 
@@ -148,7 +116,7 @@ namespace Projekat
 
         public void CancelExecute(object sender)
         {
-            NotificationsPatientPage npp = new NotificationsPatientPage(null);
+            NotificationsPatientPage npp = new NotificationsPatientPage();
             npp.Show();
             this.Close();
         }
@@ -159,6 +127,9 @@ namespace Projekat
             CancelCommand = new RelayCommand(CancelExecute, CancelCanExecute);
         }
 
-
+        private bool DataNotFilled()
+        {
+            return (NewNotificationNameTextBox.Text == "") | (NewNotificationDescTextBox.Text == "") | (NewNotificationDateDatePicker.SelectedDate == null) | (NewNotificationHourComboBox.SelectedItem == null) | (NewNotificationDaysTextBox.Text == "") | (NewNotificationDaysTextBox_Copy.Text == "");
+        }
     }
 }

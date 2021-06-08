@@ -77,7 +77,14 @@ namespace Repository
                     notifications.Remove(notification);
                 }
             }
+            WriteNotificationsToJason();
       }   
+
+        public void SaveNotification(Notification newNotification)
+        {
+            notifications.Add(newNotification);
+            WriteNotificationsToJason();
+        }
       
     }
 }

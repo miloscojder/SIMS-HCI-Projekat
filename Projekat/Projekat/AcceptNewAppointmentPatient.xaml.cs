@@ -20,70 +20,34 @@ namespace Projekat
     /// </summary>
     public partial class AcceptNewAppointmentPatient : Window
     {
-
         public AppointmentController appointmentController = new AppointmentController();
         public RoomController roomController = new RoomController();
         public DoctorController doctorController = new DoctorController();
-        public List<Room> Rooms { get; set; }
-        public List<Doctor> Doctors { get; set; }
-
+        public List<Appointment> appointmentsFreeTermin = new List<Appointment>();
+        
         public AcceptNewAppointmentPatient(ScheduleAppointmentPatient.Priority priority, DateTime choosenDate, string izabraniDoctor)
         {
             InitializeComponent();
-            this.DataContext = this;
+            this.DataContext = this;            
             SetCommands();
 
             MessageBox.Show("Doctor is busy! If you want you can choose one of these available appointments.");
 
-            if (priority == ScheduleAppointmentPatient.Priority.DATE)
+            List<Room> Rooms = roomController.GetAllRooms();
+            List<Doctor> Doctors = doctorController.GetAllDoctors();   
+            bool priorityIsDate = priority == ScheduleAppointmentPatient.Priority.DATE;
+
+            if (priorityIsDate)
             {
-                Appointment a = new Appointment();
-             
-                List<Appointment> appointmentsDateChecked = new List<Appointment>();
-
-                List<Doctor> doctors = doctorController.GetAllDoctors();
-                List<Room> rooms = roomController.GetAllRooms();
-                
-                for (int i = 0; i < 3; i++)
-                {              
-                    a = new Appointment(choosenDate, Doctors[i].Username, Rooms[i].Name);
-                    a.id = appointmentController.GenerateNewId();
-
-                    a.AppointmentType = TypeOfAppointment.Examination;
-                    a.PatientUsername = PatientMainPage.prenosilac.Username;                    
-                    appointmentsDateChecked.Add(a);
-                }                            
-
-                lvAcceptAppointment.ItemsSource = appointmentsDateChecked;
+                appointmentsFreeTermin = appointmentController.AddFreeTerminsDayPriority(choosenDate,Rooms,Doctors,PatientMainPage.prenosilac.Username);
+                lvAcceptAppointment.ItemsSource = appointmentsFreeTermin;
             }
             else
             {
-                Appointment a = new Appointment();
 
-
-
-                List<Appointment> appointmentsDoctorChecked = new List<Appointment>();
-
-                Rooms = roomController.GetAllRooms();
-                Random random = new Random();
-
-                List<DateTime> timeList = new List<DateTime>();
-
-                for (int i = 0; i < 3; i++)
-                {
-                    timeList.Add(choosenDate.AddDays(i));
-                }
-
-                for (int i = 0; i < 3; i++)
-                {
-                    a = new Appointment(timeList[i], izabraniDoctor, Rooms[i].Name);
-                    a.id = appointmentController.GenerateNewId();
-                    a.AppointmentType = TypeOfAppointment.Examination;
-                    a.PatientUsername = PatientMainPage.prenosilac.Username;
-                    appointmentsDoctorChecked.Add(a);
-                }
-
-                lvAcceptAppointment.ItemsSource = appointmentsDoctorChecked;
+                List<DateTime> timeList = GetFreeDays(choosenDate);
+                appointmentsFreeTermin = appointmentController.AddFreeTerminDoctorPriority(timeList,Rooms,izabraniDoctor,PatientMainPage.prenosilac.Username);               
+                lvAcceptAppointment.ItemsSource = appointmentsFreeTermin;
             }
         }
 
@@ -157,8 +121,15 @@ namespace Projekat
             CancelCommand = new RelayCommand(CancelExecute, CancelCanExecute);
         }
 
-
-
+        public List<DateTime> GetFreeDays(DateTime date)
+        {
+            List<DateTime> dateTimes = new List<DateTime>();
+            for (int i = 0; i < 3; i++)
+            {
+                dateTimes.Add(date.AddDays(i));
+            }
+            return dateTimes;
+        }
 
     }
 }

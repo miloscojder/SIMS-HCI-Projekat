@@ -53,7 +53,11 @@ namespace Service
             return doctorRepository.GetDoctor(id);
         }
 
-
+        public void DeleteDoctorById(int id)
+        {
+            doctorRepository.DeleteDoctorById(id);
+        }
+        
         public int AppointmentsWithThisDoctor(List<Appointment> appointments, Doctor doctor)
         {
             int brojac = 0;

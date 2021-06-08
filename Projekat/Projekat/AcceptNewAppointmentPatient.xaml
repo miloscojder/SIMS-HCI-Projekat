@@ -29,12 +29,12 @@
             <ColumnDefinition Width="163*"/>
         </Grid.ColumnDefinitions>
 
-        <ListView Margin="135,87,0,86" Background="LightCyan" Name="lvAcceptAppointment">
+        <ListView Margin="135,87,0,86" Background="LightCyan" Name="lvAcceptAppointment"  >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Start Time" Width="100" DisplayMemberBinding="{Binding StartTime}" />
-                    <GridViewColumn Header="Doctor name" Width="100" DisplayMemberBinding="{Binding doctorUsername}"/>
-                    <GridViewColumn Header="Room name" Width="100" DisplayMemberBinding="{Binding roomName}" />
+                    <GridViewColumn Header="Doctor name" Width="100" DisplayMemberBinding="{Binding DoctorUsername}"/>
+                    <GridViewColumn Header="Room name" Width="100" DisplayMemberBinding="{Binding RoomName}" />
                 </GridView>
             </ListView.View>
         </ListView>

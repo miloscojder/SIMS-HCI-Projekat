@@ -11,13 +11,13 @@ using System.Collections.Generic;
 
 namespace Controller
 {
-   public class AppointmentController
-   {
+    public class AppointmentController
+    {
         public AppointmentService appointmentService = new AppointmentService();
-      public void ScheduleDoctor(Appointment newAppointment)
-      {
+        public void ScheduleDoctor(Appointment newAppointment)
+        {
             appointmentService.ScheduleDoctor(newAppointment);
-      }
+        }
 
         public int GenerateNewId()
         {
@@ -25,22 +25,22 @@ namespace Controller
 
         }
 
- /*       public TypeOfAppointment GetTypes()
-        {
-            return appointmentService.GetTypes();
-        }*/
+        /*       public TypeOfAppointment GetTypes()
+               {
+                   return appointmentService.GetTypes();
+               }*/
         public void RescheduleDoctor(Appointment newAppointment)
-      {
+        {
             appointmentService.RescheduleDoctor(newAppointment);
-      }
-      
-      public Boolean Cancel(Appointment newAppointment)
-      {
+        }
+
+        public Boolean Cancel(Appointment newAppointment)
+        {
             appointmentService.Cancel(newAppointment);
             return true;
-      }
-      
-     public List<Appointment> GetAppointmentsByPatientsUsername(String username)
+        }
+
+        public List<Appointment> GetAppointmentsByPatientsUsername(String username)
         {
             return appointmentService.GetAppointmentsByPatientsUsername(username);
         }
@@ -60,12 +60,22 @@ namespace Controller
 
         public Boolean IsDoctorBusy(String doctorsUsername, DateTime choosenDate)
         {
-            return appointmentService.IsDoctorBusy(doctorsUsername,choosenDate);
+            return appointmentService.IsDoctorBusy(doctorsUsername, choosenDate);
         }
 
         public void DeleteAppointmentById(int id)
         {
             appointmentService.DeleteAppointmentById(id);
+        }
+
+        public List<Appointment> AddFreeTerminsDayPriority(DateTime choosenDate, List<Room> rooms, List<Doctor> doctors, String patientsUsername) 
+        {
+            return appointmentService.AddFreeTerminsDayPriority(choosenDate,rooms,doctors,patientsUsername);
+        }
+
+        public List<Appointment> AddFreeTerminDoctorPriority(List<DateTime> termins, List<Room> rooms, String doctorsUsername, String patientsUsername)
+        {
+            return appointmentService.AddFreeTerminDoctorPriority(termins, rooms, doctorsUsername, patientsUsername);
         }
 
       public Appointment ScedulePatient(DateTime timeStart, DateTime endTime, Model.Doctor doctor, Model.Room room, String id)

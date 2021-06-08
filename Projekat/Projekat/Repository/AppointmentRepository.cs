@@ -120,31 +120,8 @@ namespace Repository
             WriteToJson();
         }
 
-      public Appointment StartAppointment()
-      {
-         // TODO: implement
-         return null;
-      }
-      
-      public Appointment ScedulePatient(DateTime timeStart, DateTime endTime, Model.Doctor doctor, Model.Room room, String id)
-      {
-         // TODO: implement
-         return null;
-      }
-      
-   /*   public TypeOfAppointment GetTypes()
-        {
-           // TypeOfAppointment type = appointments.FindIndex(obj => obj.AppointmentType.ToString() = tip);
-        
-            //return types;
-        }*/
-      
-      public Appointment DoctorPriority(Model.Doctor parameter1)
-      {
-         // TODO: implement
-         return null;
-      }
-      
+  
+   
     
       
       public List<Appointment> GetAll()
@@ -159,18 +136,6 @@ namespace Repository
         }
 
 
-
-        public List<Doctor> GetAllDoctors()
-      {
-         // TODO: implement
-         return null;
-      }
-      
-      public List<Doctor> GetSpecialty()
-      {
-         // TODO: implement
-         return null;
-      }
       
       public Appointment GetAppointment(int idd)
       {
