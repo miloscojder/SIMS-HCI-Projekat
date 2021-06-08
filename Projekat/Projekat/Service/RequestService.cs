@@ -26,40 +26,23 @@ namespace Service
       public void UpdateRequest(int id, String newDescription, DateTime newDateOfVacation, int newDurationOfVacation)
       {
             RequestUpdated(id, newDescription, newDateOfVacation, newDurationOfVacation);
-            requestRepository.WriteToJson();
       }
       
         public void RequestUpdated(int id, String newDescription, DateTime newDateOfVacation, int newDurationOfVacation) 
-        {
-            //getrequestById u repository
-            int index = requestRepository.requestss.FindIndex(obj => obj.Id == id);
-            Request r = new Request();
+        { 
+            Request r = requestRepository.GetRequestById(id);
             
-            requestRepository.requestss[index].Description = newDescription;
-            requestRepository.requestss[index].DateOfVacation = newDateOfVacation;
-            requestRepository.requestss[index].DurationOfVacation = newDurationOfVacation;
-
+            r.Description = newDescription;
+            r.DateOfVacation = newDateOfVacation;
+            r.DurationOfVacation = newDurationOfVacation;
+            requestRepository.updateList(id, r);
         }
 
       public Boolean DeleteRequest(int id)
       {
-            DeletingRequest(id);
-            requestRepository.WriteToJson();
-            return true;
+           return requestRepository.DeleteRequest(id);
       }
-      
-        public Boolean DeletingRequest(int id)
-        {
-            //getrequestById u repository
-            int index = requestRepository.requestss.FindIndex(obj => obj.Id == id);
-            if (index == -1)
-            {
-                return false;
-            }
-            //u repository
-            requestRepository.requestss.RemoveAt(index);
-            return true;
-        }
+     
       public void Save(Model.Request newRequest)
       {
             requestRepository.requestss.Add(newRequest);

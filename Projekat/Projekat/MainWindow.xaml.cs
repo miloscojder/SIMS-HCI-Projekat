@@ -95,8 +95,8 @@ namespace Projekat
                         }
                         break;
                     case RoolType.Secretary:
-                        SecretaryWindow sw = new SecretaryWindow();
-                        sw.Show();
+                        RequestCRUD rc = new RequestCRUD();
+                        rc.Show();
                         break;
                     case RoolType.Director:
                         DirectorWindow dirw = new DirectorWindow(loggedUser);

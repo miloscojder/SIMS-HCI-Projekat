@@ -54,9 +54,6 @@ namespace Controller
 
 
 
-
-
-
         public int AppointmentsWithThisDoctor(List<Appointment> appointments,Doctor doctor)
        {
             return doctorService.AppointmentsWithThisDoctor(appointments, doctor);
