@@ -93,7 +93,7 @@ namespace Projekat
                 if (result == MessageBoxResult.Yes)
                 {
                     Appointment app = (Appointment)lvAcceptAppointment.SelectedItems[0];
-                    appointmentController.SaveAppointment(app);
+                    appointmentController.ScheduleAppointemnt(app);
 
                     MessageBox.Show("Your appointment is scheduled");
                     AppointmentsPage appo = new AppointmentsPage();

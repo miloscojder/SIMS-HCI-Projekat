@@ -23,7 +23,7 @@ namespace Projekat
         public AppointmentController appointmentController = new AppointmentController();
         public StaticEquipmentController staticEquipmentController = new StaticEquipmentController();
         public Appointment ap = new Appointment();
-        public String patient;
+        public Patient patient = new Patient();
         public List<String> Termini { get; set; }
         public string SelektovanTermin { get; set; }
         public List<String> types { get; set; }
@@ -36,7 +36,7 @@ namespace Projekat
             List<StaticEquipment> staticEquipments = staticEquipmentRepository.GetAll();
             dataGrid1.ItemsSource = staticEquipments;
 
-            patient = p.Username;
+            patient = p;
 
             string[] termini = File.ReadAllLines(@"C:\Users\krist\source\repos\SIMS-Projekat\Projekat\Projekat\Data\terminiak.txt", Encoding.UTF8);
             Termini = new List<string>(termini);
@@ -77,8 +77,8 @@ namespace Projekat
             choosenDate = new DateTime(IzaberiDatum.SelectedDate.Value.Year, IzaberiDatum.SelectedDate.Value.Month, IzaberiDatum.SelectedDate.Value.Day, Convert.ToInt32(preuzeto[0]), Convert.ToInt32(preuzeto[1]), 0);
 
 
-            Appointment o = new Appointment(ida, choosenDate, duration, ap.AppointmentType, RoomName.Text, patient , DoctorWindow.loginDoctor.Username);
-            appointmentController.ScheduleDoctor(o);
+            Appointment o = new Appointment(ida, choosenDate, duration, ap.AppointmentType, RoomName.Text, patient.Username , DoctorWindow.loginDoctor.Username);
+            appointmentController.ScheduleAppointemnt(o);
 
             MessageBox.Show("Appointment scheduled!");
             
