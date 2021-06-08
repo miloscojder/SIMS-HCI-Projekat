@@ -11,10 +11,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Projekat.Interfaces;
 
 namespace Repository
 {
-   public class RequestForDinamicEquipmentRepository
+   public class RequestForDinamicEquipmentRepository : IRequestForDynamicEquipmentRepository
    {
 
         private String FileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\RequestsForDynamicEquipment.json";
@@ -58,7 +59,7 @@ namespace Repository
                 return 1;
             }
         }
-        public Model.RequestForDinamicEquipment ReadRequest(int id)
+        public RequestForDinamicEquipment ReadRequest(int id)
       {
             RequestForDinamicEquipment requestForDinamicEquipment = new RequestForDinamicEquipment();
             int index = requestsForDinamicEquipment.FindIndex(obj => obj.Id == id);
@@ -106,7 +107,7 @@ namespace Repository
             return false;
       }
 
-      public List<RequestForDinamicEquipment> GetAll()
+        public List<RequestForDinamicEquipment> GetAll()
       {
           return requestsForDinamicEquipment;
       }
@@ -114,22 +115,17 @@ namespace Repository
 
         public List<RequestForDinamicEquipment> FilterByName(String name)
         {
-            // TODO: implement
             return null;
         }
 
         public List<RequestForDinamicEquipment> FilterByStatus(Model.StatusType status)
         {
-            // TODO: implement
             return null;
         }
 
         public List<RequestForDinamicEquipment> SortByDateOfCreation()
         {
-            // TODO: implement
             return null;
         }
-
-
     }
 }
