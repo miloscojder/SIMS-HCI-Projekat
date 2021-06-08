@@ -13,14 +13,16 @@ namespace Service
         public RoomRepository roomRepository = new RoomRepository();
         public readonly AppointmentService appointmentService = new AppointmentService();
         public StaticEquipmentRepository staticRepository = new Repository.StaticEquipmentRepository();
-     
+        public CheckingAppointmentAvailabilityForRenovationService checkingAppointmentAvailibilityForRenovationService = new CheckingAppointmentAvailabilityForRenovationService();
+
+
 
         public Boolean ClassicRenovation(int roomId, DateTime renovationDate, double duration)
       {
             Appointment appointment = new Appointment(renovationDate, duration, roomId);
-            if (appointmentService.IsRoomAvailable(appointment))
+            if (checkingAppointmentAvailibilityForRenovationService.IsRoomAvailable(appointment))
             {
-                appointmentService.SaveRenovation(appointment);
+                checkingAppointmentAvailibilityForRenovationService.SaveRenovation(appointment);
                 return true;
             }
             else
