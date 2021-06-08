@@ -17,7 +17,7 @@ namespace Service
 
         public void Save(StaticEquipment newEquipment)
       {
-            staticEquipmentRepository.Save(newEquipment);
+            staticEquipmentRepository.SaveEquipment(newEquipment);
       }
       
       public List<StaticEquipment> GetAll()
@@ -34,7 +34,7 @@ namespace Service
 
         public StaticEquipment GetOne(int id)
         {
-            return staticEquipmentRepository.GetOne(id);
+            return staticEquipmentRepository.GetOneEquipment(id);
         }
 
         public Boolean DeleteEquipment(int id)

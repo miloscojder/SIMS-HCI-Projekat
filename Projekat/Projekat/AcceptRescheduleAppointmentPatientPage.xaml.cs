@@ -107,8 +107,8 @@ namespace Projekat
                                         MessageBoxImage.Question);
                     if (result == MessageBoxResult.Yes)
                     {
-                        appointmentController.DeleteAppointmentById(posrednik1.id);
-                        appointmentController.SaveAppointment(app);
+                        appointmentController.CancelAppointment(posrednik1);
+                        appointmentController.ScheduleAppointemnt(app);
 
                         AppointmentsPage ap = new AppointmentsPage();
                         ap.Show();

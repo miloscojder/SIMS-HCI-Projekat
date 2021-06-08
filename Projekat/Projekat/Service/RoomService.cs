@@ -40,7 +40,7 @@ namespace Service
         public void MoveStaticEquipment(int staticId, int toRoom)
         {
 
-                StaticEquipment staticEquipment = staticRepository.GetOne(staticId);
+                StaticEquipment staticEquipment = staticRepository.GetOneEquipment(staticId);
                 Room room = GetRoom(staticEquipment.RoomId);
                 room.StaticEquipments.Remove(staticEquipment);
                 Room room2 = GetRoom(toRoom);

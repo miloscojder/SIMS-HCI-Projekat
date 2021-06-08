@@ -14,13 +14,17 @@ namespace Controller
     public class AppointmentController
     {
         public AppointmentService appointmentService = new AppointmentService();
+
         public CheckingAppointmentAvailabilityForRenovationService checkingAppointmentAvailibilityForRenovationService = new CheckingAppointmentAvailabilityForRenovationService();
         public DoctorsBusynessService doctorBusynessService = new DoctorsBusynessService();
         public OrganisingDoctorAppointmentsService organisingDoctorAppointmentsService = new OrganisingDoctorAppointmentsService();
         public OrganisingPatientAppointmentsService organisingPatientAppointmentService = new OrganisingPatientAppointmentsService();
         public void ScheduleDoctor(Appointment newAppointment)
+
+        public void ScheduleAppointemnt(Appointment newAppointment)
+
         {
-            appointmentService.ScheduleDoctor(newAppointment);
+            appointmentService.ScheduleAppointemnt(newAppointment);
         }
 
         public int GenerateNewId()
@@ -34,9 +38,9 @@ namespace Controller
             organisingDoctorAppointmentsService.RescheduleDoctor(newAppointment);
         }
 
-        public Boolean Cancel(Appointment newAppointment)
+        public Boolean CancelAppointment(Appointment newAppointment)
         {
-            appointmentService.Cancel(newAppointment);
+            appointmentService.CancelAppointment(newAppointment);
             return true;
         }
 
@@ -46,11 +50,7 @@ namespace Controller
         }
 
 
-        public void SaveAppointment(Appointment appointment)
-        {
-            appointmentService.SaveAppointment(appointment);
-        }
-
+      
 
         public List<DateTime> GetDoctosBusyTimes(String doctorsUsername)
         {
@@ -64,6 +64,7 @@ namespace Controller
         }
 
 
+
         public List<Appointment> GetAllAppointmentsForDoctorUser(Doctor doctor)
         {
             return organisingDoctorAppointmentsService.GetAllAppointmentsForDoctorUser(doctor);
@@ -73,6 +74,7 @@ namespace Controller
         {
             appointmentService.DeleteAppointmentById(id);
         }
+
 
         public List<Appointment> AddFreeTerminsDayPriority(DateTime choosenDate, List<Room> rooms, List<Doctor> doctors, String patientsUsername) 
         {

@@ -124,7 +124,7 @@ namespace Projekat
                         int ida = appointmentController.GenerateNewId();
                         Appointment newAppointment = new Appointment(ida, choosenDate, TypeOfAppointment.Examination, "R1", PatientMainPage.prenosilac.Username, izabraniDoktor);
 
-                        appointmentController.SaveAppointment(newAppointment);
+                        appointmentController.ScheduleAppointemnt(newAppointment);
 
                         MessageBox.Show("Appointment is scheduled");
                         AppointmentsPage ap = new AppointmentsPage();

@@ -2,6 +2,7 @@
 
 using Model;
 using Newtonsoft.Json;
+using Projekat.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,7 +11,7 @@ using System.Linq;
 namespace Repository
 {
     
-    public class StaticEquipmentRepository
+    public class StaticEquipmentRepository : IEquipment<StaticEquipment>
    {
         private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\staticEquipment.json";
         private List<StaticEquipment> staticEquipments = new List<StaticEquipment>();
@@ -35,19 +36,11 @@ namespace Repository
             string json = JsonConvert.SerializeObject(staticEquipments);
             File.WriteAllText(fileLocation, json);
         }
-        public void Save(StaticEquipment newEquipment)
-      {
-            staticEquipments.Add(newEquipment);
-            WriteToJson();
-        }
+      
 
         public List<StaticEquipment> GetAllBedrooms()
         {
             return staticEquipments.FindAll(obj => obj.Name == "bed");
-        }
-        public StaticEquipment GetOne(int id)
-      {
-            return staticEquipments.Find(obj => obj.Id == id);
         }
       
       public List<StaticEquipment> GetAll()
@@ -95,5 +88,20 @@ namespace Repository
             }
         }
 
+        public void SaveEquipment(StaticEquipment instance)
+        {
+            staticEquipments.Add(instance);
+            WriteToJson();
+        }
+
+        public StaticEquipment GetOneEquipment(int id)
+        {
+            return staticEquipments.Find(obj => obj.Id == id);
+        }
+
+        public List<StaticEquipment> GetAllEquipment()
+        {
+            return staticEquipments;
+        }
     }
 }

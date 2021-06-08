@@ -15,9 +15,9 @@ namespace Service
    public class AppointmentService
    {
         public AppointmentRepository appointmentRepository = new AppointmentRepository();
-        public void ScheduleDoctor(Appointment newAppointment)
+        public void ScheduleAppointemnt(Appointment newAppointment)
       {
-            appointmentRepository.ScheduleDoctor(newAppointment);
+            appointmentRepository.ScheduleAppointment(newAppointment);
       }
 
         public int GenerateNewId()
@@ -33,23 +33,17 @@ namespace Service
            
       }
       
-      public Boolean Cancel(Appointment newAppointment)
+      public Boolean CancelAppointment(Appointment newAppointment)
       {
-            appointmentRepository.Cancel(newAppointment);
+            appointmentRepository.CancelAppointment(newAppointment);
             return true;
       }
       
-        public void SaveAppointment(Appointment appointment)
-        {
-            appointmentRepository.SaveAppointment(appointment);
-        }
+      
 
 
 
-        public void DeleteAppointmentById(int id)
-        {
-            appointmentRepository.DeleteAppointmentById(id);
-        }
+     
 
 
 
@@ -107,9 +101,6 @@ namespace Service
       {
             return appointmentRepository.GetAppointment(id);
       }
-
-
-
 
 
 
