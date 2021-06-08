@@ -14,7 +14,15 @@ namespace Controller
     public class AppointmentController
     {
         public AppointmentService appointmentService = new AppointmentService();
+
+        public CheckingAppointmentAvailabilityForRenovationService checkingAppointmentAvailibilityForRenovationService = new CheckingAppointmentAvailabilityForRenovationService();
+        public DoctorsBusynessService doctorBusynessService = new DoctorsBusynessService();
+        public OrganisingDoctorAppointmentsService organisingDoctorAppointmentsService = new OrganisingDoctorAppointmentsService();
+        public OrganisingPatientAppointmentsService organisingPatientAppointmentService = new OrganisingPatientAppointmentsService();
+        public void ScheduleDoctor(Appointment newAppointment)
+
         public void ScheduleAppointemnt(Appointment newAppointment)
+
         {
             appointmentService.ScheduleAppointemnt(newAppointment);
         }
@@ -25,13 +33,9 @@ namespace Controller
 
         }
 
-        /*       public TypeOfAppointment GetTypes()
-               {
-                   return appointmentService.GetTypes();
-               }*/
         public void RescheduleDoctor(Appointment newAppointment)
         {
-            appointmentService.RescheduleDoctor(newAppointment);
+            organisingDoctorAppointmentsService.RescheduleDoctor(newAppointment);
         }
 
         public Boolean CancelAppointment(Appointment newAppointment)
@@ -42,7 +46,7 @@ namespace Controller
 
         public List<Appointment> GetAppointmentsByPatientsUsername(String username)
         {
-            return appointmentService.GetAppointmentsByPatientsUsername(username);
+            return organisingPatientAppointmentService.GetAppointmentsByPatientsUsername(username);
         }
 
 
@@ -50,25 +54,36 @@ namespace Controller
 
         public List<DateTime> GetDoctosBusyTimes(String doctorsUsername)
         {
-            return appointmentService.GetDoctosBusyTimes(doctorsUsername);
+            return doctorBusynessService.GetDoctosBusyTimes(doctorsUsername);
         }
 
 
         public Boolean IsDoctorBusy(String doctorsUsername, DateTime choosenDate)
         {
-            return appointmentService.IsDoctorBusy(doctorsUsername, choosenDate);
+            return doctorBusynessService.IsDoctorBusy(doctorsUsername, choosenDate);
         }
 
-      
+
+
+        public List<Appointment> GetAllAppointmentsForDoctorUser(Doctor doctor)
+        {
+            return organisingDoctorAppointmentsService.GetAllAppointmentsForDoctorUser(doctor);
+
+        }
+        public void DeleteAppointmentById(int id)
+        {
+            appointmentService.DeleteAppointmentById(id);
+        }
+
 
         public List<Appointment> AddFreeTerminsDayPriority(DateTime choosenDate, List<Room> rooms, List<Doctor> doctors, String patientsUsername) 
         {
-            return appointmentService.AddFreeTerminsDayPriority(choosenDate,rooms,doctors,patientsUsername);
+            return organisingPatientAppointmentService.AddFreeTerminsDayPriority(choosenDate,rooms,doctors,patientsUsername);
         }
 
         public List<Appointment> AddFreeTerminDoctorPriority(List<DateTime> termins, List<Room> rooms, String doctorsUsername, String patientsUsername)
         {
-            return appointmentService.AddFreeTerminDoctorPriority(termins, rooms, doctorsUsername, patientsUsername);
+            return organisingPatientAppointmentService.AddFreeTerminDoctorPriority(termins, rooms, doctorsUsername, patientsUsername);
         }
 
       public Appointment ScedulePatient(DateTime timeStart, DateTime endTime, Model.Doctor doctor, Model.Room room, String id)
@@ -102,7 +117,7 @@ namespace Controller
       
       public List<Doctor> GetAllDoctors()
       {
-         // TODO: implement
+         
          return null;
       }
       
@@ -116,9 +131,15 @@ namespace Controller
       {
            return appointmentService.GetAppointment(id);
       }
-      
-     
-    
-   
-   }
+
+
+        public Boolean IsRoomAvailable(Appointment appointment)
+        {
+            return checkingAppointmentAvailibilityForRenovationService.IsRoomAvailable(appointment);
+        }
+        //treba upravniku
+
+
+
+    }
 }

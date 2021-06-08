@@ -21,12 +21,6 @@ namespace Repository
 
         public RoomRepository()
         {
-            ReadJson();
-        }
-
-        public void ReadJson()
-        {
-
             if (!File.Exists(fileLocation))
             {
                 File.Create(fileLocation).Close();
@@ -38,9 +32,10 @@ namespace Repository
             {
                 rooms = JsonConvert.DeserializeObject<List<Room>>(json);
             }
-
         }
-public void WriteToJson()
+
+
+        public void WriteToJson()
         {
             string json = JsonConvert.SerializeObject(rooms);
             File.WriteAllText(fileLocation, json);
