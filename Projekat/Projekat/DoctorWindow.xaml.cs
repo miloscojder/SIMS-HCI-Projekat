@@ -109,7 +109,7 @@ namespace Projekat
         {
             Appointment a = (Appointment)dataGridd.SelectedItems[0];
             AppointmentRepository appointmentRepository = new AppointmentRepository();
-            appointmentRepository.Cancel(a);
+            appointmentRepository.CancelAppointment(a);
             DoctorWindow d = new DoctorWindow(loginDoctor);
             d.Show();
             Close();

@@ -10,11 +10,13 @@ using System.IO;
 using System.Linq;
 using System;
 using System.Collections.Generic;
+using Projekat.Interfaces;
+using Projekat.Repository;
 
 namespace Repository
 {
-   public class AppointmentRepository
-   {
+   public class AppointmentRepository : IAppointment<Appointment>
+    {
 
         public string FileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\appointments.json";
         public List<Appointment> appointments = new List<Appointment>();
@@ -52,12 +54,7 @@ namespace Repository
             string json = JsonConvert.SerializeObject(appointments);
             File.WriteAllText(FileLocation, json);
         }
-      public void ScheduleDoctor(Appointment appointment)
-      {
-          appointments.Add(appointment);
-            WriteToJson();
-        }
-      
+    
       public void RescheduleDoctor(Appointment appointment)
       {
             int index = appointments.FindIndex(obj => obj.id == appointment.id);
@@ -65,13 +62,7 @@ namespace Repository
             WriteToJson();
       }
       
-      public void Cancel(Appointment newAppointemnt)
-      {
-            int index = appointments.FindIndex(obj => obj.id == newAppointemnt.id);
-            appointments.RemoveAt(index);
-            WriteToJson();
-           // return false;
-      }
+     
 
        public List<Appointment> GetAppointmentsByPatientsUsername(String username)
         {
@@ -87,12 +78,7 @@ namespace Repository
             return patientsAppointment;
         }
 
-        public void SaveAppointment(Appointment newAppointment)
-        {
-            appointments.Add(newAppointment);
-            WriteToJson();
-        }
-
+       
         public List<DateTime> GetDoctosBusyTimes(String doctrsUsername)
         {
             List<DateTime> doctorsBusyTimes = new List<DateTime>();
@@ -107,22 +93,7 @@ namespace Repository
             return doctorsBusyTimes;
         }
 
-        public void DeleteAppointmentById(int id)
-        {
-            for (int i = 0; i < appointments.Count; i++)
-            {
-                Appointment a = appointments[i];
-                if (a.id == id)
-                {
-                    appointments.Remove(a);
-                }
-            }
-            WriteToJson();
-        }
-
-  
-   
-    
+       
       
       public List<Appointment> GetAll()
       {
@@ -142,8 +113,17 @@ namespace Repository
          return appointments.Find(obj => obj.id == idd);
       }
 
-      
+        public void ScheduleAppointment(Appointment instance)
+        {
+            appointments.Add(instance);
+            WriteToJson();
+        }
 
-
-   }
+        public void CancelAppointment(Appointment instance)
+        {
+            int index = appointments.FindIndex(obj => obj.id == instance.id);
+            appointments.RemoveAt(index);
+            WriteToJson();
+        }
+    }
 }

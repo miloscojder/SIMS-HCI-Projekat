@@ -14,9 +14,9 @@ namespace Controller
     public class AppointmentController
     {
         public AppointmentService appointmentService = new AppointmentService();
-        public void ScheduleDoctor(Appointment newAppointment)
+        public void ScheduleAppointemnt(Appointment newAppointment)
         {
-            appointmentService.ScheduleDoctor(newAppointment);
+            appointmentService.ScheduleAppointemnt(newAppointment);
         }
 
         public int GenerateNewId()
@@ -34,9 +34,9 @@ namespace Controller
             appointmentService.RescheduleDoctor(newAppointment);
         }
 
-        public Boolean Cancel(Appointment newAppointment)
+        public Boolean CancelAppointment(Appointment newAppointment)
         {
-            appointmentService.Cancel(newAppointment);
+            appointmentService.CancelAppointment(newAppointment);
             return true;
         }
 
@@ -46,11 +46,7 @@ namespace Controller
         }
 
 
-        public void SaveAppointment(Appointment appointment)
-        {
-            appointmentService.SaveAppointment(appointment);
-        }
-
+      
 
         public List<DateTime> GetDoctosBusyTimes(String doctorsUsername)
         {
@@ -63,10 +59,7 @@ namespace Controller
             return appointmentService.IsDoctorBusy(doctorsUsername, choosenDate);
         }
 
-        public void DeleteAppointmentById(int id)
-        {
-            appointmentService.DeleteAppointmentById(id);
-        }
+      
 
         public List<Appointment> AddFreeTerminsDayPriority(DateTime choosenDate, List<Room> rooms, List<Doctor> doctors, String patientsUsername) 
         {
